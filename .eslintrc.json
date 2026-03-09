@@ -17,7 +17,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["typescript-sort-keys", "unused-imports"],
+  "plugins": ["typescript-sort-keys"],
   "rules": {
     "react/prop-types": "off",
         "prefer-rest-params": "off",
