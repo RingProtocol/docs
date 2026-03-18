@@ -78,6 +78,11 @@ const config: Config = {
         },
         {
           type: 'doc',
+          docId: 'wallet/overview',
+          label: 'Wallet',
+        },
+        {
+          type: 'doc',
           docId: 'builder-support/get-funded',
           label: 'Support',
         },
@@ -159,6 +164,14 @@ const config: Config = {
       '@docusaurus/plugin-client-redirects',
       {
         redirects: [
+          {
+            to: '/wallet/guides/dapp-integration',
+            from: ['/wallet/guides/dapp-integration.md', '/wallet/guides/dapp-integration.mdx'],
+          },
+          {
+            to: '/wallet/overview',
+            from: ['/wallet/overview.md', '/wallet/overview.mdx'],
+          },
           {
             to: '/sdk/v3/guides/background',
             from: '/sdk/v3/guides/quick-start',
