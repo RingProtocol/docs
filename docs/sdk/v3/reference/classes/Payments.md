@@ -29,7 +29,7 @@ Cannot be constructed.
 
 #### Defined in
 
-[payments.ts:25](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/payments.ts#L25)
+[payments.ts:25](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/payments.ts#L25)
 
 ## Properties
 
@@ -39,7 +39,7 @@ Cannot be constructed.
 
 #### Defined in
 
-[payments.ts:20](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/payments.ts#L20)
+[payments.ts:20](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/payments.ts#L20)
 
 ## Methods
 
@@ -59,7 +59,7 @@ Cannot be constructed.
 
 #### Defined in
 
-[payments.ts:27](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/payments.ts#L27)
+[payments.ts:27](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/payments.ts#L27)
 
 ___
 
@@ -73,7 +73,7 @@ ___
 
 #### Defined in
 
-[payments.ts:73](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/payments.ts#L73)
+[payments.ts:73](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/payments.ts#L73)
 
 ___
 
@@ -96,7 +96,7 @@ ___
 
 #### Defined in
 
-[payments.ts:49](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/payments.ts#L49)
+[payments.ts:49](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/payments.ts#L49)
 
 ___
 
@@ -118,4 +118,4 @@ ___
 
 #### Defined in
 
-[payments.ts:31](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/payments.ts#L31)
+[payments.ts:31](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/payments.ts#L31)

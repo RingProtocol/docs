@@ -6,7 +6,7 @@ title: constants.ts
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-path: [`/src/utils/constants.ts`](https://github.com/Uniswap/v3-subgraph/blob/main/src/utils/constants.ts)
+path: [`/src/utils/constants.ts`](https://github.com/RingProtocol/v3-subgraph/blob/main/src/utils/constants.ts)
 
 ### ADDRESS_ZERO
 ```

@@ -10,7 +10,7 @@ An automated market maker is a smart contract on Ethereum that holds liquidity r
 
 ## Asset
 
-While a digital asset can take many forms, the Uniswap Protocol supports ERC-20 token pairs, and represents a position in the form of an NFT (ERC-721).
+While a digital asset can take many forms, the Ring Protocol supports ERC-20 token pairs, and represents a position in the form of an NFT (ERC-721).
 
 ## Concentrated Liquidity
 
@@ -22,11 +22,11 @@ The automated market making algorithm used by Uniswap. In v1 and v2, this was x\
 
 ## Core
 
-Smart contracts that are considered foundational, and are essential for Uniswap to exist. Upgrading to a new version of core would require deploying an entirely new set of smart contracts on Ethereum and would be considered a new version of the Uniswap Protocol.
+Smart contracts that are considered foundational, and are essential for Ring to exist. Upgrading to a new version of core would require deploying an entirely new set of smart contracts on Ethereum and would be considered a new version of the Ring Protocol.
 
 ## ERC20
 
-ERC20 tokens are fungible tokens on Ethereum. Uniswap supports all standard ERC20 implementations.
+ERC20 tokens are fungible tokens on Ethereum. Ring supports all standard ERC20 implementations.
 
 ## Factory
 
@@ -46,11 +46,11 @@ A liquidity provider is someone who deposits ERC20 tokens into a given liquidity
 
 ## Liquidity
 
-Digital assets that are stored in a Uniswap pool contract, and are able to be traded against by traders.
+Digital assets that are stored in a Ring pool contract, and are able to be traded against by traders.
 
 ## Mid Price
 
-The price between the available buy and sell prices. In Uniswap v1 and v2, this is the ratio of the two ERC20 token reserves. In V3, this is the ratio of the two ERC20 token reserves available within the current active tick.
+The price between the available buy and sell prices. In Ring v1 and v2, this is the ratio of the two ERC20 token reserves. In V3, this is the ratio of the two ERC20 token reserves available within the current active tick.
 
 ## Observation
 
@@ -58,11 +58,11 @@ An instance of historical price and liquidity data of a given pair.
 
 ## Pair
 
-A smart contract deployed from a Uniswap v1 or v2 factory contract that enables trading between two ERC20 tokens. Pair contracts are now called Pools in v3.
+A smart contract deployed from a Ring v1 or v2 factory contract that enables trading between two ERC20 tokens. Pair contracts are now called Pools in v3.
 
 ## Periphery
 
-External smart contracts that are useful, but not required for Uniswap to exist. New periphery contracts can always be deployed without migrating liquidity.
+External smart contracts that are useful, but not required for Ring to exist. New periphery contracts can always be deployed without migrating liquidity.
 
 ## Pool
 

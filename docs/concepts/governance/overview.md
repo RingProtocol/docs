@@ -12,7 +12,7 @@ sidebar_position: 1
 
 ## Documentation
 
-For reference material on the Uniswap Governance system please see [Governance Reference](../../../contracts/v3/reference/governance/overview.md).
+For reference material on the Ring Governance system please see [Governance Reference](../../../contracts/v3/reference/governance/overview.md).
 
  -->
 

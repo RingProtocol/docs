@@ -4,11 +4,11 @@ title: Overview
 sidebar_position: 1
 ---
 
-The `UniversalRouter` is an ETH and ERC20 swap router, designed to aggregate trades across Uniswap protocols (including v2, v3, and v4) and provide users with highly flexible and composable transactions. The contract is unowned and non-upgradeable.
+The `UniversalRouter` is an ETH and ERC20 swap router, designed to aggregate trades across Ring protocols (including v2, v3, and v4) and provide users with highly flexible and composable transactions. The contract is unowned and non-upgradeable.
 
 The flexible command-based architecture enables:
 
-- Splitting and interleaving of Uniswap v2/v3/v4 swaps
+- Splitting and interleaving of Ring v2/v3/v4 swaps
 - Partial fills of trades
 - Wrapping and unwrapping of ETH (via WETH)
 - Time-bound, signature-controlled token approvals using [Permit2](../permit2/overview.md)

@@ -2,7 +2,7 @@
 
 # Class: SwapQuoter
 
-Represents the Uniswap V3 QuoterV1 contract with a method for returning the formatted
+Represents the Ring V3 QuoterV1 contract with a method for returning the formatted
 calldata needed to call the quoter contract.
 
 ## Table of contents
@@ -34,7 +34,7 @@ calldata needed to call the quoter contract.
 
 #### Defined in
 
-[quoter.ts:37](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/quoter.ts#L37)
+[quoter.ts:37](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/quoter.ts#L37)
 
 ___
 
@@ -44,7 +44,7 @@ ___
 
 #### Defined in
 
-[quoter.ts:38](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/quoter.ts#L38)
+[quoter.ts:38](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/quoter.ts#L38)
 
 ## Methods
 
@@ -79,4 +79,4 @@ The formatted calldata
 
 #### Defined in
 
-[quoter.ts:51](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/quoter.ts#L51)
+[quoter.ts:51](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/quoter.ts#L51)

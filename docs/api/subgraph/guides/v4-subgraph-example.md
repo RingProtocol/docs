@@ -6,7 +6,7 @@ sidebar_position: 2
 
 ## Subgraph Query Examples
 
-This doc will teach you how to query Uniswap v4 analytics by writing GraphQL queries on the subgraph. You can fetch data points like:
+This doc will teach you how to query Ring v4 analytics by writing GraphQL queries on the subgraph. You can fetch data points like:
 
 - [position details](#general-position-data)
 - [current liquidity](#pool-data) of a pool
@@ -16,12 +16,12 @@ and much more. Below are some example queries. To run a query copy and paste it 
 
 ## Global Data
 
-Global data refers to data points about the Uniswap v4 protocol as a whole. Some examples of global data points are:
+Global data refers to data points about the Ring v4 protocol as a whole. Some examples of global data points are:
 - Total value locked in the protocol,
 - Total pools deployed,
 - Total transaction counts. 
 
-Thus, to query global data you must pass in the PoolManager address `0x000000000004444c5dc75cb358380d2e3de08a90` and select the desired fields. Reference the full [poolManager schema](https://github.com/Uniswap/v4-subgraph/blob/main/schema.graphql#L1) to see all possible fields. PoolManager addresses for all supported chains are listed in the [Deployments](/contracts/v4/deployments) section.
+Thus, to query global data you must pass in the PoolManager address `0x000000000004444c5dc75cb358380d2e3de08a90` and select the desired fields. Reference the full [poolManager schema](https://github.com/RingProtocol/v4-subgraph/blob/main/schema.graphql#L1) to see all possible fields. PoolManager addresses for all supported chains are listed in the [Deployments](/contracts/v4/deployments) section.
 
 ### Current Global Data
 
@@ -60,7 +60,7 @@ You can also query historical data by specifying a block number.
 
 ## Pool Data
 
-To get data about a certain pool, pass in the pool address. Reference the full [pool schema](https://github.com/Uniswap/v4-subgraph/blob/main/schema.graphql#L76) and adjust the query fields to retrieve the data points you want.
+To get data about a certain pool, pass in the pool address. Reference the full [pool schema](https://github.com/RingProtocol/v4-subgraph/blob/main/schema.graphql#L76) and adjust the query fields to retrieve the data points you want.
 
 ### General Pool Query
 
@@ -115,7 +115,7 @@ This query sets the skip value and returns the first 10 responses after the firs
 
 This next query sets a skip variable. In your language and environment of choice you can then iterate through a loop, query to get 1000 pools each time, and continually adjust skip by 1000 until all pool responses are returned.
 
-Check out [this example](https://github.com/Uniswap/v3-info/blob/770a05dc1a191cf229432ebc43c1f2ceb3666e3b/src/data/pools/chartData.ts#L14) from our interface for poolDayData that does something similar.
+Check out [this example](https://github.com/RingProtocol/v3-info/blob/770a05dc1a191cf229432ebc43c1f2ceb3666e3b/src/data/pools/chartData.ts#L14) from our interface for poolDayData that does something similar.
 
 > **Note**
 > This query will not work in the graph explorer and more resembles the structure of a query you'd pass to some GraphQL middleware like Apollo.
@@ -184,7 +184,7 @@ This query returns daily aggregated data for the first 10 days since the given t
 
 ### General Swap Data
 
-To query data about a particular swap, input the transaction hash + "-" + the index in the swaps the transaction array. This is the reference for the full [swap schema](https://github.com/Uniswap/v4-subgraph/blob/main/schema.graphql#L186).
+To query data about a particular swap, input the transaction hash + "-" + the index in the swaps the transaction array. This is the reference for the full [swap schema](https://github.com/RingProtocol/v4-subgraph/blob/main/schema.graphql#L186).
 
 This query fetches data about the sender, amounts, transaction data, timestamp, and tokens for a particular swap.
 
@@ -245,11 +245,11 @@ You can set the `where` field to filter swap data by pool address. This example 
 
 ## Token Data
 
-Input the token contract address to fetch token data. Any token that exists in at least one Uniswap v4 pool can be queried. The output will aggregate data across all v4 pools that include the token.
+Input the token contract address to fetch token data. Any token that exists in at least one Ring v4 pool can be queried. The output will aggregate data across all v4 pools that include the token.
 
 ### General Token Data
 
-This queries the decimals, symbol, name, pool count, and volume in USD for the UNI token. Reference the full [token schema](https://github.com/Uniswap/v4-subgraph/blob/main/schema.graphql#L37) for all possible fields you can query.
+This queries the decimals, symbol, name, pool count, and volume in USD for the UNI token. Reference the full [token schema](https://github.com/RingProtocol/v4-subgraph/blob/main/schema.graphql#L37) for all possible fields you can query.
 
 ```
 {
@@ -307,7 +307,7 @@ query tokens($skip: Int!) {
 
 ### General Position Data
 
-To get data about a specific position, input the NFT tokenId. This queries the subscriptions, unsubscriptions, and transfers for the position with tokenId 3. Reference the full [position schema](https://github.com/Uniswap/v4-subgraph/blob/main/schema.graphql#416) to see all fields.
+To get data about a specific position, input the NFT tokenId. This queries the subscriptions, unsubscriptions, and transfers for the position with tokenId 3. Reference the full [position schema](https://github.com/RingProtocol/v4-subgraph/blob/main/schema.graphql#416) to see all fields.
 
 ```
 {
@@ -328,4 +328,4 @@ To get data about a specific position, input the NFT tokenId. This queries the s
 
 ## Contribute
 
-There are many more queries you can do with the Uniswap v4 subgraph including data related to ticks, subscriptions, unsubscriptions, and more. Once again you can reference the full schema [here](https://github.com/Uniswap/v4-subgraph/blob/main/schema.graphql). If you'd like to suggest more example queries to showcase, feel free to drop some suggestions in [discord](https://discord.com/invite/uniswap) under #dev-chat or [contribute](https://github.com/Uniswap/docs/blob/main/CONTRIBUTING.md) your own queries by submitting a pull request to the docs repo.
+There are many more queries you can do with the Ring v4 subgraph including data related to ticks, subscriptions, unsubscriptions, and more. Once again you can reference the full schema [here](https://github.com/RingProtocol/v4-subgraph/blob/main/schema.graphql). If you'd like to suggest more example queries to showcase, feel free to drop some suggestions in [discord](https://discord.com/invite/uniswap) under #dev-chat or [contribute](https://github.com/RingProtocol/docs/blob/main/CONTRIBUTING.md) your own queries by submitting a pull request to the docs repo.

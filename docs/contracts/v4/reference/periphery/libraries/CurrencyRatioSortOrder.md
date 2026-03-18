@@ -4,7 +4,7 @@
 Provides constants for sorting currencies when displaying price ratios
 Currencies given larger values will be in the numerator of the price ratio
 
-*Reference: https://github.com/Uniswap/v3-periphery/blob/main/contracts/libraries/TokenRatioSortOrder.sol*
+*Reference: https://github.com/RingProtocol/v3-periphery/blob/main/contracts/libraries/TokenRatioSortOrder.sol*
 
 
 ## State Variables

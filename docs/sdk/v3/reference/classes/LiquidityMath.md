@@ -22,7 +22,7 @@ Cannot be constructed.
 
 #### Defined in
 
-[utils/liquidityMath.ts:8](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/utils/liquidityMath.ts#L8)
+[utils/liquidityMath.ts:8](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/utils/liquidityMath.ts#L8)
 
 ## Methods
 
@@ -43,4 +43,4 @@ Cannot be constructed.
 
 #### Defined in
 
-[utils/liquidityMath.ts:10](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/utils/liquidityMath.ts#L10)
+[utils/liquidityMath.ts:10](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/utils/liquidityMath.ts#L10)

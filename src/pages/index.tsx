@@ -129,12 +129,12 @@ const connectBlock = {
     url: 'https://www.uniswapfoundation.org/blog',
     name: 'Blog',
   },
-  newsletterTitle: 'Sign up for research and updates from the Uniswap Foundation',
+  newsletterTitle: 'Sign up for research and updates from the Ring Foundation',
 }
 
 const Home = () => {
   return (
-    <Layout title="Ring Docs" description="Technical Documentation For The Uniswap Protocol">
+    <Layout title="Ring Docs" description="Technical Documentation For The Ring Protocol">
       <div className="content-page-padding w-full flex flex-col">
         <div className="w-full flex flex-col items-center px-6 py-20 sm:py-16 rounded-large bg-light-surface-2 dark:bg-dark-surface-2">
           <h1 className="text-center serif-heading-0 text-light-neutral-1 dark:text-dark-neutral-1 flex flex-row items-center flex-wrap justify-center">
@@ -278,17 +278,17 @@ const Home = () => {
         </div>
 
         {/* 
-          Uniswap Foundation 模块（已注释以隐藏显示）
+          Ring Foundation 模块（已注释以隐藏显示）
           <div className="relative overflow-hidden bg-light-surface-2 dark:bg-dark-surface-2 rounded-large mt-4">
-            {/* Uniswap Foundation 区块容器 *\/}
+            {/* Ring Foundation 区块容器 *\/}
             <div className="default-grid ">
               {/* 左侧内容：标题、描述与按钮 *\/}
               <div className="flex flex-col md:justify-between p-8 col-span-full sm:col-span-7 md:col-span-4">
                 <div>
-                  <h3 className="heading-3 text-light-neutral-1 dark:text-dark-neutral-1">Uniswap Foundation</h3>
+                  <h3 className="heading-3 text-light-neutral-1 dark:text-dark-neutral-1">Ring Foundation</h3>
                   <p className="mt-2 body-2 text-light-neutral-2 dark:text-dark-neutral-2 max-w-[28rem]">
-                    In pursuit of a more open and fair financial system, the Uniswap Foundation supports the growth,
-                    decentralization, and sustainability of the Uniswap community.
+                    In pursuit of a more open and fair financial system, the Ring Foundation supports the growth,
+                    decentralization, and sustainability of the Ring community.
                   </p>
                 </div>
                 <div className="flex mt-5">

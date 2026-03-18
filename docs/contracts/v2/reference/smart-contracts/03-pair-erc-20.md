@@ -35,7 +35,7 @@ Emitted each time a transfer occurs via [transfer](#transfer-1), [transferFrom](
 function name() external pure returns (string memory);
 ```
 
-Returns `Uniswap V2` for all pairs.
+Returns `Ring V2` for all pairs.
 
 ### symbol
 

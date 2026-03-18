@@ -6,7 +6,7 @@ title: intervalUpdates.ts
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-path: [`/src/utils/intervalUpdates.ts`](https://github.com/Uniswap/v3-subgraph/blob/main/src/utils/intervalUpdates.ts)
+path: [`/src/utils/intervalUpdates.ts`](https://github.com/RingProtocol/v3-subgraph/blob/main/src/utils/intervalUpdates.ts)
 
 
 ### updateUniswapDayData()

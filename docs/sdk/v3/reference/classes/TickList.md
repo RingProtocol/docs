@@ -30,7 +30,7 @@ Cannot be constructed
 
 #### Defined in
 
-[utils/tickList.ts:18](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/utils/tickList.ts#L18)
+[utils/tickList.ts:18](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/utils/tickList.ts#L18)
 
 ## Methods
 
@@ -53,7 +53,7 @@ Finds the largest tick in the list of ticks that is less than or equal to tick
 
 #### Defined in
 
-[utils/tickList.ts:62](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/utils/tickList.ts#L62)
+[utils/tickList.ts:62](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/utils/tickList.ts#L62)
 
 ___
 
@@ -74,7 +74,7 @@ ___
 
 #### Defined in
 
-[utils/tickList.ts:50](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/utils/tickList.ts#L50)
+[utils/tickList.ts:50](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/utils/tickList.ts#L50)
 
 ___
 
@@ -95,7 +95,7 @@ ___
 
 #### Defined in
 
-[utils/tickList.ts:45](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/utils/tickList.ts#L45)
+[utils/tickList.ts:45](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/utils/tickList.ts#L45)
 
 ___
 
@@ -116,7 +116,7 @@ ___
 
 #### Defined in
 
-[utils/tickList.ts:40](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/utils/tickList.ts#L40)
+[utils/tickList.ts:40](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/utils/tickList.ts#L40)
 
 ___
 
@@ -138,7 +138,7 @@ ___
 
 #### Defined in
 
-[utils/tickList.ts:83](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/utils/tickList.ts#L83)
+[utils/tickList.ts:83](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/utils/tickList.ts#L83)
 
 ___
 
@@ -161,7 +161,7 @@ ___
 
 #### Defined in
 
-[utils/tickList.ts:101](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/utils/tickList.ts#L101)
+[utils/tickList.ts:101](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/utils/tickList.ts#L101)
 
 ___
 
@@ -182,4 +182,4 @@ ___
 
 #### Defined in
 
-[utils/tickList.ts:20](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/utils/tickList.ts#L20)
+[utils/tickList.ts:20](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/utils/tickList.ts#L20)

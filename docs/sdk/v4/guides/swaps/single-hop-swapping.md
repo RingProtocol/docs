@@ -6,16 +6,16 @@ sidebar_position: 2
 
 ## Introduction
 
-This guide will build off our [quoting guide](./quoting.md) and show how to use a quote to construct and execute a trade on the Uniswap v4 protocol. In this example we will trade between two tokens: **ETH and USDC**.
+This guide will build off our [quoting guide](./quoting.md) and show how to use a quote to construct and execute a trade on the Ring v4 protocol. In this example we will trade between two tokens: **ETH and USDC**.
 
 The guide will cover:
 
 1. Setting up swap parameters and pool configuration
 2. Using Universal Router and executing a single-hop swap
 
-At the end of this guide, you should be able to execute swaps between any two tokens using a single pool on Uniswap V4.
+At the end of this guide, you should be able to execute swaps between any two tokens using a single pool on Ring V4.
 
-For this guide, the following Uniswap packages are used:
+For this guide, the following Ring packages are used:
 
 - [`@uniswap/v4-sdk`](https://www.npmjs.com/package/@uniswap/v4-sdk)
 - [`@uniswap/sdk-core`](https://www.npmjs.com/package/@uniswap/sdk-core)
@@ -48,7 +48,7 @@ Like the quoting guide, the pool used is defined by a pair of tokens in `constan
 
 ## Using Universal Router and executing a single-hop swap
 
-The Universal Router is a flexible, gas-efficient contract designed to execute complex swap operations across various protocols, including Uniswap v4. It serves as an intermediary between users and the Uniswap v4 PoolManager, handling the intricacies of swap execution.
+The Universal Router is a flexible, gas-efficient contract designed to execute complex swap operations across various protocols, including Ring v4. It serves as an intermediary between users and the Ring v4 PoolManager, handling the intricacies of swap execution.
 
 So, we construct an instance of an **ethers** `Contract` for the Universal Router contract in order to interact with it:
 
@@ -76,7 +76,7 @@ const universalRouter = new ethers.Contract(
 )
 ```
 
-We can get the `UNIVERSAL_ROUTER_ADDRESS` for our chain from [Uniswap Deployments](/contracts/v4/deployments).
+We can get the `UNIVERSAL_ROUTER_ADDRESS` for our chain from [Ring Deployments](/contracts/v4/deployments).
 
 A signer object can be created like this:
 
@@ -137,7 +137,7 @@ The actions in the planner define the sequence of operations that will be perfor
 
 The sequence of these actions is important as they define the complete flow of our swap operation from start to finish. The input and output currencies should be exchanged for the `SETTLE_ALL` and `TAKE_ALL` actions if the direction of the swap is reversed.
 
-The `V4_SWAP` command tells the Universal Router that we want to perform a swap on a Uniswap v4 pool.
+The `V4_SWAP` command tells the Universal Router that we want to perform a swap on a Ring v4 pool.
 
 ## Handling Token Approvals for ERC20 Swaps
 

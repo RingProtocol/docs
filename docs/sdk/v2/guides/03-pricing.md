@@ -5,7 +5,7 @@ title: Pricing
 
 > Looking for a [quickstart](quick-start)?
 
-Let's talk pricing. This guide will focus on the two most important Uniswap prices: the **mid price** and the **execution price**.
+Let's talk pricing. This guide will focus on the two most important Ring prices: the **mid price** and the **execution price**.
 
 # Mid Price
 

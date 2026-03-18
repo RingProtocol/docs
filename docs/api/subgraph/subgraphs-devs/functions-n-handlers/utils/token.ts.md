@@ -6,7 +6,7 @@ title: token.ts
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-path: [`/src/utils/token.ts`](https://github.com/Uniswap/v3-subgraph/blob/main/src/utils/token.ts)
+path: [`/src/utils/token.ts`](https://github.com/RingProtocol/v3-subgraph/blob/main/src/utils/token.ts)
 
 ### fetchTokenSymbol()
 ```

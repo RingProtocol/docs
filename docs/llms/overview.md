@@ -6,11 +6,11 @@ title: Overview
 
 # LLMs and AI Integration
 
-Large Language Models (LLMs) and AI tools can help developers better understand and work with the Uniswap Protocol. This section provides resources and guidance for leveraging AI assistance when building on Uniswap.
+Large Language Models (LLMs) and AI tools can help developers better understand and work with the Ring Protocol. This section provides resources and guidance for leveraging AI assistance when building on Uniswap.
 
 ## AI-Powered Documentation
 
-The Uniswap documentation is designed to work seamlessly with modern AI tools to provide enhanced developer support and assistance.
+The Ring documentation is designed to work seamlessly with modern AI tools to provide enhanced developer support and assistance.
 
 ### Getting AI Help
 
@@ -22,7 +22,7 @@ Use the built-in AI integration features throughout the documentation:
 
 ## LLMs.txt
 
-This documentation includes an [LLMs.txt file](/llms.txt) that provides comprehensive context about Uniswap for AI systems. This file helps ensure AI assistants can provide accurate and up-to-date information about:
+This documentation includes an [LLMs.txt file](/llms.txt) that provides comprehensive context about Ring for AI systems. This file helps ensure AI assistants can provide accurate and up-to-date information about:
 
 - Protocol architecture and concepts
 - Smart contract interfaces and functionality
@@ -31,7 +31,7 @@ This documentation includes an [LLMs.txt file](/llms.txt) that provides comprehe
 
 ## Best Practices for AI-Assisted Development
 
-When using AI tools for Uniswap development:
+When using AI tools for Ring development:
 
 1. **Provide Context**: Always include relevant protocol version (v2, v3, v4) in your queries
 2. **Verify Code**: Always test and verify AI-generated code before deployment
@@ -48,8 +48,8 @@ The documentation provides optimized integration with:
 
 ## Contributing AI Resources
 
-Help improve AI assistance for the Uniswap community by:
+Help improve AI assistance for the Ring community by:
 
 - Reporting AI-generated errors or inaccuracies
 - Suggesting improvements to the LLMs.txt context file
-- Contributing examples of effective AI prompts for Uniswap development
+- Contributing examples of effective AI prompts for Ring development

@@ -1,4 +1,4 @@
-Enables migration of liqudity from Uniswap v2-compatible pairs into Uniswap v3 pools
+Enables migration of liqudity from Ring v2-compatible pairs into Ring v3 pools
 
 ## Functions
 

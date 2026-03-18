@@ -1,6 +1,6 @@
 # Best Practices
 
-Below, please find a list of best practices when interacting with the Uniswap Protocol Fee system.
+Below, please find a list of best practices when interacting with the Ring Protocol Fee system.
 
 ## Calldata Nonce
 
@@ -40,14 +40,14 @@ contract SafeRelease {
 In the safe pattern, the caller is responsible for reading the `Firepit.nonce()` offchain, assocating it with releasable assets, and passing it as a **calldata** parameter
 :::
 
-## Collect Uniswap v3 Fees
+## Collect Ring v3 Fees
 
 For further reading, please see [Read Asset Balance](./read-asset-balance)
 
-In the Uniswap Protocol Fee system, Uniswap v3 fees *must be collected* to the `AssetSink` before they are eligible for release.
+In the Ring Protocol Fee system, Ring v3 fees *must be collected* to the `AssetSink` before they are eligible for release.
 
 :::tip
-We recommend that integrators check and collect Uniswap v3 fees before calling `Firepit.release()`, to ensure the maximum assets are released.
+We recommend that integrators check and collect Ring v3 fees before calling `Firepit.release()`, to ensure the maximum assets are released.
 
 Collection is available via
 [IV3FeeController.collect()](../technical-reference/IV3FeeController#collect)
@@ -69,7 +69,7 @@ function collectAndRelease(
 
 ## UNI Approvals
 
-The Uniswap Protocol Fee system allows for an *updatable* [`Firepit.threshold()`](../technical-reference/IResourceManager#threshold)
+The Ring Protocol Fee system allows for an *updatable* [`Firepit.threshold()`](../technical-reference/IResourceManager#threshold)
 
 While the system does not intend to maliciously front-run `.release()` calls, max-approving UNI allowances may lead to an unexpectedly higher burn of UNI.
 The risk only appears if and only if the `thresholdSetter` increases the `threshold` amount while there is a pending `.release()` call.
@@ -82,13 +82,13 @@ Integrators can avoid this risk by:
 
 ## Payable Contracts
 
-Because the Uniswap Protocol Fee system can release native tokens (Ether), recipients of the tokens should be `payable`
+Because the Ring Protocol Fee system can release native tokens (Ether), recipients of the tokens should be `payable`
 
-## Pricing Uniswap v2 ERC-20 Tokens
+## Pricing Ring v2 ERC-20 Tokens
 
 For further reading, please see [Read Asset Balance](./read-asset-balance#uniswap-v2-pool-protocol-fees)
 
-Uniswap v2 Protocol Fees are automatically pushed to the `AssetSink` contract, but are represented as ERC-20 LP tokens. These ERC-20 LP tokens represent a combination of `token0` and `token1`
+Ring v2 Protocol Fees are automatically pushed to the `AssetSink` contract, but are represented as ERC-20 LP tokens. These ERC-20 LP tokens represent a combination of `token0` and `token1`
 
 To compute the underlying amount of `token0` and `token1` represented by the LP tokens, integrators can use the following formula:
 

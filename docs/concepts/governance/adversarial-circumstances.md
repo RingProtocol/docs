@@ -4,7 +4,7 @@ title: Adversarial Circumstances
 sidebar_position: 4
 ---
 
-This document explores some adversarial circumstances which Uniswap Governance may encounter in the future. Its goal is to help those interested in Uniswap Governance understand the reasoning behind some of its design, its limitations, and potential avenues for growth.
+This document explores some adversarial circumstances which Ring Governance may encounter in the future. Its goal is to help those interested in Ring Governance understand the reasoning behind some of its design, its limitations, and potential avenues for growth.
 
 ## Scenario 1
 
@@ -14,11 +14,11 @@ A good faith proposal is brought to vote but is found to have an exploitable edg
 
 UNI voting power must be delegated to an address either entirely before a proposal has been submitted or during the proposal delay period. For now, the proposal delay is set to one block, which is about 15 seconds. A proposal delay of one block leaves no opportunity for a third party to find an exploitable edge case and opportunistically purchase uni, self delegate and sway the vote.
 
-In the future, Uniswap Governance may vote to increase the proposal delay. While there are obvious benefits to an increased proposal delay, It may introduce some potential adverse outcomes such as opportunistic edge case exploitation.
+In the future, Ring Governance may vote to increase the proposal delay. While there are obvious benefits to an increased proposal delay, It may introduce some potential adverse outcomes such as opportunistic edge case exploitation.
 
 ## Scenario 2
 
-A bad faith proposal is crafted and submitted to vote, which is unambiguously not in the best interest of Uniswap Governance. Multiple parties collude ahead of time to corner the UNI market to force the proposal through, gain access to the UNI reserves, and drain the funds.
+A bad faith proposal is crafted and submitted to vote, which is unambiguously not in the best interest of Ring Governance. Multiple parties collude ahead of time to corner the UNI market to force the proposal through, gain access to the UNI reserves, and drain the funds.
 
 ### Circumvention
 
@@ -46,6 +46,6 @@ Example: &quot;The treasury will be drained. Any votes in favor will be sent the
 
 No mechanism explicitly prevents this type of scenario, but market forces disincentivize it.
 
-Because the treasury is comprised of UNI tokens exclusively, the market would react appropriately if a vote were to pass that would jeopardize the economic viability of Uniswap Governance and the UNI token. By the time the vote would pass, UNI's price would have fallen so low as to make the attack fruitless.
+Because the treasury is comprised of UNI tokens exclusively, the market would react appropriately if a vote were to pass that would jeopardize the economic viability of Ring Governance and the UNI token. By the time the vote would pass, UNI's price would have fallen so low as to make the attack fruitless.
 
-UNI acting as the only asset of the governance treasury disincentivizes this form of bad faith voting. Uniswap Governance may choose in the future to diversify governance assets. While there are many benefits to this path, some fringe possibilities such as incentivized bad faith voting may appear.
+UNI acting as the only asset of the governance treasury disincentivizes this form of bad faith voting. Ring Governance may choose in the future to diversify governance assets. While there are many benefits to this path, some fringe possibilities such as incentivized bad faith voting may appear.

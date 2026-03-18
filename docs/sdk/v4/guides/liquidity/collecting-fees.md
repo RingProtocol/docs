@@ -11,14 +11,14 @@ This guide will cover:
 1. **Setting up our fee collection** – Preparing to collect fees from a v4 position, including fetching position details, computing the `poolId`, using `StateView` to read fee growth data, and calculating the unclaimed fees off-chain.
 2. **Submitting our fee collection transaction** – Using the v4 SDK to create the transaction calldata (with `collectCallParameters`), executing the call (via a multicall on the PositionManager).
 
-For this guide, the following Uniswap packages are used:
+For this guide, the following Ring packages are used:
 
 - [`@uniswap/v4-sdk`](https://www.npmjs.com/package/@uniswap/v4-sdk)
 - [`@uniswap/sdk-core`](https://www.npmjs.com/package/@uniswap/sdk-core)
 
 ## Fee Calculation Theory
 
-In Uniswap v4, fees are not stored directly. Instead, fees must be calculated using **differential calculation** from cumulative values called `feeGrowthInside`.
+In Ring v4, fees are not stored directly. Instead, fees must be calculated using **differential calculation** from cumulative values called `feeGrowthInside`.
 
 ### feeGrowthInside Concept
 
@@ -101,7 +101,7 @@ Total fees = Collected + Unclaimed
 
 ### Fee Accrual and Credit Changes
 
-**Fee Accrual and Credit:** Uniswap v4 changes how fee accrual is handled when modifying liquidity. In v3, adding or removing liquidity didn't automatically claim fees – you had to call a separate `collect` function to pull out accrued fees. In v4, **accrued fees act like a credit** that is automatically applied or required depending on liquidity changes. Increasing a position's liquidity will **roll any unclaimed fees into the position's liquidity**, and decreasing liquidity will **automatically withdraw** the proportional unclaimed fees for that position. This means that partially removing liquidity in v4 will force-claim the fees earned by that liquidity portion. However, if you want to claim fees without changing liquidity, you can perform a liquidity change of zero (as we'll do in this guide).
+**Fee Accrual and Credit:** Ring v4 changes how fee accrual is handled when modifying liquidity. In v3, adding or removing liquidity didn't automatically claim fees – you had to call a separate `collect` function to pull out accrued fees. In v4, **accrued fees act like a credit** that is automatically applied or required depending on liquidity changes. Increasing a position's liquidity will **roll any unclaimed fees into the position's liquidity**, and decreasing liquidity will **automatically withdraw** the proportional unclaimed fees for that position. This means that partially removing liquidity in v4 will force-claim the fees earned by that liquidity portion. However, if you want to claim fees without changing liquidity, you can perform a liquidity change of zero (as we'll do in this guide).
 
 ### Why StateView is Required
 
@@ -175,11 +175,11 @@ async function getCurrentFeeGrowthV4(positionDetails) {
 
 ### Phase 2: Submitting Our Fee Collection Transaction
 
-Collecting fees in v4 is done via the `PositionManager` contract's `modifyLiquidities` function with a specific sequence of actions. We will use the Uniswap v4 SDK to construct the required calldata and then send the transaction.
+Collecting fees in v4 is done via the `PositionManager` contract's `modifyLiquidities` function with a specific sequence of actions. We will use the Ring v4 SDK to construct the required calldata and then send the transaction.
 
 ### Build the fee-collection calldata with collectCallParameters
 
-The Uniswap v4 SDK provides a helper `V4PositionManager.collectCallParameters(...)` that produces the calldata for the necessary multicall to collect fees. Under the hood, this will encode two actions: a `DECREASE_LIQUIDITY` with `liquidity = 0` (and min amounts = 0) and a `TAKE_PAIR` to sweep both tokens to a recipient. We need to supply the SDK with our position details and our desired options. First, create a `Position` object for the position (this requires the pool info and position info we fetched):
+The Ring v4 SDK provides a helper `V4PositionManager.collectCallParameters(...)` that produces the calldata for the necessary multicall to collect fees. Under the hood, this will encode two actions: a `DECREASE_LIQUIDITY` with `liquidity = 0` (and min amounts = 0) and a `TAKE_PAIR` to sweep both tokens to a recipient. We need to supply the SDK with our position details and our desired options. First, create a `Position` object for the position (this requires the pool info and position info we fetched):
 
 ```typescript
 async function collectFeesViaMulticall(tokenId, userAddress) {

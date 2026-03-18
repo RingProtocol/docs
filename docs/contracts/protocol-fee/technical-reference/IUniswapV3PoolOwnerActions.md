@@ -4,7 +4,7 @@
 Contains pool methods that may only be called by the factory owner
 
 Vendored from
-https://github.com/Uniswap/v3-core/blob/d8b1c635c275d2a9450bd6a78f3fa2484fef73eb/contracts/interfaces/pool/IUniswapV3PoolOwnerActions.sol
+https://github.com/RingProtocol/v3-core/blob/d8b1c635c275d2a9450bd6a78f3fa2484fef73eb/contracts/interfaces/pool/IUniswapV3PoolOwnerActions.sol
 
 
 ## Functions

@@ -6,7 +6,7 @@ title: pricing.ts
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-path: [`/src/utils/pricing.ts`](https://github.com/Uniswap/v3-subgraph/blob/main/src/utils/pricing.ts)
+path: [`/src/utils/pricing.ts`](https://github.com/RingProtocol/v3-subgraph/blob/main/src/utils/pricing.ts)
 
 ### WETH_ADDRESS
 <Tabs>
@@ -54,7 +54,7 @@ Address of wrapped-ETH (WETH) contract on ethereum mainnet.
 - value: '0x8ad599c3a0ff1de082011efddc58f1908eb6e6d8'
 ```
 
-Address of Uniswap V3 pool contract between `USDC` and `WETH` `ERC-20` tokens on the specific chain.
+Address of Ring V3 pool contract between `USDC` and `WETH` `ERC-20` tokens on the specific chain.
 
 #### Referenced at:
 1. [getEthPriceInUSD](#getethpriceinusd)
@@ -91,7 +91,7 @@ Address of Uniswap V3 pool contract between `USDC` and `WETH` `ERC-20` tokens on
 - value: '0x03af20bdaaffb4cc0a521796a223f7d85e2aac31'
 ```
 
-Address of Uniswap V3 pool contract between `DAI` and `WETH` `ERC-20` tokens on optimsim mainnet.
+Address of Ring V3 pool contract between `DAI` and `WETH` `ERC-20` tokens on optimsim mainnet.
 
 #### Referenced at:
 1. [getEthPriceInUSD](#getethpriceinusd)

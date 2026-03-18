@@ -23,7 +23,7 @@ const CopyToAI: React.FC<CopyToAIProps> = ({ className = '' }) => {
       .trim()
 
     const pageUrl = `https://docs.uniswap.org${location.pathname}`
-    const pageTitle = document.title || 'Uniswap Documentation'
+    const pageTitle = document.title || 'Ring Documentation'
 
     return `# ${pageTitle}
 
@@ -46,7 +46,7 @@ ${cleanedContent}`
   const handleChatGPT = () => {
     const content = getCurrentPageContent()
     const encodedContent = encodeURIComponent(content)
-    const prompt = encodeURIComponent('Please help me understand this Uniswap documentation and answer any questions I have about it.')
+    const prompt = encodeURIComponent('Please help me understand this Ring documentation and answer any questions I have about it.')
     
     // ChatGPT URL with content
     const chatGPTUrl = `https://chatgpt.com/?q=${prompt}%0A%0A${encodedContent}`

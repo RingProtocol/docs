@@ -37,11 +37,11 @@ bytes fillData = /* Call data to be sent to your executor contract */;
 executor.execute(order, fillData);
 ```
 
-For convenience, we’ve provided an [example Executor Contract](https://github.com/Uniswap/UniswapX/tree/v1.1.0/src/sample-executors) which demonstrates how a filler could implement a strategy that executes a UniswapX order against a Uniswap V3 pool. These contracts should be deployed to each chain that the filler would like to support.
+For convenience, we’ve provided an [example Executor Contract](https://github.com/Uniswap/UniswapX/tree/v1.1.0/src/sample-executors) which demonstrates how a filler could implement a strategy that executes a UniswapX order against a Ring V3 pool. These contracts should be deployed to each chain that the filler would like to support.
 
 ## 2A. Retrieve & Execute Signed Dutch Orders
 
-All signed Dutch Orders created through the Uniswap UI will be available via the UniswapX Orders Endpoint. We have [swagger documentation](https://api.uniswap.org/v2/uniswapx/docs) but see below for a quick example curl.
+All signed Dutch Orders created through the Ring UI will be available via the UniswapX Orders Endpoint. We have [swagger documentation](https://api.uniswap.org/v2/uniswapx/docs) but see below for a quick example curl.
 
 ```
 GET https://api.uniswap.org/v2/orders?orderStatus=open&chainId=1&limit=1

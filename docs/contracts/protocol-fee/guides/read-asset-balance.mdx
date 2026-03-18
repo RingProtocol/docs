@@ -13,9 +13,9 @@ For example, the *releasable* USDC balance is `USDC.balanceOf(address(assetSink)
 
 ---
 
-## Uniswap v3 Pool Protocol Fees
+## Ring v3 Pool Protocol Fees
 
-Reading available Uniswap v3 Pool protocol fees requires calling `.protocolFees()` on each `UniswapV3Pool` contract
+Reading available Ring v3 Pool protocol fees requires calling `.protocolFees()` on each `UniswapV3Pool` contract
 
 ```solidity
 import {IERC20} from "forge-std/interfaces/IERC20.sol";
@@ -55,10 +55,10 @@ contract Example {
 }
 ```
 :::note
-Uniswap v3 does not support native Ether tokens. Protocol fees in ETH are accrued as [Wrapped Ether (WETH)](https://etherscan.io/token/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2).
+Ring v3 does not support native Ether tokens. Protocol fees in ETH are accrued as [Wrapped Ether (WETH)](https://etherscan.io/token/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2).
 :::
 
-Because unclaimed tokens are stored in Uniswap v3 Pool contracts, integrators should use offchain indexing to track 
+Because unclaimed tokens are stored in Ring v3 Pool contracts, integrators should use offchain indexing to track 
 which pools contain the asset of interest. For example, USDC protocol fees are accrued in many different pools:
 
 * USDC / TOKENA 0.05% Fee
@@ -68,12 +68,12 @@ which pools contain the asset of interest. For example, USDC protocol fees are a
 * and so on...
 
 To track which pools contain the asset of interest, we recommend to index the `PoolCreated` 
-[event emitted](https://github.com/Uniswap/v3-core/blob/main/contracts/UniswapV3Factory.sol#L50) by the `UniswapV3Factory` contract
+[event emitted](https://github.com/RingProtocol/v3-core/blob/main/contracts/UniswapV3Factory.sol#L50) by the `UniswapV3Factory` contract
 
-## Uniswap v2 Pool Protocol Fees
+## Ring v2 Pool Protocol Fees
 
-Uniswap v2 protocol fees are automatically "pushed" to the `AssetSink` so no additional calls are required to make the assets releasable.
-However, Uniswap v2 protocol fees are accrued in the form of liquidity tokens (LP tokens) which are redeemable for underlying assets. Ownership of the LP
+Ring v2 protocol fees are automatically "pushed" to the `AssetSink` so no additional calls are required to make the assets releasable.
+However, Ring v2 protocol fees are accrued in the form of liquidity tokens (LP tokens) which are redeemable for underlying assets. Ownership of the LP
 token represents the proportional share of the pool's assets.
 
 <Tabs>
@@ -93,7 +93,7 @@ uint256 amount1 = (lpToken.balanceOf(address(assetSink)) * IERC20(lpToken.token1
 </Tabs>
 
 :::note
-To access the underlying assets, integrators should call [IUniswapV2Pair.burn()](https://github.com/Uniswap/v2-core/blob/ee547b17853e71ed4e0101ccfd52e70d5acded58/contracts/UniswapV2Pair.sol#L134)
+To access the underlying assets, integrators should call [IUniswapV2Pair.burn()](https://github.com/RingProtocol/v2-core/blob/ee547b17853e71ed4e0101ccfd52e70d5acded58/contracts/UniswapV2Pair.sol#L134)
 
 ```solidity
 (uint256 amount0, uint256 amount1) = IUniswapV2Pair(pool).burn(recipient);

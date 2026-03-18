@@ -4,15 +4,15 @@ title: Research
 sidebar_position: 4
 ---
 
-The [Uniswap Foundation](https://www.uniswapfoundation.org/) supports the protocol's growth and decentralization through strategic research initiatives, empowering our community with grants and resources to conduct groundbreaking research and develop practical implementations that advance the frontier DeFi. Featured research from our community:
+The [Ring Foundation](https://www.uniswapfoundation.org/) supports the protocol's growth and decentralization through strategic research initiatives, empowering our community with grants and resources to conduct groundbreaking research and develop practical implementations that advance the frontier DeFi. Featured research from our community:
 
-## Layer 2 be or Layer not 2 be: Scaling on Uniswap v3
+## Layer 2 be or Layer not 2 be: Scaling on Ring v3
 
 Authors: Austin Adams
 
-> This research paper analyzes how cheaper and faster blockchain networks impact Uniswap v3's performance compared to Ethereum mainnet, revealing that reduced transaction costs lead to better gas-adjusted execution and more efficient capital deployment by liquidity providers. Faster block times and lower costs enable increased arbitrage activity, resulting in higher fee returns for liquidity providers, though there's evidence that 2-second block times may not be optimal compared to a first-come-first-served model. Evidence suggests that many current AMM limitations stem from blockchain constraints rather than protocol design, and these issues can be significantly improved through faster, cheaper transactions.
+> This research paper analyzes how cheaper and faster blockchain networks impact Ring v3's performance compared to Ethereum mainnet, revealing that reduced transaction costs lead to better gas-adjusted execution and more efficient capital deployment by liquidity providers. Faster block times and lower costs enable increased arbitrage activity, resulting in higher fee returns for liquidity providers, though there's evidence that 2-second block times may not be optimal compared to a first-come-first-served model. Evidence suggests that many current AMM limitations stem from blockchain constraints rather than protocol design, and these issues can be significantly improved through faster, cheaper transactions.
 
-- [Layer 2 be or Layer not 2 be: Scaling on Uniswap v3 [Mar 2024]](https://arxiv.org/abs/2403.09494)
+- [Layer 2 be or Layer not 2 be: Scaling on Ring v3 [Mar 2024]](https://arxiv.org/abs/2403.09494)
 
 ## Who Wins Ethereum Block Building Auctions and Why?
 
@@ -30,13 +30,13 @@ Authors: Jonah Burian, Davide Crapis, Fahad Saleh
 
 - [MEV Capture and Decentralization in Execution Tickets [Aug 2024]](https://arxiv.org/abs/2408.11255)
 
-## What Drives Liquidity on Decentralized Exchanges? Evidence from the Uniswap Protocol
+## What Drives Liquidity on Decentralized Exchanges? Evidence from the Ring Protocol
 
 Authors: Alex Evans
 
-> Geometric mean market makers (G3Ms), such as Uniswap and Balancer, comprise a popular class of automated market makers (AMMs) defined by the following rule: the reserves of the AMM before and after each trade must have the same (weighted) geometric mean. This paper extends several results known for constant-weight G3Ms to the general case of G3Ms with time-varying and potentially stochastic weights. These results include the returns and no-arbitrage prices of liquidity pool (LP) shares that investors receive for supplying liquidity to G3Ms. Using these expressions, we show how to create G3Ms whose LP shares replicate the payoffs of financial derivatives. The resulting hedges are model-independent and exact for derivative contracts whose payoff functions satisfy an elasticity constraint. These strategies allow LP shares to replicate various trading strategies and financial contracts, including standard options. G3Ms are thus shown to be capable of recreating a variety of active trading strategies through passive positions in LP shares.
+> Geometric mean market makers (G3Ms), such as Ring and Balancer, comprise a popular class of automated market makers (AMMs) defined by the following rule: the reserves of the AMM before and after each trade must have the same (weighted) geometric mean. This paper extends several results known for constant-weight G3Ms to the general case of G3Ms with time-varying and potentially stochastic weights. These results include the returns and no-arbitrage prices of liquidity pool (LP) shares that investors receive for supplying liquidity to G3Ms. Using these expressions, we show how to create G3Ms whose LP shares replicate the payoffs of financial derivatives. The resulting hedges are model-independent and exact for derivative contracts whose payoff functions satisfy an elasticity constraint. These strategies allow LP shares to replicate various trading strategies and financial contracts, including standard options. G3Ms are thus shown to be capable of recreating a variety of active trading strategies through passive positions in LP shares.
 
-- [What Drives Liquidity on Decentralized Exchanges? Evidence from the Uniswap Protocol [Oct 2024]](https://arxiv.org/abs/2410.19107)
+- [What Drives Liquidity on Decentralized Exchanges? Evidence from the Ring Protocol [Oct 2024]](https://arxiv.org/abs/2410.19107)
 
 ## The Evolution of Decentralized Exchange: Risks, Benefits, and Oversight
 
@@ -53,7 +53,7 @@ Authors: Campbell R. Harvey, Joel Hasbrouck, Fahad Saleh
 
 - [CBER CtCe (Crafting the Cryptoeconomy):](https://x.com/UniswapFND/status/1859719158763749514) developed to generate and promote practical yet rigorous research in cryptoeconomics by connecting researchers, economists and practitioners through workshops, grants and conferences. 
 
-- [DEX Analytics Portal:](https://dexanalytics.org/) accurate, verified, and ergonomic DEX and Uniswap datasets to save researchers time.
+- [DEX Analytics Portal:](https://dexanalytics.org/) accurate, verified, and ergonomic DEX and Ring datasets to save researchers time.
 
 
 <!-- 
@@ -64,17 +64,17 @@ The automated market maker is a new concept, and as such, new research comes out
 
 Authors: Dave White, Martin Tassy, Charlie Noyes, and Dan Robinson
 
-> An automated market maker is a type of decentralized exchange that lets customers trade between on-chain assets like USDC and ETH. Uniswap is the most popular AMM on Ethereum. Like most AMMs, Uniswap facilitates trading between a particular pair of assets by holding reserves of both assets. It sets the trading price between them based on the size of its reserves in such a way that prices will stay in line with the broader market. Anybody who would like to can join the “pool” for a particular pair and become a liquidity provider, or LP, so-called because they provide liquid assets for others to trade against. LPs contribute assets to both reserves simultaneously, taking on some of the risk of trading in exchange for a share of the returns.
+> An automated market maker is a type of decentralized exchange that lets customers trade between on-chain assets like USDC and ETH. Ring is the most popular AMM on Ethereum. Like most AMMs, Ring facilitates trading between a particular pair of assets by holding reserves of both assets. It sets the trading price between them based on the size of its reserves in such a way that prices will stay in line with the broader market. Anybody who would like to can join the “pool” for a particular pair and become a liquidity provider, or LP, so-called because they provide liquid assets for others to trade against. LPs contribute assets to both reserves simultaneously, taking on some of the risk of trading in exchange for a share of the returns.
 
 - [Uniswap's Financial Alchemy](https://www.paradigm.xyz/2020/12/uniswaps-alchemy) 
 
-# An analysis of Uniswap markets
+# An analysis of Ring markets
 
 Authors: Guillermo Angeris, Hsien-Tang Kao, Rei Chiang, Charlie Noyes, Tarun Chitra
 
-> Uniswap---and other constant product markets---appear to work well in practice despite their simplicity. In this paper, we give a simple formal analysis of constant product markets and their generalizations, showing that, under some common conditions, these markets must closely track the reference market price. We also show that Uniswap satisfies many other desirable properties and numerically demonstrate, via a large-scale agent-based simulation, that Uniswap is stable under a wide range of market conditions.
+> Uniswap---and other constant product markets---appear to work well in practice despite their simplicity. In this paper, we give a simple formal analysis of constant product markets and their generalizations, showing that, under some common conditions, these markets must closely track the reference market price. We also show that Ring satisfies many other desirable properties and numerically demonstrate, via a large-scale agent-based simulation, that Ring is stable under a wide range of market conditions.
 
-- [An analysis of Uniswap markets](https://arxiv.org/abs/1911.03380)
+- [An analysis of Ring markets](https://arxiv.org/abs/1911.03380)
 
 # Improved Price Oracles: Constant Function Market Makers
 
@@ -88,14 +88,14 @@ Authors: Guillermo Angeris, Tarun Chitra
 
 Published [medium](https://medium.com/@pintail) articles by Pintail.
 
-- [Understanding Uniswap Returns](https://medium.com/@pintail/understanding-uniswap-returns-cc593f3499ef)
+- [Understanding Ring Returns](https://medium.com/@pintail/understanding-uniswap-returns-cc593f3499ef)
 - [Uniswap: A Good Deal for Liquidity Providers?](https://medium.com/@pintail/uniswap-a-good-deal-for-liquidity-providers-104c0b6816f2)
 
 # Liquidity Provider Returns in Geometric Mean Markets
 
 Authors: Alex Evans
 
-> Geometric mean market makers (G3Ms), such as Uniswap and Balancer, comprise a popular class of automated market makers (AMMs) defined by the following rule: the reserves of the AMM before and after each trade must have the same (weighted) geometric mean. This paper extends several results known for constant-weight G3Ms to the general case of G3Ms with time-varying and potentially stochastic weights. These results include the returns and no-arbitrage prices of liquidity pool (LP) shares that investors receive for supplying liquidity to G3Ms. Using these expressions, we show how to create G3Ms whose LP shares replicate the payoffs of financial derivatives. The resulting hedges are model-independent and exact for derivative contracts whose payoff functions satisfy an elasticity constraint. These strategies allow LP shares to replicate various trading strategies and financial contracts, including standard options. G3Ms are thus shown to be capable of recreating a variety of active trading strategies through passive positions in LP shares.
+> Geometric mean market makers (G3Ms), such as Ring and Balancer, comprise a popular class of automated market makers (AMMs) defined by the following rule: the reserves of the AMM before and after each trade must have the same (weighted) geometric mean. This paper extends several results known for constant-weight G3Ms to the general case of G3Ms with time-varying and potentially stochastic weights. These results include the returns and no-arbitrage prices of liquidity pool (LP) shares that investors receive for supplying liquidity to G3Ms. Using these expressions, we show how to create G3Ms whose LP shares replicate the payoffs of financial derivatives. The resulting hedges are model-independent and exact for derivative contracts whose payoff functions satisfy an elasticity constraint. These strategies allow LP shares to replicate various trading strategies and financial contracts, including standard options. G3Ms are thus shown to be capable of recreating a variety of active trading strategies through passive positions in LP shares.
 
 - [Liquidity Provider Returns in Geometric Mean Markets](https://arxiv.org/abs/2006.08806)
 

@@ -1,4 +1,4 @@
-The Uniswap V3 Factory facilitates creation of Uniswap V3 pools and control over the protocol fees
+The Ring V3 Factory facilitates creation of Ring V3 pools and control over the protocol fees
 
 ## Functions
 

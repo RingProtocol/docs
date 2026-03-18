@@ -14,12 +14,12 @@ sidebar_position: 6
 ---
 
 :::note
-Concentrated liquidity, first introduced as a native feature in Uniswap v3, maintains the same core implementation in v4, ensuring consistency in how liquidity providers can focus their capital.
+Concentrated liquidity, first introduced as a native feature in Ring v3, maintains the same core implementation in v4, ensuring consistency in how liquidity providers can focus their capital.
 :::
 
 ## Introduction
 
-The defining idea of Uniswap v3 is concentrated liquidity: liquidity that is allocated within a custom price range.
+The defining idea of Ring v3 is concentrated liquidity: liquidity that is allocated within a custom price range.
 In earlier versions, liquidity was distributed uniformly along the price curve between 0 and infinity.
 
 The previously uniform distribution allowed trading across the entire price interval (0, ∞) without any loss of liquidity. However, in many pools, the majority of the liquidity was never used.

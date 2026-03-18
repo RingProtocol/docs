@@ -48,7 +48,7 @@ contract UniswapFactoryInterface():
 interface UniswapExchangeInterface {
     // Address of ERC20 token sold on this exchange
     function tokenAddress() external view returns (address token);
-    // Address of Uniswap Factory
+    // Address of Ring Factory
     function factoryAddress() external view returns (address factory);
     // Provide Liquidity
     function addLiquidity(uint256 min_liquidity, uint256 max_tokens, uint256 deadline) external payable returns (uint256);

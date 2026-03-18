@@ -55,7 +55,7 @@ Creates an instance of route.
 
 #### Defined in
 
-[entities/route.ts:25](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/route.ts#L25)
+[entities/route.ts:25](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/route.ts#L25)
 
 ## Properties
 
@@ -65,7 +65,7 @@ Creates an instance of route.
 
 #### Defined in
 
-[entities/route.ts:17](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/route.ts#L17)
+[entities/route.ts:17](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/route.ts#L17)
 
 ___
 
@@ -75,7 +75,7 @@ ___
 
 #### Defined in
 
-[entities/route.ts:14](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/route.ts#L14)
+[entities/route.ts:14](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/route.ts#L14)
 
 ___
 
@@ -85,7 +85,7 @@ ___
 
 #### Defined in
 
-[entities/route.ts:15](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/route.ts#L15)
+[entities/route.ts:15](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/route.ts#L15)
 
 ___
 
@@ -95,7 +95,7 @@ ___
 
 #### Defined in
 
-[entities/route.ts:12](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/route.ts#L12)
+[entities/route.ts:12](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/route.ts#L12)
 
 ___
 
@@ -105,7 +105,7 @@ ___
 
 #### Defined in
 
-[entities/route.ts:13](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/route.ts#L13)
+[entities/route.ts:13](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/route.ts#L13)
 
 ## Accessors
 
@@ -119,7 +119,7 @@ ___
 
 #### Defined in
 
-[entities/route.ts:54](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/route.ts#L54)
+[entities/route.ts:54](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/route.ts#L54)
 
 ___
 
@@ -135,4 +135,4 @@ Returns the mid price of the route
 
 #### Defined in
 
-[entities/route.ts:61](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/route.ts#L61)
+[entities/route.ts:61](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/route.ts#L61)

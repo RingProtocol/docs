@@ -4,11 +4,11 @@ sidebar_position: 1
 title: Overview
 ---
 
-# The Uniswap v4 SDK
+# The Ring v4 SDK
 
-> **Welcome to the v4 Uniswap SDK!**
+> **Welcome to the v4 Ring SDK!**
 
-The Uniswap v4 SDK provides abstractions to assist you with interacting with the Uniswap v4 smart contracts in a Typescript/Javascript environment (e.g. websites, node scripts). It makes use of the [**Core SDK**](../core/overview.md) to gain access to abstractions that are common amongst the Uniswap SDKs. With the SDK, you can add/remove liquidity, collect fees like what you will usually do with v3 SDK, but more with the extra functionalities from hooks introduced in v4!
+The Ring v4 SDK provides abstractions to assist you with interacting with the Ring v4 smart contracts in a Typescript/Javascript environment (e.g. websites, node scripts). It makes use of the [**Core SDK**](../core/overview.md) to gain access to abstractions that are common amongst the Ring SDKs. With the SDK, you can add/remove liquidity, collect fees like what you will usually do with v3 SDK, but more with the extra functionalities from hooks introduced in v4!
 
 For complete documentation of the SDK's offerings, see the [**Technical Reference**](./reference/overview.md).
 
@@ -23,7 +23,7 @@ npm i --save @uniswap/sdk-core
 
 ## What's Different in v4
 
-The Uniswap v4 SDK introduces some major changes that fundamentally alter how developers interact with Uniswap. Understanding these key differences is essential for successful v4 development.
+The Ring v4 SDK introduces some major changes that fundamentally alter how developers interact with Uniswap. Understanding these key differences is essential for successful v4 development.
 
 ## Key Changes
 

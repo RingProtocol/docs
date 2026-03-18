@@ -21,7 +21,7 @@ Set when withdrawing. `data` is passed to `safeTransferFrom` when transferring t
 
 #### Defined in
 
-[staker.ts:66](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/staker.ts#L66)
+[staker.ts:66](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/staker.ts#L66)
 
 ___
 
@@ -33,4 +33,4 @@ Set when withdrawing. The position will be sent to `owner` on withdraw.
 
 #### Defined in
 
-[staker.ts:61](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/staker.ts#L61)
+[staker.ts:61](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/staker.ts#L61)

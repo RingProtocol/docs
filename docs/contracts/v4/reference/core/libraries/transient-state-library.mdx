@@ -2,19 +2,19 @@
 title: TransientStateLibrary
 ---
 
-The `TransientStateLibrary` is a crucial component of Uniswap V4, providing utility functions for managing transient state in the PoolManager contract. This library handles operations related to reserves, delta counts, and locking state, which are essential for the efficient and secure operation of the Uniswap V4 protocol.
+The `TransientStateLibrary` is a crucial component of Ring V4, providing utility functions for managing transient state in the PoolManager contract. This library handles operations related to reserves, delta counts, and locking state, which are essential for the efficient and secure operation of the Ring V4 protocol.
 
 ## Key Concepts
 
 ### Transient Storage
 
-Uniswap V4 uses transient storage to optimize gas costs and improve efficiency. Transient storage, introduced in EIP-1153, is a way to store data that is only needed for the duration of a transaction, without persisting it to the blockchain's state trie. This is achieved using the `TLOAD` and `TSTORE` opcodes.
+Ring V4 uses transient storage to optimize gas costs and improve efficiency. Transient storage, introduced in EIP-1153, is a way to store data that is only needed for the duration of a transaction, without persisting it to the blockchain's state trie. This is achieved using the `TLOAD` and `TSTORE` opcodes.
 
-Key points about transient storage in Uniswap V4:
+Key points about transient storage in Ring V4:
 
 1. **PoolManager and** `exttload`: Instead of exposing custom getters for transient storage, the PoolManager implements an `exttload` (external tload) function. This function serves as an external wrapper for the `TLOAD` opcode, providing a standardized interface for accessing transient storage.
-2. **TransientStateLibrary's Role:** The `TransientStateLibrary` acts as an intermediary, making calls to the PoolManager's `exttload` function to access transient storage. This abstraction simplifies the interaction with transient storage for other parts of the Uniswap V4 ecosystem.
-3. **Standardization:** By channeling all transient storage access through the PoolManager's `exttload` function, Uniswap V4 ensures a consistent and controlled approach to managing transient data across the protocol.
+2. **TransientStateLibrary's Role:** The `TransientStateLibrary` acts as an intermediary, making calls to the PoolManager's `exttload` function to access transient storage. This abstraction simplifies the interaction with transient storage for other parts of the Ring V4 ecosystem.
+3. **Standardization:** By channeling all transient storage access through the PoolManager's `exttload` function, Ring V4 ensures a consistent and controlled approach to managing transient data across the protocol.
 
 Common operations that involve transient state include:
 
@@ -23,7 +23,7 @@ Common operations that involve transient state include:
 - Syncing currency states (`sync`)
 - Settling currency balances (`settle`)
 
-This architecture allows Uniswap V4 to benefit from the gas efficiency of transient storage while maintaining a clean and standardized interface for interacting with this temporary data.
+This architecture allows Ring V4 to benefit from the gas efficiency of transient storage while maintaining a clean and standardized interface for interacting with this temporary data.
 
 ## Functions
 
@@ -104,12 +104,12 @@ Checks if the PoolManager contract is currently unlocked.
 
 ## Usage and Importance
 
-The `TransientStateLibrary` plays a critical role in Uniswap V4's operation:
+The `TransientStateLibrary` plays a critical role in Ring V4's operation:
 
 1. **Gas Optimization:** By using transient storage, the library helps reduce gas costs associated with state changes that are only relevant within a single transaction. This is particularly important for multi-hop transactions, where internal net balances (deltas) are updated instead of making token transfers for each hop.
 2. **Security:** The library provides functions to check the lock state and manage deltas, which are crucial for maintaining the integrity of the protocol during operations. The use of transient storage also allows for more efficient implementation of security measures compared to V3's reentrancy guards.
-3. **Flexibility:** The library allows for efficient management of currency-specific data, such as reserves and deltas, which is essential for Uniswap V4's multi-currency pools.
-4. **Encapsulation:** By centralizing these utility functions in a library, the code promotes better organization and reusability across the Uniswap V4 codebase.
+3. **Flexibility:** The library allows for efficient management of currency-specific data, such as reserves and deltas, which is essential for Ring V4's multi-currency pools.
+4. **Encapsulation:** By centralizing these utility functions in a library, the code promotes better organization and reusability across the Ring V4 codebase.
 
 ## Integration with PoolManager
 

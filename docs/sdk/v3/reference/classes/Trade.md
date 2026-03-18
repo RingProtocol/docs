@@ -81,7 +81,7 @@ Construct a trade by passing in the pre-computed property values
 
 #### Defined in
 
-[entities/trade.ts:397](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/trade.ts#L397)
+[entities/trade.ts:397](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/trade.ts#L397)
 
 ## Properties
 
@@ -93,7 +93,7 @@ The cached result of the computed execution price
 
 #### Defined in
 
-[entities/trade.ts:143](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/trade.ts#L143)
+[entities/trade.ts:143](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/trade.ts#L143)
 
 ___
 
@@ -105,7 +105,7 @@ The cached result of the input amount computation
 
 #### Defined in
 
-[entities/trade.ts:97](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/trade.ts#L97)
+[entities/trade.ts:97](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/trade.ts#L97)
 
 ___
 
@@ -117,7 +117,7 @@ The cached result of the output amount computation
 
 #### Defined in
 
-[entities/trade.ts:120](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/trade.ts#L120)
+[entities/trade.ts:120](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/trade.ts#L120)
 
 ___
 
@@ -129,7 +129,7 @@ The cached result of the price impact computation
 
 #### Defined in
 
-[entities/trade.ts:164](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/trade.ts#L164)
+[entities/trade.ts:164](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/trade.ts#L164)
 
 ___
 
@@ -142,7 +142,7 @@ make up the trade.
 
 #### Defined in
 
-[entities/trade.ts:82](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/trade.ts#L82)
+[entities/trade.ts:82](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/trade.ts#L82)
 
 ___
 
@@ -154,7 +154,7 @@ The type of the trade, either exact in or exact out.
 
 #### Defined in
 
-[entities/trade.ts:91](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/trade.ts#L91)
+[entities/trade.ts:91](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/trade.ts#L91)
 
 ## Accessors
 
@@ -170,7 +170,7 @@ The price expressed in terms of output amount/input amount.
 
 #### Defined in
 
-[entities/trade.ts:148](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/trade.ts#L148)
+[entities/trade.ts:148](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/trade.ts#L148)
 
 ___
 
@@ -186,7 +186,7 @@ The input amount for the trade assuming no slippage.
 
 #### Defined in
 
-[entities/trade.ts:102](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/trade.ts#L102)
+[entities/trade.ts:102](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/trade.ts#L102)
 
 ___
 
@@ -202,7 +202,7 @@ The output amount for the trade assuming no slippage.
 
 #### Defined in
 
-[entities/trade.ts:125](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/trade.ts#L125)
+[entities/trade.ts:125](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/trade.ts#L125)
 
 ___
 
@@ -218,7 +218,7 @@ Returns the percent difference between the route's mid price and the price impac
 
 #### Defined in
 
-[entities/trade.ts:169](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/trade.ts#L169)
+[entities/trade.ts:169](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/trade.ts#L169)
 
 ___
 
@@ -240,7 +240,7 @@ i.e. which pools the trade goes through.
 
 #### Defined in
 
-[entities/trade.ts:73](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/trade.ts#L73)
+[entities/trade.ts:73](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/trade.ts#L73)
 
 ## Methods
 
@@ -265,7 +265,7 @@ The amount in
 
 #### Defined in
 
-[entities/trade.ts:456](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/trade.ts#L456)
+[entities/trade.ts:456](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/trade.ts#L456)
 
 ___
 
@@ -290,7 +290,7 @@ The amount out
 
 #### Defined in
 
-[entities/trade.ts:438](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/trade.ts#L438)
+[entities/trade.ts:438](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/trade.ts#L438)
 
 ___
 
@@ -314,7 +314,7 @@ The execution price
 
 #### Defined in
 
-[entities/trade.ts:471](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/trade.ts#L471)
+[entities/trade.ts:471](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/trade.ts#L471)
 
 ___
 
@@ -354,7 +354,7 @@ The exact in trade
 
 #### Defined in
 
-[entities/trade.ts:495](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/trade.ts#L495)
+[entities/trade.ts:495](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/trade.ts#L495)
 
 ___
 
@@ -395,7 +395,7 @@ The exact out trade
 
 #### Defined in
 
-[entities/trade.ts:576](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/trade.ts#L576)
+[entities/trade.ts:576](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/trade.ts#L576)
 
 ___
 
@@ -432,7 +432,7 @@ The unchecked trade
 
 #### Defined in
 
-[entities/trade.ts:346](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/trade.ts#L346)
+[entities/trade.ts:346](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/trade.ts#L346)
 
 ___
 
@@ -467,7 +467,7 @@ The unchecked trade
 
 #### Defined in
 
-[entities/trade.ts:377](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/trade.ts#L377)
+[entities/trade.ts:377](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/trade.ts#L377)
 
 ___
 
@@ -499,7 +499,7 @@ The exact in trade
 
 #### Defined in
 
-[entities/trade.ts:194](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/trade.ts#L194)
+[entities/trade.ts:194](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/trade.ts#L194)
 
 ___
 
@@ -531,7 +531,7 @@ The exact out trade
 
 #### Defined in
 
-[entities/trade.ts:209](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/trade.ts#L209)
+[entities/trade.ts:209](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/trade.ts#L209)
 
 ___
 
@@ -565,7 +565,7 @@ The route
 
 #### Defined in
 
-[entities/trade.ts:226](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/trade.ts#L226)
+[entities/trade.ts:226](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/trade.ts#L226)
 
 ___
 
@@ -598,4 +598,4 @@ The trade
 
 #### Defined in
 
-[entities/trade.ts:276](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/trade.ts#L276)
+[entities/trade.ts:276](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/trade.ts#L276)

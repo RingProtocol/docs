@@ -29,7 +29,7 @@
 
 #### Defined in
 
-[staker.ts:72](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/staker.ts#L72)
+[staker.ts:72](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/staker.ts#L72)
 
 ## Properties
 
@@ -39,7 +39,7 @@
 
 #### Defined in
 
-[staker.ts:73](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/staker.ts#L73)
+[staker.ts:73](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/staker.ts#L73)
 
 ___
 
@@ -49,7 +49,7 @@ ___
 
 #### Defined in
 
-[staker.ts:70](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/staker.ts#L70)
+[staker.ts:70](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/staker.ts#L70)
 
 ## Methods
 
@@ -71,7 +71,7 @@ An encoded IncentiveKey to be read by ethers
 
 #### Defined in
 
-[staker.ts:194](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/staker.ts#L194)
+[staker.ts:194](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/staker.ts#L194)
 
 ___
 
@@ -94,7 +94,7 @@ Note:  A `tokenId` can be staked in many programs but to claim rewards and conti
 
 #### Defined in
 
-[staker.ts:107](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/staker.ts#L107)
+[staker.ts:107](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/staker.ts#L107)
 
 ___
 
@@ -119,7 +119,7 @@ The calldatas for 'unstakeToken' and 'claimReward'.
 
 #### Defined in
 
-[staker.ts:82](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/staker.ts#L82)
+[staker.ts:82](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/staker.ts#L82)
 
 ___
 
@@ -141,7 +141,7 @@ An IncentiveKey as a string
 
 #### Defined in
 
-[staker.ts:173](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/staker.ts#L173)
+[staker.ts:173](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/staker.ts#L173)
 
 ___
 
@@ -164,4 +164,4 @@ Calldata for unstaking, claiming, and withdrawing.
 
 #### Defined in
 
-[staker.ts:136](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/staker.ts#L136)
+[staker.ts:136](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/staker.ts#L136)

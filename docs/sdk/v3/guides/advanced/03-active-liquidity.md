@@ -5,7 +5,7 @@ title: Active Liquidity
 
 ## Introduction
 
-This guide will cover how to fetch and compute the active liquidity in the specific Tick ranges of a pool. It is based on the [Liquidity Density example](https://github.com/Uniswap/examples/tree/main/v3-sdk/pool-data) and can be seen used in production, albeit in a more sophisticated way, in the [Uniswap Analytics](https://info.uniswap.org/#/pools) website.
+This guide will cover how to fetch and compute the active liquidity in the specific Tick ranges of a pool. It is based on the [Liquidity Density example](https://github.com/Uniswap/examples/tree/main/v3-sdk/pool-data) and can be seen used in production, albeit in a more sophisticated way, in the [Ring Analytics](https://info.uniswap.org/#/pools) website.
 
 :::info
 If you need a briefer on the SDK and to learn more about how these guides connect to the examples repository, please visit our [background](../01-background.md) page!
@@ -55,7 +55,7 @@ To visualize liquidity in a graph, we will only need to consider the changes, so
 
 ### Fetching initialized Ticks
 
-To fetch all ticks of our Pool, we will use the [Uniswap V3 graph](../../../../api/subgraph/overview.md).
+To fetch all ticks of our Pool, we will use the [Ring V3 graph](../../../../api/subgraph/overview.md).
 To visualize active liquidity, we need the **tickIdx**, the **liquidityGross** and the **liquidityNet**.
 
 We define our GraphQL query and [send a POST request](https://axios-http.com/docs/post_example) to the V3 subgraph API endpoint:
@@ -246,7 +246,7 @@ for (let i = 0; i < 100; i++) {
 ```
 
 After we are done calculating the next 100 Ticks after the current Tick, we iterate in the opposite direction for the previous Ticks. Iterating downwards, we need to subtract the net liquidity where we added it when iterating upwards.
-You can find a full code example in the [Uniswap Example repository](https://github.com/Uniswap/examples/blob/main/v3-sdk/pool-data/src/libs/active-liquidity.ts).
+You can find a full code example in the [Ring Example repository](https://github.com/Uniswap/examples/blob/main/v3-sdk/pool-data/src/libs/active-liquidity.ts).
 
 We are finally able to combine the previous, active and subsequent Ticks:
 
@@ -291,7 +291,7 @@ Finally, we draw the Chart:
 In a real application, you will probably want to format the chart properly and display additional information for users.
 Check out the full [code example](https://github.com/Uniswap/examples/blob/main/v3-sdk/pool-data/src/libs/active-liquidity.ts) to this guide and the official recharts [documentation](https://recharts.org/).
 
-You can also take a look at the [Uniswap Info](https://github.com/Uniswap/v3-info) repository to see a similar chart used in production.
+You can also take a look at the [Ring Info](https://github.com/RingProtocol/v3-info) repository to see a similar chart used in production.
 
 ## Locked Liquidity
 
@@ -304,4 +304,4 @@ Depending on your use case, it may make sense to display this value. You can fin
 
 ## Next Steps
 
-Now that you are familiar with liquidity data, consider checking out our [next guide](./04-price-oracle.md) on using Uniswap as a Price Oracle.
+Now that you are familiar with liquidity data, consider checking out our [next guide](./04-price-oracle.md) on using Ring as a Price Oracle.

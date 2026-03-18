@@ -5,13 +5,13 @@ title: Adding & Removing Liquidity
 
 ## Introduction
 
-This guide will cover how to modify a liquidity position by adding or removing liquidity on the Uniswap V3 protocol. It is based on the [modifying a position code example](https://github.com/Uniswap/examples/tree/main/v3-sdk/modifying-position), found in the Uniswap code examples [repository](https://github.com/Uniswap/examples). To run this example, check out the examples's [README](https://github.com/Uniswap/examples/blob/main/v3-sdk/modifying-position/README.md) and follow the setup instructions.
+This guide will cover how to modify a liquidity position by adding or removing liquidity on the Ring V3 protocol. It is based on the [modifying a position code example](https://github.com/Uniswap/examples/tree/main/v3-sdk/modifying-position), found in the Ring code examples [repository](https://github.com/Uniswap/examples). To run this example, check out the examples's [README](https://github.com/Uniswap/examples/blob/main/v3-sdk/modifying-position/README.md) and follow the setup instructions.
 
 :::info
 If you need a briefer on the SDK and to learn more about how these guides connect to the examples repository, please visit our [background](../01-background.md) page!
 :::
 
-In the Uniswap V3 protocol, liquidity positions are represented using non-fungible tokens. In this guide we will use the `NonfungiblePositionManager` class to help us mint a liquidity position and then modify the provided liquidity for the  **USDC - DAI** pair. The inputs to our guide are the **two tokens** that we are pooling for, the **amount** of each token we are pooling for, the Pool **fee** and the **fraction** by which to **add and remove** from our position.
+In the Ring V3 protocol, liquidity positions are represented using non-fungible tokens. In this guide we will use the `NonfungiblePositionManager` class to help us mint a liquidity position and then modify the provided liquidity for the  **USDC - DAI** pair. The inputs to our guide are the **two tokens** that we are pooling for, the **amount** of each token we are pooling for, the Pool **fee** and the **fraction** by which to **add and remove** from our position.
 
 The guide will **cover**:
 
@@ -20,7 +20,7 @@ The guide will **cover**:
 
 At the end of the guide, given the inputs above, we should be able to add or remove liquidity from a minted position with the press of a button and see the change reflected in our position and the balance of our tokens.
 
-For this guide, the following Uniswap packages are used:
+For this guide, the following Ring packages are used:
 
 - [`@uniswap/v3-sdk`](https://www.npmjs.com/package/@uniswap/v3-sdk)
 - [`@uniswap/sdk-core`](https://www.npmjs.com/package/@uniswap/sdk-core)
@@ -123,7 +123,7 @@ function constructPosition(
 
 The function receives two arguments, which are the amounts that are used to construct the Position instance. In this example, both of the arguments follow the same logic: we multiply the parameterized `tokenAmount` by the parameterized `fractionToAdd` since the new liquidity position will be added on top of the already minted liquidity position.
 
-We then need to construct an options object of type [`AddLiquidityOptions`](https://github.com/Uniswap/v3-sdk/blob/08a7c050cba00377843497030f502c05982b1c43/src/nonfungiblePositionManager.ts#L77) similar to how we did in the minting case. In this case, we will use [`IncreaseOptions`](https://github.com/Uniswap/v3-sdk/blob/08a7c050cba00377843497030f502c05982b1c43/src/nonfungiblePositionManager.ts#L75):
+We then need to construct an options object of type [`AddLiquidityOptions`](https://github.com/RingProtocol/v3-sdk/blob/08a7c050cba00377843497030f502c05982b1c43/src/nonfungiblePositionManager.ts#L77) similar to how we did in the minting case. In this case, we will use [`IncreaseOptions`](https://github.com/RingProtocol/v3-sdk/blob/08a7c050cba00377843497030f502c05982b1c43/src/nonfungiblePositionManager.ts#L75):
 
 ```typescript
 import { AddLiquidityOptions } from '@uniswap/v3-sdk'
@@ -172,7 +172,7 @@ const wallet = new ethers.Wallet(privateKey, provider)
 const txRes = await wallet.sendTransaction(transaction)
 ```
 
-We can get the Contract address for the NonfungiblePositionManager from [GitHub](https://github.com/Uniswap/v3-periphery/blob/main/deploys.md).
+We can get the Contract address for the NonfungiblePositionManager from [GitHub](https://github.com/RingProtocol/v3-periphery/blob/main/deploys.md).
 
 After pressing the button, note how the balance of USDC and DAI drops and our position's liquidity increases.
 
@@ -198,7 +198,7 @@ const currentPosition = constructPosition(
 )
 ```
 
-We then need to construct an options object of type [`RemoveLiquidityOptions`](https://github.com/Uniswap/v3-sdk/blob/08a7c050cba00377843497030f502c05982b1c43/src/nonfungiblePositionManager.ts#L138):
+We then need to construct an options object of type [`RemoveLiquidityOptions`](https://github.com/RingProtocol/v3-sdk/blob/08a7c050cba00377843497030f502c05982b1c43/src/nonfungiblePositionManager.ts#L138):
 
 ```typescript
 import { RemoveLiquidityOptions } from '@uniswap/v3-sdk'
@@ -219,7 +219,7 @@ Just as with adding liquidity, we have we have omitted the `recipient` parameter
 We have also provide two additional parameters:
 
 - `liquidityPercentage` determines how much liquidity is removed from our initial position (as a `Percentage`), and transfers the removed liquidity back to our address. We set this percentage from our guide configuration ranging from 0 (0%) to 1 (100%). In this example we would remove 50% of the liquidity.
-- [`collectOptions`](https://github.com/Uniswap/v3-sdk/blob/08a7c050cba00377843497030f502c05982b1c43/src/nonfungiblePositionManager.ts#L105) gives us the option to collect the fees, if any, that we have accrued for this position. In this example, we won't collect any fees, so we provide zero values. If you'd like to see how to collect fees without modifying your position, check out our [collecting fees](./05-collecting-fees.md) guide!
+- [`collectOptions`](https://github.com/RingProtocol/v3-sdk/blob/08a7c050cba00377843497030f502c05982b1c43/src/nonfungiblePositionManager.ts#L105) gives us the option to collect the fees, if any, that we have accrued for this position. In this example, we won't collect any fees, so we provide zero values. If you'd like to see how to collect fees without modifying your position, check out our [collecting fees](./05-collecting-fees.md) guide!
 
 ```typescript
 import { CurrencyAmount } from '@uniswap/sdk-core'

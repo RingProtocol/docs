@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 The complete file is missing for arbitrum-one
 :::
 
-path: [`/src/mappings/position-manager.ts`](https://github.com/Uniswap/v3-subgraph/blob/main/src/mappings/position-manager.ts)
+path: [`/src/mappings/position-manager.ts`](https://github.com/RingProtocol/v3-subgraph/blob/main/src/mappings/position-manager.ts)
 
 ### getPosition()
 ```

@@ -26,7 +26,7 @@ Cannot be constructed.
 
 #### Defined in
 
-[selfPermit.ts:34](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/selfPermit.ts#L34)
+[selfPermit.ts:34](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/selfPermit.ts#L34)
 
 ## Properties
 
@@ -36,7 +36,7 @@ Cannot be constructed.
 
 #### Defined in
 
-[selfPermit.ts:29](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/selfPermit.ts#L29)
+[selfPermit.ts:29](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/selfPermit.ts#L29)
 
 ## Methods
 
@@ -57,4 +57,4 @@ Cannot be constructed.
 
 #### Defined in
 
-[selfPermit.ts:36](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/selfPermit.ts#L36)
+[selfPermit.ts:36](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/selfPermit.ts#L36)

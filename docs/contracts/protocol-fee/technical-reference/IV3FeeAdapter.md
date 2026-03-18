@@ -26,7 +26,7 @@ function FACTORY() external view returns (IUniswapV3Factory);
 
 |Name|Type|Description|
 |----|----|-----------|
-|`<none>`|`IUniswapV3Factory`|The Uniswap V3 Factory contract.|
+|`<none>`|`IUniswapV3Factory`|The Ring V3 Factory contract.|
 
 
 ### merkleRoot
@@ -72,7 +72,7 @@ function feeTiers(uint256 i) external view returns (uint24);
 
 Stores a fee tier.
 
-Must be a fee tier that exists on the Uniswap V3 Factory.
+Must be a fee tier that exists on the Ring V3 Factory.
 
 
 ```solidity
@@ -108,7 +108,7 @@ function defaultFees(uint24 feeTier) external view returns (uint8 defaultFeeValu
 
 ### enableFeeAmount
 
-Enables a new fee tier on the Uniswap V3 Factory.
+Enables a new fee tier on the Ring V3 Factory.
 
 Only callable by `owner`. Also updates the `feeTiers` array.
 
@@ -126,7 +126,7 @@ function enableFeeAmount(uint24 newFeeTier, int24 tickSpacing) external;
 
 ### setFactoryOwner
 
-Sets the owner of the Uniswap V3 Factory.
+Sets the owner of the Ring V3 Factory.
 
 Only callable by `owner`
 
@@ -138,7 +138,7 @@ function setFactoryOwner(address newOwner) external;
 
 |Name|Type|Description|
 |----|----|-----------|
-|`newOwner`|`address`|The new owner of the Uniswap V3 Factory.|
+|`newOwner`|`address`|The new owner of the Ring V3 Factory.|
 
 
 ### collect

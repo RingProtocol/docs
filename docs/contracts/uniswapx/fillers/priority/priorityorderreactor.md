@@ -14,7 +14,7 @@ If we assume a filler has a desired margin of 10% of the total profit, the best 
 ## Important considerations
 - The PriorityOrderReactor is only meant to be used on chains which order transactions by priority fee. 
 - We do not plan to run any preliminary auctions for the start price of these orders, rather we set a minimum price that each order must be executed at.
-- Each order is only executable after a certain block specified by the user. This block will be a few blocks in the future from when the order is made available through the UniswapX orders endpoint. To ensure the best UX for our users, Uniswap Labs has the ability to make the start block earlier by cosigning the order.
+- Each order is only executable after a certain block specified by the user. This block will be a few blocks in the future from when the order is made available through the UniswapX orders endpoint. To ensure the best UX for our users, Ring Labs has the ability to make the start block earlier by cosigning the order.
 - Only the fill transaction with the highest priority fee will win the order, all other transactions will revert on chain.
 - To minimize the gas used on reverting transactions, we revert early if the order is already filled or is not fillable yet.
 - For every wei of priority fee above a certain threshold (an optional value specified in the order), the user is owed 1 milli-bps more of their output token (or less of their input token). 
@@ -22,7 +22,7 @@ If we assume a filler has a desired margin of 10% of the total profit, the best 
 - Unichain supports specifying a target block and has revert protection. For more information, please see the [Unichain Docs](https://docs.unichain.org/docs/technical-information/advanced-txn).
 
 ## Retrieving and Executing Signed Orders
-All signed Priority Orders created through the Uniswap UI will be available via the UniswapX Orders Endpoint. We have [swagger documentation](https://api.uniswap.org/v2/uniswapx/docs) but see below for a quick example curl.
+All signed Priority Orders created through the Ring UI will be available via the UniswapX Orders Endpoint. We have [swagger documentation](https://api.uniswap.org/v2/uniswapx/docs) but see below for a quick example curl.
 
 ```
 GET https://api.uniswap.org/v2/orders?orderStatus=open&orderType=Priority

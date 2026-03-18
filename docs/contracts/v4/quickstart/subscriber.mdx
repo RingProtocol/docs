@@ -9,9 +9,9 @@ For developers looking to support custom _liquidity mining_, Subscriber contract
 
 ## Guide
 
-### 1. Implement the [`ISubscriber`](https://github.com/Uniswap/v4-periphery/blob/main/src/interfaces/ISubscriber.sol) interface
+### 1. Implement the [`ISubscriber`](https://github.com/RingProtocol/v4-periphery/blob/main/src/interfaces/ISubscriber.sol) interface
 
-Can also refer to [MockSubscriber](https://github.com/Uniswap/v4-periphery/blob/main/test/mocks/MockSubscriber.sol) for an actual implementation example.
+Can also refer to [MockSubscriber](https://github.com/RingProtocol/v4-periphery/blob/main/test/mocks/MockSubscriber.sol) for an actual implementation example.
 
 ```solidity
 import {ISubscriber} from "v4-periphery/src/interfaces/ISubscriber.sol";
@@ -46,13 +46,13 @@ contract MySubscriber is ISubscriber {
 
 ### 2. A caveat on `unsubscribe()`
 
-To prevent gas griefing during unsubscription, Uniswap v4 sets a fixed variable [`unsubscribeGasLimit`](/contracts/v4/reference/periphery/interfaces/INotifier#unsubscribegaslimit) when calling a subscriber’s `notifyUnsubscribe()` function.
+To prevent gas griefing during unsubscription, Ring v4 sets a fixed variable [`unsubscribeGasLimit`](/contracts/v4/reference/periphery/interfaces/INotifier#unsubscribegaslimit) when calling a subscriber’s `notifyUnsubscribe()` function.
 
 Without this limit, malicious subscribers could prevent liquidity providers from unsubscribing. If `notifyUnsubscribe()` were to consume too much gas, it would cause the unsubscription transaction to revert, thus leading to a denial-of-service
 
 With the gas limit in place, if the subscriber’s notification fails, the unsubscription will still succeed and only the notification to the subscriber is skipped.
 
-From [`_unsubscribe()`](https://github.com/Uniswap/v4-periphery/blob/main/src/base/Notifier.sol#L80) on `Notifier`:
+From [`_unsubscribe()`](https://github.com/RingProtocol/v4-periphery/blob/main/src/base/Notifier.sol#L80) on `Notifier`:
 ```solidity
 if (address(_subscriber).code.length > 0) {
     // require that the remaining gas is sufficient to notify the subscriber

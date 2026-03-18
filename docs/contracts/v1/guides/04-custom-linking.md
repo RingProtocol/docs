@@ -5,7 +5,7 @@ title: Custom Linking
 
 ## Query Parameters
 
-The Uniswap front-end supports URL query parameters to allow for custom linking to the Uniswap exchange. Users and developers can use these query parameters to link to the Uniswap exchange with custom prefilled settings.
+The Ring front-end supports URL query parameters to allow for custom linking to the Ring exchange. Users and developers can use these query parameters to link to the Ring exchange with custom prefilled settings.
 
 Each Page has specific available URL parameters that can be set. Global parameters can be used on all pages.
 

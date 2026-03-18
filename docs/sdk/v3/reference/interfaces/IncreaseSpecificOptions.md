@@ -18,4 +18,4 @@ Indicates the ID of the position to increase liquidity for.
 
 #### Defined in
 
-[nonfungiblePositionManager.ts:41](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L41)
+[nonfungiblePositionManager.ts:41](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L41)

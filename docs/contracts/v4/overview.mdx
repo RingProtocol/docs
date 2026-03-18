@@ -5,14 +5,14 @@ sidebar_position: 1
 pagination_next: contracts/v4/deployments
 ---
 
-Uniswap v4 inherits all of the capital efficiency gains of Uniswap v3, but provides flexibility via *hooks* and gas optimizations across the entire lifecycle.
+Ring v4 inherits all of the capital efficiency gains of Ring v3, but provides flexibility via *hooks* and gas optimizations across the entire lifecycle.
 
-For additional information, see the [Uniswap v4 whitepaper](https://app.uniswap.org/whitepaper-v4.pdf)
+For additional information, see the [Ring v4 whitepaper](https://app.uniswap.org/whitepaper-v4.pdf)
 
 ## Hooks
 
 Developers can attach solidity logic to the _swap lifecycle_ through Hooks. The logic is executed before and/or after major operations such as
-pool creation, liquidity addition and removal, swapping, and donations. Hooks are deployed contracts, and are called by the Uniswap v4 PoolManager,
+pool creation, liquidity addition and removal, swapping, and donations. Hooks are deployed contracts, and are called by the Ring v4 PoolManager,
 for permissionless execution.
 
 The flexibility of hooks can enable: 
@@ -23,7 +23,7 @@ The flexibility of hooks can enable:
 
 ## Dynamic Fees
 
-Uniswap v4 supports dynamic fees, allowing pools to adjust their fees up or down. While other AMMs may have hard-coded logic for dynamic fees,
+Ring v4 supports dynamic fees, allowing pools to adjust their fees up or down. While other AMMs may have hard-coded logic for dynamic fees,
 v4 provides no opinionated calculation of the fee. The frequency of *liquidity fee* updates is also flexible and determined by the developer. Fee updates can
 occur on every swap, every block, or on an arbitrary schedule (weekly, monthly, yearly, etc).
 
@@ -44,7 +44,7 @@ netted against each other. This system allows users to only pay the final balanc
 
 ## Native ETH
 
-Uniswap v4 supports native token assets (Ether), without the need to wrap/unwrap the native token to Wrapped Ether (WETH9).
+Ring v4 supports native token assets (Ether), without the need to wrap/unwrap the native token to Wrapped Ether (WETH9).
 
 ## Custom Accounting
 

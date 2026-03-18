@@ -2,16 +2,16 @@
 title: BeforeSwapDelta Guide
 ---
 
-`BeforeSwapDelta` is a custom type used in Uniswap V4 hook contracts to represent balance changes during swap operations. It is specifically designed to handle the return value of the `beforeSwap` hook and to be compatible with the `afterSwap` hook.
+`BeforeSwapDelta` is a custom type used in Ring V4 hook contracts to represent balance changes during swap operations. It is specifically designed to handle the return value of the `beforeSwap` hook and to be compatible with the `afterSwap` hook.
 
-Before explaining `BeforeSwapDelta` in detail, it is worth noting that in the context of Uniswap V4 swaps:
+Before explaining `BeforeSwapDelta` in detail, it is worth noting that in the context of Ring V4 swaps:
 
 - The **specified** token is the one for which the user specifies an exact input or output amount.
 - The **unspecified** token is the counterpart in the swap, whose amount is determined by the pool's pricing mechanism.
 
 ## Purpose
 
-The main purpose of `BeforeSwapDelta` is to efficiently encode and decode balance changes for both specified and unspecified tokens in a single 256-bit value. This compact representation allows for gas-efficient operations and seamless integration with Uniswap V4's hook system.
+The main purpose of `BeforeSwapDelta` is to efficiently encode and decode balance changes for both specified and unspecified tokens in a single 256-bit value. This compact representation allows for gas-efficient operations and seamless integration with Ring V4's hook system.
 
 `BeforeSwapDelta` is essential for:
 
@@ -111,7 +111,7 @@ When a hook is called during a swap operation, it can perform custom logic and i
 
 ## Usage in PoolManager.sol
 
-`BeforeSwapDelta` plays a crucial role in Uniswap V4's PoolManager contract, particularly in the swap process. Here's an overview of how it's used:
+`BeforeSwapDelta` plays a crucial role in Ring V4's PoolManager contract, particularly in the swap process. Here's an overview of how it's used:
 
 ## Calling the `beforeSwap` Hook
 
@@ -203,7 +203,7 @@ As a result:
 - The actual amount swapped is 99 tokens.
 - The 1 token difference becomes the hook's fee.
 
-This mechanism allows hooks to influence the swap amount while maintaining transparency about the full input amount, enabling complex custom logic within the Uniswap V4 framework.
+This mechanism allows hooks to influence the swap amount while maintaining transparency about the full input amount, enabling complex custom logic within the Ring V4 framework.
 
 ## Relation to `afterSwap`
 
@@ -225,7 +225,7 @@ Developers implementing custom hooks should be aware of this relationship and en
 
 ## Key Purposes of BeforeSwapDelta
 
-The `BeforeSwapDelta` serves several important purposes in the Uniswap V4 swap process:
+The `BeforeSwapDelta` serves several important purposes in the Ring V4 swap process:
 
 1. **Customization of Swap Behavior:** It allows hooks to modify the swap parameters or even completely override the default swap behavior.
 2. **Balance Adjustment:** The delta values can be used to adjust the final balance changes resulting from the swap, giving hooks fine-grained control over the swap's outcome.
@@ -260,7 +260,7 @@ int128 adjustedAmount = specifiedAmount - fee;
 delta = BeforeSwapDelta.from(-adjustedAmount, 0);
 ```
 
-This flexibility in fee implementation allows developers to create sophisticated economic models within their Uniswap V4 hooks, tailoring the behavior to specific use cases while maintaining the efficiency and standardization provided by the `BeforeSwapDelta` structure.
+This flexibility in fee implementation allows developers to create sophisticated economic models within their Ring V4 hooks, tailoring the behavior to specific use cases while maintaining the efficiency and standardization provided by the `BeforeSwapDelta` structure.
 
 ## Perspective
 
@@ -281,7 +281,7 @@ The `BeforeSwapDelta` type and its associated functions use low-level assembly c
 
 The `toBeforeSwapDelta` function combines the specified and unspecified deltas into a single `int256` value using bitwise operations. The `getSpecifiedDelta` and `getUnspecifiedDelta` functions extract the respective deltas using bit shifting and sign extension.
 
-By leveraging this compact representation and efficient arithmetic operations, Uniswap V4 can perform complex balance calculations and updates in a gas-optimized manner, reducing the overall cost of executing pool-related operations.
+By leveraging this compact representation and efficient arithmetic operations, Ring V4 can perform complex balance calculations and updates in a gas-optimized manner, reducing the overall cost of executing pool-related operations.
 
 ## Implementation Considerations
 
@@ -426,4 +426,4 @@ function _beforeSwap(
 - Always ensure that your hook's logic is consistent with the overall pool behavior and doesn't introduce unexpected side effects.
 - This implementation doesn't change the LP fee (lpFeeOverride is 0). In some cases, you might want to adjust this as well.
 
-As you can see from this example, by using `BeforeSwapDelta`, hooks can implement custom logic such as fees, rebates, or other modifications to the swap parameters, allowing for highly flexible and customizable pool behavior in Uniswap V4.
+As you can see from this example, by using `BeforeSwapDelta`, hooks can implement custom logic such as fees, rebates, or other modifications to the swap parameters, allowing for highly flexible and customizable pool behavior in Ring V4.

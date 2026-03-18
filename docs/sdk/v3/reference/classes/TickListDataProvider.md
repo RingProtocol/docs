@@ -38,7 +38,7 @@ A data provider for ticks that is backed by an in-memory array of ticks.
 
 #### Defined in
 
-[entities/tickListDataProvider.ts:12](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/tickListDataProvider.ts#L12)
+[entities/tickListDataProvider.ts:12](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/tickListDataProvider.ts#L12)
 
 ## Properties
 
@@ -48,7 +48,7 @@ A data provider for ticks that is backed by an in-memory array of ticks.
 
 #### Defined in
 
-[entities/tickListDataProvider.ts:10](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/tickListDataProvider.ts#L10)
+[entities/tickListDataProvider.ts:10](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/tickListDataProvider.ts#L10)
 
 ## Methods
 
@@ -74,7 +74,7 @@ Return information corresponding to a specific tick
 
 #### Defined in
 
-[entities/tickListDataProvider.ts:18](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/tickListDataProvider.ts#L18)
+[entities/tickListDataProvider.ts:18](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/tickListDataProvider.ts#L18)
 
 ___
 
@@ -102,4 +102,4 @@ Return the next tick that is initialized within a single word
 
 #### Defined in
 
-[entities/tickListDataProvider.ts:22](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/tickListDataProvider.ts#L22)
+[entities/tickListDataProvider.ts:22](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/tickListDataProvider.ts#L22)

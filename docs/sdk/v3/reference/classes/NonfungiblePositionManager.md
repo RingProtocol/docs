@@ -32,7 +32,7 @@ Cannot be constructed.
 
 #### Defined in
 
-[nonfungiblePositionManager.ts:181](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L181)
+[nonfungiblePositionManager.ts:181](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L181)
 
 ## Properties
 
@@ -42,7 +42,7 @@ Cannot be constructed.
 
 #### Defined in
 
-[nonfungiblePositionManager.ts:176](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L176)
+[nonfungiblePositionManager.ts:176](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L176)
 
 ## Methods
 
@@ -63,7 +63,7 @@ Cannot be constructed.
 
 #### Defined in
 
-[nonfungiblePositionManager.ts:199](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L199)
+[nonfungiblePositionManager.ts:199](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L199)
 
 ___
 
@@ -83,7 +83,7 @@ ___
 
 #### Defined in
 
-[nonfungiblePositionManager.ts:326](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L326)
+[nonfungiblePositionManager.ts:326](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L326)
 
 ___
 
@@ -103,7 +103,7 @@ ___
 
 #### Defined in
 
-[nonfungiblePositionManager.ts:192](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L192)
+[nonfungiblePositionManager.ts:192](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L192)
 
 ___
 
@@ -123,7 +123,7 @@ ___
 
 #### Defined in
 
-[nonfungiblePositionManager.ts:286](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L286)
+[nonfungiblePositionManager.ts:286](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L286)
 
 ___
 
@@ -143,7 +143,7 @@ ___
 
 #### Defined in
 
-[nonfungiblePositionManager.ts:183](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L183)
+[nonfungiblePositionManager.ts:183](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L183)
 
 ___
 
@@ -168,7 +168,7 @@ The call parameters
 
 #### Defined in
 
-[nonfungiblePositionManager.ts:341](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L341)
+[nonfungiblePositionManager.ts:341](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L341)
 
 ___
 
@@ -188,4 +188,4 @@ ___
 
 #### Defined in
 
-[nonfungiblePositionManager.ts:416](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L416)
+[nonfungiblePositionManager.ts:416](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L416)

@@ -1,4 +1,4 @@
-Functions for swapping tokens via Uniswap V3
+Functions for swapping tokens via Ring V3
 
 ## Parameter Structs
 

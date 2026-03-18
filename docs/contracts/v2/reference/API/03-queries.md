@@ -9,7 +9,7 @@ To try these queries and run your own visit the [subgraph sandbox](https://thegr
 
 ### Global Data
 
-To query global data you can pass in the Uniswap Factory address and select from available fields.
+To query global data you can pass in the Ring Factory address and select from available fields.
 
 #### Global Stats
 
@@ -74,7 +74,7 @@ Fetch a snapshot of the current state of the pair with common values. This examp
 
 #### All pairs in Uniswap
 
-The Graph limits entity return amounts to 1000 per query as of now. To get all pairs on Uniswap use a loop and graphql skip query to fetch multiple chunks of 1000 pairs. The query would look like this (where skip is some incrementing variable passed into your query).
+The Graph limits entity return amounts to 1000 per query as of now. To get all pairs on Ring use a loop and graphql skip query to fetch multiple chunks of 1000 pairs. The query would look like this (where skip is some incrementing variable passed into your query).
 
 ```
 {
@@ -148,7 +148,7 @@ Day data is useful for building charts and historical views around entities. To 
 
 ### Token Data
 
-Token data can be fetched using the token contract address as an ID. Token data is aggregated across all pairs the token is included in. Any token that is included in some pair in Uniswap can be queried.
+Token data can be fetched using the token contract address as an ID. Token data is aggregated across all pairs the token is included in. Any token that is included in some pair in Ring can be queried.
 
 #### Token Overview
 
@@ -262,7 +262,7 @@ Like pair and global daily lookups, tokens have daily entities that can be queri
 
 ### ETH Price
 
-You can use the Bundle entity to query current USD price of ETH in Uniswap based on a weighted average of stablecoins.
+You can use the Bundle entity to query current USD price of ETH in Ring based on a weighted average of stablecoins.
 
 ```
 {

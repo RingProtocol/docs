@@ -1,4 +1,4 @@
-Provides a function for generating an SVG associated with a Uniswap NFT
+Provides a function for generating an SVG associated with a Ring NFT
 
 ## Functions
 

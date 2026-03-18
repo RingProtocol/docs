@@ -3,9 +3,9 @@ id: overview
 sidebar_position: 1
 title: Overview
 ---
-## The Uniswap Core SDK
+## The Ring Core SDK
 
-The Uniswap Core SDK provides abstractions for other SDKs to use in a Typescript/Javascript environment. It is used throughout the Uniswap SDKs, such as the [v3 SDK](../v3/overview.md).
+The Ring Core SDK provides abstractions for other SDKs to use in a Typescript/Javascript environment. It is used throughout the Ring SDKs, such as the [v3 SDK](../v3/overview.md).
 
 This SDK is not expected to be used in isolation, but only as part of other SDKs.
 

@@ -7,7 +7,7 @@ Interface for the ImmutableState contract
 ## Functions
 ### poolManager
 
-The Uniswap v4 PoolManager contract
+The Ring v4 PoolManager contract
 
 
 ```solidity

@@ -129,7 +129,7 @@ Each command requires its own input structure. Inputs are encoded using `abi.enc
 - `bool payerIsUser`
 
 **Calls:** `v2SwapExactInput(...)` in V2SwapModule  
-**Usage:** Simple Uniswap v2-style fixed input swap using token pairs.
+**Usage:** Simple Ring v2-style fixed input swap using token pairs.
 
 ---
 
@@ -286,7 +286,7 @@ Each command requires its own input structure. Inputs are encoded using `abi.enc
 
 - **`bytes actions`**  
   Encoded action identifiers specifying the type of swap or payment action.  
-  For available action types, see [Uniswap v4 SDK Actions](../../sdk/v4/reference/enumerations/Actions.md).
+  For available action types, see [Ring v4 SDK Actions](../../sdk/v4/reference/enumerations/Actions.md).
 
 - **`bytes[] params`**
   ABI-encoded parameters array, corresponding one-to-one with each action provided in `actions`.
@@ -300,7 +300,7 @@ Executes actions via `V4SwapRouter._handleAction(action, params)`:
 - Payment-related actions (`settle`, `take`) call internal balance management methods (`_settle(...)`, `_take(...)`).
 - Swap actions ultimately call `_swap(...)`, executing swaps via `PoolManager.swap(...)`.
 
-**Usage:** Executes a swap on Uniswap v4 using the provided parameters.
+**Usage:** Executes a swap on Ring v4 using the provided parameters.
 
 ### Internal Flow:
 
@@ -391,7 +391,7 @@ Be sure to follow such commands with cleanup logic (e.g., `SWEEP`) to handle unu
 
 ## References
 
-- [Uniswap Universal Router GitHub](https://github.com/Uniswap/universal-router)
+- [Ring Universal Router GitHub](https://github.com/Uniswap/universal-router)
 - [Latest Commands.sol](https://github.com/Uniswap/universal-router/blob/main/contracts/libraries/Commands.sol)
 
 ## Legacy Documentation

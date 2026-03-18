@@ -24,7 +24,7 @@ The time that the incentive program ends.
 
 #### Defined in
 
-[staker.ts:28](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/staker.ts#L28)
+[staker.ts:28](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/staker.ts#L28)
 
 ___
 
@@ -36,7 +36,7 @@ The pool that the staked positions must provide in.
 
 #### Defined in
 
-[staker.ts:20](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/staker.ts#L20)
+[staker.ts:20](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/staker.ts#L20)
 
 ___
 
@@ -48,7 +48,7 @@ The address which receives any remaining reward tokens at `endTime`.
 
 #### Defined in
 
-[staker.ts:32](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/staker.ts#L32)
+[staker.ts:32](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/staker.ts#L32)
 
 ___
 
@@ -60,7 +60,7 @@ The token rewarded for participating in the staking program.
 
 #### Defined in
 
-[staker.ts:16](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/staker.ts#L16)
+[staker.ts:16](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/staker.ts#L16)
 
 ___
 
@@ -72,4 +72,4 @@ The time when the incentive program begins.
 
 #### Defined in
 
-[staker.ts:24](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/staker.ts#L24)
+[staker.ts:24](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/staker.ts#L24)

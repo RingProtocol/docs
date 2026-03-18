@@ -26,7 +26,7 @@ Whether the NFT should be burned if the entire position is being exited, by defa
 
 #### Defined in
 
-[nonfungiblePositionManager.ts:162](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L162)
+[nonfungiblePositionManager.ts:162](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L162)
 
 ___
 
@@ -38,7 +38,7 @@ Parameters to be passed on to collect
 
 #### Defined in
 
-[nonfungiblePositionManager.ts:172](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L172)
+[nonfungiblePositionManager.ts:172](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L172)
 
 ___
 
@@ -50,7 +50,7 @@ When the transaction expires, in epoch seconds.
 
 #### Defined in
 
-[nonfungiblePositionManager.ts:157](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L157)
+[nonfungiblePositionManager.ts:157](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L157)
 
 ___
 
@@ -62,7 +62,7 @@ The percentage of position liquidity to exit.
 
 #### Defined in
 
-[nonfungiblePositionManager.ts:147](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L147)
+[nonfungiblePositionManager.ts:147](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L147)
 
 ___
 
@@ -74,7 +74,7 @@ The optional permit of the token ID being exited, in case the exit transaction i
 
 #### Defined in
 
-[nonfungiblePositionManager.ts:167](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L167)
+[nonfungiblePositionManager.ts:167](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L167)
 
 ___
 
@@ -86,7 +86,7 @@ How much the pool price is allowed to move.
 
 #### Defined in
 
-[nonfungiblePositionManager.ts:152](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L152)
+[nonfungiblePositionManager.ts:152](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L152)
 
 ___
 
@@ -98,4 +98,4 @@ The ID of the token to exit
 
 #### Defined in
 
-[nonfungiblePositionManager.ts:142](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L142)
+[nonfungiblePositionManager.ts:142](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L142)

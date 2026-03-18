@@ -4,7 +4,7 @@
 **Inherits:**
 [IUniswapV4DeployerCompetition](contracts/v4/reference/periphery/interfaces/IUniswapV4DeployerCompetition.md)
 
-A contract to crowdsource a salt for the best Uniswap V4 address
+A contract to crowdsource a salt for the best Ring V4 address
 
 
 ## State Variables
@@ -96,7 +96,7 @@ function updateBestAddress(bytes32 salt) external;
 
 ### deploy
 
-deploys the Uniswap v4 PoolManager contract
+deploys the Ring v4 PoolManager contract
 
 *The bytecode must match the initCodeHash*
 
@@ -108,7 +108,7 @@ function deploy(bytes memory bytecode) external;
 
 |Name|Type|Description|
 |----|----|-----------|
-|`bytecode`|`bytes`|The bytecode of the Uniswap v4 PoolManager contract|
+|`bytecode`|`bytes`|The bytecode of the Ring v4 PoolManager contract|
 
 
 ### bestAddress

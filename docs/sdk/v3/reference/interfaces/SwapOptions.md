@@ -25,7 +25,7 @@ When the transaction expires, in epoch seconds.
 
 #### Defined in
 
-[swapRouter.ts:30](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/swapRouter.ts#L30)
+[swapRouter.ts:30](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/swapRouter.ts#L30)
 
 ___
 
@@ -37,7 +37,7 @@ Optional information for taking a fee on output.
 
 #### Defined in
 
-[swapRouter.ts:45](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/swapRouter.ts#L45)
+[swapRouter.ts:45](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/swapRouter.ts#L45)
 
 ___
 
@@ -49,7 +49,7 @@ The optional permit parameters for spending the input.
 
 #### Defined in
 
-[swapRouter.ts:35](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/swapRouter.ts#L35)
+[swapRouter.ts:35](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/swapRouter.ts#L35)
 
 ___
 
@@ -61,7 +61,7 @@ The account that should receive the output.
 
 #### Defined in
 
-[swapRouter.ts:25](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/swapRouter.ts#L25)
+[swapRouter.ts:25](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/swapRouter.ts#L25)
 
 ___
 
@@ -73,7 +73,7 @@ How much the execution price is allowed to move unfavorably from the trade execu
 
 #### Defined in
 
-[swapRouter.ts:20](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/swapRouter.ts#L20)
+[swapRouter.ts:20](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/swapRouter.ts#L20)
 
 ___
 
@@ -85,4 +85,4 @@ The optional price limit for the trade.
 
 #### Defined in
 
-[swapRouter.ts:40](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/swapRouter.ts#L40)
+[swapRouter.ts:40](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/swapRouter.ts#L40)

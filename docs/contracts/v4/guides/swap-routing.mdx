@@ -3,13 +3,13 @@ title: Swap routing
 sidebar_position: 4
 ---
 
-## Introduction to Universal Router for Uniswap v4 Swaps
+## Introduction to Universal Router for Ring v4 Swaps
 
-Uniswap v4 introduces a new architecture where all pools are managed by a single PoolManager contract. While the underlying architecture uses a callback system for swaps, developers can still use the Universal Router to execute swaps on v4 pools, just as you would for v2 or v3.
+Ring v4 introduces a new architecture where all pools are managed by a single PoolManager contract. While the underlying architecture uses a callback system for swaps, developers can still use the Universal Router to execute swaps on v4 pools, just as you would for v2 or v3.
 
 ## What is the Universal Router?
 
-The Universal Router is a flexible, gas-efficient contract designed to execute complex swap operations across various protocols, including Uniswap v4. It serves as an intermediary between users and the Uniswap v4 `PoolManager`, handling the intricacies of swap execution.
+The Universal Router is a flexible, gas-efficient contract designed to execute complex swap operations across various protocols, including Ring v4. It serves as an intermediary between users and the Ring v4 `PoolManager`, handling the intricacies of swap execution.
 
 While it’s technically possible to interact directly with the PoolManager contract for swaps, this approach is generally not recommended due to its complexity and potential inefficiencies. The Universal Router is designed to abstract away these complexities, providing a more straightforward and efficient method for executing swaps on v4 pools.
 
@@ -37,13 +37,13 @@ Each command is encoded as a single byte (`bytes1`) with a specific structure:
 - The second bit (`r`) is reserved for future use, providing flexibility for potential upgrades.
 - The remaining 6 bits represent the specific command to be executed.
 
-## Configuring Universal Router for Uniswap v4 Swaps
+## Configuring Universal Router for Ring v4 Swaps
 
 ### Use Cases
 
-Developers might need to configure the Universal Router for swapping on Uniswap v4 pools in several scenarios:
+Developers might need to configure the Universal Router for swapping on Ring v4 pools in several scenarios:
 
-1. **Building a DEX aggregator**: If you’re creating a platform that finds the best rates across multiple DEXes, you’ll want to include Uniswap v4 pools in your options.
+1. **Building a DEX aggregator**: If you’re creating a platform that finds the best rates across multiple DEXes, you’ll want to include Ring v4 pools in your options.
 2. **Developing a trading bot**: Automated trading strategies often require the ability to execute swaps programmatically across various pools and versions.
 3. **Creating a Dapp**: Many DeFi applications (lending platforms, yield aggregators, etc.) need to perform token swaps as part of their core functionality.
 
@@ -105,11 +105,11 @@ contract Example {
 
 In this step, we’re importing the necessary contracts and interfaces:
 
-- `UniversalRouter`: This will be our main interface for executing swaps. It provides a flexible way to interact with various Uniswap versions and other protocols.
+- `UniversalRouter`: This will be our main interface for executing swaps. It provides a flexible way to interact with various Ring versions and other protocols.
 - `Commands`: This library contains the command definitions used by the UniversalRouter.
-- `IPoolManager`: This interface is needed for interacting with Uniswap v4 pools. While we don't directly use it in our simple example, it's often necessary for more complex interactions with v4 pools.
+- `IPoolManager`: This interface is needed for interacting with Ring v4 pools. While we don't directly use it in our simple example, it's often necessary for more complex interactions with v4 pools.
 - `IPermit2`: This interface allows us to interact with the Permit2 contract, which provides enhanced token approval functionality.
-- `StateLibrary`: This provides optimized functions for interacting with the PoolManager’s state. By using `StateLibrary`, we can more efficiently read and manipulate pool states, which is crucial for many operations in Uniswap v4.
+- `StateLibrary`: This provides optimized functions for interacting with the PoolManager’s state. By using `StateLibrary`, we can more efficiently read and manipulate pool states, which is crucial for many operations in Ring v4.
 
 ### Step 2: Implement Token Approval with Permit2
 
@@ -187,7 +187,7 @@ Next, we encode the swap command:
 bytes memory commands = abi.encodePacked(uint8(Commands.V4_SWAP));
 ```
 
-Here, we're using `V4_SWAP`, which tells the Universal Router that we want to perform a swap on a Uniswap v4 pool. The specific type of swap (exact input or exact output) will be determined by the V4Router actions we encode later. As we saw earlier, we encode this as a single byte, which is how the Universal Router expects to receive commands.
+Here, we're using `V4_SWAP`, which tells the Universal Router that we want to perform a swap on a Ring v4 pool. The specific type of swap (exact input or exact output) will be determined by the V4Router actions we encode later. As we saw earlier, we encode this as a single byte, which is how the Universal Router expects to receive commands.
 
 Check the complete list of [commands](https://docs.uniswap.org/contracts/universal-router/technical-reference#command).
 

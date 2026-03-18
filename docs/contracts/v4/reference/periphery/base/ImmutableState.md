@@ -9,7 +9,7 @@ A collection of immutable state variables, commonly used across multiple contrac
 
 ## State Variables
 ### poolManager
-The Uniswap v4 PoolManager contract
+The Ring v4 PoolManager contract
 
 
 ```solidity

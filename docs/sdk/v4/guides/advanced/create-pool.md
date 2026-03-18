@@ -6,7 +6,7 @@ sidebar_position: 2
 
 ## Introduction
 
-In this example we will use **ethers.js** and the **Uniswap v4 SDK** to create pools on Uniswap v4. Uniswap v4 is a popular destination for creating markets due to its:
+In this example we will use **ethers.js** and the **Ring v4 SDK** to create pools on Ring v4. Ring v4 is a popular destination for creating markets due to its:
 
 - Proven track record and battle-tested codebase
 - Concentrated liquidity, unlocks capital efficiency
@@ -14,16 +14,16 @@ In this example we will use **ethers.js** and the **Uniswap v4 SDK** to create p
 - Gas-efficient architecture
 - Integrations with alternative trading venues
 
-For more information, developers should see [Uniswap v4 Overview](/contracts/v4/overview)
+For more information, developers should see [Ring v4 Overview](/contracts/v4/overview)
 
-For this guide, the following Uniswap packages are used:
+For this guide, the following Ring packages are used:
   
 - [`@uniswap/v4-sdk`](https://www.npmjs.com/package/@uniswap/v4-sdk)
 - [`@uniswap/sdk-core`](https://www.npmjs.com/package/@uniswap/sdk-core)
 
 ## Configuration
 
-To initialize a Uniswap v4 Pool _without initial liquidity_, developers should call [`PoolManager.initialize()`](/contracts/v4/concepts/PoolManager)
+To initialize a Ring v4 Pool _without initial liquidity_, developers should call [`PoolManager.initialize()`](/contracts/v4/concepts/PoolManager)
 
 Creating a pool without liquidity may be useful for "reserving" a pool for future use, when initial liquidity is not available, or when external market makers would provide the starting liquidity.
 
@@ -81,7 +81,7 @@ const poolManager = new ethers.Contract(
 )
 ```
 
-We get the `POOL_MANAGER_ADDRESS` for our chain from [Uniswap Deployments](/contracts/v4/deployments).
+We get the `POOL_MANAGER_ADDRESS` for our chain from [Ring Deployments](/contracts/v4/deployments).
 
 Pools are initialized with a starting price
 

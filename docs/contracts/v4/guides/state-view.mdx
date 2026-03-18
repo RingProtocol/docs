@@ -5,7 +5,7 @@ sidebar_position: 7
 
 ## Introduction
 
-When building on **Uniswap v4**, you will often need to read pool state for both onchain and offchain use cases. Onchain contracts can directly invoke the [**StateLibrary**](https://github.com/Uniswap/v4-core/blob/main/src/libraries/StateLibrary.sol) to execute these reads during transactions, but offchain systems—such as frontends or analytics services—require a deployed contract with view functions. This is where [**StateView**](https://github.com/Uniswap/v4-periphery/blob/main/src/lens/StateView.sol) comes in.
+When building on **Ring v4**, you will often need to read pool state for both onchain and offchain use cases. Onchain contracts can directly invoke the [**StateLibrary**](https://github.com/RingProtocol/v4-core/blob/main/src/libraries/StateLibrary.sol) to execute these reads during transactions, but offchain systems—such as frontends or analytics services—require a deployed contract with view functions. This is where [**StateView**](https://github.com/RingProtocol/v4-periphery/blob/main/src/lens/StateView.sol) comes in.
 
 > *In short: Use StateLibrary within onchain contracts and use StateView with an RPC for frontends and analytics.*
 > 
@@ -18,7 +18,7 @@ By providing a dedicated interface for offchain reads, **StateView** helps:
 
 ## Comparing onchain and offchain Access
 
-If you’re familiar with [Reading Pool State](/contracts/v4/guides/read-pool-state), you already know that Uniswap v4 uses **extsload** for efficient data access. For onchain usage, we rely on **StateLibrary** within contracts. However, offchain clients cannot rely on an onchain library for state reads. 
+If you’re familiar with [Reading Pool State](/contracts/v4/guides/read-pool-state), you already know that Ring v4 uses **extsload** for efficient data access. For onchain usage, we rely on **StateLibrary** within contracts. However, offchain clients cannot rely on an onchain library for state reads. 
 
 Instead, **StateView** provides these same calls in a single contract designed explicitly for offchain consumption.
 
@@ -94,7 +94,7 @@ With this setup, you can now:
 
 When calling `stateView.read.<function>([poolId])`, be mindful that:
 
-- If you pass an invalid `poolId` (typically a [`bytes32`](https://github.com/Uniswap/v4-core/blob/main/src/types/PoolId.sol#L6) in Uniswap v4), the call may revert or return unexpected data.
+- If you pass an invalid `poolId` (typically a [`bytes32`](https://github.com/RingProtocol/v4-core/blob/main/src/types/PoolId.sol#L6) in Ring v4), the call may revert or return unexpected data.
 - Consider adding try-catch (or equivalent error handling in your framework) to gracefully handle failures if the pool does not exist or if the call fails onchain.
 
 ## Reading Pool Data
@@ -172,7 +172,7 @@ While **StateView** exposes many functions, here are several essential calls for
 
 ### Note on `poolId` and `positionId`
 
-- In **Uniswap v4**, a `poolId` is typically a `bytes32` that is derived by calling 
+- In **Ring v4**, a `poolId` is typically a `bytes32` that is derived by calling 
 `keccak256(abi.encode(poolKey))` where poolKey contains:
   - currency0: The lower currency address of the pool
   - currency1: The higher currency address of the pool
@@ -189,7 +189,7 @@ While **StateView** exposes many functions, here are several essential calls for
 
 ## Conclusion
 
-**StateView** is a powerful and efficient way to read Uniswap v4 pool data offchain. By separating onchain logic (using `StateLibrary`) and offchain reads (using `StateView`), Uniswap ensures the best developer experience for both contexts.
+**StateView** is a powerful and efficient way to read Ring v4 pool data offchain. By separating onchain logic (using `StateLibrary`) and offchain reads (using `StateView`), Ring ensures the best developer experience for both contexts.
 
 To recap:
 

@@ -6,7 +6,7 @@ sidebar_position: 3
 
 ## Introduction
 
-This guide demonstrates how to execute multi-hop swaps on Uniswap V4, allowing you to trade between tokens that might not share a direct pool. Multi-hop swaps route through multiple pools to achieve the desired token exchange, often providing better pricing than attempting direct swaps through less liquid pools.
+This guide demonstrates how to execute multi-hop swaps on Ring V4, allowing you to trade between tokens that might not share a direct pool. Multi-hop swaps route through multiple pools to achieve the desired token exchange, often providing better pricing than attempting direct swaps through less liquid pools.
 
 Building on our [single-hop swap guide](./single-hop-swapping.md), this guide will show you how to construct routing paths and execute them efficiently.
 
@@ -17,7 +17,7 @@ The guide will cover:
 
 At the end of this guide, you should be able to execute swaps between any two tokens using optimal routing through multiple pools.
 
-For this guide, the following Uniswap packages are used:
+For this guide, the following Ring packages are used:
 
 - [`@uniswap/v4-sdk`](https://www.npmjs.com/package/@uniswap/v4-sdk)
 - [`@uniswap/sdk-core`](https://www.npmjs.com/package/@uniswap/sdk-core)
@@ -58,7 +58,7 @@ export const CurrentConfig: SwapExactIn = {
 }
 ```
 
-Uniswap V4 uses a specific format for encoding multi-hop paths. Each hop in the path requires:
+Ring V4 uses a specific format for encoding multi-hop paths. Each hop in the path requires:
 
 ```typescript
 type PathKey = {

@@ -60,7 +60,7 @@ Construct a pool
 
 #### Defined in
 
-[entities/pool.ts:70](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/pool.ts#L70)
+[entities/pool.ts:70](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/pool.ts#L70)
 
 ## Properties
 
@@ -70,7 +70,7 @@ Construct a pool
 
 #### Defined in
 
-[entities/pool.ts:41](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/pool.ts#L41)
+[entities/pool.ts:41](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/pool.ts#L41)
 
 ___
 
@@ -80,7 +80,7 @@ ___
 
 #### Defined in
 
-[entities/pool.ts:42](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/pool.ts#L42)
+[entities/pool.ts:42](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/pool.ts#L42)
 
 ___
 
@@ -90,7 +90,7 @@ ___
 
 #### Defined in
 
-[entities/pool.ts:35](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/pool.ts#L35)
+[entities/pool.ts:35](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/pool.ts#L35)
 
 ___
 
@@ -100,7 +100,7 @@ ___
 
 #### Defined in
 
-[entities/pool.ts:37](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/pool.ts#L37)
+[entities/pool.ts:37](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/pool.ts#L37)
 
 ___
 
@@ -110,7 +110,7 @@ ___
 
 #### Defined in
 
-[entities/pool.ts:36](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/pool.ts#L36)
+[entities/pool.ts:36](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/pool.ts#L36)
 
 ___
 
@@ -120,7 +120,7 @@ ___
 
 #### Defined in
 
-[entities/pool.ts:38](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/pool.ts#L38)
+[entities/pool.ts:38](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/pool.ts#L38)
 
 ___
 
@@ -130,7 +130,7 @@ ___
 
 #### Defined in
 
-[entities/pool.ts:39](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/pool.ts#L39)
+[entities/pool.ts:39](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/pool.ts#L39)
 
 ___
 
@@ -140,7 +140,7 @@ ___
 
 #### Defined in
 
-[entities/pool.ts:33](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/pool.ts#L33)
+[entities/pool.ts:33](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/pool.ts#L33)
 
 ___
 
@@ -150,7 +150,7 @@ ___
 
 #### Defined in
 
-[entities/pool.ts:34](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/pool.ts#L34)
+[entities/pool.ts:34](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/pool.ts#L34)
 
 ## Accessors
 
@@ -166,7 +166,7 @@ Returns the chain ID of the tokens in the pool.
 
 #### Defined in
 
-[entities/pool.ts:149](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/pool.ts#L149)
+[entities/pool.ts:149](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/pool.ts#L149)
 
 ___
 
@@ -180,7 +180,7 @@ ___
 
 #### Defined in
 
-[entities/pool.ts:317](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/pool.ts#L317)
+[entities/pool.ts:317](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/pool.ts#L317)
 
 ___
 
@@ -196,7 +196,7 @@ Returns the current mid price of the pool in terms of token0, i.e. the ratio of 
 
 #### Defined in
 
-[entities/pool.ts:109](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/pool.ts#L109)
+[entities/pool.ts:109](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/pool.ts#L109)
 
 ___
 
@@ -212,7 +212,7 @@ Returns the current mid price of the pool in terms of token1, i.e. the ratio of 
 
 #### Defined in
 
-[entities/pool.ts:124](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/pool.ts#L124)
+[entities/pool.ts:124](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/pool.ts#L124)
 
 ## Methods
 
@@ -237,7 +237,7 @@ The input amount and the pool with updated state
 
 #### Defined in
 
-[entities/pool.ts:185](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/pool.ts#L185)
+[entities/pool.ts:185](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/pool.ts#L185)
 
 ___
 
@@ -262,7 +262,7 @@ The output amount and the pool with updated state
 
 #### Defined in
 
-[entities/pool.ts:159](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/pool.ts#L159)
+[entities/pool.ts:159](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/pool.ts#L159)
 
 ___
 
@@ -286,7 +286,7 @@ True if token is either token0 or token
 
 #### Defined in
 
-[entities/pool.ts:102](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/pool.ts#L102)
+[entities/pool.ts:102](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/pool.ts#L102)
 
 ___
 
@@ -310,7 +310,7 @@ The price of the given token, in terms of the other.
 
 #### Defined in
 
-[entities/pool.ts:141](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/pool.ts#L141)
+[entities/pool.ts:141](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/pool.ts#L141)
 
 ___
 
@@ -342,7 +342,7 @@ tickCurrent
 
 #### Defined in
 
-[entities/pool.ts:215](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/pool.ts#L215)
+[entities/pool.ts:215](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/pool.ts#L215)
 
 ___
 
@@ -366,4 +366,4 @@ ___
 
 #### Defined in
 
-[entities/pool.ts:44](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/pool.ts#L44)
+[entities/pool.ts:44](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/pool.ts#L44)

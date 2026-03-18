@@ -22,7 +22,7 @@ The amount of `rewardToken` to claim. 0 claims all.
 
 #### Defined in
 
-[staker.ts:52](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/staker.ts#L52)
+[staker.ts:52](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/staker.ts#L52)
 
 ___
 
@@ -34,7 +34,7 @@ Address to send rewards to.
 
 #### Defined in
 
-[staker.ts:47](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/staker.ts#L47)
+[staker.ts:47](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/staker.ts#L47)
 
 ___
 
@@ -46,4 +46,4 @@ The id of the NFT
 
 #### Defined in
 
-[staker.ts:42](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/staker.ts#L42)
+[staker.ts:42](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/staker.ts#L42)

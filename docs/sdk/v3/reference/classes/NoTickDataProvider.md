@@ -38,7 +38,7 @@ do not need to load tick data for your use case.
 
 #### Defined in
 
-[entities/tickDataProvider.ts:27](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/tickDataProvider.ts#L27)
+[entities/tickDataProvider.ts:27](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/tickDataProvider.ts#L27)
 
 ## Methods
 
@@ -64,7 +64,7 @@ Return information corresponding to a specific tick
 
 #### Defined in
 
-[entities/tickDataProvider.ts:28](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/tickDataProvider.ts#L28)
+[entities/tickDataProvider.ts:28](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/tickDataProvider.ts#L28)
 
 ___
 
@@ -92,4 +92,4 @@ Return the next tick that is initialized within a single word
 
 #### Defined in
 
-[entities/tickDataProvider.ts:32](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/tickDataProvider.ts#L32)
+[entities/tickDataProvider.ts:32](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/tickDataProvider.ts#L32)

@@ -6,7 +6,7 @@ title: tick.ts
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-path: [`/src/utils/tick.ts`](https://github.com/Uniswap/v3-subgraph/blob/main/src/utils/tick.ts)
+path: [`/src/utils/tick.ts`](https://github.com/RingProtocol/v3-subgraph/blob/main/src/utils/tick.ts)
 
 ### createTick()
 ```

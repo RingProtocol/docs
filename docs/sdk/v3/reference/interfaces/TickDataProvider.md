@@ -36,7 +36,7 @@ Return information corresponding to a specific tick
 
 #### Defined in
 
-[entities/tickDataProvider.ts:11](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/tickDataProvider.ts#L11)
+[entities/tickDataProvider.ts:11](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/tickDataProvider.ts#L11)
 
 ___
 
@@ -60,4 +60,4 @@ Return the next tick that is initialized within a single word
 
 #### Defined in
 
-[entities/tickDataProvider.ts:19](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/tickDataProvider.ts#L19)
+[entities/tickDataProvider.ts:19](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/tickDataProvider.ts#L19)

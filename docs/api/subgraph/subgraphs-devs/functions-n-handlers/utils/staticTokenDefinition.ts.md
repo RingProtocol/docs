@@ -6,7 +6,7 @@ title: staticTokenDefinition.ts
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-path: [`/src/utils/staticTokenDefinition.ts`](https://github.com/Uniswap/v3-subgraph/blob/main/src/utils/staticTokenDefinition.ts)
+path: [`/src/utils/staticTokenDefinition.ts`](https://github.com/RingProtocol/v3-subgraph/blob/main/src/utils/staticTokenDefinition.ts)
 
 
 ## Class StaticTokenDefinition

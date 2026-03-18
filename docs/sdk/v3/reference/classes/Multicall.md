@@ -26,7 +26,7 @@ Cannot be constructed.
 
 #### Defined in
 
-[multicall.ts:10](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/multicall.ts#L10)
+[multicall.ts:10](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/multicall.ts#L10)
 
 ## Properties
 
@@ -36,7 +36,7 @@ Cannot be constructed.
 
 #### Defined in
 
-[multicall.ts:5](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/multicall.ts#L5)
+[multicall.ts:5](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/multicall.ts#L5)
 
 ## Methods
 
@@ -56,4 +56,4 @@ Cannot be constructed.
 
 #### Defined in
 
-[multicall.ts:12](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/multicall.ts#L12)
+[multicall.ts:12](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/multicall.ts#L12)

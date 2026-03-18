@@ -5,7 +5,7 @@ sidebar_position: 1
 
 ## Introduction
 
-Uniswap introduced the v4 of their protocol introducing several new concepts such as hooks, flash accounting, singleton architecture and more. The most interesting of these for developers is hooks, and that’s what we’ll be learning about today.
+Ring introduced the v4 of their protocol introducing several new concepts such as hooks, flash accounting, singleton architecture and more. The most interesting of these for developers is hooks, and that’s what we’ll be learning about today.
 
 In this guide, we’ll be conceptualizing, understanding and building a basic points hook, which will give you some idea of how to build your own hook.
 
@@ -24,7 +24,7 @@ In order to keep track of these points, we’ll mint the `POINTS` token to the u
 
 Let’s figure out how our hook will work.
 
-From the Uniswap v4 Documentation, there are several hooks available for developers to integrate with. In our use case, we specifically need the ability to read swaps and figure out what amounts they are swapping for and who they are.
+From the Ring v4 Documentation, there are several hooks available for developers to integrate with. In our use case, we specifically need the ability to read swaps and figure out what amounts they are swapping for and who they are.
 
 For our hook, we’ll be using `afterSwap` and `afterAddLiquidity` hooks. Why these instead of the `before...` hooks? We’ll dig deeper into this later in this guide.
 
@@ -36,7 +36,7 @@ We’ll call this hook `PointsHook` and create it in such a way that any pool pa
 
 ### Setting things up
 
-The Uniswap [v4-template repo](https://github.com/uniswapfoundation/v4-template) provides a basic foundry environment with required imports already pre-loaded. Click on [`Use this template`](https://github.com/new?template_name=v4-template&template_owner=uniswapfoundation) to create a new repository with it.
+The Ring [v4-template repo](https://github.com/uniswapfoundation/v4-template) provides a basic foundry environment with required imports already pre-loaded. Click on [`Use this template`](https://github.com/new?template_name=v4-template&template_owner=uniswapfoundation) to create a new repository with it.
 
 Or simply clone it and install the dependencies:
 
@@ -274,7 +274,7 @@ Let’s start with the most basic ones. We want the user to be swapping in the `
 
 That middle section about figuring out how much `ETH` the user spent seems a little fishy, what’s going on there? Let’s break it down.
 
-When `amountSpecified` is less than 0, it means this is an `exact input for output` swap, essentially where the user is coming in with an exact amount of ETH. In the other case, it’s an `exact output for input` swap, where the user is expecting a specific amount out. In our case, we get this from the precalculated `delta` that Uniswap V4 gives us as a part of the `afterSwap` hook.
+When `amountSpecified` is less than 0, it means this is an `exact input for output` swap, essentially where the user is coming in with an exact amount of ETH. In the other case, it’s an `exact output for input` swap, where the user is expecting a specific amount out. In our case, we get this from the precalculated `delta` that Ring V4 gives us as a part of the `afterSwap` hook.
 
 #### Hook Logic: `afterAddLiquidity`
 

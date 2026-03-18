@@ -30,7 +30,7 @@ Cannot be constructed.
 
 #### Defined in
 
-[utils/tickMath.ts:17](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/utils/tickMath.ts#L17)
+[utils/tickMath.ts:17](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/utils/tickMath.ts#L17)
 
 ## Properties
 
@@ -42,7 +42,7 @@ The sqrt ratio corresponding to the maximum tick that could be used on any pool.
 
 #### Defined in
 
-[utils/tickMath.ts:35](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/utils/tickMath.ts#L35)
+[utils/tickMath.ts:35](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/utils/tickMath.ts#L35)
 
 ___
 
@@ -54,7 +54,7 @@ The maximum tick that can be used on any pool.
 
 #### Defined in
 
-[utils/tickMath.ts:26](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/utils/tickMath.ts#L26)
+[utils/tickMath.ts:26](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/utils/tickMath.ts#L26)
 
 ___
 
@@ -66,7 +66,7 @@ The sqrt ratio corresponding to the minimum tick that could be used on any pool.
 
 #### Defined in
 
-[utils/tickMath.ts:31](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/utils/tickMath.ts#L31)
+[utils/tickMath.ts:31](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/utils/tickMath.ts#L31)
 
 ___
 
@@ -78,7 +78,7 @@ The minimum tick that can be used on any pool.
 
 #### Defined in
 
-[utils/tickMath.ts:22](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/utils/tickMath.ts#L22)
+[utils/tickMath.ts:22](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/utils/tickMath.ts#L22)
 
 ## Methods
 
@@ -100,7 +100,7 @@ Returns the sqrt ratio as a Q64.96 for the given tick. The sqrt ratio is compute
 
 #### Defined in
 
-[utils/tickMath.ts:41](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/utils/tickMath.ts#L41)
+[utils/tickMath.ts:41](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/utils/tickMath.ts#L41)
 
 ___
 
@@ -123,4 +123,4 @@ and #getSqrtRatioAtTick(tick + 1) > sqrtRatioX96
 
 #### Defined in
 
-[utils/tickMath.ts:82](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/utils/tickMath.ts#L82)
+[utils/tickMath.ts:82](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/utils/tickMath.ts#L82)

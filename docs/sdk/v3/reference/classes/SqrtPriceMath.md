@@ -27,7 +27,7 @@ Cannot be constructed.
 
 #### Defined in
 
-[utils/sqrtPriceMath.ts:23](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/utils/sqrtPriceMath.ts#L23)
+[utils/sqrtPriceMath.ts:23](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/utils/sqrtPriceMath.ts#L23)
 
 ## Methods
 
@@ -50,7 +50,7 @@ Cannot be constructed.
 
 #### Defined in
 
-[utils/sqrtPriceMath.ts:25](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/utils/sqrtPriceMath.ts#L25)
+[utils/sqrtPriceMath.ts:25](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/utils/sqrtPriceMath.ts#L25)
 
 ___
 
@@ -73,7 +73,7 @@ ___
 
 #### Defined in
 
-[utils/sqrtPriceMath.ts:38](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/utils/sqrtPriceMath.ts#L38)
+[utils/sqrtPriceMath.ts:38](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/utils/sqrtPriceMath.ts#L38)
 
 ___
 
@@ -96,7 +96,7 @@ ___
 
 #### Defined in
 
-[utils/sqrtPriceMath.ts:71](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/utils/sqrtPriceMath.ts#L71)
+[utils/sqrtPriceMath.ts:71](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/utils/sqrtPriceMath.ts#L71)
 
 ___
 
@@ -119,7 +119,7 @@ ___
 
 #### Defined in
 
-[utils/sqrtPriceMath.ts:100](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/utils/sqrtPriceMath.ts#L100)
+[utils/sqrtPriceMath.ts:100](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/utils/sqrtPriceMath.ts#L100)
 
 ___
 
@@ -142,7 +142,7 @@ ___
 
 #### Defined in
 
-[utils/sqrtPriceMath.ts:48](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/utils/sqrtPriceMath.ts#L48)
+[utils/sqrtPriceMath.ts:48](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/utils/sqrtPriceMath.ts#L48)
 
 ___
 
@@ -165,4 +165,4 @@ ___
 
 #### Defined in
 
-[utils/sqrtPriceMath.ts:57](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/utils/sqrtPriceMath.ts#L57)
+[utils/sqrtPriceMath.ts:57](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/utils/sqrtPriceMath.ts#L57)

@@ -6,7 +6,7 @@ title: core.ts
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-path: [`/src/mappings/core.ts`](https://github.com/Uniswap/v3-subgraph/blob/main/src/mappings/core.ts)
+path: [`/src/mappings/core.ts`](https://github.com/RingProtocol/v3-subgraph/blob/main/src/mappings/core.ts)
 
 ### handleInitialize()
 ```

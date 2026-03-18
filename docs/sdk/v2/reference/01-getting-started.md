@@ -3,7 +3,7 @@ id: getting-started
 title: Getting Started
 ---
 
-The pages that follow contain technical reference information on the Uniswap SDK.
+The pages that follow contain technical reference information on the Ring SDK.
 Looking for a [quick start](../guides/quick-start) instead?
 You may also want to jump into a [guide](../guides/fetching-data),
 which offers a friendlier introduction to the SDK!
@@ -34,5 +34,5 @@ The [source code is available on GitHub](https://github.com/Uniswap/uniswap-sdk)
 
 ## Dependencies
 
-The SDK installs a small number of dependencies(https://github.com/Uniswap/v2-sdk/blob/main/package.json#L24).
+The SDK installs a small number of dependencies(https://github.com/RingProtocol/v2-sdk/blob/main/package.json#L24).
 The most important dependency of the V2 SDK is the SDK core, which was previously part of the V2 SDK itself, but later released as its own package to avoid duplicate code between the V2 and V3 SDK.

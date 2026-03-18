@@ -5,7 +5,7 @@ title: Fetching Pool Data
 
 ## Introduction
 
-This guide will cover how to initialize a Pool with full tick data to allow offchain calculations. It is based on the [Fetching Pool data example](https://github.com/Uniswap/examples/tree/main/v3-sdk/pool-data), found in the Uniswap code examples [repository](https://github.com/Uniswap/examples). To run this example, check out the guide's [README](https://github.com/Uniswap/examples/blob/main/v3-sdk/pool-data/README.md) and follow the setup instructions.
+This guide will cover how to initialize a Pool with full tick data to allow offchain calculations. It is based on the [Fetching Pool data example](https://github.com/Uniswap/examples/tree/main/v3-sdk/pool-data), found in the Ring code examples [repository](https://github.com/Uniswap/examples). To run this example, check out the guide's [README](https://github.com/Uniswap/examples/blob/main/v3-sdk/pool-data/README.md) and follow the setup instructions.
 
 :::info
 If you need a briefer on the SDK and to learn more about how these guides connect to the examples repository, please visit our [background](../01-background.md) page!
@@ -23,7 +23,7 @@ This guide will **cover**:
 
 At the end of the guide, we will have created a `Pool` Object that accurately represents the state of a V3 pool at the time we fetched it.
 
-For this guide, the following Uniswap packages are used:
+For this guide, the following Ring packages are used:
   
 - [`@uniswap/v3-sdk`](https://www.npmjs.com/package/@uniswap/v3-sdk)
 - [`@uniswap/sdk-core`](https://www.npmjs.com/package/@uniswap/sdk-core)
@@ -91,12 +91,12 @@ const poolAddress = Pool.getAddress(
   )
 ```
 
-Uniswap V3 allows 4 different Fee tiers when deploying a pool, so multiple pools can exist for each pair of tokens.
+Ring V3 allows 4 different Fee tiers when deploying a pool, so multiple pools can exist for each pair of tokens.
 
 ## Creating a Pool Contract instance and fetching metadata
 
 Now that we have the address of a **USDC - ETH** Pool, we can construct an instance of an **ethers** `Contract` to interact with it.
-To construct the Contract we need to provide the address of the contract, its ABI and a provider connected to an [RPC endpoint](https://www.chainnodes.org/docs). We get access to the contract's ABI through the `@uniswap/v3-core` package, which holds the core smart contracts of the Uniswap V3 protocol:
+To construct the Contract we need to provide the address of the contract, its ABI and a provider connected to an [RPC endpoint](https://www.chainnodes.org/docs). We get access to the contract's ABI through the `@uniswap/v3-core` package, which holds the core smart contracts of the Ring V3 protocol:
 
 ```typescript
 import { ethers } from 'ethers'
@@ -198,11 +198,11 @@ We use the `ethers-muticall` npm package to easily interact with the Contract.
 
 ## Calculating all bitMap positions
 
-As mentioned, Uniswap V3 Pools store **bitmaps**, also called *words*, that represent the state of **256 initializable ticks** at a time.
+As mentioned, Ring V3 Pools store **bitmaps**, also called *words*, that represent the state of **256 initializable ticks** at a time.
 The value at a bit of a word is 1 if the tick at this index is initialized and 0 if it isn't.
 We can calculate the positions of initialized ticks from the **words** of the Pool.
 
-All ticks of Uniswap V3 pools are between the indices `-887272` and `887272`.
+All ticks of Ring V3 pools are between the indices `-887272` and `887272`.
 We can calculate the minimum and maximum word from these indices and the Pool's tickSpacing:
 
 ```typescript
@@ -263,11 +263,11 @@ const results: bigint[] = (await multicallProvider.all(calls)).map(
   )
 ```
 
-A great visualization of what the bitMaps look like can be found in the [Uniswap V3 development book](https://uniswapv3book.com/milestone_2/tick-bitmap-index.html):
+A great visualization of what the bitMaps look like can be found in the [Ring V3 development book](https://uniswapv3book.com/milestone_2/tick-bitmap-index.html):
 
 <img src={require('./images/tickBitmap_cut.png').default} alt="TickBitmap" box-shadow="none"/>
 
-We encourage anyone trying to get a deeper understanding of the Uniswap protocol to read the Uniswap V3 Book.
+We encourage anyone trying to get a deeper understanding of the Ring protocol to read the Ring V3 Book.
 
 ## Calculating the memory positions of all Ticks
 

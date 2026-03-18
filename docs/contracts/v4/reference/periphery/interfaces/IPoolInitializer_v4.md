@@ -7,7 +7,7 @@ Interface for the PoolInitializer_v4 contract
 ## Functions
 ### initializePool
 
-Initialize a Uniswap v4 Pool
+Initialize a Ring v4 Pool
 
 *If the pool is already initialized, this function will not revert and just return type(int24).max*
 

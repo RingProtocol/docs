@@ -6,22 +6,22 @@ sidebar_position: 1
 
 # Introduction & Overview
 
-## What is the Uniswap Liquidity Launchpad?
+## What is the Ring Liquidity Launchpad?
 
-The Uniswap Liquidity Launchpad is a comprehensive framework for bootstrapping initial liquidity for Uniswap V4 pools through fair, transparent price discovery (see <a href='/whitepaper_cca.pdf' target='_blank' rel='noopener noreferrer'>whitepaper</a>). It combines three critical functions into a single, composable system:
+The Ring Liquidity Launchpad is a comprehensive framework for bootstrapping initial liquidity for Ring V4 pools through fair, transparent price discovery (see <a href='/whitepaper_cca.pdf' target='_blank' rel='noopener noreferrer'>whitepaper</a>). It combines three critical functions into a single, composable system:
 
 1. **Price Discovery** - Run fair auctions using a novel Continuous Clearing Auction (CCA) mechanism to establish market price
-2. **Liquidity Bootstrapping** - Automatically seed Uniswap V4 pools with auction proceeds at the discovered price
+2. **Liquidity Bootstrapping** - Automatically seed Ring V4 pools with auction proceeds at the discovered price
 3. **Token Creation** (Optional) - Deploy new ERC-20 tokens with rich metadata and optional cross-chain capabilities
 
-Unlike traditional approaches that rely on centralized market makers or expose participants to timing games and manipulation, the Uniswap Liquidity Launchpad provides an open mechanism for boostrapping deep liquidity on decentralized exchanges.
+Unlike traditional approaches that rely on centralized market makers or expose participants to timing games and manipulation, the Ring Liquidity Launchpad provides an open mechanism for boostrapping deep liquidity on decentralized exchanges.
 
 The system is composable - it is not limited to the intial set of implementation contracts. Other auction and LBPStrategy implementations are welcome!
 
 ### Key Benefits
 
 - **Fair Price Discovery** - Continuous clearing auctions eliminate timing games and establish credible market prices
-- **Immediate Deep Liquidity** - Seamless transition from price discovery to active Uniswap V4 trading with substantial initial depth
+- **Immediate Deep Liquidity** - Seamless transition from price discovery to active Ring V4 trading with substantial initial depth
 - **Permissionless** - Anyone can bootstrap liquidity or participate in price discovery without gatekeepers
 - **Transparent** - All parameters are immutable after they are set
 - **Composable** - Modular architecture supports multiple auction formats and distribution strategies
@@ -29,7 +29,7 @@ The system is composable - it is not limited to the intial set of implementation
 
 ## Core Components
 
-The Uniswap Liquidity Launchpad framework is built on three coordinated components that work together to bootstrap liquidity:
+The Ring Liquidity Launchpad framework is built on three coordinated components that work together to bootstrap liquidity:
 
 1. **[Liquidity Launcher →](https://github.com/Uniswap/liquidity-launcher)** Central orchestration contract that coordinates distribution and liquidity deployment
 2. **[Token Factory →](https://github.com/Uniswap/uerc20-factory)** (Optional) Creates new ERC-20 tokens with metadata, or integrates existing tokens
@@ -72,7 +72,7 @@ The following actions must be performed atomically within one transaction.
 4. **Seeding Liquidity**
 
    Anyone can call the `migrate()` function on the `LBPStrategy` after the configured `migrationBlock`. This does the following:
-   - Initialize a new Uniswap V4 pool at the price from the auction
+   - Initialize a new Ring V4 pool at the price from the auction
    - Deploy a full-range LP position using the auction proceeds + reserve tokens
    - (Optionally) deploy a one-sided position with remaining tokens
    - Mint the LP NFT to the a specified `positionRecipient`
@@ -80,7 +80,7 @@ The following actions must be performed atomically within one transaction.
 
 5. **After Migration**
 
-   The pool will be live on Uniswap V4 with deep liquidity around the discovered price. Participants in the auction can claim their purchased tokens on the auction after `claimBlock`, and these instances of the LBPStrategy + Auction contracts should hold no funds after all bids are withdrawn and all actions performed.
+   The pool will be live on Ring V4 with deep liquidity around the discovered price. Participants in the auction can claim their purchased tokens on the auction after `claimBlock`, and these instances of the LBPStrategy + Auction contracts should hold no funds after all bids are withdrawn and all actions performed.
 
 ## Next Steps
 

@@ -86,7 +86,7 @@ export default function Root({ children }: React.PropsWithChildren<{ open: boole
 
   // Fires on route change
   useEffect(() => {
-    // Send to Amplitude via Uniswap analytics
+    // Send to Amplitude via Ring analytics
     sendAnalyticsEvent(SharedEventName.PAGE_VIEWED, {
       page: pathname,
     })

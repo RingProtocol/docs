@@ -5,10 +5,10 @@ sidebar_position: 4
 ---
 
 :::note
-Uniswap v4 does not include built-in oracle functionality. If you're unfamiliar with oracles, check out the Ethereum Foundation's [oracle overview](https://ethereum.org/en/developers/docs/oracles/).
+Ring v4 does not include built-in oracle functionality. If you're unfamiliar with oracles, check out the Ethereum Foundation's [oracle overview](https://ethereum.org/en/developers/docs/oracles/).
 :::
 
-All Uniswap v3 pools can serve as oracles, offering access to historical price and liquidity data. This capability unlocks a wide range of on-chain use cases.
+All Ring v3 pools can serve as oracles, offering access to historical price and liquidity data. This capability unlocks a wide range of on-chain use cases.
 
 Historical data is stored as an array of observations. At first, each pool tracks only a single observation, overwriting it as blocks elapse. This limits how far into the past users may access data. However, any party willing to pay the transaction fees may [increase the number of tracked observations](../../contracts/v3/reference/core/UniswapV3Pool#increaseobservationcardinalitynext) (up to a maximum of `65535`), expanding the period of data availability to ~9 days or more.
 
@@ -90,4 +90,4 @@ Ticks are signed integers and can be expressed as a negative number, so for any 
 
 ### Arbitrum One
 
-On Arbitrum One, multiple transactions can be part of a block, and [multiple blocks](https://arbiscan.io/blocks) are usually created per second (up to a maximum of 4 blocks per second). Their `block.timestamp` reflect the time at which the block was produced based on the sequencer's clock (see [Arbitrum's sequencer documentation](https://docs.arbitrum.io/sequencer) to learn more about its trust assumptions), so observations have enough granularity to make the oracle more difficult to manipulate. Thus, Uniswap pools on Arbitrum One are suitable for providing oracle prices. For more information on how block numbers and time work on Arbitrum One, please see the [Arbitrum documentation portal](https://docs.arbitrum.io/time).
+On Arbitrum One, multiple transactions can be part of a block, and [multiple blocks](https://arbiscan.io/blocks) are usually created per second (up to a maximum of 4 blocks per second). Their `block.timestamp` reflect the time at which the block was produced based on the sequencer's clock (see [Arbitrum's sequencer documentation](https://docs.arbitrum.io/sequencer) to learn more about its trust assumptions), so observations have enough granularity to make the oracle more difficult to manipulate. Thus, Ring pools on Arbitrum One are suitable for providing oracle prices. For more information on how block numbers and time work on Arbitrum One, please see the [Arbitrum documentation portal](https://docs.arbitrum.io/time).

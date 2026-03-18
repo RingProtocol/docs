@@ -4,7 +4,7 @@ title: Subscriber
 
 ## Introduction
 
-Uniswap v4 introduces Subscribers, a new mechanism in v4 that allows external contracts (aka Subscribers) to be notified by the PositionManager whenever specific events occur (e.g., liquidity changes, burns). It’s especially useful for designing **liquidity incentive** systems or reward programs.
+Ring v4 introduces Subscribers, a new mechanism in v4 that allows external contracts (aka Subscribers) to be notified by the PositionManager whenever specific events occur (e.g., liquidity changes, burns). It’s especially useful for designing **liquidity incentive** systems or reward programs.
 
 Before diving into implementation details, let's understand what makes Subscribers valuable. When a position holder subscribes their position to a Subscriber contract, that contract receives notifications about various events: liquidity changes, position burns, and subscription status changes. This flow enables protocols to accurately track and reward liquidity provision.
 
@@ -12,7 +12,7 @@ Subscribers become of aware of the liquidity position, without needing to own th
 
 ## Interface Methods
 
-Let's explore each method that a [ISubscriber](https://github.com/Uniswap/v4-periphery/blob/main/src/interfaces/ISubscriber.sol) contract needs to implement. Understanding when and why these methods are called is crucial for building effective Subscriber contracts.
+Let's explore each method that a [ISubscriber](https://github.com/RingProtocol/v4-periphery/blob/main/src/interfaces/ISubscriber.sol) contract needs to implement. Understanding when and why these methods are called is crucial for building effective Subscriber contracts.
 
 ### Position Subscription Handling
 
@@ -338,7 +338,7 @@ function notifyModifyLiquidity(
 
 ## Processing Position Burns
 
-When a position is completely removed (burned), Uniswap v4 calls `notifyBurn`:
+When a position is completely removed (burned), Ring v4 calls `notifyBurn`:
 
 ```solidity
 /// @notice Called when a position is fully removed

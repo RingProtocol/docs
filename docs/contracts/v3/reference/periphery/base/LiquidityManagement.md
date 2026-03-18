@@ -1,4 +1,4 @@
-Internal functions for safely managing liquidity in Uniswap V3
+Internal functions for safely managing liquidity in Ring V3
 
 ## Parameter Structs
 

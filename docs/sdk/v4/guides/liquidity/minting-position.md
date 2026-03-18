@@ -6,19 +6,19 @@ sidebar_position: 1
 
 ## Introduction
 
-This guide will introduce us to liquidity positions in Uniswap v4 and present the v4-sdk classes and contracts used to interact with the protocol.
+This guide will introduce us to liquidity positions in Ring v4 and present the v4-sdk classes and contracts used to interact with the protocol.
 
-For this guide, the following Uniswap packages are used:
+For this guide, the following Ring packages are used:
 
 - [`@uniswap/v3-sdk`](https://www.npmjs.com/package/@uniswap/v3-sdk)
 - [`@uniswap/v4-sdk`](https://www.npmjs.com/package/@uniswap/v4-sdk)
 - [`@uniswap/sdk-core`](https://www.npmjs.com/package/@uniswap/sdk-core)
 
-## Overview of Uniswap v4 Position Minting
+## Overview of Ring v4 Position Minting
 
-Uniswap v4 introduces a new PositionManager contract and a corresponding v4 SDK to manage liquidity positions. Like v3, liquidity positions are represented as NFTs, but v4 uses a command-based interface for bundling actions (e.g., minting liquidity and transferring tokens) into a single transaction.
+Ring v4 introduces a new PositionManager contract and a corresponding v4 SDK to manage liquidity positions. Like v3, liquidity positions are represented as NFTs, but v4 uses a command-based interface for bundling actions (e.g., minting liquidity and transferring tokens) into a single transaction.
 
-The v4 SDK provides high-level classes – Pool, Position, and v4PositionManager – to help construct these transactions in JavaScript/TypeScript. This guide explains how to create (mint) a new liquidity position using the Uniswap v4 SDK.
+The v4 SDK provides high-level classes – Pool, Position, and v4PositionManager – to help construct these transactions in JavaScript/TypeScript. This guide explains how to create (mint) a new liquidity position using the Ring v4 SDK.
 
 We will cover:
 
@@ -207,7 +207,7 @@ console.log('Token1 amount:', position.amount1.toExact())
 
 ## Understanding MintOptions and Its Parameters
 
-Once the Position is defined, the next step is to prepare the MintOptions object. In Uniswap v4 SDK, MintOptions is a type alias that combines three sets of options: CommonOptions, CommonAddLiquidityOptions, and MintSpecificOptions. This structure covers generic transaction settings, options common to any "add liquidity" action, and options unique to minting a new position.
+Once the Position is defined, the next step is to prepare the MintOptions object. In Ring v4 SDK, MintOptions is a type alias that combines three sets of options: CommonOptions, CommonAddLiquidityOptions, and MintSpecificOptions. This structure covers generic transaction settings, options common to any "add liquidity" action, and options unique to minting a new position.
 
 ### MintOptions Parameters Explained
 
@@ -441,5 +441,5 @@ async function executeTransaction() {
 
 ## Further Resources
 
-- [Uniswap v4 SDK Repository](https://github.com/Uniswap/sdks/tree/main/sdks/v4-sdk)
+- [Ring v4 SDK Repository](https://github.com/Uniswap/sdks/tree/main/sdks/v4-sdk)
 - [Permit2 Documentation](/contracts/permit2/overview)

@@ -37,14 +37,14 @@ UniswapX on Ethereum uses a sophisticated two-phase auction system that balances
 
 <ins>**Quote Discovery (Steps 1-3)**</ins>
 1. User goes into the interface and inputs a swap.
-2. Uniswap Labs fetches two quotes in parallel:
-    - **Classic Quote**: This quote reflects the best price the user can get from classic Uniswap Protocol pools.
+2. Ring Labs fetches two quotes in parallel:
+    - **Classic Quote**: This quote reflects the best price the user can get from classic Ring Protocol pools.
     - **UniswapX Quote**: A quote determined via a Request for Quote (RFQ) process with quoters. Because of the nature of the system, this set of market makers is permissioned and known to Labs.
-3. Uniswap Labs selects the best quote (soft quote) returned and compares it to the Classic Quote. If the UniswapX quote is better, the user is shown a purple lightning bolt <img src="/img/bolt.svg" alt="Bolt icon" style={{height: "1em", width: "1em", display: "inline", verticalAlign: "middle", margin: "0 0.2em"}} />, indicating that they will be swapping through X.
+3. Ring Labs selects the best quote (soft quote) returned and compares it to the Classic Quote. If the UniswapX quote is better, the user is shown a purple lightning bolt <img src="/img/bolt.svg" alt="Bolt icon" style={{height: "1em", width: "1em", display: "inline", verticalAlign: "middle", margin: "0 0.2em"}} />, indicating that they will be swapping through X.
 
 <ins>**Order Execution (Steps 4-5)**</ins>
 4. The UniswapX Quote contains auction parameters, which the user signs to create a gasless off-chain message. This signed message commits to the auction parameters and defines a slippage tolerance, representing the minimum amount the swapper will accept.
-5. This gets sent to Uniswap Labs' server, which requests a final "hard quote" from the group of quoters. Whichever quote (hard quote) is highest wins exclusivity and gives the quoter a fixed amount of time to fill the order (sending users their tokens and settling the transaction).
+5. This gets sent to Ring Labs' server, which requests a final "hard quote" from the group of quoters. Whichever quote (hard quote) is highest wins exclusivity and gives the quoter a fixed amount of time to fill the order (sending users their tokens and settling the transaction).
     - If no quoter provides the amount that the swapper had signed for (e.g. prices moved), then the order is sent out without exclusivity, meaning anyone can fill the order.
 
 <ins>**Fallback Mechanisms (Steps 6-7)**</ins>
@@ -62,7 +62,7 @@ UniswapX on Ethereum uses a sophisticated two-phase auction system that balances
 :::note Cosigners
 Cosigners update auction parameters to reflect real-time prices, compensating for the delay between quoting and signing (which can be up to 30 seconds). They set the auction start block and adjust pricing within the user's signed parameters, while never exceeding the user's slippage tolerance. If you'd like to see how the Cosigner works in practice, please see the technical overview of [UniswapX V2 on Mainnet](/contracts/uniswapx/fillers/mainnet/02-v1-vs-v2.md). 
 <br/>
-Currently, the Uniswap Interface and Trading API sets the cosigner to Uniswap Labs, though this could be updated in the future.
+Currently, the Ring Interface and Trading API sets the cosigner to Ring Labs, though this could be updated in the future.
 :::
 
 ## Arbitrum: Dutch Auction
@@ -72,12 +72,12 @@ TL;DR — **Direct Dutch auction without RFQ, leveraging fast block times for on
 Because Arbitrum's block frequency is much higher than Ethereum's, the Dutch auction can decay through more price points in the same amount of time. For example, exploring 5 price points takes 60 seconds on Ethereum (5 × 12-second blocks) but only 1.25 seconds on Arbitrum (5 × 0.25-second blocks). This speed advantage eliminates the need for an RFQ process since the auction can open directly to all fillers without exclusivity and still deliver excellent price discovery within an acceptable timeframe.
 
 
-1. Based on the token pair and AMM liquidity, Uniswap Labs determines whether the swap will likely benefit from UniswapX.
+1. Based on the token pair and AMM liquidity, Ring Labs determines whether the swap will likely benefit from UniswapX.
 2. If not, the user is routed to the AMM.
 3. If so, an algorithm (called Unimind) sets the auction start and end prices (auction parameters) based on the historical performance of this pair.
-    - Unimind is a gradient descent algorithm developed by Uniswap Labs to optimize both the amount given to the swapper and auction speed.
-4. The user signs the auction parameters and sends them to Uniswap Labs.
-5. Uniswap Labs updates the auction parameters to set the auction start block and sends the auction to fillers.
+    - Unimind is a gradient descent algorithm developed by Ring Labs to optimize both the amount given to the swapper and auction speed.
+4. The user signs the auction parameters and sends them to Ring Labs.
+5. Ring Labs updates the auction parameters to set the auction start block and sends the auction to fillers.
 6. Fillers compete to fill the auction onchain.
 
 ## Base & Unichain: Priority Gas Auctions
@@ -88,9 +88,9 @@ OP Stack rollups use Priority Ordering, a method for determining the order of tr
 
 Unlike a Dutch auction that decays over time, Priority Orders function more like a traditional English auction, where the auction starts at the user's max slippage tolerance. At a specified start block, the auction opens and fillers simultaneously submit their bids by including priority fees with their transactions. The highest priority fee wins the right to fill the order, while competing transactions revert.
 
-1. Based on the token pair and AMM liquidity, Uniswap Labs determines whether the swap will likely benefit from UniswapX.
+1. Based on the token pair and AMM liquidity, Ring Labs determines whether the swap will likely benefit from UniswapX.
 2. If not, the user is routed to the AMM.
 3. If so, the auction is created using the classic price and max slippage provided by the user.
-4. The user signs the auction parameters and sends them to Uniswap Labs.
-5. Uniswap Labs updates the auction parameters to set the auction start block and sends the auction to fillers.
+4. The user signs the auction parameters and sends them to Ring Labs.
+5. Ring Labs updates the auction parameters to set the auction start block and sends the auction to fillers.
 6. Fillers compete to fill the auction onchain by submitting transactions with varying priority fees at the target block.

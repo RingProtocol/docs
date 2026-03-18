@@ -4,21 +4,21 @@ sidebar_position: 1
 title: Overview
 ---
 
-## Uniswap APIs
+## Ring APIs
 
-Welcome to the Uniswap API documentation. Uniswap provides several APIs and data sources to help developers integrate with and build on top of the Uniswap protocol.
+Welcome to the Ring API documentation. Ring provides several APIs and data sources to help developers integrate with and build on top of the Ring protocol.
 
 ## Available APIs
 
 ### Subgraph API
-The Uniswap Subgraph provides a GraphQL API for querying historical and real-time data from the Uniswap protocol.
+The Ring Subgraph provides a GraphQL API for querying historical and real-time data from the Ring protocol.
 
-- **[Subgraph Documentation](./subgraph/overview)** - Learn how to query Uniswap data using GraphQL
+- **[Subgraph Documentation](./subgraph/overview)** - Learn how to query Ring data using GraphQL
 - **[Subgraph Examples](./subgraph/guides/v4-subgraph-example)** - Practical examples and queries
 - **[v3 Subgraph Guide](./subgraph/guides/v3-subgraph-example)** - Legacy v3 protocol queries
 
 ### Routing API
-The Uniswap Routing API provides optimized trade routes and quotes for swaps.
+The Ring Routing API provides optimized trade routes and quotes for swaps.
 
 - **Smart Order Routing** - Find the best prices across multiple pools
 - **Gas Optimization** - Routes optimized for gas efficiency
@@ -54,7 +54,7 @@ The Subgraph API is perfect for:
 
 ## Support and Resources
 
-- **Discord**: Join the Uniswap developer community
+- **Discord**: Join the Ring developer community
 - **GitHub**: Explore code examples and integrations
 - **Documentation**: Comprehensive guides and references
 

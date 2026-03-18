@@ -3,7 +3,7 @@ id: modules
 title: Type Definitions
 ---
 
-This page documents the core type definitions and interfaces used throughout the Uniswap SDK Core.
+This page documents the core type definitions and interfaces used throughout the Ring SDK Core.
 
 ## Core Types
 

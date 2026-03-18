@@ -18,7 +18,7 @@ This guide will **cover**:
 
 At the end of the guide, we will have created a `Pool` Object that accurately represents the state of a v4 pool at the time we fetched it.
 
-For this guide, the following Uniswap packages are used:
+For this guide, the following Ring packages are used:
   
 - [`@uniswap/v4-sdk`](https://www.npmjs.com/package/@uniswap/v4-sdk)
 - [`@uniswap/sdk-core`](https://www.npmjs.com/package/@uniswap/sdk-core)
@@ -101,7 +101,7 @@ const stateViewContract = new ethers.Contract(
 )
 ```
 
-We get the `STATE_VIEW_ADDRESS` for our chain from [Uniswap Deployments](/contracts/v4/deployments).
+We get the `STATE_VIEW_ADDRESS` for our chain from [Ring Deployments](/contracts/v4/deployments).
 Once we have set up our reference to the contract, we can proceed to access its methods. To construct our offchain representation of the Pool, we need to fetch its liquidity, sqrtPrice, currently active tick and the full Tick data.
 We get the **liquidity**, **sqrtPrice** and **tick** directly from the blockchain by calling `getLiquidity()`and `getSlot0()` on the StateView contract:
 
@@ -180,11 +180,11 @@ We use the `ethers-muticall` npm package to easily interact with the Contract.
 
 ## Calculating all bitMap positions
 
-As mentioned, Uniswap v4 Pools store **bitmaps**, also called *words*, that represent the state of **256 initializable ticks** at a time.
+As mentioned, Ring v4 Pools store **bitmaps**, also called *words*, that represent the state of **256 initializable ticks** at a time.
 The value at a bit of a word is 1 if the tick at this index is initialized and 0 if it isn't.
 We can calculate the positions of initialized ticks from the **words** of the Pool.
 
-All ticks of Uniswap v4 pools are between the indices `-887272` and `887272`.
+All ticks of Ring v4 pools are between the indices `-887272` and `887272`.
 We can calculate the minimum and maximum word from these indices and the Pool's tickSpacing:
 
 ```typescript
@@ -245,11 +245,11 @@ const results: bigint[] = (await multicallProvider.all(calls)).map(
   )
 ```
 
-A great visualization of what the bitMaps look like can be found in the [Uniswap v3 development book](https://uniswapv3book.com/docs/milestone_2/tick-bitmap-index/](https://uniswapv3book.com/milestone_2/tick-bitmap-index.html):
+A great visualization of what the bitMaps look like can be found in the [Ring v3 development book](https://uniswapv3book.com/docs/milestone_2/tick-bitmap-index/](https://uniswapv3book.com/milestone_2/tick-bitmap-index.html):
 
 <img src={require('./images/tickBitmap_cut.png').default} alt="TickBitmap" box-shadow="none"/>
 
-We encourage anyone trying to get a deeper understanding of the Uniswap protocol to read the Book.
+We encourage anyone trying to get a deeper understanding of the Ring protocol to read the Book.
 
 ## Calculating the memory positions of all Ticks
 

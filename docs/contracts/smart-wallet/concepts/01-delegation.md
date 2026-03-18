@@ -6,7 +6,7 @@ sidebar_position: 1
 
 This contract is meant to be used with [EIP-7702](https://eips.ethereum.org/EIPS/eip-7702): Set Code for EOAs. After the Ethereum Pectra fork, Externally Owned Accounts (EOAs) can now internalize code at a remotely deployed smart contract address. This process is called **delegation.** 
 
-For simplicity, we will refer to these EOAs as *users* and these remote smart contracts as *implementations.* The term *Smart Wallet* will refer to the Uniswap smart wallet product.
+For simplicity, we will refer to these EOAs as *users* and these remote smart contracts as *implementations.* The term *Smart Wallet* will refer to the Ring smart wallet product.
 
 Users can only be delegated to one contract at a time but can have other delegations on different chains.
 

@@ -3,7 +3,7 @@
 
 Provides function for converting numbers to hexadecimal strings
 
-*Reference: https://github.com/Uniswap/v3-periphery/blob/main/contracts/libraries/HexStrings.sol*
+*Reference: https://github.com/RingProtocol/v3-periphery/blob/main/contracts/libraries/HexStrings.sol*
 
 
 ## State Variables

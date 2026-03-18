@@ -7,7 +7,7 @@ Developing smart contracts for Ethereum involves a variety of off-chain tools us
 that runs on the [Ethereum Virtual Machine (EVM)](<https://eth.wiki/en/concepts/evm/ethereum-virtual-machine-(evm)-awesome-list>).
 Some tools also include workflows for deploying this bytecode to the Ethereum network and testnets.
 There are many options for these tools. This guide walks you through writing and testing a simple smart contract that
-interacts with the Uniswap Protocol using one specific set of tools (`truffle` + `npm` + `mocha`).
+interacts with the Ring Protocol using one specific set of tools (`truffle` + `npm` + `mocha`).
 
 ## Requirements
 
@@ -29,7 +29,7 @@ npx truffle init
 
 ## Setting up npm
 
-In order to reference the Uniswap V2 contracts, you should use the npm artifacts we deploy containing the core and
+In order to reference the Ring V2 contracts, you should use the npm artifacts we deploy containing the core and
 periphery smart contracts and interfaces. To add npm dependencies, we must first initialize the npm package.
 We can run `npm init` in the same directory to create a `package.json` file. You can accept all the defaults and
 modify them later.
@@ -49,7 +49,7 @@ npm i --save @uniswap/v2-core
 npm i --save @uniswap/v2-periphery
 ```
 
-If you check the `node_modules/@uniswap` directory, you can now find the Uniswap V2 contracts.
+If you check the `node_modules/@uniswap` directory, you can now find the Ring V2 contracts.
 
 ```shell script
 moody@MacBook-Pro ~/I/u/demo> ls node_modules/@uniswap/v2-core/contracts
@@ -176,10 +176,10 @@ In order to test your contract, you need to:
 
 \#1 is handled for you automatically by the `truffle test` command.
 
-Note that you should only deploy the precompiled Uniswap contracts in the `build` directories for unit tests.
+Note that you should only deploy the precompiled Ring contracts in the `build` directories for unit tests.
 This is because solidity appends a metadata hash to compiled contract artifacts which includes the hash of the contract
 source code path, and compilations on other machines will not result in the exact same bytecode.
-This is problematic because in Uniswap V2 we use the hash of the bytecode in the v2-periphery
+This is problematic because in Ring V2 we use the hash of the bytecode in the v2-periphery
 [`UniswapV2Library`](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/libraries/UniswapV2Library.sol#L24),
 to compute the pair address.
 

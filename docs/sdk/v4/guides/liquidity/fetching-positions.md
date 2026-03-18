@@ -6,9 +6,9 @@ sidebar_position: 2
 
 ## Introduction
 
-This guide covers how to fetch and analyze liquidity positions in Uniswap v4 using the v4-sdk.
+This guide covers how to fetch and analyze liquidity positions in Ring v4 using the v4-sdk.
 
-For this guide, the following Uniswap packages are used:
+For this guide, the following Ring packages are used:
 
 - [`@uniswap/v4-sdk`](https://www.npmjs.com/package/@uniswap/v4-sdk)
 - [`@uniswap/sdk-core`](https://www.npmjs.com/package/@uniswap/sdk-core)
@@ -226,5 +226,5 @@ fetchUserPositions('0xYourAddress' as Address)
 
 ## Resources
 
-- [Uniswap v4 SDK](https://github.com/Uniswap/sdks/tree/main/sdks/v4-sdk)
+- [Ring v4 SDK](https://github.com/Uniswap/sdks/tree/main/sdks/v4-sdk)
 - [Unichain Documentation](https://docs.unichain.org/)

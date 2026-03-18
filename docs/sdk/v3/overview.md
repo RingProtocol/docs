@@ -4,7 +4,7 @@ sidebar_position: 1
 title: Overview
 ---
 
-The Uniswap v3 SDK provides abstractions to assist you with interacting with the Uniswap v3 smart contracts in a Typescript/Javascript environment (e.g. websites, node scripts). It makes uses of the [**Core SDK**](../core/overview.md) to gain access to abstractions that are common amongst the Uniswap SDKs. With the SDK, you can manipulate data that has been queried from the [EVM](https://ethereum.org/en/developers/docs/evm/) using libraries that assist with needs such as data modeling, protection from rounding errors, and compile time enforced typing.
+The Ring v3 SDK provides abstractions to assist you with interacting with the Ring v3 smart contracts in a Typescript/Javascript environment (e.g. websites, node scripts). It makes uses of the [**Core SDK**](../core/overview.md) to gain access to abstractions that are common amongst the Ring SDKs. With the SDK, you can manipulate data that has been queried from the [EVM](https://ethereum.org/en/developers/docs/evm/) using libraries that assist with needs such as data modeling, protection from rounding errors, and compile time enforced typing.
 
 To begin, we recommend looking at our [**Guides**](./guides/01-background.md) which include [runnable examples](https://github.com/Uniswap/examples/tree/main/v3-sdk) and walkthroughs of core usages. These guides will help you better understand how to use the SDK and integrate it into your application.
 
@@ -21,7 +21,7 @@ npm i --save @uniswap/sdk-core
 
 ## Developer Links
 
-- [**v3 SDK GitHub Repo**](https://github.com/Uniswap/v3-sdk)
+- [**v3 SDK GitHub Repo**](https://github.com/RingProtocol/v3-sdk)
 - [**Core SDK GitHub Repo**](https://github.com/Uniswap/sdk-core)
 - [**v3 SDK NPM Package**](https://www.npmjs.com/package/@uniswap/v3-sdk)
 

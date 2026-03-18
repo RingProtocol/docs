@@ -5,15 +5,15 @@ title: Liquidity Positions
 
 ## Introduction
 
-This guide will introduce us to **liquidity positions** in Uniswap V3 and present the `v3-sdk` classes and Contracts used to interact with the protocol.
-The concepts and code snippets showcased here can be found across the **Pooling Liquidity** examples in the Uniswap code examples [repository](https://github.com/Uniswap/examples).
+This guide will introduce us to **liquidity positions** in Ring V3 and present the `v3-sdk` classes and Contracts used to interact with the protocol.
+The concepts and code snippets showcased here can be found across the **Pooling Liquidity** examples in the Ring code examples [repository](https://github.com/Uniswap/examples).
 
 In this guide, we will take a look at the [Position](../../reference/classes/Position.md) and [NonfungiblePositionManager](../../reference/classes/NonfungiblePositionManager.md) classes, as well as the [NonfungiblePositionManager Contract](../../../../contracts/v3/reference/periphery/NonfungiblePositionManager.md).
 
 At the end of the guide, we should be familiar with the most important classes used to interact with liquidity positions.
 We should also understand how to fetch positions from the **NonfungiblePositionManager Contract**.
 
-For this guide, the following Uniswap packages are used:
+For this guide, the following Ring packages are used:
 
 - [`@uniswap/v3-sdk`](https://www.npmjs.com/package/@uniswap/v3-sdk)
 - [`@uniswap/sdk-core`](https://www.npmjs.com/package/@uniswap/sdk-core)
@@ -23,23 +23,23 @@ The code mentioned in this guide can be found across the [minting Position](http
 
 ## Prerequisites
 
-To understand what Positions are, we need to understand some underlying concepts of the Uniswap protocol.
+To understand what Positions are, we need to understand some underlying concepts of the Ring protocol.
 
-Consider checking out the [Concepts section](../../../../concepts/protocol/concentrated-liquidity.md) as well as the [Uniswap Book](https://uniswapv3book.com/docs/introduction/uniswap-v3/).
+Consider checking out the [Concepts section](../../../../concepts/protocol/concentrated-liquidity.md) as well as the [Ring Book](https://uniswapv3book.com/docs/introduction/uniswap-v3/).
 
 ### Concentrated liquidity
 
-Uniswap V3 Pools use concentrated liquidity to allow a denser concentration of liquidity at specific prices.
-Compared to the full range liquidity model Uniswap V2 uses, this allows traders to make larger trades with less price impact.
+Ring V3 Pools use concentrated liquidity to allow a denser concentration of liquidity at specific prices.
+Compared to the full range liquidity model Ring V2 uses, this allows traders to make larger trades with less price impact.
 Liquidity providers can choose a specific price range in which they want their liquidity to be used by trades.
 
-To achieve this, Uniswap V3 Pools discriminate the price range with **Ticks**.
+To achieve this, Ring V3 Pools discriminate the price range with **Ticks**.
 
 ### Ticks
 
 Ticks are the boundaries between discrete price ranges.
 A change of 1 Tick always represents a price change of 0.01% from the current price.
-Uniswap V3 Pools can have different `tickSpacings`, a constant that describes which ticks can be used by the Pool.
+Ring V3 Pools can have different `tickSpacings`, a constant that describes which ticks can be used by the Pool.
 Only ticks at indices that are divisible by the tickSpacing can be initialized.
 This value is dependant on the fee of the Pool, Pools with higher fees have higher tickSpacing.
 
@@ -57,16 +57,16 @@ In this case, the liquidity provider will pay only one type of Token into the Po
 
 To learn more about how Ticks and Liquidity positions work, consider reading the [whitepaper](https://uniswap.org/whitepaper-v3.pdf) or the other resources mentioned above.
 
-Now that we have a rough understanding of liquidity positions in Uniswap V3, let's look at the correspondent classes the SDK offers us.
+Now that we have a rough understanding of liquidity positions in Ring V3, let's look at the correspondent classes the SDK offers us.
 
 ## Position class
 
-The **sdk** provides a [`Position`](https://github.com/Uniswap/v3-sdk/blob/main/src/entities/position.ts) class used to create local representations of an onchain position.
+The **sdk** provides a [`Position`](https://github.com/RingProtocol/v3-sdk/blob/main/src/entities/position.ts) class used to create local representations of an onchain position.
 It is used to create the calldata for onchain calls to mint or modify an onchain position.
 
 There are four ways to construct a position.
 
-Directly with the [constructor](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/position.ts#L40):
+Directly with the [constructor](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/position.ts#L40):
 
 ```typescript
 import { Pool, Position } from '@uniswap/v3-sdk'
@@ -85,7 +85,7 @@ const position = new Position({
 })
 ```
 
-Using the [`fromAmounts()`](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/position.ts#L312) function:
+Using the [`fromAmounts()`](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/position.ts#L312) function:
 
 ```typescript
 import { BigIntish } from '@uniswap/sdk-core'
@@ -107,7 +107,7 @@ const position = Position.fromAmounts({
 })
 ```
 
-Or using the [`fromAmount0()`](https://github.com/Uniswap/v3-sdk/blob/08a7c050cba00377843497030f502c05982b1c43/src/entities/position.ts#L354) or [`fromAmount1()`](https://github.com/Uniswap/v3-sdk/blob/08a7c050cba00377843497030f502c05982b1c43/src/entities/position.ts#L378) functions:
+Or using the [`fromAmount0()`](https://github.com/RingProtocol/v3-sdk/blob/08a7c050cba00377843497030f502c05982b1c43/src/entities/position.ts#L354) or [`fromAmount1()`](https://github.com/RingProtocol/v3-sdk/blob/08a7c050cba00377843497030f502c05982b1c43/src/entities/position.ts#L378) functions:
 
 ```typescript
 import { BigIntish } from '@uniswap/sdk-core'

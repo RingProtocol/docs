@@ -5,11 +5,11 @@
 [IV3FeeAdapter](/home/toda/dev/phoenix-fees/forge-docs/src/src/interfaces/IV3FeeAdapter.sol/interface.IV3FeeAdapter.md), Owned
 
 A contract that allows the setting and collecting of protocol fees per pool, and adding
-new fee tiers to the Uniswap V3 Factory.
+new fee tiers to the Ring V3 Factory.
 
 This contract is ownable. The owner can set the merkle root for proving protocol fee
-amounts per pool, set new fee tiers on Uniswap V3, and change the owner of this contract.
-Note that this contract will be the set owner on the Uniswap V3 Factory.
+amounts per pool, set new fee tiers on Ring V3, and change the owner of this contract.
+Note that this contract will be the set owner on the Ring V3 Factory.
 
 **Note:**
 security-contact: security@uniswap.org
@@ -87,7 +87,7 @@ constructor(address _factory, address _tokenJar) Owned(msg.sender);
 
 Stores a fee tier.
 
-Must be a fee tier that exists on the Uniswap V3 Factory.
+Must be a fee tier that exists on the Ring V3 Factory.
 
 
 ```solidity
@@ -102,7 +102,7 @@ function storeFeeTier(uint24 feeTier) public;
 
 ### enableFeeAmount
 
-Enables a new fee tier on the Uniswap V3 Factory.
+Enables a new fee tier on the Ring V3 Factory.
 
 Only callable by `owner`. Also updates the `feeTiers` array.
 

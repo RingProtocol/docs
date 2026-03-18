@@ -55,7 +55,7 @@ constructor(
 )
     BaseActionsRouter(_poolManager)
     Permit2Forwarder(_permit2)
-    ERC721Permit_v4("Uniswap v4 Positions NFT", "UNI-V4-POSM")
+    ERC721Permit_v4("Ring v4 Positions NFT", "UNI-V4-POSM")
     Notifier(_unsubscribeGasLimit)
     NativeWrapper(_weth9);
 ```
@@ -112,7 +112,7 @@ function tokenURI(uint256 tokenId) public view override returns (string memory);
 
 ### modifyLiquidities
 
-Unlocks Uniswap v4 PoolManager and batches actions for modifying liquidity
+Unlocks Ring v4 PoolManager and batches actions for modifying liquidity
 
 *This is the standard entrypoint for the PositionManager*
 

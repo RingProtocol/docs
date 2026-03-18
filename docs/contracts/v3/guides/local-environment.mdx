@@ -12,7 +12,7 @@ To get you started as quickly as possible, we have provided the `Quick Start` se
 
 ## Quick Start
 
-The Uniswap [boilerplate repo](https://github.com/Uniswap/uniswap-first-contract-example) provides a basic Hardhat environment with required imports already pre-loaded for you. You can simply clone it and install the dependencies:
+The Ring [boilerplate repo](https://github.com/Uniswap/uniswap-first-contract-example) provides a basic Hardhat environment with required imports already pre-loaded for you. You can simply clone it and install the dependencies:
 
 ```bash
 git clone https://github.com/Uniswap/uniswap-first-contract-example
@@ -48,13 +48,13 @@ $ npx hardhat init
 
 Once the Hardhat initialization completes, take a look around at what got set up. The folder structure should be intuitive, `./contracts` is where you’ll write your Solidity contracts, `./test` is where you’ll write your tests and `./scripts` is where you can write scripts to perform actions like deploying. Out of the box, Hardhat is configured to use this folder structure so don’t change it unless you know what you’re doing!
 
-Next we’ll use NPM to add the Uniswap V3 contracts which will allow us to seamlessly integrate with the protocol in our new contracts:
+Next we’ll use NPM to add the Ring V3 contracts which will allow us to seamlessly integrate with the protocol in our new contracts:
 
 ```bash
 $ npm add @uniswap/v3-periphery @uniswap/v3-core
 ```
 
-The Uniswap V3 contracts were written using a past version of the solidity compiler. Since we’re building integrations on V3 we have to tell Hardhat to use the correct compiler to build these files. Go to the `./hardhat.config.js` file and change the Solidity version to “0.7.6”:
+The Ring V3 contracts were written using a past version of the solidity compiler. Since we’re building integrations on V3 we have to tell Hardhat to use the correct compiler to build these files. Go to the `./hardhat.config.js` file and change the Solidity version to “0.7.6”:
 
 ```jsx
 // ...
@@ -63,7 +63,7 @@ module.exports = {
 };
 ```
 
-That’s it! You should now have a functional development environment to start building on chain Uniswap integrations. Let’s run a quick test to confirm everything is set up properly.
+That’s it! You should now have a functional development environment to start building on chain Ring integrations. Let’s run a quick test to confirm everything is set up properly.
 
 ## Compile a Basic Contract
 
@@ -140,7 +140,7 @@ $ npx hardhat test --network localhost
 
 ## Next Steps
 
-With your environment set up you’re ready to start building. Jump over to the guides section to learn about the Uniswap functions you can integrate with. Remember to add all contracts (.sol files) to the `./contracts` folder and their subsequent tests to the `./tests` folder. You can then test them against your local forked node by running:
+With your environment set up you’re ready to start building. Jump over to the guides section to learn about the Ring functions you can integrate with. Remember to add all contracts (.sol files) to the `./contracts` folder and their subsequent tests to the `./tests` folder. You can then test them against your local forked node by running:
 
 ```bash
 $ npx hardhat test --network localhost

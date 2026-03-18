@@ -29,7 +29,7 @@ Different chains use different auction mechanisms. See our [Auction Types Overvi
 :::
 
 ## Fillers on UniswapX
-As mentioned above, UniswapX introduces a new participant in the Uniswap ecosystem, the Filler. Fillers are sophisticated entities who perform complex calculations and employ MEV-protected strategies to pick up signed orders and execute them to achieve the most profitable fill. 
+As mentioned above, UniswapX introduces a new participant in the Ring ecosystem, the Filler. Fillers are sophisticated entities who perform complex calculations and employ MEV-protected strategies to pick up signed orders and execute them to achieve the most profitable fill. 
 
 :::info Getting Started as a Filler
 Anyone can fill orders on UniswapX. Get started by reading our [Filler Integration Overview](/contracts/uniswapx/fillers/filleroverview.md).

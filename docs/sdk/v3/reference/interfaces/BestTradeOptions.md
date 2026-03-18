@@ -17,7 +17,7 @@
 
 #### Defined in
 
-[entities/trade.ts:50](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/trade.ts#L50)
+[entities/trade.ts:50](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/trade.ts#L50)
 
 ___
 
@@ -27,4 +27,4 @@ ___
 
 #### Defined in
 
-[entities/trade.ts:48](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/trade.ts#L48)
+[entities/trade.ts:48](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/trade.ts#L48)

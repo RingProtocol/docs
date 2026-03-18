@@ -32,7 +32,7 @@ const footerData = {
       links: [
         {
           label: 'uniswap-v4-core',
-          href: 'https://github.com/Uniswap/v4-core',
+          href: 'https://github.com/RingProtocol/v4-core',
         },
         {
           label: 'uniswap-v4-sdk',
@@ -40,7 +40,7 @@ const footerData = {
         },
         {
           label: 'uniswap-v4-periphery',
-          href: 'https://github.com/Uniswap/v4-periphery',
+          href: 'https://github.com/RingProtocol/v4-periphery',
         },
         {
           label: 'Deployment addresses',
@@ -81,17 +81,17 @@ const footerData = {
           href: 'https://gov.uniswap.org/',
         },
         {
-          label: 'Uniswap Labs Twitter',
+          label: 'Ring Labs Twitter',
           href: 'https://twitter.com/Uniswap',
         },
         {
-          label: 'Uniswap Foundation Twitter',
+          label: 'Ring Foundation Twitter',
           href: 'https://x.com/UniswapFND',
         },
       ],
     },
   ],
-  footerGithubLink: 'https://github.com/uniswap/uniswap-docs',
+  footerGithubLink: 'https://github.com/RingProtocol/docs',
   footerXLink: 'https://x.com/UniswapFND',
   footerDiscordLink: 'https://discord.com/invite/uniswap',
 }
@@ -138,17 +138,17 @@ const Footer: FC = () => {
         </p>
         <div className="flex flex-row space-x-gap-large border-b border-light-surface-3 px-2 py-margin-web dark:border-dark-surface-3 sm:border-0 sm:px-0 sm:py-0">
           {footerData?.footerGithubLink ? (
-            <LinkBase className="group" href={footerData.footerGithubLink} ariaLabel="Link to Uniswap Labs Github">
+            <LinkBase className="group" href={footerData.footerGithubLink} ariaLabel="Link to Ring Labs Github">
               <Github className="h-6 w-6" />
             </LinkBase>
           ) : null}
           {footerData?.footerXLink ? (
-            <LinkBase className="group" href={footerData.footerXLink} ariaLabel="Link to Uniswap Labs X account">
+            <LinkBase className="group" href={footerData.footerXLink} ariaLabel="Link to Ring Labs X account">
               <X className="h-6 w-6" />
             </LinkBase>
           ) : null}
           {footerData?.footerDiscordLink ? (
-            <LinkBase className="group" href={footerData.footerDiscordLink} ariaLabel="Link to Uniswap Labs Discord">
+            <LinkBase className="group" href={footerData.footerDiscordLink} ariaLabel="Link to Ring Labs Discord">
               <Discord className="h-6 w-6" />
             </LinkBase>
           ) : null}

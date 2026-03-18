@@ -18,7 +18,7 @@
 
 #### Defined in
 
-[entities/tick.ts:7](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/tick.ts#L7)
+[entities/tick.ts:7](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/tick.ts#L7)
 
 ___
 
@@ -28,7 +28,7 @@ ___
 
 #### Defined in
 
-[entities/tick.ts:8](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/tick.ts#L8)
+[entities/tick.ts:8](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/tick.ts#L8)
 
 ___
 
@@ -38,4 +38,4 @@ ___
 
 #### Defined in
 
-[entities/tick.ts:9](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/tick.ts#L9)
+[entities/tick.ts:9](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/tick.ts#L9)

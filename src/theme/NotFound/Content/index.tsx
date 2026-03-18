@@ -2274,7 +2274,7 @@ const NotFound: FC = () => {
         <div className="flex flex-col items-center">
         <p className="text-center my-4 body-1 text-light-neutral-2 dark:text-dark-neutral-2">
           This page can't be found. If you think this is a mistake, please{" "}
-          <a href="https://github.com/Uniswap/docs/issues" target="_blank" rel="noopener noreferrer" className="inherit underline hover:opacity-70">
+          <a href="https://github.com/RingProtocol/docs/issues" target="_blank" rel="noopener noreferrer" className="inherit underline hover:opacity-70">
             report it on GitHub.
           </a>
         </p>

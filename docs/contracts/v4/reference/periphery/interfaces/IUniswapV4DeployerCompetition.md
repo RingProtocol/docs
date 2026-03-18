@@ -24,7 +24,7 @@ function updateBestAddress(bytes32 salt) external;
 
 ### deploy
 
-deploys the Uniswap v4 PoolManager contract
+deploys the Ring v4 PoolManager contract
 
 *The bytecode must match the initCodeHash*
 
@@ -36,7 +36,7 @@ function deploy(bytes memory bytecode) external;
 
 |Name|Type|Description|
 |----|----|-----------|
-|`bytecode`|`bytes`|The bytecode of the Uniswap v4 PoolManager contract|
+|`bytecode`|`bytes`|The bytecode of the Ring v4 PoolManager contract|
 
 
 ## Events

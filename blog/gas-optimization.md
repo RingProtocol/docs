@@ -32,13 +32,13 @@ Tens of thousands of ETH are spent every month by users interacting with the Uni
 
 Due to the protocol’s significant use, and reuse in the form of forks, a change in the gas optimization of a piece of protocol code that saves 1% in gas translates to millions of dollars saved by the DeFi community over the lifetime of the contracts.
 
-As a result, it is difficult to overstate the significance of these optimizations. Considerable effort goes into this work, [which](https://github.com/Uniswap/v3-core/commit/705be1eefc56a3620afe96a725c3a68951e8d4a9) [frequently](https://github.com/Uniswap/v3-core/commit/7689aa8e2adecbcf94198f79cb4f230d0419d009) [continues](https://github.com/Uniswap/v3-core/commit/225399176cf1fa562aa74345b7885e1244d95417) [right](https://github.com/Uniswap/v3-core/commit/ebcdb5225a3cf4188f4752f59fe52e6b0071909d) [up](https://github.com/Uniswap/v3-core/commit/49ce1c3a600e4c0e22e272b2144a3082663cb1ea) [to](https://github.com/Uniswap/v3-core/commit/5b485192df944273882397d804d13c2e4ebb25da) [deployment](https://github.com/Uniswap/v3-core/commit/723f90cbea93fc09ff06303bd4db03ce3b0847a1).
+As a result, it is difficult to overstate the significance of these optimizations. Considerable effort goes into this work, [which](https://github.com/RingProtocol/v3-core/commit/705be1eefc56a3620afe96a725c3a68951e8d4a9) [frequently](https://github.com/RingProtocol/v3-core/commit/7689aa8e2adecbcf94198f79cb4f230d0419d009) [continues](https://github.com/RingProtocol/v3-core/commit/225399176cf1fa562aa74345b7885e1244d95417) [right](https://github.com/RingProtocol/v3-core/commit/ebcdb5225a3cf4188f4752f59fe52e6b0071909d) [up](https://github.com/RingProtocol/v3-core/commit/49ce1c3a600e4c0e22e272b2144a3082663cb1ea) [to](https://github.com/RingProtocol/v3-core/commit/5b485192df944273882397d804d13c2e4ebb25da) [deployment](https://github.com/RingProtocol/v3-core/commit/723f90cbea93fc09ff06303bd4db03ce3b0847a1).
 
 While much of the discourse around gas optimization takes the form of specific implementation techniques, which can be quite fun to read and experiment with, we think a more helpful thing to write about is the development of a process in pursuit of gas optimization, rather than a collection of specific optimizations which may become dated as Ethereum progresses.
 
 ## Measurement
 
-If there’s one lesson to learn from this post, it’s that all optimization starts with measurement. The single biggest tool in our arsenal of gas optimization is the [snapshot test](https://jestjs.io/docs/snapshot-testing) borrowed from Jest snapshot testing. For V3, we used a snippet in combination with the [mocha-chai-jest-snapshot](https://www.npmjs.com/package/mocha-chai-jest-snapshot) plugin to record gas costs in [hundreds of situations.](https://github.com/Uniswap/v3-core/blob/ed88be38ab2032d82bf10ac6f8d03aa631889d48/test/__snapshots__/UniswapV3Pool.gas.spec.ts.snap)
+If there’s one lesson to learn from this post, it’s that all optimization starts with measurement. The single biggest tool in our arsenal of gas optimization is the [snapshot test](https://jestjs.io/docs/snapshot-testing) borrowed from Jest snapshot testing. For V3, we used a snippet in combination with the [mocha-chai-jest-snapshot](https://www.npmjs.com/package/mocha-chai-jest-snapshot) plugin to record gas costs in [hundreds of situations.](https://github.com/RingProtocol/v3-core/blob/ed88be38ab2032d82bf10ac6f8d03aa631889d48/test/__snapshots__/UniswapV3Pool.gas.spec.ts.snap)
 
 The code below, which we use in our development process, has been implemented in an NPM package for easy use in your project: [The Uniswap Gas Snapshot Test.](https://www.npmjs.com/package/@uniswap/snapshot-gas-cost)
 
@@ -80,7 +80,7 @@ export default async function snapshotGasCost(
 
 </details>
 
-This test allows us to see [every change](https://github.com/Uniswap/v3-core/pull/455/files#diff-9dd2638a0155da6d7dcf09f3866954da30e66e6a3569a6aa7794604e51ad030c) to the smart contracts - and surfaces the exact savings that the user would experience in a variety of situations. It’s essential to commit these snapshots to the repository so that future changes can be compared against the current gas costs of your smart contracts.
+This test allows us to see [every change](https://github.com/RingProtocol/v3-core/pull/455/files#diff-9dd2638a0155da6d7dcf09f3866954da30e66e6a3569a6aa7794604e51ad030c) to the smart contracts - and surfaces the exact savings that the user would experience in a variety of situations. It’s essential to commit these snapshots to the repository so that future changes can be compared against the current gas costs of your smart contracts.
 
 Now that the basics of the concepts are covered, how do you decide where to spend your time optimizing?
 

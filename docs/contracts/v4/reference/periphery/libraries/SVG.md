@@ -1,9 +1,9 @@
 # SVG
 [Git Source](https://github.com/uniswap/v4-periphery/blob/ea2bf2e1ba6863bb809fc2ff791744f308c4a26d/src/libraries/SVG.sol) - Generated with [forge doc](https://book.getfoundry.sh/reference/forge/forge-doc)
 
-Provides a function for generating an SVG associated with a Uniswap NFT
+Provides a function for generating an SVG associated with a Ring NFT
 
-*Reference: https://github.com/Uniswap/v3-periphery/blob/main/contracts/libraries/NFTSVG.sol*
+*Reference: https://github.com/RingProtocol/v3-periphery/blob/main/contracts/libraries/NFTSVG.sol*
 
 
 ## State Variables
@@ -66,7 +66,7 @@ string constant curve8 = "M1 1C1 97 49 145 145 145";
 ## Functions
 ### generateSVG
 
-Generate the SVG associated with a Uniswap v4 NFT
+Generate the SVG associated with a Ring v4 NFT
 
 
 ```solidity

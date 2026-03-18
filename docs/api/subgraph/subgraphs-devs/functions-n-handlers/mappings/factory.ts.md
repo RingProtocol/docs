@@ -6,7 +6,7 @@ title: factory.ts
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-path: [`/src/mappings/factory.ts`](https://github.com/Uniswap/v3-subgraph/blob/main/src/mappings/factory.ts)
+path: [`/src/mappings/factory.ts`](https://github.com/RingProtocol/v3-subgraph/blob/main/src/mappings/factory.ts)
 
 ### handlePoolCreated()
 ```

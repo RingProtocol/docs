@@ -20,7 +20,7 @@
 
 #### Defined in
 
-[nonfungiblePositionManager.ts:131](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L131)
+[nonfungiblePositionManager.ts:131](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L131)
 
 ___
 
@@ -30,7 +30,7 @@ ___
 
 #### Defined in
 
-[nonfungiblePositionManager.ts:129](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L129)
+[nonfungiblePositionManager.ts:129](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L129)
 
 ___
 
@@ -40,7 +40,7 @@ ___
 
 #### Defined in
 
-[nonfungiblePositionManager.ts:130](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L130)
+[nonfungiblePositionManager.ts:130](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L130)
 
 ___
 
@@ -50,7 +50,7 @@ ___
 
 #### Defined in
 
-[nonfungiblePositionManager.ts:132](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L132)
+[nonfungiblePositionManager.ts:132](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L132)
 
 ___
 
@@ -60,4 +60,4 @@ ___
 
 #### Defined in
 
-[nonfungiblePositionManager.ts:128](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L128)
+[nonfungiblePositionManager.ts:128](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L128)

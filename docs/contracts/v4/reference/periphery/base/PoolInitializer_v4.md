@@ -4,7 +4,7 @@
 **Inherits:**
 [ImmutableState](contracts/v4/reference/periphery/base/ImmutableState.md), [IPoolInitializer_v4](contracts/v4/reference/periphery/interfaces/IPoolInitializer_v4.md)
 
-Initializes a Uniswap v4 Pool
+Initializes a Ring v4 Pool
 
 *Enables create pool + mint liquidity in a single transaction with multicall*
 
@@ -12,7 +12,7 @@ Initializes a Uniswap v4 Pool
 ## Functions
 ### initializePool
 
-Initialize a Uniswap v4 Pool
+Initialize a Ring v4 Pool
 
 *If the pool is already initialized, this function will not revert and just return type(int24).max*
 

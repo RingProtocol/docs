@@ -20,7 +20,7 @@
 
 #### Defined in
 
-[selfPermit.ts:10](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/selfPermit.ts#L10)
+[selfPermit.ts:10](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/selfPermit.ts#L10)
 
 ___
 
@@ -30,7 +30,7 @@ ___
 
 #### Defined in
 
-[selfPermit.ts:11](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/selfPermit.ts#L11)
+[selfPermit.ts:11](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/selfPermit.ts#L11)
 
 ___
 
@@ -40,7 +40,7 @@ ___
 
 #### Defined in
 
-[selfPermit.ts:8](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/selfPermit.ts#L8)
+[selfPermit.ts:8](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/selfPermit.ts#L8)
 
 ___
 
@@ -50,7 +50,7 @@ ___
 
 #### Defined in
 
-[selfPermit.ts:9](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/selfPermit.ts#L9)
+[selfPermit.ts:9](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/selfPermit.ts#L9)
 
 ___
 
@@ -60,4 +60,4 @@ ___
 
 #### Defined in
 
-[selfPermit.ts:7](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/selfPermit.ts#L7)
+[selfPermit.ts:7](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/selfPermit.ts#L7)

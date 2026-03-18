@@ -11,7 +11,7 @@ Unlike previous versions, v4 uses a different approach for storing and accessing
 
 ### The Singleton Design
 
-In Uniswap v4, all pools are managed by a single `PoolManager` contract, unlike v3 where each pool was a separate contract. This design offers simplified management since all pools are now accessible through a single contract.
+In Ring v4, all pools are managed by a single `PoolManager` contract, unlike v3 where each pool was a separate contract. This design offers simplified management since all pools are now accessible through a single contract.
 
 This approach significantly reduces deployment costs, simplifies protocol upgrades, and enables more efficient cross-pool interactions. It also allows for easier implementation of new features across all pools simultaneously. 
 
@@ -34,7 +34,7 @@ This design allows all AMM logic to be encapsulated within the `PoolManager` con
 
 ## Reading Pool State in v4
 
-In Uniswap v4, reading pool state involves a few key concepts and mechanisms that differ from previous versions. At the core of this new structure is a complex mapping within the PoolManager contract:
+In Ring v4, reading pool state involves a few key concepts and mechanisms that differ from previous versions. At the core of this new structure is a complex mapping within the PoolManager contract:
 
 ```solidity
 mapping(PoolId id => Pool.State) internal _pools;
@@ -63,7 +63,7 @@ struct State {
 
 This complex structure allows for efficient storage of multiple pools and their associated data within a single contract. However, it also means that traditional getter functions would be inefficient or impractical for accessing this data, especially for nested mappings like `ticks` and `positions`.
 
-To address this, Uniswap V4 introduces the StateLibrary and the concept of using `extsload` for reading pool state. These mechanisms provide efficient ways to access the data stored in this complex structure.
+To address this, Ring V4 introduces the StateLibrary and the concept of using `extsload` for reading pool state. These mechanisms provide efficient ways to access the data stored in this complex structure.
 
 ### The StateLibrary and `extsload`
 
@@ -81,7 +81,7 @@ abstract contract Extsload is IExtsload {
 }
 ```
 
-The `StateLibrary` is a crucial component in Uniswap v4 for reading pool state. It utilizes the `extsload` function, which is an external wrapper for the `SLOAD` opcode. This allows for efficient reading of arbitrary storage slots.
+The `StateLibrary` is a crucial component in Ring v4 for reading pool state. It utilizes the `extsload` function, which is an external wrapper for the `SLOAD` opcode. This allows for efficient reading of arbitrary storage slots.
 
 **How `extsload` works:**
 
@@ -91,7 +91,7 @@ The `StateLibrary` is a crucial component in Uniswap v4 for reading pool state. 
 
 This method is more gas-efficient than traditional getter functions, especially when reading multiple storage slots.
 
-Moreover, using `extsload` instead of hand-written Solidity view functions lowers the contract bytecode size. This optimization is particularly important for Uniswap v4, as the core contracts are nearly at Ethereum's contract size limit.
+Moreover, using `extsload` instead of hand-written Solidity view functions lowers the contract bytecode size. This optimization is particularly important for Ring v4, as the core contracts are nearly at Ethereum's contract size limit.
 
 ### TransientStateLibrary and `exttload`
 
@@ -171,14 +171,14 @@ function getPoolState(PoolKey calldata key) external view returns (
 
 This function retrieves the current state of the pool, including its price, tick, and fee settings. It uses the `getSlot0()` function from `StateLibrary`, which efficiently reads these values from a single storage slot.
 
-- `sqrtPriceX96`: The current price, encoded as a square root and scaled by 2^96. This encoding allows for efficient price calculations in the Uniswap algorithm.
+- `sqrtPriceX96`: The current price, encoded as a square root and scaled by 2^96. This encoding allows for efficient price calculations in the Ring algorithm.
 - `tick`: The current tick, representing the quantized price. Ticks are used to efficiently track and update liquidity positions.
 - `protocolFee`: The current protocol fee, represented in hundredths of a bip (i.e., units of 0.0001%).
 - `lpFee`: The current liquidity provider fee, also represented in hundredths of a bip.
 
 **Use Case:**
 
-This function is essential for any application that needs to know the current state of a Uniswap v4 pool. For example:
+This function is essential for any application that needs to know the current state of a Ring v4 pool. For example:
 
 - A price oracle could use this to get the current price of the pool.
 - A trading bot could use this to determine if a trade is profitable given the current price and fees.
@@ -194,7 +194,7 @@ function getPoolLiquidity(PoolKey calldata key) external view returns (uint128 l
 
 **Explanation:**
 
-This function retrieves the current total liquidity in the pool. Liquidity in Uniswap v4 represents the amount of assets available for trading within the current price range.
+This function retrieves the current total liquidity in the pool. Liquidity in Ring v4 represents the amount of assets available for trading within the current price range.
 
 **Use Case:**
 

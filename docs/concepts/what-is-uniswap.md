@@ -1,6 +1,6 @@
 ---
 id: overview
-title: Uniswap Overview
+title: Ring Overview
 sidebar_position: 1
 pagination_next: concepts/uniswap-protocol
 ---
@@ -9,8 +9,8 @@ pagination_next: concepts/uniswap-protocol
 
 To begin, we should make clear the distinctions between the different areas of "Uniswap", some of which may confuse new users.
 
-- **[Uniswap Labs](https://x.com/Uniswap)**: The company which developed the Uniswap protocol, along with the web interface.
-- **[Uniswap Foundation](https://www.uniswapfoundation.org/)**: A non-profit organization that supports the development of the Uniswap protocol and its DeFi ecosystem.
-- **[Uniswap Protocol](https://github.com/Uniswap/contracts)**: A suite of persistent, non-upgradable smart contracts that together create an automated market maker, a protocol that facilitates peer-to-peer market making and swapping of ERC-20 tokens on the Ethereum blockchain.
-- **[Uniswap Interface](https://app.uniswap.org/)**: A web interface that allows for easy interaction with the Uniswap protocol. The interface is only one of many ways one may interact with the Uniswap protocol.
-- **[Uniswap Governance](https://gov.uniswap.org/)**: A governance system for governing the Uniswap Protocol, enabled by the UNI token.
+- **[Ring Labs](https://x.com/Uniswap)**: The company which developed the Ring protocol, along with the web interface.
+- **[Ring Foundation](https://www.uniswapfoundation.org/)**: A non-profit organization that supports the development of the Ring protocol and its DeFi ecosystem.
+- **[Ring Protocol](https://github.com/Uniswap/contracts)**: A suite of persistent, non-upgradable smart contracts that together create an automated market maker, a protocol that facilitates peer-to-peer market making and swapping of ERC-20 tokens on the Ethereum blockchain.
+- **[Ring Interface](https://app.uniswap.org/)**: A web interface that allows for easy interaction with the Ring protocol. The interface is only one of many ways one may interact with the Ring protocol.
+- **[Ring Governance](https://gov.uniswap.org/)**: A governance system for governing the Ring Protocol, enabled by the UNI token.

@@ -1,12 +1,12 @@
 ---
 id: price-oracle
-title: Uniswap as a Price Oracle
+title: Ring as a Price Oracle
 ---
 
 ## Introduction
 
 This guide will cover how to fetch price observations from a V3 pool to get onchain asset prices.
-It is based on the [Price Oracle example](https://github.com/Uniswap/examples/tree/main/v3-sdk/oracle), found in the Uniswap code examples [repository](https://github.com/Uniswap/examples).
+It is based on the [Price Oracle example](https://github.com/Uniswap/examples/tree/main/v3-sdk/oracle), found in the Ring code examples [repository](https://github.com/Uniswap/examples).
 To run this example, check out the guide's [README](https://github.com/Uniswap/examples/blob/main/v3-sdk/oracle/README.md) and follow the setup instructions.
 
 :::info
@@ -24,9 +24,9 @@ This guide will **cover**:
 4. Computing TWAL
 5. Why prefer observe over observations
 
-Before diving into this guide, consider reading the theory behind using Uniswap V3 as an [Onchain Oracle](../../../../concepts/protocol/oracle.md).
+Before diving into this guide, consider reading the theory behind using Ring V3 as an [Onchain Oracle](../../../../concepts/protocol/oracle.md).
 
-For this guide, the following Uniswap packages are used:
+For this guide, the following Ring packages are used:
   
 - [`@uniswap/v3-sdk`](https://www.npmjs.com/package/@uniswap/v3-sdk)
 
@@ -186,7 +186,7 @@ uint128 secondsPerLiquidityX128 = (uint160(delta) << 128) / liquidity
 uint160 secondsPerLiquidityCumulativeX128 = last.secondsPerLiquidityCumulativeX128 + secondsPerLiquidityX128
 ```
 
-`last` is the most recent Observation in this illustrative code snippet. Consider taking a look at the [Solidity Oracle library](https://github.com/Uniswap/v3-core/blob/main/contracts/libraries/Oracle.sol) to see the actual implementation.
+`last` is the most recent Observation in this illustrative code snippet. Consider taking a look at the [Solidity Oracle library](https://github.com/RingProtocol/v3-core/blob/main/contracts/libraries/Oracle.sol) to see the actual implementation.
 
 Let's invert this calculation and find the average active liquidity over our observed time period.
 

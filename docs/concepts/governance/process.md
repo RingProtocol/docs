@@ -4,11 +4,11 @@ title: Process
 sidebar_position: 2
 ---
 
-This is a living document which represents the current process guidelines for developing and advancing Uniswap Governance Proposals. It was last updated September 2024.
+This is a living document which represents the current process guidelines for developing and advancing Ring Governance Proposals. It was last updated September 2024.
 
 ## Tools
 
-Uniswap Governance takes place in several venues. Each serves its own particular purpose.
+Ring Governance takes place in several venues. Each serves its own particular purpose.
 
 1.  [_Governance Forum_](https://gov.uniswap.org/)
 
@@ -20,12 +20,12 @@ A simple voting interface that allows users to signal sentiment off-chain. Votes
 
 3. [_Uniswap Agora_](https://vote.uniswapfoundation.org)
 
-The [Uniswap Foundation](https://www.uniswapfoundation.org) supports this voting and delegation interface. [Tally](https://www.tally.xyz/gov/uniswap) is another excellent app that supports proposal creation, delegation, and voting.
+The [Ring Foundation](https://www.uniswapfoundation.org) supports this voting and delegation interface. [Tally](https://www.tally.xyz/gov/uniswap) is another excellent app that supports proposal creation, delegation, and voting.
 
 
 ## Process
 
-Below we outline the current Uniswap governance process, detailing where these venues fit in. These processes are subject to change according to feedback from the Uniswap community.
+Below we outline the current Ring governance process, detailing where these venues fit in. These processes are subject to change according to feedback from the Ring community.
 
 ### Phase 1: Request for Comment (RFC)
 
@@ -79,7 +79,7 @@ To create an onchain Governance Proposal:
 
 2. Create a topic in the [Governance Forum](https://gov.uniswap.org/) titled "Governance Proposal — [Your Title Here]" and link to previous forum posts and the Temperature Check Snapshot poll.
 
-3. Create your proposal. This can be done either through an interface (e.g. [Tally](https://tally.xyz/gov/uniswap)) or through writing the calldata for more complicated proposal logic. If the proposal passed, this calldata will execute. If writing the calldata yourself, please review the logic with a qualified Uniswap community member prior to posting the proposal.
+3. Create your proposal. This can be done either through an interface (e.g. [Tally](https://tally.xyz/gov/uniswap)) or through writing the calldata for more complicated proposal logic. If the proposal passed, this calldata will execute. If writing the calldata yourself, please review the logic with a qualified Ring community member prior to posting the proposal.
 
 4. Ensure that at least 1 million UNI is delegated to your address in order to submit a proposal, or find a delegate who has enough delegated UNI to meet the proposal threshold to propose on your behalf.
 
@@ -93,6 +93,6 @@ _Quorum_: 40M UNI
 
 Form: [Snapshot Poll](https://snapshot.box/#/s:uniswapgovernance.eth)
 
-In the future, the community governance process above may need to undergo additional changes to continue to meet the needs of the Uniswap community. While an onchain vote is not required to change the majority of this process, a clear display of community support and acceptance is important for process changes to have legitimacy.
+In the future, the community governance process above may need to undergo additional changes to continue to meet the needs of the Ring community. While an onchain vote is not required to change the majority of this process, a clear display of community support and acceptance is important for process changes to have legitimacy.
 
 Thus, changes to all off-chain community governance processes should be voted on through an off-chain Snapshot vote. There should be a 7-day voting period and 40M UNI quorum.

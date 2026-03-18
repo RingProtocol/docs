@@ -5,7 +5,7 @@ title: Fetching Positions
 
 ## Introduction
 
-This guide will cover how to create (or mint) a liquidity position on the Uniswap V3 protocol.
+This guide will cover how to create (or mint) a liquidity position on the Ring V3 protocol.
 Like the [Liquidity Position guide](./01-position-data.md) it doesn't have an accompanying example, nevertheless the concepts and functions used here can be found among the various examples that interact with liquidity positions.
 
 :::info
@@ -23,7 +23,7 @@ The guide will **cover**:
 
 At the end of the guide, given the inputs above, we should be able to mint a liquidity position with the press of a button and view the position on the UI of the web application.
 
-For this guide, we do not need to use the Uniswap SDKs, we will only import the contract ABI for the NonfungiblePositionManager Contract from [`@uniswap/v3-periphery`](https://www.npmjs.com/package/@uniswap/v3-periphery).
+For this guide, we do not need to use the Ring SDKs, we will only import the contract ABI for the NonfungiblePositionManager Contract from [`@uniswap/v3-periphery`](https://www.npmjs.com/package/@uniswap/v3-periphery).
 
 ## Connecting to the NFTPositionManager Contract
 
@@ -42,7 +42,7 @@ const nfpmContract = new ethers.Contract(
 )
 ```
 
-We get the Contract ABI from the 'v3-periphery` package and the contract address from [GitHub](https://github.com/Uniswap/v3-periphery/blob/main/deploys.md)
+We get the Contract ABI from the 'v3-periphery` package and the contract address from [GitHub](https://github.com/RingProtocol/v3-periphery/blob/main/deploys.md)
 
 ## Fetching the Position Ids
 

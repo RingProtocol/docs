@@ -95,7 +95,7 @@ title: Overview
 
 #### Defined in
 
-[nonfungiblePositionManager.ts:77](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L77)
+[nonfungiblePositionManager.ts:77](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L77)
 
 ___
 
@@ -105,7 +105,7 @@ ___
 
 #### Defined in
 
-[staker.ts:8](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/staker.ts#L8)
+[staker.ts:8](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/staker.ts#L8)
 
 ___
 
@@ -115,7 +115,7 @@ ___
 
 #### Defined in
 
-[nonfungiblePositionManager.ts:75](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L75)
+[nonfungiblePositionManager.ts:75](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L75)
 
 ___
 
@@ -125,7 +125,7 @@ ___
 
 #### Defined in
 
-[nonfungiblePositionManager.ts:74](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L74)
+[nonfungiblePositionManager.ts:74](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/nonfungiblePositionManager.ts#L74)
 
 ___
 
@@ -135,7 +135,7 @@ ___
 
 #### Defined in
 
-[selfPermit.ts:22](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/selfPermit.ts#L22)
+[selfPermit.ts:22](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/selfPermit.ts#L22)
 
 ## Variables
 
@@ -145,7 +145,7 @@ ___
 
 #### Defined in
 
-[constants.ts:3](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/constants.ts#L3)
+[constants.ts:3](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/constants.ts#L3)
 
 ___
 
@@ -155,7 +155,7 @@ ___
 
 #### Defined in
 
-[constants.ts:1](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/constants.ts#L1)
+[constants.ts:1](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/constants.ts#L1)
 
 ___
 
@@ -165,7 +165,7 @@ ___
 
 #### Defined in
 
-[constants.ts:5](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/constants.ts#L5)
+[constants.ts:5](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/constants.ts#L5)
 
 ___
 
@@ -177,7 +177,7 @@ The default factory tick spacings by fee amount.
 
 #### Defined in
 
-[constants.ts:20](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/constants.ts#L20)
+[constants.ts:20](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/constants.ts#L20)
 
 ## Functions
 
@@ -206,7 +206,7 @@ The pool address
 
 #### Defined in
 
-[utils/computePoolAddress.ts:16](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/utils/computePoolAddress.ts#L16)
+[utils/computePoolAddress.ts:16](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/utils/computePoolAddress.ts#L16)
 
 ___
 
@@ -229,7 +229,7 @@ Converts a route to a hex encoded path
 
 #### Defined in
 
-[utils/encodeRouteToPath.ts:11](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/utils/encodeRouteToPath.ts#L11)
+[utils/encodeRouteToPath.ts:11](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/utils/encodeRouteToPath.ts#L11)
 
 ___
 
@@ -254,7 +254,7 @@ The sqrt ratio
 
 #### Defined in
 
-[utils/encodeSqrtRatioX96.ts:11](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/utils/encodeSqrtRatioX96.ts#L11)
+[utils/encodeSqrtRatioX96.ts:11](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/utils/encodeSqrtRatioX96.ts#L11)
 
 ___
 
@@ -285,7 +285,7 @@ true if sorted
 
 #### Defined in
 
-[utils/isSorted.ts:7](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/utils/isSorted.ts#L7)
+[utils/isSorted.ts:7](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/utils/isSorted.ts#L7)
 
 ___
 
@@ -313,7 +313,7 @@ and the prices at the tick boundaries.
 
 #### Defined in
 
-[utils/maxLiquidityForAmounts.ts:68](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/utils/maxLiquidityForAmounts.ts#L68)
+[utils/maxLiquidityForAmounts.ts:68](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/utils/maxLiquidityForAmounts.ts#L68)
 
 ___
 
@@ -333,7 +333,7 @@ ___
 
 #### Defined in
 
-[utils/mostSignificantBit.ts:12](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/utils/mostSignificantBit.ts#L12)
+[utils/mostSignificantBit.ts:12](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/utils/mostSignificantBit.ts#L12)
 
 ___
 
@@ -356,7 +356,7 @@ Returns the closest tick that is nearest a given tick and usable for the given t
 
 #### Defined in
 
-[utils/nearestUsableTick.ts:9](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/utils/nearestUsableTick.ts#L9)
+[utils/nearestUsableTick.ts:9](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/utils/nearestUsableTick.ts#L9)
 
 ___
 
@@ -378,7 +378,7 @@ Returns the first tick for which the given price is greater than or equal to the
 
 #### Defined in
 
-[utils/priceTickConversions.ts:29](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/utils/priceTickConversions.ts#L29)
+[utils/priceTickConversions.ts:29](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/utils/priceTickConversions.ts#L29)
 
 ___
 
@@ -399,7 +399,7 @@ ___
 
 #### Defined in
 
-[utils/tickLibrary.ts:11](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/utils/tickLibrary.ts#L11)
+[utils/tickLibrary.ts:11](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/utils/tickLibrary.ts#L11)
 
 ___
 
@@ -424,7 +424,7 @@ Inputs must be tokens because the address order is used to interpret the price r
 
 #### Defined in
 
-[utils/priceTickConversions.ts:14](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/utils/priceTickConversions.ts#L14)
+[utils/priceTickConversions.ts:14](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/utils/priceTickConversions.ts#L14)
 
 ___
 
@@ -448,7 +448,7 @@ The hex encoded calldata
 
 #### Defined in
 
-[utils/calldata.ts:23](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/utils/calldata.ts#L23)
+[utils/calldata.ts:23](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/utils/calldata.ts#L23)
 
 ___
 
@@ -481,4 +481,4 @@ A sorted ordering for two neighboring elements in a trade array
 
 #### Defined in
 
-[entities/trade.ts:16](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/trade.ts#L16)
+[entities/trade.ts:16](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/trade.ts#L16)

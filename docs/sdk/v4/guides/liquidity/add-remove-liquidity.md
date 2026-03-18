@@ -12,7 +12,7 @@ This guide will cover:
 2. **Adding liquidity to existing positions** – Using the v4 SDK to increase liquidity with `addCallParameters`, handling native ETH positions, and executing transactions via PositionManager multicall.
 3. **Removing liquidity from positions** – Using `removeCallParameters` to decrease or fully exit positions, handling proportional withdrawals, and token collection.
 
-For this guide, the following Uniswap packages are used:
+For this guide, the following Ring packages are used:
 
 - [`@uniswap/v4-sdk`](https://www.npmjs.com/package/@uniswap/v4-sdk)
 - [`@uniswap/sdk-core`](https://www.npmjs.com/package/@uniswap/sdk-core)
@@ -21,7 +21,7 @@ For this guide, the following Uniswap packages are used:
 
 ### Native ETH Handling
 
-Unlike v3, Uniswap v4 has native support for ETH without wrapping to WETH. This requires special handling in the SDK:
+Unlike v3, Ring v4 has native support for ETH without wrapping to WETH. This requires special handling in the SDK:
 
 ```typescript
 // ✅ Correct: Using Ether.onChain() for native ETH

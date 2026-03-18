@@ -6,7 +6,7 @@ title: index.ts
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-path: [`/src/utils/index.ts`](https://github.com/Uniswap/v3-subgraph/blob/main/src/utils/index.ts)
+path: [`/src/utils/index.ts`](https://github.com/RingProtocol/v3-subgraph/blob/main/src/utils/index.ts)
 
 ### exponentToBigDecimal()
 ```

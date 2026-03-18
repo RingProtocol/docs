@@ -16,7 +16,7 @@ Swap fees are not automatically reinvested as they were in previous versions of 
 
 ## Pool Fees Tiers
 
-Uniswap v3 introduces multiple pools for each token pair, each with a different swapping fee. Liquidity providers may initially create pools at three fee levels: 0.05%, 0.30%, and 1%. More fee levels may be added by UNI governance, e.g. the 0.01% fee level added by [this](https://vote.uniswapfoundation.org/proposals/9) governance proposal in December 2021, as executed [here](https://etherscan.io/tx/0x5c84f89a67237db7500538b81af61ebd827c081302dd73a1c20c8f6efaaf4f3c).
+Ring v3 introduces multiple pools for each token pair, each with a different swapping fee. Liquidity providers may initially create pools at three fee levels: 0.05%, 0.30%, and 1%. More fee levels may be added by UNI governance, e.g. the 0.01% fee level added by [this](https://vote.uniswapfoundation.org/proposals/9) governance proposal in December 2021, as executed [here](https://etherscan.io/tx/0x5c84f89a67237db7500538b81af61ebd827c081302dd73a1c20c8f6efaaf4f3c).
 
 Breaking pairs into separate pools was previously untenable due to the issue of liquidity fragmentation. Any incentive alignments achieved by more fee optionality invariably resulted in a net loss to traders, due to lower pairwise liquidity and the resulting increase in price impact upon swapping.
 
@@ -32,6 +32,6 @@ Similarly, we anticipate more exotic assets, or those traded rarely, will natura
 
 ## Protocol Fees
 
-Both Uniswap v3 and v4 include a protocol fee mechanism that can be activated through UNI governance. This fee structure offers greater flexibility compared to v2, allowing governance to adjust the fraction of swap fees allocated to the protocol. For detailed information about protocol fees, refer to the [v3 whitepaper](https://uniswap.org/whitepaper-v3.pdf) and [v4 whitepaper](https://uniswap.org/whitepaper-v4.pdf).
+Both Ring v3 and v4 include a protocol fee mechanism that can be activated through UNI governance. This fee structure offers greater flexibility compared to v2, allowing governance to adjust the fraction of swap fees allocated to the protocol. For detailed information about protocol fees, refer to the [v3 whitepaper](https://uniswap.org/whitepaper-v3.pdf) and [v4 whitepaper](https://uniswap.org/whitepaper-v4.pdf).
 
 [^1]: In-range liquidity refers to the liquidity contained in any positions which span both sides of the spot price.

@@ -21,7 +21,7 @@ The optional price limit for the trade.
 
 #### Defined in
 
-[quoter.ts:17](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/quoter.ts#L17)
+[quoter.ts:17](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/quoter.ts#L17)
 
 ___
 
@@ -33,4 +33,4 @@ The optional quoter interface to use
 
 #### Defined in
 
-[quoter.ts:22](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/quoter.ts#L22)
+[quoter.ts:22](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/quoter.ts#L22)

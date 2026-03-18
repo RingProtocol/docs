@@ -2,7 +2,7 @@
 
 Defined in: [entities/position.ts:23](https://github.com/Uniswap/sdks/blob/9cf6edb2df79338ae58f7ea7ca979c35a8a9bd56/sdks/v4-sdk/src/entities/position.ts#L23)
 
-Represents a position on a Uniswap V4 Pool
+Represents a position on a Ring V4 Pool
 
 ## Dev
 

@@ -2,7 +2,7 @@
 
 # Class: Position
 
-Represents a position on a Uniswap V3 Pool
+Represents a position on a Ring V3 Pool
 
 ## Table of contents
 
@@ -53,7 +53,7 @@ Constructs a position for a given pool with the given liquidity
 
 #### Defined in
 
-[entities/position.ts:40](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/position.ts#L40)
+[entities/position.ts:40](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/position.ts#L40)
 
 ## Properties
 
@@ -63,7 +63,7 @@ Constructs a position for a given pool with the given liquidity
 
 #### Defined in
 
-[entities/position.ts:31](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/position.ts#L31)
+[entities/position.ts:31](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/position.ts#L31)
 
 ___
 
@@ -73,7 +73,7 @@ ___
 
 #### Defined in
 
-[entities/position.ts:29](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/position.ts#L29)
+[entities/position.ts:29](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/position.ts#L29)
 
 ___
 
@@ -83,7 +83,7 @@ ___
 
 #### Defined in
 
-[entities/position.ts:30](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/position.ts#L30)
+[entities/position.ts:30](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/position.ts#L30)
 
 ___
 
@@ -93,7 +93,7 @@ ___
 
 #### Defined in
 
-[entities/position.ts:26](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/position.ts#L26)
+[entities/position.ts:26](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/position.ts#L26)
 
 ___
 
@@ -103,7 +103,7 @@ ___
 
 #### Defined in
 
-[entities/position.ts:23](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/position.ts#L23)
+[entities/position.ts:23](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/position.ts#L23)
 
 ___
 
@@ -113,7 +113,7 @@ ___
 
 #### Defined in
 
-[entities/position.ts:24](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/position.ts#L24)
+[entities/position.ts:24](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/position.ts#L24)
 
 ___
 
@@ -123,7 +123,7 @@ ___
 
 #### Defined in
 
-[entities/position.ts:25](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/position.ts#L25)
+[entities/position.ts:25](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/position.ts#L25)
 
 ## Accessors
 
@@ -139,7 +139,7 @@ Returns the amount of token0 that this position's liquidity could be burned for 
 
 #### Defined in
 
-[entities/position.ts:68](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/position.ts#L68)
+[entities/position.ts:68](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/position.ts#L68)
 
 ___
 
@@ -155,7 +155,7 @@ Returns the amount of token1 that this position's liquidity could be burned for 
 
 #### Defined in
 
-[entities/position.ts:100](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/position.ts#L100)
+[entities/position.ts:100](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/position.ts#L100)
 
 ___
 
@@ -172,7 +172,7 @@ the current price for the pool
 
 #### Defined in
 
-[entities/position.ts:258](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/position.ts#L258)
+[entities/position.ts:258](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/position.ts#L258)
 
 ___
 
@@ -188,7 +188,7 @@ Returns the price of token0 at the lower tick
 
 #### Defined in
 
-[entities/position.ts:54](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/position.ts#L54)
+[entities/position.ts:54](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/position.ts#L54)
 
 ___
 
@@ -204,7 +204,7 @@ Returns the price of token0 at the upper tick
 
 #### Defined in
 
-[entities/position.ts:61](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/position.ts#L61)
+[entities/position.ts:61](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/position.ts#L61)
 
 ## Methods
 
@@ -229,7 +229,7 @@ The amounts, with slippage
 
 #### Defined in
 
-[entities/position.ts:213](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/position.ts#L213)
+[entities/position.ts:213](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/position.ts#L213)
 
 ___
 
@@ -254,7 +254,7 @@ The amounts, with slippage
 
 #### Defined in
 
-[entities/position.ts:157](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/position.ts#L157)
+[entities/position.ts:157](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/position.ts#L157)
 
 ___
 
@@ -283,7 +283,7 @@ The sqrt ratios after slippage
 
 #### Defined in
 
-[entities/position.ts:134](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/position.ts#L134)
+[entities/position.ts:134](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/position.ts#L134)
 
 ___
 
@@ -312,7 +312,7 @@ The position
 
 #### Defined in
 
-[entities/position.ts:354](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/position.ts#L354)
+[entities/position.ts:354](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/position.ts#L354)
 
 ___
 
@@ -340,7 +340,7 @@ The position
 
 #### Defined in
 
-[entities/position.ts:378](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/position.ts#L378)
+[entities/position.ts:378](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/position.ts#L378)
 
 ___
 
@@ -371,4 +371,4 @@ The amount of liquidity for the position
 
 #### Defined in
 
-[entities/position.ts:312](https://github.com/Uniswap/v3-sdk/blob/08a7c05/src/entities/position.ts#L312)
+[entities/position.ts:312](https://github.com/RingProtocol/v3-sdk/blob/08a7c05/src/entities/position.ts#L312)

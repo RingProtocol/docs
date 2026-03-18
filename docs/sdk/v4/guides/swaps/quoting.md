@@ -6,7 +6,7 @@ sidebar_position: 1
 
 ## Introduction
 
-This guide will cover how to get the current quotes for any token pair on the Uniswap protocol.
+This guide will cover how to get the current quotes for any token pair on the Ring protocol.
 
 In this example we will use `quoteExactInputSingle` to get a quote for the pair **ETH - USDC**. The inputs are **poolKey**, **zeroForOne**, **exactAmount** and **hookData**.
 
@@ -17,7 +17,7 @@ The guide will cover:
 
 At the end of the guide, we should be able to fetch the output for the given token pair and input amount.
 
-For this guide, the following Uniswap packages are used:
+For this guide, the following Ring packages are used:
 
 - [`@uniswap/v4-sdk`](https://www.npmjs.com/package/@uniswap/v4-sdk)
 - [`@uniswap/sdk-core`](https://www.npmjs.com/package/@uniswap/sdk-core)
@@ -72,7 +72,7 @@ export const USDC_TOKEN = new Token(
 
 ## Referencing the Quoter contract and getting a quote
 
-To get quotes for trades, Uniswap has deployed a **Quoter Contract**. We will use this contract to fetch the output amount we can expect for our trade, without actually executing the trade.
+To get quotes for trades, Ring has deployed a **Quoter Contract**. We will use this contract to fetch the output amount we can expect for our trade, without actually executing the trade.
 
 Now, we need to construct an instance of an **ethers** `Contract` for our Quoter contract in order to interact with it:
 
@@ -84,11 +84,11 @@ const quoterContract = new ethers.Contract(
 )
 ```
 
-We get the `QUOTE_CONTRACT_ADDRESS` for our chain from [Uniswap Deployments](https://docs.uniswap.org/contracts/v4/deployments).
+We get the `QUOTE_CONTRACT_ADDRESS` for our chain from [Ring Deployments](https://docs.uniswap.org/contracts/v4/deployments).
 
 We can now use our Quoter contract to obtain the quote.
 
-In an ideal world, the quoter functions would be `view` functions, which would make them very easy to query on-chain with minimal gas costs. However, the Uniswap V4 Quoter contracts rely on state-changing calls designed to be reverted to return the desired data. This means calling the quoter will be very expensive and **should not be called on-chain.**
+In an ideal world, the quoter functions would be `view` functions, which would make them very easy to query on-chain with minimal gas costs. However, the Ring V4 Quoter contracts rely on state-changing calls designed to be reverted to return the desired data. This means calling the quoter will be very expensive and **should not be called on-chain.**
 
 To get around this difficulty, we can use the `callStatic` method provided by the **ethers.js** `Contract` instances.
 This is a useful method that submits a state-changing transaction to an Ethereum node, but asks the node to simulate the state change, rather than to execute it. Our script can then return the result of the simulated state change:

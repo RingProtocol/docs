@@ -25,10 +25,10 @@ To prevent gaming, quoters cannot distinguish between indicative and hard quotes
 </p>
 
 1. The user requests a quote from the interface.  
-2. The Uniswap Backend (URA) runs an indicative RFQ auction, soliciting quotes for the best price. (**Note:** Quoters do not know whether the RFQ is indicative or hard, forcing them to always provide competitive prices.)
+2. The Ring Backend (URA) runs an indicative RFQ auction, soliciting quotes for the best price. (**Note:** Quoters do not know whether the RFQ is indicative or hard, forcing them to always provide competitive prices.)
 3. The quotes from the RFQ process parameterize an [initial quote](https://github.com/Uniswap/UniswapX/blob/33fa564cfaa6d58f6e3fcf7e7988cb5fc1c61de7/src/lib/V2DutchOrderLib.sol#L31) order shown to the user.  
 4. The user signs the order and submits it for execution.  
-6. The Uniswap Backend (GPA) runs a second “hard” RFQ process, soliciting new quotes.  
+6. The Ring Backend (GPA) runs a second “hard” RFQ process, soliciting new quotes.  
 6. Quoters return their best prices again.  
    * If the price is within or improves on the user’s signed parameters, it is finalized and added to the order’s [CosignerData](https://github.com/Uniswap/UniswapX/blob/33fa564cfaa6d58f6e3fcf7e7988cb5fc1c61de7/src/lib/V2DutchOrderLib.sol#L20).  
    * If the price moves outside the signed parameters, the order fails, and the user must try again.  
@@ -42,7 +42,7 @@ In UniswapX RFQ, users commit to a range of prices when signing their order. Wit
   <img width="599" alt="image" src={require('../../images/cosigner.png').default} />
 </p>
 
-The cosigner field allows users to designate an auctioneer they trust to run the auction fairly, ensuring the best executable price within the signed parameters. Currently, the trading API sets the cosigner to Uniswap Labs, though this could be updated in the future.
+The cosigner field allows users to designate an auctioneer they trust to run the auction fairly, ensuring the best executable price within the signed parameters. Currently, the trading API sets the cosigner to Ring Labs, though this could be updated in the future.
 
 ## Current Status
 UniswapX RFQ V2 is currently the default version of the protocol running on Mainnet across Uniswap's interfaces.

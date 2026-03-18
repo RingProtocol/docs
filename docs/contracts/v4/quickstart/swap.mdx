@@ -3,12 +3,12 @@ title: Swap
 sidebar_position: 3
 ---
 
-## Swapping on Uniswap v4
-The `Universal Router` is a flexible, gas-efficient contract designed to execute complex swap operations across various protocols, including Uniswap v4. It serves as an intermediary between users and the Uniswap v4 `PoolManager`, handling the intricacies of swap execution.
+## Swapping on Ring v4
+The `Universal Router` is a flexible, gas-efficient contract designed to execute complex swap operations across various protocols, including Ring v4. It serves as an intermediary between users and the Ring v4 `PoolManager`, handling the intricacies of swap execution.
 
-Although it's technically possible to interact directly with the PoolManager contract for swaps, this approach is not recommended due to its complexity and potential inefficiencies. Instead, the Universal Router is the preferred method, as it abstracts away these complexities. By using the Universal Router, developers and users can ensure a more straightforward, efficient, and standardized approach to executing swaps on v4 pools, aligning with best practices for Uniswap interactions.
+Although it's technically possible to interact directly with the PoolManager contract for swaps, this approach is not recommended due to its complexity and potential inefficiencies. Instead, the Universal Router is the preferred method, as it abstracts away these complexities. By using the Universal Router, developers and users can ensure a more straightforward, efficient, and standardized approach to executing swaps on v4 pools, aligning with best practices for Ring interactions.
 
-## Configuring Universal Router for Uniswap v4 Swaps
+## Configuring Universal Router for Ring v4 Swaps
 
 Set up a foundry project and install the necessary dependencies:
 ```bash
@@ -68,11 +68,11 @@ contract Example {
 
 In this step, we're importing the necessary contracts and interfaces:
 
-- `UniversalRouter`: This will be our main interface for executing swaps. It provides a flexible way to interact with various Uniswap versions and other protocols.
+- `UniversalRouter`: This will be our main interface for executing swaps. It provides a flexible way to interact with various Ring versions and other protocols.
 - `Commands`: This library contains the command definitions used by the UniversalRouter.
-- `IPoolManager`: This interface is needed for interacting with Uniswap v4 pools. While we don't directly use it in our simple example, it's often necessary for more complex interactions with v4 pools.
+- `IPoolManager`: This interface is needed for interacting with Ring v4 pools. While we don't directly use it in our simple example, it's often necessary for more complex interactions with v4 pools.
 - `IPermit2`: This interface allows us to interact with the Permit2 contract, which provides enhanced token approval functionality.
-- `StateLibrary`: This provides optimized functions for interacting with the PoolManager's state. By using `StateLibrary`, we can more efficiently read and manipulate pool states, which is crucial for many operations in Uniswap v4.
+- `StateLibrary`: This provides optimized functions for interacting with the PoolManager's state. By using `StateLibrary`, we can more efficiently read and manipulate pool states, which is crucial for many operations in Ring v4.
 
 ### Step 2: Implement Token Approval with Permit2
 
@@ -150,7 +150,7 @@ Next, we encode the swap command:
 bytes memory commands = abi.encodePacked(uint8(Commands.V4_SWAP));
 ```
 
-Here, we're using `V4_SWAP`, which tells the Universal Router that we want to perform a swap on a Uniswap v4 pool. The specific type of swap (exact input or exact output) will be determined by the V4Router actions we encode later. As we saw earlier, we encode this as a single byte, which is how the Universal Router expects to receive commands.
+Here, we're using `V4_SWAP`, which tells the Universal Router that we want to perform a swap on a Ring v4 pool. The specific type of swap (exact input or exact output) will be determined by the V4Router actions we encode later. As we saw earlier, we encode this as a single byte, which is how the Universal Router expects to receive commands.
 
 Check the complete list of [commands](https://docs.uniswap.org/contracts/universal-router/technical-reference#command).
 

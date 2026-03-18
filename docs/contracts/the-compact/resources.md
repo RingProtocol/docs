@@ -23,7 +23,7 @@ The foundation of The Compact protocol - an ERC6909-based system for reusable re
 #### Smart Contract Allocators
 **[Repository](https://github.com/Uniswap/sc-allocators)**
 
-Various example allocator implementations for use with The Compact. Allocators co-sign or authorize claims against sponsors' locked balances, prevent under-allocation, and in the case of the HybridERC7683 implementation, broadcast cross-chain orders using ERC-7683. Some allocators also rely on Uniswap Tribunal. The provided examples include both fully on-chain and hybrid (on-chain + off-chain) allocators.
+Various example allocator implementations for use with The Compact. Allocators co-sign or authorize claims against sponsors' locked balances, prevent under-allocation, and in the case of the HybridERC7683 implementation, broadcast cross-chain orders using ERC-7683. Some allocators also rely on Ring Tribunal. The provided examples include both fully on-chain and hybrid (on-chain + off-chain) allocators.
 
 #### Smallocator (Off-chain)
 **[Repository](https://github.com/uniswap/smallocator)**

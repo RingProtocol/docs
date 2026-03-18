@@ -5,15 +5,15 @@ title: Minting a Position
 
 ## Introduction
 
-This guide will cover how to create (or mint) a liquidity position on the Uniswap V3 protocol.
-It is based on the [minting a position code example](https://github.com/Uniswap/examples/tree/main/v3-sdk/minting-position), found in the Uniswap code examples [repository](https://github.com/Uniswap/examples).
+This guide will cover how to create (or mint) a liquidity position on the Ring V3 protocol.
+It is based on the [minting a position code example](https://github.com/Uniswap/examples/tree/main/v3-sdk/minting-position), found in the Ring code examples [repository](https://github.com/Uniswap/examples).
 To run this example, check out the examples's [README](https://github.com/Uniswap/examples/blob/main/v3-sdk/minting-position/README.md) and follow the setup instructions.
 
 :::info
 If you need a briefer on the SDK and to learn more about how these guides connect to the examples repository, please visit our [background](../01-background.md) page!
 :::
 
-In the Uniswap V3 protocol, liquidity positions are represented using non-fungible tokens. In this guide we will use the `NonfungiblePositionManager` class to help us mint a liquidity position for the  **USDC - DAI** pair. The inputs to our guide are the **two tokens** that we are pooling for, the **amount** of each token we are pooling for and the Pool **fee**.
+In the Ring V3 protocol, liquidity positions are represented using non-fungible tokens. In this guide we will use the `NonfungiblePositionManager` class to help us mint a liquidity position for the  **USDC - DAI** pair. The inputs to our guide are the **two tokens** that we are pooling for, the **amount** of each token we are pooling for and the Pool **fee**.
 
 The guide will **cover**:
 
@@ -24,7 +24,7 @@ The guide will **cover**:
 
 At the end of the guide, given the inputs above, we should be able to mint a liquidity position with the press of a button and view the position on the UI of the web application.
 
-For this guide, the following Uniswap packages are used:
+For this guide, the following Ring packages are used:
 
 - [`@uniswap/v3-sdk`](https://www.npmjs.com/package/@uniswap/v3-sdk)
 - [`@uniswap/sdk-core`](https://www.npmjs.com/package/@uniswap/sdk-core)
@@ -72,7 +72,7 @@ async function getTokenTransferApproval(address: string, amount: BigNumber) {
 }
 ```
 
-We can get the Contract address for the NonfungiblePositionManager from [GitHub](https://github.com/Uniswap/v3-periphery/blob/main/deploys.md).
+We can get the Contract address for the NonfungiblePositionManager from [GitHub](https://github.com/RingProtocol/v3-periphery/blob/main/deploys.md).
 For Ethereum mainnet or a local fork of mainnet, we see that the contract address is `0xC36442b4a4522E871399CD717aBDD847Ab11FE88`.
 In our example, this is defined in the [`constants.ts`](https://github.com/Uniswap/examples/blob/main/v3-sdk/minting-position/src/libs/constants.ts) file.
 
@@ -100,7 +100,7 @@ const currentPoolAddress = computePoolAddress({
 })
 ```
 
-Again, we can get the factory contract address from [GitHub](https://github.com/Uniswap/v3-periphery/blob/main/deploys.md). 
+Again, we can get the factory contract address from [GitHub](https://github.com/RingProtocol/v3-periphery/blob/main/deploys.md). 
 For Ethereum mainnet, or a local fork of mainnet, it is `0x1F98431c8aD98523631AE4a59f267346ea31F984`. 
 In our example, it is defined in [`constants.ts`](https://github.com/Uniswap/examples/blob/main/v3-sdk/minting-position/src/libs/constants.ts)
 
@@ -177,7 +177,7 @@ Given those parameters, `fromAmounts` will attempt to calculate the maximum amou
 
 ## Configuring and executing our minting transaction
 
-The Position instance is then passed as input to the `NonfungiblePositionManager`'s `addCallParameters` function. The function also requires an [`AddLiquidityOptions`](https://github.com/Uniswap/v3-sdk/blob/08a7c050cba00377843497030f502c05982b1c43/src/nonfungiblePositionManager.ts#L77) object as its second parameter. This is either of type [`MintOptions`](https://github.com/Uniswap/v3-sdk/blob/08a7c050cba00377843497030f502c05982b1c43/src/nonfungiblePositionManager.ts#L74) for minting a new position or [`IncreaseOptions`](https://github.com/Uniswap/v3-sdk/blob/08a7c050cba00377843497030f502c05982b1c43/src/nonfungiblePositionManager.ts#L75) for adding liquidity to an existing position. For this example, we're using a `MintOptions` to create our position.
+The Position instance is then passed as input to the `NonfungiblePositionManager`'s `addCallParameters` function. The function also requires an [`AddLiquidityOptions`](https://github.com/RingProtocol/v3-sdk/blob/08a7c050cba00377843497030f502c05982b1c43/src/nonfungiblePositionManager.ts#L77) object as its second parameter. This is either of type [`MintOptions`](https://github.com/RingProtocol/v3-sdk/blob/08a7c050cba00377843497030f502c05982b1c43/src/nonfungiblePositionManager.ts#L74) for minting a new position or [`IncreaseOptions`](https://github.com/RingProtocol/v3-sdk/blob/08a7c050cba00377843497030f502c05982b1c43/src/nonfungiblePositionManager.ts#L75) for adding liquidity to an existing position. For this example, we're using a `MintOptions` to create our position.
 
 ```typescript
 import { MintOptions, NonfungiblePositionManager } from '@uniswap/v3-sdk'

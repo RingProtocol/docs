@@ -1,11 +1,11 @@
 # IUniswapV3FactoryOwnerActions
 [Git Source](https://github.com/Uniswap/phoenix-fees/blob/f7ccbcc4f1be2c8485a362f78f4f1ea34145b2b0/src/interfaces/IUniswapV3FactoryOwnerActions.sol)
 
-The Uniswap V3 Factory facilitates creation of Uniswap V3 pools and control over the
+The Ring V3 Factory facilitates creation of Ring V3 pools and control over the
 protocol fees
 
 Stripped down and renamed from:
-https://github.com/Uniswap/v3-core/blob/d8b1c635c275d2a9450bd6a78f3fa2484fef73eb/contracts/interfaces/IUniswapV3Factory.sol
+https://github.com/RingProtocol/v3-core/blob/d8b1c635c275d2a9450bd6a78f3fa2484fef73eb/contracts/interfaces/IUniswapV3Factory.sol
 
 
 ## Functions
