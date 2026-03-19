@@ -13,7 +13,5 @@ Welcome to the Ring Protocol v2 SDK. To begin, we recommend looking at the [**Gu
 - [**SDK Core GitHub**](https://github.com/Uniswap/sdk-core)
 - [**SDK NPM Package**](https://www.npmjs.com/package/@uniswap/v2-sdk)
 
-[![Unit Tests](https://github.com/RingProtocol/v2-sdk/workflows/Unit%20Tests/badge.svg)](https://github.com/RingProtocol/v2-sdk/actions?query=workflow%3A%22Unit+Tests%22)
-[![Lint](https://github.com/RingProtocol/v2-sdk/workflows/Lint/badge.svg)](https://github.com/RingProtocol/v2-sdk/actions?query=workflow%3ALint)
 [![npm version](https://img.shields.io/npm/v/@uniswap/v2-sdk/latest.svg)](https://www.npmjs.com/package/@uniswap/v2-sdk/v/latest)
 [![npm bundle size (scoped version)](https://img.shields.io/bundlephobia/minzip/@uniswap/v2-sdk/latest.svg)](https://bundlephobia.com/result?p=@uniswap/v2-sdk@latest)

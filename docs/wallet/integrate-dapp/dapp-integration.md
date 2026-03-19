@@ -1,20 +1,14 @@
 ---
 id: dapp-integration
 title: DApp Integration
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 **How does RingWallet run?** RingWallet is a web wallet that opens DApps in an iframe and injects `window.ethereum`, which meets [EIP-6963](https://eips.ethereum.org/EIPS/eip-6963) and [EIP-1193](https://eips.ethereum.org/EIPS/eip-1193).
 
 ## 1. Register Your DApp
 
-Contact the Ring Wallet team to register your DApp. Provide:
-
-- **DApp Name**
-- **Logo** (256×256 PNG or SVG)
-- **DApp URL** (e.g. `https://your-dapp.com`)
-
-You will receive an **API Key** (UUID) for testing.
+See [Register Your DApp](./register-your-dapp.md) for the registration steps and required submission details.
 
 ## 2. Integrate the SDK
 
@@ -169,23 +163,4 @@ Fix: remove/adjust that response header (common sources: Next.js `headers`, Verc
 
 ## 3. Test
 
-Open Ring Wallet with your API Key in the URL:
-
-```
-https://wallet.ring.exchange/?testdapp=YOUR_API_KEY
-```
-
-For example:
-
-```
-http://localhost:3000/?testdapp=a3f2b1c8-9d4e-4f5a-b6c7-1234567890ab
-```
-
-Your DApp will appear in the DApp list even while in review. Click it to verify:
-
-- [ ] Wallet connect dialog appears
-- [ ] Transactions trigger the confirmation dialog
-- [ ] Signature requests work
-- [ ] Rejecting a request returns an error to your DApp
-
-Once verified, notify the Ring Wallet team to set your DApp to **active**.
+See [Test Your DApp](./test-your-dapp.md) for the full verification checklist and test URL examples.

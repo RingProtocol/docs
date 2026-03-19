@@ -1,7 +1,7 @@
 ---
 id: dapp-integration-with-skills
 title: DApp Integration with Skills
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 This guide shows the fastest way to integrate your DApp with Ring Wallet using Skills.
