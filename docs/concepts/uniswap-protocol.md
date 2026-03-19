@@ -7,21 +7,22 @@ sidebar_position: 2
 
 ## Introduction
 
-The Ring protocol is a peer-to-peer[^1] system designed for exchanging cryptocurrencies [(ERC-20 Tokens)](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) on the [Ethereum](https://ethereum.org/) blockchain. The protocol is implemented as a set of persistent, non-upgradable smart contracts; designed to prioritize censorship resistance, security, self-custody, and to function without any trusted intermediaries who may selectively restrict access.
+Ring Protocol is a major breakthrough from our R&D efforts over the past three years. FEW stands for Financial Elastic Wrapping. In short, Ring Protocol is an asset layer that can be applied to any DEFI protocols. We are launching a series of products on top of Ring Protocol.
 
-There are currently four versions of the Ring protocol. [v1](/contracts/v1/overview) and [v2](/contracts/v2/overview) are open source and licensed under GPL. [v3](/contracts/v3/overview) introduced concentrated liquidity and is open source with slight modifications, which are viewable [here](https://github.com/Uniswap/uniswap-v3-core/blob/main/LICENSE). [v4](/contracts/v4/overview) introduces the singleton pool architecture and hooks system, enabling unprecedented protocol customization, and uses a dual license structure viewable [here](https://github.com/RingProtocol/v4-core/tree/main/licenses). Each version of Uniswap, once deployed, will function in perpetuity, with 100% uptime, provided the continued existence of the Ethereum blockchain.
+Both Ring Swap and Ring Launchpad are powered by Ring Protocol. For end users, it may seem like we are just regular AMMs because we have tried to maintain the same user experience familiar to users. However, underneath, we have integrated Ring Protocol on top of them to wrap tokens before interacting with AMMs. This enables many new functions that are not possible in regular AMMs, such as virtual liquidity and leverage trading.
+
+When integrating with the Blast chain, one benefit of this architecture is that we can claim native yield in one step, instead of having to do so from thousands of LP pools. That is why we call ourselves the crazy sister of Blast, due to these seamless features.
 
 ## How does the Ring protocol compare to a typical market?
 
 To understand how the Ring protocol differs from a traditional exchange, it is helpful to first look at two subjects: how the Automated Market Maker design deviates from traditional central limit order book-based exchanges, and how permissionless systems depart from conventional permissioned systems.
 
-### Order Book VS AMM
+### What is Ring Protocol
 
-Most publicly accessible markets use a central limit [order book](https://www.investopedia.com/terms/o/order-book.asp) style of exchange, where buyers and sellers create orders organized by price level that are progressively filled as demand shifts. Anyone who has traded stocks through brokerage firms will be familiar with an order book system.
+Ring Protocol is a full set of decentralized finance products to enable the next generation of decentralized finance. It is an effort of research and development for the past three years.
 
-The Ring protocol takes a different approach, using an Automated Market Maker (AMM), sometimes referred to as a Constant Function Market Maker, in place of an order book. Through its evolution, the protocol has enhanced this model: [v3](/contracts/v3/overview) introduced concentrated liquidity for capital efficiency, and [v4](/contracts/v4/overview)'s singleton pool architecture and hooks system enable unprecedented customization of pool behavior while maintaining the core AMM principles.
-
-At a very high level, an AMM replaces the buy and sell orders in an order book market with a liquidity pool of two assets, both valued relative to each other. As one asset is traded for the other, the relative prices of the two assets shift, and a new market rate for both is determined. In this dynamic, a buyer or seller trades directly with the pool, rather than with specific orders left by other parties. The advantages and disadvantages of Automated Market Makers versus their traditional order book counterparts are under active research by a growing number of parties. We have collected some notable examples on our [research page](./research.md).
+Our Mission
+Our vision is to build an universal liquidity protocol for maximizing asset utilization. There are billions of idle assets are parked on-chain, while thousands of crypto projects lack liquidity. Ring Protocol is launching a series of products to reshape the DEFI landscape.
 
 ### Permissionless Systems
 
@@ -31,12 +32,5 @@ Permissionless design means that the protocol's services are entirely open for p
 
 The protocol is also immutable, in other words not upgradeable. No party is able to pause the contracts, reverse trade execution, or otherwise change the behavior of the protocol in any way. It is worth noting that Ring Governance has the right (but no obligation) to divert a percentage of swap fees on any pool to a specified address. However, this capability is known to all participants in advance, and to prevent abuse, the percentage is constrained between 10% and 25%.
 
-## Where can I find more information
-
-For research into the economics of AMMs, game theory, or optimization research, check out our [research](./research.md) page.
-
-For features implemented in v3 that expand and refine the AMM design, see the [v3 Concepts](./protocol/concentrated-liquidity.md) page.
-
-For the latest innovations in v4, including singleton pools and hooks, see the [v4 Concepts](./protocol/hooks.md) page.
 
 [^1]: Ethereum protocols are sometimes referred to as peer-to-contract systems as well. These are similar to a peer-to-peer systems, but with immutable, persistent programs known as smart contracts taking the place of a peer.

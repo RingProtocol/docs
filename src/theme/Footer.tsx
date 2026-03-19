@@ -11,7 +11,7 @@ const footerData = {
       links: [
         {
           label: 'Dev Chat',
-          href: 'https://discord.com/invite/uniswap',
+          href: 'https://discord.com/invite/ring',
         },
         {
           label: 'Feedback',
@@ -23,7 +23,7 @@ const footerData = {
         },
         {
           label: 'Whitepaper',
-          href: 'https://app.uniswap.org/whitepaper-v4.pdf',
+          href: 'https://app.ring.exchange/whitepaper-v2.pdf',
         },
       ],
     },
@@ -44,7 +44,7 @@ const footerData = {
         },
         {
           label: 'Deployment addresses',
-          href: '/contracts/v4/deployments',
+          href: '/contracts/v2/deployments',
         },
       ],
     },
@@ -53,11 +53,11 @@ const footerData = {
       links: [
         {
           label: 'App',
-          href: 'https://app.uniswap.org/',
+          href: 'https://app.ring.exchange/',
         },
         {
           label: 'Analytics',
-          href: 'https://info.uniswap.org/home',
+          href: 'https://info.ring.exchange/home',
         },
         {
           label: 'Token Lists',
@@ -72,17 +72,17 @@ const footerData = {
     {
       title: 'Community',
       links: [
-        {
-          label: 'Blog',
-          href: 'https://uniswapfoundation.org/blog/',
-        },
+        // {
+        //   label: 'Blog',
+        //   href: 'https://uniswapfoundation.org/blog/',
+        // },
         {
           label: 'Governance',
-          href: 'https://gov.uniswap.org/',
+          href: 'https://gov.ring.exchange/',
         },
         {
-          label: 'Ring Labs Twitter',
-          href: 'https://twitter.com/Uniswap',
+          label: 'Ring Twitter',
+          href: 'https://twitter.com/ringprotocol',
         },
         // {
         //   label: 'Ring Foundation Twitter',
@@ -93,7 +93,7 @@ const footerData = {
   ],
   footerGithubLink: 'https://github.com/RingProtocol/docs',
   footerXLink: 'https://x.com/UniswapFND',
-  footerDiscordLink: 'https://discord.com/invite/uniswap',
+  footerDiscordLink: 'https://discord.com/invite/ring',
 }
 
 const Footer: FC = () => {

@@ -13,7 +13,7 @@ export default function NavbarMobilePrimaryMenu(): ReactNode {
     // { label: 'APIs', to: '/api/subgraph/overview' },
     { label: 'Wallet', to: '/wallet/overview' },
     // { label: 'Support', to: '/builder-support/get-funded' },
-    { label: 'LLMs', to: '/llms/overview' },
+    // { label: 'LLMs', to: '/llms/overview' },
   ];
 
   return (

@@ -427,4 +427,4 @@ Executing a range order has certain limitations that may have become obvious dur
 This guide showcases everything you need to implement Range Orders on your own, but only demonstrates creating a Take Profit order in `token0` to `token1` direction.
 Consider implementing Buy Limit orders as described in the [Range Orders concept page](../../../../concepts/protocol/range-orders.md#buy-limit-orders).
 
-This is currently the last guide in the `v3-sdk` series. Consider joining the [Ring Discord](https://discord.com/invite/uniswap) or checkout the official [GitHub](https://github.com/Uniswap) to learn more about the Ring Protocol.
+This is currently the last guide in the `v3-sdk` series. Consider joining the [Ring Discord](https://discord.com/invite/ring) or checkout the official [GitHub](https://github.com/Uniswap) to learn more about the Ring Protocol.
