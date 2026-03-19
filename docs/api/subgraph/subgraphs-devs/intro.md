@@ -8,9 +8,6 @@ Welcome to exploring the data of [**Uniswap**](https://uniswap.org/), the leadin
 
 If you're completely new to the working of the V3 protocol, would recommend going through the [references](#references) below.
 
-## Ring Foundation
-The docs was possible as I recieved a grant from [Ring Foundation](https://uniswapfoundation.mirror.xyz/). The foundation publishes [grant wishlist for RFPs](https://uniswap.notion.site/Uniswap-Foundation-Grants-Wish-List-3be614ba4e504b5caeee7b0159e64a42) regularly if you wish to get involved.
-
 ## Get In Touch
 For any updates or additions, you can raise a PR to the [docs repo](https://github.com/vintageplayer/uniswap-v3-subgraph-docs).
 

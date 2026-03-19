@@ -68,24 +68,24 @@ const config: Config = {
         },
         {
           type: 'doc',
-          docId: 'sdk/v4/overview',
+          docId: 'sdk/v2/overview',
           label: 'SDKs',
         },
-        {
-          type: 'doc',
-          docId: 'api/subgraph/overview',
-          label: 'APIs',
-        },
+        // {
+        //   type: 'doc',
+        //   docId: 'api/subgraph/overview',
+        //   label: 'APIs',
+        // },
         {
           type: 'doc',
           docId: 'wallet/overview',
           label: 'Wallet',
         },
-        {
-          type: 'doc',
-          docId: 'builder-support/get-funded',
-          label: 'Support',
-        },
+        // {
+        //   type: 'doc',
+        //   docId: 'builder-support/get-funded',
+        //   label: 'Support',
+        // },
         {
           type: 'doc',
           docId: 'llms/overview',
@@ -103,12 +103,12 @@ const config: Config = {
         //   target: '_blank',
         //   rel: 'noreferrer',
         // },
-        {
-          label: "Whitepaper",
-          to: 'https://app.uniswap.org/whitepaper-v4.pdf',
-          target: '_blank',
-          rel: 'noreferrer',
-        },
+        // {
+        //   label: "Whitepaper",
+        //   to: 'https://app.uniswap.org/whitepaper-v4.pdf',
+        //   target: '_blank',
+        //   rel: 'noreferrer',
+        // },
         {
           label: "GitHub",
           to: 'https://github.com/RingProtocol/docs/',
@@ -137,6 +137,33 @@ const config: Config = {
         docs: {
           routeBasePath: '/',
           sidebarPath: './sidebars.js',
+          sidebarItemsGenerator: async ({ defaultSidebarItemsGenerator, ...args }) => {
+            const sidebarItems = await defaultSidebarItemsGenerator(args)
+            const filterSidebarItems = (items: any[]): any[] =>
+              items.flatMap((item: any) => {
+                if (
+                  item.type === 'category' &&
+                  (item.link?.id === 'concepts/governance/overview' ||
+                    item.link?.id === 'contracts/v1/overview' ||
+                    item.link?.id === 'contracts/v4/overview' ||
+                    item.link?.id === 'contracts/the-compact/overview' ||
+                    item.link?.id === 'contracts/uniswapx/01-overview' ||
+                    item.link?.id === 'api/subgraph/overview' ||
+                    item.label === 'v1 Protocol' ||
+                    item.label === 'v4 Protocol' ||
+                    item.label === 'The Compact' ||
+                    item.label === 'UniswapX' ||
+                    item.label === 'APIs')
+                ) {
+                  return []
+                }
+                if (item.type === 'category' && item.items) {
+                  return [{ ...item, items: filterSidebarItems(item.items) }]
+                }
+                return [item]
+              })
+            return filterSidebarItems(sidebarItems)
+          },
           remarkPlugins: [math],
           rehypePlugins: [katex],
           editUrl: 'https://github.com/RingProtocol/docs/tree/main/',
@@ -225,13 +252,6 @@ const config: Config = {
             from: [
                 '/v2/advanced-topics/understanding-fees/',
                 '/v2/advanced-topics/fees'
-            ]
-          },
-          {
-            to: '/sdk/v1/overview',
-            from: [
-                '/sdk/1.0.0/reference/format',
-                '/sdk/1.0.0/'
             ]
           },
           {
@@ -339,25 +359,22 @@ const config: Config = {
             to: '/concepts/protocol/range-orders',
             from: '/protocol/concepts/V3-overview/range-orders',
           },
-          {
-            to: '/contracts/v4/concepts/PoolManager',
-            from: '/contracts/v4/concepts/lock-mechanism',
-          },
-          {
-            to: '/contracts/v4/reference/core/interfaces/IUnlockCallback',
-            from: '/src/interfaces/callback/IUnlockCallback.sol/interface.IUnlockCallback.md',
-          },
-          {
-            to: '/sdk/v4/overview',
-            from: [
-                '/sdk',
-                '/sdk/guides'
-            ]
-          },
-          {
-            to: '/sdk/v1/reference/computation',
-            from: '/sdk/1.0.0/reference/computation',
-          },
+          // {
+          //   to: '/contracts/v4/concepts/PoolManager',
+          //   from: '/contracts/v4/concepts/lock-mechanism',
+          // },
+          // {
+          //   to: '/contracts/v4/reference/core/interfaces/IUnlockCallback',
+          //   from: '/src/interfaces/callback/IUnlockCallback.sol/interface.IUnlockCallback.md',
+          // },
+          // {
+          //   to: '/sdk/v4/overview',
+          //   from: [
+          //       '/sdk',
+          //       '/sdk/guides'
+          //   ]
+          // },
+          
           {
             to: '/concepts/protocol/fees',
             from: '/protocol/V2/concepts/advanced-topics/fees',
@@ -384,10 +401,10 @@ const config: Config = {
             to: '/contracts/v2/concepts/protocol-overview/smart-contracts',
             from: '/protocol/V2/concepts/protocol-overview/smart-contracts',
           },
-          {
-            to: '/contracts/v4/guides/position-manager',
-            from: '/contracts/v4/concepts/managing-positions',
-          },
+          // {
+          //   to: '/contracts/v4/guides/position-manager',
+          //   from: '/contracts/v4/concepts/managing-positions',
+          // },
           {
             to: '/contracts/v2/guides/interface-integration/using-the-api',
             from: '/protocol/V2/guides/smart-',
@@ -474,10 +491,10 @@ const config: Config = {
             to: '/sdk/v3/guides/swaps/trading',
             from: '/sdk/v3/guides/swaps/02-trading',
           },
-          {
-            to: '/contracts/v4/guides/swap-routing',
-            from: '/contracts/universal-router/',
-          },
+          // {
+          //   to: '/contracts/v4/guides/swap-routing',
+          //   from: '/contracts/universal-router/',
+          // },
           {
             to: '/concepts/overview',
             from: '/concepts/uniswap-',
@@ -498,10 +515,7 @@ const config: Config = {
             to: '/sdk/v3/guides/swaps/quoting',
             from: '/sdk/v3/guides/quoting',
           },
-          {
-            to: '/sdk/v1/reference/constants',
-            from: '/sdk/1.0.0/reference/constants',
-          },
+          
           {
             to: '/concepts/uniswap-protocol',
             from: '/protocol/V2/concepts/protocol-overview/',
@@ -518,10 +532,10 @@ const config: Config = {
             to: '/api/subgraph/overview',
             from: '/sdk/subgraph/subgraph-data',
           },
-          {
-            to: '/contracts/v1/overview',
-            from: '/protocol/V1/introduction',
-          },
+          // {
+          //   to: '/contracts/v1/overview',
+          //   from: '/protocol/V1/introduction',
+          // },
           {
             to: '/sdk/web3-react/guides/connectors',
             from: '/sdk/web3-react/guides/connectors.md',
@@ -530,26 +544,13 @@ const config: Config = {
             to: '/concepts/protocol/hooks',
             from: '/protocol/concepts/',
           },
-          {
-            to: '/sdk/v1/reference/orchestration',
-            from: '/sdk/1.0.0/reference/orchestration',
-          },
+          
           {
             to: '/contracts/v3/reference/core/UniswapV3Factory',
             from: '/reference/core/UniswapV3Factory',
           },
-          {
-            to: '/sdk/v1/reference/data',
-            from: '/sdk/1.0.0/reference/data',
-          },
-          {
-            to: '/sdk/v1/reference/transact',
-            from: '/sdk/1.0.0/reference/transact',
-          },
-          {
-            to: '/sdk/v1/guides/getting-started',
-            from: '/sdk/core/reference/modules.md',
-          },
+          
+          
           {
             to: '/sdk/v2/guides/trading',
             from: '/sdk/2.0.0/guides/trading',
@@ -562,14 +563,14 @@ const config: Config = {
             to: '/contracts/v1/guides/custom-linking',
             from: '/protocol/V1/guides/custom-linking',
           },
-          {
-            to: '/contracts/v4/deployments',
-            from: '/arbitrum/guides/how-to-connect',
-          },
-          {
-            to: '/contracts/v4/deployments',
-            from: '/optimism/guides/how-to-connect',
-          },
+          // {
+          //   to: '/contracts/v4/deployments',
+          //   from: '/arbitrum/guides/how-to-connect',
+          // },
+          // {
+          //   to: '/contracts/v4/deployments',
+          //   from: '/optimism/guides/how-to-connect',
+          // },
           {
             to: '/concepts/research',
             from: '/protocol/concepts/advanced/research',
@@ -582,22 +583,22 @@ const config: Config = {
             to: '/contracts/v3/guides/swaps/single-swaps',
             from: '/sdk/v3/guides/swaps/01-background.md',
           },
-          {
-            to: '/api/subgraph/guides/v4-examples',
-            from: '/sdk/subgraph/subgraph-examples',
-          },
+          // {
+          //   to: '/api/subgraph/guides/v4-examples',
+          //   from: '/sdk/subgraph/subgraph-examples',
+          // },
           {
             to: '/contracts/v3/overview',
             from: '/contracts/v3/overvie',
           },
-          {
-            to: '/contracts/v1/guides/token-listing',
-            from: '/protocol/V1/guides/token-listing',
-          },
-          {
-            to: '/contracts/v4/concepts/v4-vs-v3',
-            from: '/contracts/v4/concepts/',
-          },
+          // {
+          //   to: '/contracts/v1/guides/token-listing',
+          //   from: '/protocol/V1/guides/token-listing',
+          // },
+          // {
+          //   to: '/contracts/v4/concepts/v4-vs-v3',
+          //   from: '/contracts/v4/concepts/',
+          // },
           {
             to: '/concepts/protocol/hooks',
             from: '/protocol/reference',
@@ -641,14 +642,10 @@ const config: Config = {
             to: '/contracts/v3/reference/periphery/interfaces/ISwapRouter',
             from: '/reference/periphery/interfaces/ISwapRouter',
           },
-          {
-            to: '/sdk/v1/reference/types',
-            from: '/sdk/1.0.0/reference/types',
-          },
-          {
-            to: '/contracts/v4/quickstart/hooks/async-swap',
-            from: '/contracts/v4/guides/hooks/NoOp',
-          },
+          // {
+          //   to: '/contracts/v4/quickstart/hooks/async-swap',
+          //   from: '/contracts/v4/guides/hooks/NoOp',
+          // },
           {
             to: '/sdk/v3/guides/swaps/routing',
             from: '/sdk/v3/guides/routing',
@@ -657,22 +654,22 @@ const config: Config = {
             to: '/sdk/v3/guides/swaps/trading',
             from: '/sdk/v3/guides/trading',
           },
-          {
-            to: '/contracts/v4/quickstart/manage-liquidity/mint-position',
-            from: '/contracts/v4/guides/manage-liquidity/mint-position',
-          },
-          {
-            to: '/contracts/v4/quickstart/manage-liquidity/batch-liquidity',
-            from: '/contracts/v4/guides/manage-liquidity/batch-liquidity',
-          },
-          {
-            to: '/contracts/v4/quickstart/manage-liquidity/setup-liquidity',
-            from: '/contracts/v4/guides/manage-liquidity/setup-liquidity',
-          },
-          {
-            to: '/contracts/v4/quickstart/manage-liquidity/burn-liquidity',
-            from: '/contracts/v4/guides/manage-liquidity/burn-liquidity',
-          },
+          // {
+          //   to: '/contracts/v4/quickstart/manage-liquidity/mint-position',
+          //   from: '/contracts/v4/guides/manage-liquidity/mint-position',
+          // },
+          // {
+          //   to: '/contracts/v4/quickstart/manage-liquidity/batch-liquidity',
+          //   from: '/contracts/v4/guides/manage-liquidity/batch-liquidity',
+          // },
+          // {
+          //   to: '/contracts/v4/quickstart/manage-liquidity/setup-liquidity',
+          //   from: '/contracts/v4/guides/manage-liquidity/setup-liquidity',
+          // },
+          // {
+          //   to: '/contracts/v4/quickstart/manage-liquidity/burn-liquidity',
+          //   from: '/contracts/v4/guides/manage-liquidity/burn-liquidity',
+          // },
           {
             to: '/contracts/v3/reference/deployments/',
             from: '/contracts/v3/reference/Deployments.md',
@@ -685,14 +682,14 @@ const config: Config = {
             to: '/sdk/v3/guides/liquidity/swap-and-add',
             from: '/sdk/guides/liquidity/adding',
           },
-          {
-            to: '/contracts/v4/quickstart/manage-liquidity/collect',
-            from: '/contracts/v4/guides/manage-liquidity/collect',
-          },
-          {
-            to: '/contracts/v4/concepts/subscribers',
-            from: '/contracts/v4/guides/subscriber',
-          },
+          // {
+          //   to: '/contracts/v4/quickstart/manage-liquidity/collect',
+          //   from: '/contracts/v4/guides/manage-liquidity/collect',
+          // },
+          // {
+          //   to: '/contracts/v4/concepts/subscribers',
+          //   from: '/contracts/v4/guides/subscriber',
+          // },
           {
             to: '/sdk/v3/guides/liquidity/modifying-position',
             from: '/sdk/v3/guides/liquidity/03-modifying-position.md',
@@ -701,26 +698,26 @@ const config: Config = {
             to: '/contracts/v2/reference/API/overview',
             from: '/protocol/V2/reference/core',
           },
-          {
-            to: '/contracts/v4/quickstart/manage-liquidity/increase-liquidity',
-            from: '/contracts/v4/guides/manage-liquidity/increase-liquidity',
-          },
+          // {
+          //   to: '/contracts/v4/quickstart/manage-liquidity/increase-liquidity',
+          //   from: '/contracts/v4/guides/manage-liquidity/increase-liquidity',
+          // },
           {
             to: '/contracts/v3/reference/overview',
             from: '/sdk/v3/reference/modules.md',
           },
-          {
-            to: '/contracts/v4/quickstart/create-pool',
-            from: '/contracts/v4/guides/create-pool',
-          },
-          {
-            to: '/contracts/v1/guides/custom-linking',
-            from: '/v1/frontend-integration/custom-linking',
-          },
-          {
-            to: '/contracts/v3/guides/providing-liquidity/decrease-liquidity',
-            from: '/contracts/v4/guides/manage-liquidity/decrease-liquidity',
-          },
+          // {
+          //   to: '/contracts/v4/quickstart/create-pool',
+          //   from: '/contracts/v4/guides/create-pool',
+          // },
+          // {
+          //   to: '/contracts/v1/guides/custom-linking',
+          //   from: '/v1/frontend-integration/custom-linking',
+          // },
+          // {
+          //   to: '/contracts/v3/guides/providing-liquidity/decrease-liquidity',
+          //   from: '/contracts/v4/guides/manage-liquidity/decrease-liquidity',
+          // },
           {
             to: '/sdk/v2/guides/fetching-data',
             from: '/sdk/v2/reference/fetcher',
@@ -839,16 +836,15 @@ const config: Config = {
         'docs/contracts/v3',
         'docs/sdk/core',
         'docs/sdk/swap-widget',
-        'docs/sdk/v1',
         'docs/sdk/v2',
         'docs/sdk/v3',
         'docs/sdk/web3-react',
         'docs/universal-router-legacy',
       ],
-      title: 'LLMs.txt for Ring v4 Documentation',
-      description: 'Complete reference documentation for Ring v4',
-      llmsTxtFilename: 'v4-llms.txt',
-      llmsFullTxtFilename: 'v4-llms-full.txt',
+      title: 'LLMs.txt for Ring v2 Documentation',
+      description: 'Complete reference documentation for Ring v2',
+      llmsTxtFilename: 'v2-llms.txt',
+      llmsFullTxtFilename: 'v2-llms-full.txt',
       includeBlog: false,
       // Content cleaning options
       excludeImports: true,

@@ -39,10 +39,10 @@ export default function NavbarContent(): ReactNode {
   const navLinks = [
     { label: 'Concepts', to: '/concepts/overview' },
     { label: 'Contracts', to: '/contracts/v4/overview' },
-    { label: 'SDKs', to: '/sdk/v4/overview' },
-    { label: 'APIs', to: '/api/subgraph/overview' },
+    { label: 'SDKs', to: '/sdk/v2/overview' },
+    // { label: 'APIs', to: '/api/subgraph/overview' },
     { label: 'Wallet', to: '/wallet/overview' },
-    { label: 'Support', to: '/builder-support/get-funded' },
+    // { label: 'Support', to: '/builder-support/get-funded' },
     { label: 'LLMs', to: '/llms/overview' },
   ]
 

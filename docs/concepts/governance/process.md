@@ -18,10 +18,6 @@ A Discourse-hosted forum for governance-related discussion. Community members mu
 
 A simple voting interface that allows users to signal sentiment off-chain. Votes on Snapshot are weighted by the number of UNI delegated to the address used to vote.
 
-3. [_Uniswap Agora_](https://vote.uniswapfoundation.org)
-
-The [Ring Foundation](https://www.uniswapfoundation.org) supports this voting and delegation interface. [Tally](https://www.tally.xyz/gov/uniswap) is another excellent app that supports proposal creation, delegation, and voting.
-
 
 ## Process
 

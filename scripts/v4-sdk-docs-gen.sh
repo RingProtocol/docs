@@ -6,14 +6,14 @@ set -euo pipefail
 ##############################################################################
 SDKS_REPO_URL="https://github.com/Uniswap/sdks.git"
 SDKS_SUBMODULE_DIR="sdks"
-V4_SDK_DIR="${SDKS_SUBMODULE_DIR}/sdks/v4-sdk"
+# V4_SDK_DIR="${SDKS_SUBMODULE_DIR}/sdks/v4-sdk"
 
 # TypeDoc will output to this folder inside v4-sdk
-TYPEDOC_OUTPUT_DIR="${V4_SDK_DIR}/tmp/docs"
+# TYPEDOC_OUTPUT_DIR="${V4_SDK_DIR}/tmp/docs"
 
 # Where we want the final docs in our Docusaurus site
-DOCS_V4_ROOT="docs/sdk/v4"
-DOCS_REFERENCE_DIR="${DOCS_V4_ROOT}/reference"
+# DOCS_V4_ROOT="docs/sdk/v4"
+# DOCS_REFERENCE_DIR="${DOCS_V4_ROOT}/reference"
 
 # Config added to the beginning of overview.md after generation
 OVERVIEW_DOC_CONFIG_STR="---\nid: overview\nsidebar_position: 1\ntitle: Overview\n---\n"

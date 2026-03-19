@@ -30,8 +30,5 @@ We expect low volatility assets (stable coins) will likely congregate in the low
 
 Similarly, we anticipate more exotic assets, or those traded rarely, will naturally gravitate towards a higher fee - as liquidity providers will be motivated to offset the cost risk of holding these assets for the duration of their position.
 
-## Protocol Fees
-
-Both Ring v3 and v4 include a protocol fee mechanism that can be activated through UNI governance. This fee structure offers greater flexibility compared to v2, allowing governance to adjust the fraction of swap fees allocated to the protocol. For detailed information about protocol fees, refer to the [v3 whitepaper](https://uniswap.org/whitepaper-v3.pdf) and [v4 whitepaper](https://uniswap.org/whitepaper-v4.pdf).
 
 [^1]: In-range liquidity refers to the liquidity contained in any positions which span both sides of the spot price.

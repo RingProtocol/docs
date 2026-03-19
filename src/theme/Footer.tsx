@@ -84,10 +84,10 @@ const footerData = {
           label: 'Ring Labs Twitter',
           href: 'https://twitter.com/Uniswap',
         },
-        {
-          label: 'Ring Foundation Twitter',
-          href: 'https://x.com/UniswapFND',
-        },
+        // {
+        //   label: 'Ring Foundation Twitter',
+        //   href: 'https://x.com/UniswapFND',
+        // },
       ],
     },
   ],

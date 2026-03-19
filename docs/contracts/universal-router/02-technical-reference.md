@@ -286,7 +286,7 @@ Each command requires its own input structure. Inputs are encoded using `abi.enc
 
 - **`bytes actions`**  
   Encoded action identifiers specifying the type of swap or payment action.  
-  For available action types, see [Ring v4 SDK Actions](../../sdk/v4/reference/enumerations/Actions.md).
+  For available action types, see [Ring v4 SDK Actions](../../sdk/v2/reference/enumerations/Actions.md).
 
 - **`bytes[] params`**
   ABI-encoded parameters array, corresponding one-to-one with each action provided in `actions`.

@@ -4,8 +4,6 @@ title: Research
 sidebar_position: 4
 ---
 
-The [Ring Foundation](https://www.uniswapfoundation.org/) supports the protocol's growth and decentralization through strategic research initiatives, empowering our community with grants and resources to conduct groundbreaking research and develop practical implementations that advance the frontier DeFi. Featured research from our community:
-
 ## Layer 2 be or Layer not 2 be: Scaling on Ring v3
 
 Authors: Austin Adams

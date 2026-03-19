@@ -8,12 +8,6 @@ Uniswap is a decentralized exchange protocol built on Ethereum that enables user
 
 ## Current Protocol Versions
 
-### Uniswap v4 (Latest)
-- **Status**: Recently launched, actively developed
-- **Key Features**: Hooks, singleton architecture, flash accounting, custom pools
-- **Documentation**: `/contracts/v4/`, `/sdk/v4/`
-- **Major Innovation**: Hooks system allows custom logic in pools
-
 ### Uniswap v3
 - **Status**: Mature, widely used
 - **Key Features**: Concentrated liquidity, multiple fee tiers, NFT positions
