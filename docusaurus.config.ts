@@ -192,7 +192,7 @@ const config: Config = {
       {
         redirects: [
           {
-            to: '/wallet/guides/dapp-integration',
+            to: '/wallet/integrate-dapp/dapp-integration',
             from: ['/wallet/guides/dapp-integration.md', '/wallet/guides/dapp-integration.mdx'],
           },
           {
@@ -335,7 +335,7 @@ const config: Config = {
             from: '/sdk/reference/interfaces/CommonAddLiquidityOptions',
           },
           {
-            to: '/concepts/protocol/concentrated-liquidity',
+            to: '/concepts/protocol/swaps',
             from: [
                 '/concepts/introduction/liquidity-user-guide',
                 '/concepts/V3-overview/oracle',
@@ -541,7 +541,7 @@ const config: Config = {
             from: '/sdk/web3-react/guides/connectors.md',
           },
           {
-            to: '/concepts/protocol/hooks',
+            to: '/contracts/v4/concepts/hooks',
             from: '/protocol/concepts/',
           },
           
@@ -556,7 +556,7 @@ const config: Config = {
             from: '/sdk/2.0.0/guides/trading',
           },
           {
-            to: '/concepts/protocol/hooks',
+            to: '/contracts/v4/concepts/hooks',
             from: '/concepts/protocol',
           },
           {
@@ -600,7 +600,7 @@ const config: Config = {
           //   from: '/contracts/v4/concepts/',
           // },
           {
-            to: '/concepts/protocol/hooks',
+            to: '/contracts/v4/concepts/hooks',
             from: '/protocol/reference',
           },
           {
@@ -760,7 +760,7 @@ const config: Config = {
           },
           // Missing concept page redirects
           {
-            to: '/concepts/protocol/concentrated-liquidity',
+            to: '/concepts/protocol/swaps',
             from: '/concepts/protocol/liquidity',
           },
         ],
