@@ -153,13 +153,13 @@ If your DApp uses standard Ethereum libraries (wagmi, ethers.js, web3.js, Rainbo
 
 ### 2.6 X-Frame-Options (allow iframe embedding)
 
-If Ring Wallet opens your DApp directly in an iframe (the iframe `src` points to your DApp URL), and your site responds with `X-Frame-Options: DENY` or `X-Frame-Options: SAMEORIGIN`, the browser will refuse to load it and you will see an error like:
+If Ring Wallet opens your DApp directly in an iframe (the iframe `src` points to your DApp URL), and your site responds with `X-Frame-Options: DENY`, the browser will refuse to load it and you will see an error like:
 
 ```text
 Refused to display 'https://your-dapp.com/' in a frame because it set 'X-Frame-Options' to 'deny'.
 ```
 
-Fix: remove/adjust that response header (common sources: Next.js `headers`, Vercel `vercel.json`, or security headers set by a reverse proxy/CDN) so the page can be embedded by Ring Wallet’s iframe.
+In Vercel preview mode, add `X-Frame-Options: SAMEORIGIN` to your `vercel.json` file to allow embedding in Ring Wallet’s iframe.
 
 ## 3. Test
 
