@@ -24,6 +24,8 @@ dapp-to-ringwallet
 
 Then complete the install flow in the prompt.
 
+![Add skill and select dapp-to-ringwallet](/img/skill/add_skill_and_select%20dapp_to_ringwallet.png)
+
 ## 3. Integrate in Your IDE or CLI
 
 Open your IDE or CLI and follow the installed skill steps to wire Ring Wallet integration into your DApp.
