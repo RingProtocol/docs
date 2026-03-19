@@ -1,0 +1,45 @@
+Integration is complete. Here's the summary following the skill's required output structure:
+
+---
+
+### Ring Wallet DApp SDK Integration
+
+**1. Registration prerequisites**
+Register your DApp with Ring Wallet and obtain an API key for testing.
+
+**2. SDK loading**
+Using wallet-hosted loading from `https://wallet.testring.org/dappsdk.js` (Ring Wallet DApp SDK v1.0.0).
+
+**3. Script tag placement**
+Added to `<head>` in both apps, before the app module bundles:
+
+- `apps/fallback/index.html` (line 9)
+- `apps/lite/index.html` (line 9)
+
+The script loads synchronously before the React app initializes, ensuring `window.ethereum` and EIP-6963 announcements are ready by the time wagmi starts.
+
+**4. CSP requirements**
+Neither app currently has a Content-Security-Policy configured. No changes needed. If CSP is added in the future, `https://wallet.testring.org` must be included in the `script-src` directive.
+
+**5. `window.ethereum` and EIP-6963 behavior**
+- **Inside Ring Wallet iframe**: The SDK overrides `window.ethereum` with `RingWalletProvider` and announces via EIP-6963 with `rdns: "org.testring.ringwallet"`. Both apps use wagmi 2.15.2 which supports EIP-6963 natively, so Ring Wallet will be automatically discoverable.
+- **Standalone browser**: The SDK only injects `window.ethereum` if no other wallet is present, avoiding conflicts with MetaMask or other extensions. It still announces via EIP-6963 regardless.
+
+**6. iframe / X-Frame-Options**
+No `X-Frame-Options` or `frame-ancestors` CSP is configured in either app (including `vercel.json`), so both apps are already embeddable in Ring Wallet's iframe.
+
+**7. Testing**
+Test the integration by loading your app inside Ring Wallet's test environment:
+
+```
+https://wallet.testring.org/?testdapp=YOUR_API_KEY
+```
+
+**Validation checklist:**
+- [ ] `dappsdk.js` loads without console errors
+- [ ] `[Ring Wallet] DApp SDK v1.0.0 initialized (iframe mode)` appears in console when inside Ring Wallet
+- [ ] Ring Wallet appears as a wallet option via EIP-6963 discovery
+- [ ] `window.ethereum.isRingWallet === true` inside the iframe
+- [ ] `eth_requestAccounts` returns accounts from Ring Wallet
+- [ ] Chain switching (`chainChanged` events) works correctly
+- [ ] Transaction signing flows complete successfully
