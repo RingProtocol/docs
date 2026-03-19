@@ -11,8 +11,8 @@ This section is the entry point for integrating your DApp with Ring Wallet.
 
 ## Integration Flow
 
-* [Register app](./register-your-dapp.md)
 * [Integrate DApp manually](./dapp-integration.md). *OR* [Integrate with skill](./dapp-integration-with-skills.md)
+* [Register app](./register-your-dapp.md)
 * [Test app](./test-your-dapp.md)
 
 ## What You Will Complete

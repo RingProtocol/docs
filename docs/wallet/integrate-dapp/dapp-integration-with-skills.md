@@ -33,16 +33,9 @@ After installation, the skill will be available locally (commonly under a folder
 In your AI tool, explicitly tell the model where the skill lives and what you want it to do. For example:
 
 ```text
-I have installed the Ring Wallet integration skill. The skill is located at:
-.skill/dapp-to-ringwallet
-
-Please read the skill instructions in that folder and then:
-1) Ask me for any required inputs (project type, framework, wallet connect flow, etc.)
-2) Apply the integration steps to my current codebase
-3) Show me exactly what files were changed and how to verify the integration
+Prompt:
+Follow .skill/dapp-to-ringwallet to modify this dapp project.
 ```
-
-If your AI tool supports selecting skills directly, choose the installed skill and run it, then follow its prompts.
 
 ## 4. Verify the Integration
 
