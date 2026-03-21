@@ -22,6 +22,10 @@ Choose the skill:
 dapp-to-ringwallet
 ```
 
+```text
+Recommend: Install in .agents dir for current Projects.
+```
+
 Then complete the install flow in the prompt.
 
 ![Add skill and select dapp-to-ringwallet](/img/skill/add_skill_and_select%20dapp_to_ringwallet.png)
@@ -34,7 +38,7 @@ In your AI tool, explicitly tell the model where the skill lives and what you wa
 
 ```text
 Prompt:
-Follow .skill/dapp-to-ringwallet to modify this dapp project.
+Follow .agents/.skill/dapp-to-ringwallet to modify this dapp project.
 ```
 
 ## 4. Verify the Integration
