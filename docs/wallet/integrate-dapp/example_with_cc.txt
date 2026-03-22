@@ -43,3 +43,17 @@ https://wallet.ring.exchang/?testdapp=YOUR_API_KEY
 - [ ] `eth_requestAccounts` returns accounts from Ring Wallet
 - [ ] Chain switching (`chainChanged` events) works correctly
 - [ ] Transaction signing flows complete successfully
+
+
+### 3. Wagmi 集成
+- useAccount hook 从 useAccountWagmi() 获取连接状态
+- injectedWithFallback connector 会检测 window.ethereum
+- 当 dappsdk.js 加载后， window.ethereum 会被设置为 RingWalletProvider
+- wagmi 会自动通过 EIP-6963 发现 Ring Wallet
+## 工作原理
+当 dapp 运行在 Ring Wallet 的 iframe 中时：
+
+1. dappsdk.js 注入 window.ethereum (RingWalletProvider)
+2. 通过 postMessage 与父窗口 (Ring Wallet) 通信
+3. Ring Wallet 已连接时， useAccountWagmi() 会返回 isConnected: true
+4. account.isConnected 和 account.address 就会有值

@@ -12,7 +12,7 @@ See [Register Your DApp](./register-your-dapp.md) for the registration steps and
 
 ## 2. Integrate the SDK
 
-**Single source of truth:** The SDK is maintained in this repo as **`public/dappsdk.js`** (served at `/dappsdk.js` when the wallet is deployed). All injection and path references in code go through `src/server/dappsdk.ts`. When you change the SDK, only edit `public/dappsdk.js`.
+**Get the SDK:** Load it from `https://wallet.ring.exchange/dappsdk.js`, or download it and include it in your DApp project (recommended to avoid a runtime dependency on the wallet host).
 
 ### 2.1 Add `dappsdk.js` to your project
 
