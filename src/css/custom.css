@@ -17,6 +17,12 @@
 
 :root {
   --ifm-color-primary: theme(colors.light-accent-1);
+  --ifm-color-primary-dark: #3c64dc;
+  --ifm-color-primary-darker: #355bc8;
+  --ifm-color-primary-darkest: #2c4aa3;
+  --ifm-color-primary-light: #5c85fb;
+  --ifm-color-primary-lighter: #7697fc;
+  --ifm-color-primary-lightest: #a0b8fd;
   --ifm-font-family-base: 'Basel Grotesk', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
     'Segoe UI Symbol', 'Noto Color Emoji';
   --ifm-menu-color-active: theme(colors.light-accent-1);
@@ -28,6 +34,12 @@
 
 :root[data-theme='dark'] {
   --ifm-color-primary: theme(colors.dark-accent-1);
+  --ifm-color-primary-dark: #3c64dc;
+  --ifm-color-primary-darker: #355bc8;
+  --ifm-color-primary-darkest: #2c4aa3;
+  --ifm-color-primary-light: #5c85fb;
+  --ifm-color-primary-lighter: #7697fc;
+  --ifm-color-primary-lightest: #a0b8fd;
   --ifm-menu-color-active: theme(colors.dark-accent-1);
   --docsearch-muted-color: theme(colors.dark-neutral-2);
   --docsearch-searchbox-background: theme(colors.dark-surface-2);
