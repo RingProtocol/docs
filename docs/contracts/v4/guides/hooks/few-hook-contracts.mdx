@@ -1,0 +1,132 @@
+---
+title: Few Hook Contracts
+sidebar_position: 3
+---
+
+Few Protocol provides specialized hook contracts for Ring v4 pools that connect underlying assets with Few wrapped tokens. These hooks are designed to let pool creators and integrators work with user-facing assets such as `ETH`, `USDC`, `DAI`, and `USDT` while the pool can still use the corresponding Few wrapped asset where appropriate.
+
+## Overview
+
+Few hooks are intended to simplify wrapped-token pool integrations by handling token conversion at the hook layer.
+
+- Automatic wrapping before liquidity is added to supported pools
+- Swap flows that can accept underlying assets for wrapped-token pools
+- Token-specific handling for native ETH and non-standard ERC20s such as USDT
+- Reusable hook contracts that can be attached to Ring v4 pools through the `hooks` field on `PoolKey`
+
+## Available Hook Types
+
+### Standard ERC20 Hooks
+
+For standard ERC20 integrations, Few provides token-specific hooks such as `FewUSDCHook`, `FewDAIHook`, `FewUNIHook`, `FewWBTCHook`, and `FewCBBTCHook`.
+
+These hooks are designed for assets that follow standard ERC20 transfer and approval behavior and typically support:
+
+- 1:1 wrapping and unwrapping between the underlying token and its Few wrapped representation
+- Pool creation against Few wrapped assets
+- Automated conversion during liquidity and swap flows
+
+### `FewETHHook`
+
+`FewETHHook` is intended for pools that integrate `ETH`, `WETH`, or `fwWETH`.
+
+This hook is optimized for native ETH flows and can help:
+
+- Accept native ETH in user-facing interactions
+- Wrap or unwrap between `ETH` and the Few wrapped ETH representation
+- Reduce custom integration logic for ETH-based pools
+
+### `FewUSDTHook`
+
+`FewUSDTHook` is intended for `USDT` integrations, where approval behavior differs from many standard ERC20 tokens.
+
+This hook is useful when you need:
+
+- USDT-compatible approval handling
+- Safer integration with non-standard token behavior
+- A dedicated hook path instead of reusing a standard ERC20 flow
+
+### Liquid Staking Hooks
+
+Few also publishes dedicated hooks for wrapped staking assets such as `FewweETHHook` and `FewwstETHHook`.
+
+These hooks are intended for pools that need asset-specific handling around liquid staking wrappers while still integrating through the standard Ring v4 hook lifecycle.
+
+## Mainnet Hook Deployments
+
+The following hook contracts are currently published for Ethereum mainnet:
+
+| Hook Contract | Ethereum Mainnet Address | Pool ID |
+| --- | --- | --- |
+| `FewETHHook` | `0x044301939dEB7ca53C4733dd4D9B3bc5Ea0c6888` | `0x7a5a8f5a36a6a2e9961caf6bb047a5a7580d0fe16a532aad93efc596028dfa54` |
+| `FewUNIHook` | `0x4b3E2a8cF36c7EB0fBa2A5b39B20c896C6f22888` | `0x301d41ff23b73b209ab2b1112f4effd0d8ff978ec29d743c1431463f84cbec24` |
+| `FewWBTCHook` | `0x0FE942AFdb2F51e25cbf892aAd175C6A574F2888` | `0x18605c7a76101aeccc414cc300dd5e5ae44b30d6c247ba164ccd88952c259735` |
+| `FewUSDCHook` | `0x4b2EB653D13E6C9ac5A0A01fDe22F2C8d6592888` | `0x5837e6b4fd4b8193f2f7a8b4490c0f154344bb9a52b36a885578ff6d3193fc47` |
+| `FewDAIHook` | `0x85B648a64Aed6307D5d5Ce26e6Ae086C17Bde888` | `0xf906beb74154ca4d057b7079c90eb1044efaf40ef468e62ec983930cf80a1e2b` |
+| `FewUSDTHook` | `0xBAdF77d50478b4432eF1F243B9C0bC7869486888` | `0x7db868544c8f7f6ddb107c7749c94f03c9e0155f2138aef3f8a020e4a469d95a` |
+| `FewCBBTCHook` | `0x8347b7A3807C681513D2B51b8223e59aA16a2888` | `0x8f8b0b21fb429ffb5210f2bf0f8b7cb267b944a0c61beaae35f20f6839c0f33b` |
+| `FewweETHHook` | `0x877323adBf747f85eb8D182D42f01f34A5492888` | `0x6933dfbf7441cc4ee4439843fdd464e215a6c90f07c5a769198e2a047f1f3f3e` |
+| `FewwstETHHook` | `0x75ae0292E8AD3ab60B9A1A7B3046d3F4Abdfa888` | `0xe7c2f30fd89238331b0e3e6ac6351578d5e3091b7839eff321c29cf88e17274e` |
+
+For the broader Ring Swap and Few deployment list, see [Ring Protocol Contracts](/contracts/fewv2/deployments).
+
+## How Few Hooks Work
+
+### 1. Pool Initialization
+
+When a Ring v4 pool is created, the hook contract is assigned through the `hooks` field of `PoolKey`. This binds the pool to the hook lifecycle configured by that hook's permission flags.
+
+### 2. Liquidity Provision
+
+When liquidity is added with an underlying asset, the hook can validate the pool configuration and convert the deposited token into the Few wrapped representation expected by the pool.
+
+### 3. Swaps
+
+During swaps, the hook can run pre-swap conversion logic so users can interact with the underlying asset while the pool continues to account for the wrapped asset path.
+
+### 4. Liquidity Removal
+
+When liquidity is removed, the hook can unwrap the resulting wrapped balance back into the underlying asset expected by the integrator or end user.
+
+## Hook Permissions
+
+Few hook integrations rely on standard Ring v4 hook permissions. The exact combination depends on the hook implementation, but the most relevant permissions are:
+
+| Flag | Purpose |
+| --- | --- |
+| `BEFORE_INITIALIZE_FLAG` | Validates pool setup before first initialization |
+| `BEFORE_ADD_LIQUIDITY_FLAG` | Wraps or validates assets before liquidity is added |
+| `BEFORE_SWAP_FLAG` | Performs pre-swap token conversion and checks |
+| `BEFORE_SWAP_RETURNS_DELTA_FLAG` | Returns swap deltas needed for conversion-aware flows |
+
+To understand how hook permissions are encoded in contract addresses, see [Hook Deployment](./hook-deployment.mdx) and [`IHooks`](/contracts/v4/reference/core/interfaces/IHooks).
+
+## Integration Notes
+
+### For Pool Creators
+
+- Choose the hook that matches the token behavior of your pool
+- Set the hook address in the `hooks` field when building the `PoolKey`
+- Initialize and test the pool with the exact underlying and wrapped token pairing you expect to support
+
+### For Frontend and SDK Integrators
+
+- Continue to build around standard Ring v4 pool creation and swap flows
+- Display the underlying asset to users when the hook abstracts wrapping behavior
+- Handle reverts from hook validation in the same way you handle other pool initialization or swap errors
+
+## Example Pool Initialization
+
+```solidity
+PoolKey memory key = PoolKey({
+    currency0: Currency.wrap(USDC_ADDRESS),
+    currency1: Currency.wrap(FW_USDC_ADDRESS),
+    fee: 3000,
+    tickSpacing: 60,
+    hooks: IHooks(FEW_USDC_HOOK_ADDRESS)
+});
+
+poolManager.initialize(key, SQRT_PRICE_1_1);
+```
+
+The hook address selected in `hooks` determines which lifecycle callbacks Ring v4 will invoke for that pool.
