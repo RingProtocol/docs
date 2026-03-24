@@ -15,6 +15,6 @@ title: Resources
  
 ### Misc
  - [Ring Hacker Getting Started Guide](https://uniswap.notion.site/uniswap/Uniswap-Hacker-Getting-Started-Guide-781b008a16c849c8bf4d9920744e77f5)
- - [Ring Docs](https://docs.uniswap.org/) ([Code Repo](https://github.com/RingProtocol/docs/tree/main))
- - [Ring Info Site](https://info.uniswap.org/#/) to see the pool and token stats using the subgraph
+ - [Ring Docs](https://docs-ring-protocol.vercel.app/) ([Code Repo](https://github.com/RingProtocol/docs/tree/main))
+ - [Ring Explore](https://app.ring.exchange/#/explore) to see pool and token stats
  - [V3 New Chain Deployment Guide](https://github.com/RingProtocol/v3-new-chain-deployments) (Slightly Outdated)

@@ -5,12 +5,12 @@ sidebar_position: 1
 
 # Ring Protocol Fees
 
-Fees from protocol versions (v2, v3, v4, UniswapX, Unichain) flow into a single onchain collector on each network. From there, specialized contracts handle how those assets are released or transformed (for example, burning UNI).
+Fees from protocol versions and products such as v2, v3, v4, and Unichain flow into a single onchain collector on each network. From there, specialized contracts handle how those assets are released or transformed (for example, burning UNI).
 
 ## Flow of Assets
 
 1. **Fee Sources**
-Each protocol component that generates fees (v2, v3, v4, UniswapX, Unichain, and others) routes those fees through an associated Fee Adapter contract. Adapters define how and when fees are collected and send them to the TokenJar on the same chain.
+Each protocol component that generates fees (v2, v3, v4, Unichain, and others) routes those fees through an associated Fee Adapter contract. Adapters define how and when fees are collected and send them to the TokenJar on the same chain.
 
 2. **TokenJar**
    Each chain has one immutable contract called the **TokenJar**. All fee sources send tokens here. It’s the unified collection point for raw tokens.

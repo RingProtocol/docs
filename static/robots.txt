@@ -1,5 +1,5 @@
 # Robots.txt for Ring Documentation
-# https://docs.uniswap.org
+# https://docs-ring-protocol.vercel.app
 
 # Default: Allow all crawlers to index all content
 User-agent: *
@@ -48,7 +48,7 @@ User-agent: DotBot
 Disallow: /
 
 # Sitemap location
-Sitemap: https://docs.uniswap.org/sitemap.xml
+Sitemap: https://docs-ring-protocol.vercel.app/sitemap.xml
 
 # Crawl delay for courtesy (1 second)
 Crawl-delay: 1

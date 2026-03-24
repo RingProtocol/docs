@@ -63,7 +63,7 @@ _Timeframe_: 2 day waiting period, 7 day voting period, 2 day timelock
 
 _Quorum_: 40M UNI votes in favor
 
-Form: [Governance Proposal](https://vote.uniswapfoundation.org/)
+Form: [Governance Proposal](https://www.tally.xyz/gov/ring)
 
 ![](./images/Proposal_Flow.png)
 

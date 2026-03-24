@@ -189,7 +189,7 @@ bytes memory commands = abi.encodePacked(uint8(Commands.V4_SWAP));
 
 Here, we're using `V4_SWAP`, which tells the Universal Router that we want to perform a swap on a Ring v4 pool. The specific type of swap (exact input or exact output) will be determined by the V4Router actions we encode later. As we saw earlier, we encode this as a single byte, which is how the Universal Router expects to receive commands.
 
-Check the complete list of [commands](https://docs.uniswap.org/contracts/universal-router/technical-reference#command).
+Check the complete list of [commands](/contracts/universal-router/technical-reference#command).
 
 #### 3.3: Action Encoding
 

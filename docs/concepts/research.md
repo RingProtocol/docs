@@ -49,7 +49,7 @@ Authors: Campbell R. Harvey, Joel Hasbrouck, Fahad Saleh
 
 - [TLDR (The Latest in DeFi Research):](https://www.thelatestindefi.org/) empowers engineers, academics, and students through research fellowships with grants and expert mentorship, culminating in an annual conference to showcase groundbreaking work.
 
-- [CBER CtCe (Crafting the Cryptoeconomy):](https://x.com/UniswapFND/status/1859719158763749514) developed to generate and promote practical yet rigorous research in cryptoeconomics by connecting researchers, economists and practitioners through workshops, grants and conferences. 
+- [CBER CtCe (Crafting the Cryptoeconomy):](https://x.com/ProtocolRing) developed to generate and promote practical yet rigorous research in cryptoeconomics by connecting researchers, economists and practitioners through workshops, grants and conferences. 
 
 - [DEX Analytics Portal:](https://dexanalytics.org/) accurate, verified, and ergonomic DEX and Ring datasets to save researchers time.
 

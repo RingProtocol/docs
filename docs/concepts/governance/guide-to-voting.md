@@ -15,7 +15,7 @@ To participate you will need:
 
 The governance [process](./02-process.md) begins in the [Governance Forum](https://gov.uniswap.org/), where you can find proposals under consideration, gather information about community sentiment, and engage with the community.
 
-Once a given proposal is ready for an onchain vote, it will appear in the Ring [voting dashboard](https://vote.uniswapfoundation.org/) - where you can view all current and former Ring proposals.
+Once a given proposal is ready for an onchain vote, it will appear in the Ring [voting dashboard](https://www.tally.xyz/gov/ring) - where you can view current and prior Ring proposals.
 
 ![](./images/Proposals_Overview.png)
 
@@ -33,7 +33,7 @@ To submit a proposal, an address must have 1,000,000 UNI delegated to it.
 
 For a proposal to pass, 40,000,000 UNI (from any number of addresses) must vote on it, and the majority must be in favor.
 
-To delegate your UNI tokens, visit the [Ring voting dashboard](https://vote.uniswapfoundation.org/delegates). Connect your Wallet, browse delegates, and click "Delegate" on your chosen delegate.
+To delegate your governance tokens, visit the [Ring voting dashboard](https://www.tally.xyz/gov/ring). Connect your wallet, browse delegates, and click "Delegate" on your chosen delegate.
 
 ![](./images/Delegate_Selection.png)
 

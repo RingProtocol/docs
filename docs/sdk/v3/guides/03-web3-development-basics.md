@@ -175,7 +175,6 @@ The most important SDKs are:
 * [universal-router-sdk](https://github.com/Uniswap/universal-router-sdk): Abstracts interactions with the Universal Router.
 * [smart-order-router](https://github.com/Uniswap/smart-order-router): Searches for the most efficient routes for a trade.
 * [permit2-sdk](https://github.com/Uniswap/permit2-sdk): Simplifies interactions with Permit2 in JS.
-* [uniswapx-sdk](https://github.com/Uniswap/uniswapx-sdk): SDK for the UniswapX protocol.
 
 As you know already, all interactions with the blockchain happens through RPCs. So the Ring SDKs, as you will see throughout the guides,
 requires you to have access to an RPC endpoint like [Chainnodes](https://www.chainnodes.org).
