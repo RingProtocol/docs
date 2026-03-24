@@ -143,8 +143,7 @@ const config: Config = {
               items.flatMap((item: any) => {
                 if (
                   item.type === 'category' &&
-                  (item.link?.id === 'concepts/governance/overview' ||
-                    item.link?.id === 'contracts/v1/overview' ||
+                  (item.link?.id === 'contracts/v1/overview' ||
                     item.link?.id === 'contracts/v4/overview' ||
                     item.link?.id === 'contracts/the-compact/overview' ||
                     item.link?.id === 'api/subgraph/overview' ||
@@ -408,7 +407,7 @@ const config: Config = {
             from: '/protocol/V2/guides/smart-',
           },
           {
-            to: '/concepts/governance/overview',
+            to: 'https://www.tally.xyz/gov/ring',
             from: [
                 '/contracts/v3/reference/governance/overview.md',
                 '/protocol/V2/concepts/governance/governance-reference',
@@ -570,7 +569,7 @@ const config: Config = {
           //   from: '/optimism/guides/how-to-connect',
           // },
           {
-            to: '/concepts/research',
+            to: '/concepts/overview',
             from: '/protocol/concepts/advanced/research',
           },
           {
@@ -621,7 +620,7 @@ const config: Config = {
             from: '/sdk/web3-react/guides/01-setting-up.md',
           },
           {
-            to: '/concepts/research',
+            to: '/concepts/overview',
             from: '/protocol/V2/concepts/advanced-topics/research',
           },
           {
