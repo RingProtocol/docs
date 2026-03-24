@@ -93,7 +93,7 @@ const config: Config = {
         },
         {
           label: "Give Feedback",
-          to: 'https://share.hsforms.com/14XvN41xQTyC8KPamgaM8Jwsdca9',
+          to: 'https://discord.com/invite/TefBNDZBQP',
           target: '_blank',
           rel: 'noreferrer',
         },
