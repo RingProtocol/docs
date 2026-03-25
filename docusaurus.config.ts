@@ -17,9 +17,9 @@ const config: Config = {
     // From node
     nodeEnv: process.env.NODE_ENV,
   },
-  title: 'Uniswap',
+  title: 'Ring Protocol',
   tagline: 'Documentation and Guides',
-  url: 'https://docs.uniswap.org',
+  url: 'https://docs-ring-protocol.vercel.app',
   baseUrl: '/',
   onBrokenLinks: 'warn',
   markdown: {
@@ -28,8 +28,8 @@ const config: Config = {
     },
   },
   favicon: 'img/favicon.png',
-  organizationName: 'Uniswap',
-  projectName: 'Uniswap-docs',
+  organizationName: 'RingProtocol',
+  projectName: 'docs',
   headTags: [
     {
       tagName: 'meta',
@@ -93,19 +93,19 @@ const config: Config = {
         },
         {
           label: "Give Feedback",
-          to: 'https://share.hsforms.com/14XvN41xQTyC8KPamgaM8Jwsdca9',
+          to: 'https://discord.com/invite/TefBNDZBQP',
           target: '_blank',
           rel: 'noreferrer',
         },
         // {
         //   label: "Ring Foundation",
-        //   to: 'https://www.uniswapfoundation.org/',
+        //   to: 'https://x.com/ProtocolRing',
         //   target: '_blank',
         //   rel: 'noreferrer',
         // },
         // {
         //   label: "Whitepaper",
-        //   to: 'https://app.uniswap.org/whitepaper-v4.pdf',
+        //   to: 'https://app.ring.exchange/whitepaper-v4.pdf',
         //   target: '_blank',
         //   rel: 'noreferrer',
         // },
@@ -143,16 +143,13 @@ const config: Config = {
               items.flatMap((item: any) => {
                 if (
                   item.type === 'category' &&
-                  (item.link?.id === 'concepts/governance/overview' ||
-                    item.link?.id === 'contracts/v1/overview' ||
+                  (item.link?.id === 'contracts/v1/overview' ||
                     item.link?.id === 'contracts/v4/overview' ||
                     item.link?.id === 'contracts/the-compact/overview' ||
-                    item.link?.id === 'contracts/uniswapx/01-overview' ||
                     item.link?.id === 'api/subgraph/overview' ||
                     item.label === 'v1 Protocol' ||
                     item.label === 'v4 Protocol' ||
                     item.label === 'The Compact' ||
-                    item.label === 'UniswapX' ||
                     item.label === 'APIs')
                 ) {
                   return []
@@ -410,7 +407,7 @@ const config: Config = {
             from: '/protocol/V2/guides/smart-',
           },
           {
-            to: '/concepts/governance/overview',
+            to: 'https://www.tally.xyz/gov/ring',
             from: [
                 '/contracts/v3/reference/governance/overview.md',
                 '/protocol/V2/concepts/governance/governance-reference',
@@ -572,7 +569,7 @@ const config: Config = {
           //   from: '/optimism/guides/how-to-connect',
           // },
           {
-            to: '/concepts/research',
+            to: '/concepts/overview',
             from: '/protocol/concepts/advanced/research',
           },
           {
@@ -623,7 +620,7 @@ const config: Config = {
             from: '/sdk/web3-react/guides/01-setting-up.md',
           },
           {
-            to: '/concepts/research',
+            to: '/concepts/overview',
             from: '/protocol/V2/concepts/advanced-topics/research',
           },
           {
@@ -742,22 +739,6 @@ const config: Config = {
             to: '/contracts/v3/guides/local-environment',
             from: '/protocol/V3/guides/getting-started',
           },
-          {
-            to: '/contracts/uniswapx/fillers/mainnet/createfiller',
-            from: '/contracts/uniswapx/guides/createfiller',
-          },
-          {
-            to: '/contracts/uniswapx/fillers/arbitrum/arbitrumfiller',
-            from: '/contracts/uniswapx/guides/arbitrumfiller',
-          },
-          {
-            to: '/contracts/uniswapx/fillers/mainnet/becomequoter',
-            from: '/contracts/uniswapx/guides/becomequoter',
-          },
-          {
-            to: '/contracts/uniswapx/fillers/priority/priorityorderreactor',
-            from: '/contracts/uniswapx/guides/priorityorderreactor',
-          },
           // Missing concept page redirects
           {
             to: '/concepts/protocol/swaps',
@@ -829,7 +810,6 @@ const config: Config = {
         'docs/concepts',
         'docs/contracts/permit2',
         'docs/contracts/smart-wallet',
-        'docs/contracts/uniswapx',
         'docs/contracts/universal-router',
         'docs/contracts/v1',
         'docs/contracts/v2',

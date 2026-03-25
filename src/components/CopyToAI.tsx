@@ -22,7 +22,7 @@ const CopyToAI: React.FC<CopyToAIProps> = ({ className = '' }) => {
       .replace(/\n+/g, '\n')
       .trim()
 
-    const pageUrl = `https://docs.uniswap.org${location.pathname}`
+    const pageUrl = `https://docs-ring-protocol.vercel.app${location.pathname}`
     const pageTitle = document.title || 'Ring Documentation'
 
     return `# ${pageTitle}
