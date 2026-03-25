@@ -23,7 +23,7 @@ Theme can be set as `light` or `dark`.
 
 ### Example Usage
 
-`https://app.uniswap.org/#/swap?theme=dark`
+`https://app.ring.exchange/#/swap?theme=dark`
 
 ## Swap Page
 
@@ -50,7 +50,7 @@ Two parameters, field and value can be used to set specific token amounts to be 
 
 ### Example Usage
 
-`https://app.uniswap.org/#/swap?field=input&value=10&inputCurrency=0x0F5D2fB29fb7d3CFeE444a200298f468908cC942`
+`https://app.ring.exchange/#/swap?field=input&value=10&inputCurrency=0x0F5D2fB29fb7d3CFeE444a200298f468908cC942`
 
 ## Pool Page
 
@@ -65,7 +65,7 @@ The Pool page is made up of 2 subroutes: `add`, `remove`.
 
 ### Example Usage
 
-`https://app.uniswap.org/#/add/v2/0x6B175474E89094C44Da98b954EedeAC495271d0F/0xdAC17F958D2ee523a2206206994597C13D831ec7`
+`https://app.ring.exchange/#/add/v2/0x6B175474E89094C44Da98b954EedeAC495271d0F/0xdAC17F958D2ee523a2206206994597C13D831ec7`
 
 ## Remove Liquidity
 
@@ -76,4 +76,4 @@ The Pool page is made up of 2 subroutes: `add`, `remove`.
 
 ### Example Usage
 
-`https://app.uniswap.org/#/remove/0x6B175474E89094C44Da98b954EedeAC495271d0F-0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2`
+`https://app.ring.exchange/#/remove/0x6B175474E89094C44Da98b954EedeAC495271d0F-0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2`

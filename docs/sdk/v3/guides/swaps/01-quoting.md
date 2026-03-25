@@ -75,7 +75,7 @@ export const CurrentConfig: ExampleConfig = {
 
 The pool used is defined by a pair of tokens in [`constants.ts`](https://github.com/Uniswap/examples/blob/main/v3-sdk/quoting/src/libs/constants.ts#L14). 
 You can also change these two tokens and the fee of the pool in the config, just make sure a Pool actually exists for your configuration.
-Check out the top pools on [Ring info](https://info.uniswap.org/#/pools).
+Check out the top pools on [Ring Explore](https://app.ring.exchange/#/explore).
 
 ## Computing the Pool's deployment address
 

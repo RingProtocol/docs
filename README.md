@@ -6,7 +6,7 @@ This web application contains all documentation for Ring products. It is built u
 
 ### Ring documentation is broken down into four sections:
 - Concepts - General Ring information or concepts useful for using Ring products, such as *Hooks* and *Fees*
-- Contracts - Ring smart contracts including *v4*, *v3*, *UniswapX*, *Universal Router*, *Permit2*, *v2*, and *v1*
+- Contracts - Ring smart contracts including *v4*, *v3*, *Universal Router*, *Permit2*, *v2*, and *v1*
 - SDKs - Ring integrations such as the *v4-sdk*, *v3-sdk* and the *Swap Widget*
 - APIs - The Ring APIs such the *Subgraph API*
 
@@ -133,7 +133,7 @@ See https://www.npmjs.com/package/typedoc-plugin-markdown for details.
 If you don't have those, one for the Engineering Managers should be able to help you.
 - Edit config.json file if needed:
     - Start url from updated website
-    - Sitemap url from updated website: eg for docs: https://docs.uniswap.org/sitemap.xml
+    - Sitemap URL from updated website: eg for docs: https://docs-ring-protocol.vercel.app/sitemap.xml
     - Use "v4-docs" as the index name
 - [Install](https://www.docker.com/products/docker-desktop/) and start running Docker Desktop
 - Install jq `brew install jq`

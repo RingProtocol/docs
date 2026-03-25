@@ -11,15 +11,11 @@ const footerData = {
       links: [
         {
           label: 'Dev Chat',
-          href: 'https://discord.com/invite/ring',
+          href: 'https://discord.com/invite/TefBNDZBQP',
         },
         {
           label: 'Feedback',
-          href: 'https://forms.gle/13XtjmkwdXQ2jMn26',
-        },
-        {
-          label: 'Bug Bounty',
-          href: 'https://blog.uniswap.org/v4-bug-bounty',
+          href: 'https://discord.com/invite/TefBNDZBQP',
         },
         {
           label: 'Whitepaper',
@@ -31,20 +27,20 @@ const footerData = {
       title: 'GitHub',
       links: [
         {
-          label: 'uniswap-v4-core',
+          label: 'ring-v4-core',
           href: 'https://github.com/RingProtocol/v4-core',
         },
         {
-          label: 'uniswap-v4-sdk',
-          href: 'https://github.com/Uniswap/sdks/tree/main/sdks/v4-sdk',
+          label: 'ring-sdks',
+          href: 'https://github.com/RingProtocol/sdks',
         },
         {
-          label: 'uniswap-v4-periphery',
+          label: 'ring-v4-periphery',
           href: 'https://github.com/RingProtocol/v4-periphery',
         },
         {
           label: 'Deployment addresses',
-          href: '/contracts/v2/deployments',
+          href: '/contracts/fewv2/deployments',
         },
       ],
     },
@@ -57,15 +53,7 @@ const footerData = {
         },
         {
           label: 'Analytics',
-          href: 'https://info.ring.exchange/home',
-        },
-        {
-          label: 'Token Lists',
-          href: 'https://tokenlists.org/',
-        },
-        {
-          label: 'Brand Assets',
-          href: 'https://github.com/Uniswap/brand-assets/raw/main/Uniswap%20Brand%20Assets.zip',
+          href: 'https://app.ring.exchange/#/explore',
         },
       ],
     },
@@ -78,22 +66,18 @@ const footerData = {
         // },
         {
           label: 'Governance',
-          href: 'https://gov.ring.exchange/',
+          href: 'https://www.tally.xyz/gov/ring',
         },
         {
           label: 'Ring Twitter',
-          href: 'https://twitter.com/ringprotocol',
+          href: 'https://x.com/ProtocolRing',
         },
-        // {
-        //   label: 'Ring Foundation Twitter',
-        //   href: 'https://x.com/UniswapFND',
-        // },
       ],
     },
   ],
   footerGithubLink: 'https://github.com/RingProtocol/docs',
-  footerXLink: 'https://x.com/UniswapFND',
-  footerDiscordLink: 'https://discord.com/invite/ring',
+  footerXLink: 'https://x.com/ProtocolRing',
+  footerDiscordLink: 'https://discord.com/invite/TefBNDZBQP',
 }
 
 const Footer: FC = () => {
