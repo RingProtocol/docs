@@ -4,7 +4,7 @@ title: Register Your DApp
 sidebar_position: 1
 ---
 
-[Register Your DApp](https://docs.google.com/forms/d/e/1FAIpQLSd7wOr0tcy5xwZZcozHlobe-bRjjXO0h9W2v3fMB3j5AkCnlA/viewform?usp=publish-editor)
+[Register Your DApp](https://docs.google.com/forms/d/e/1FAIpQLSd7wOr0tcy5xwZZcozHlobe-bRjjXO0h9W2v3fMB3j5AkCnlA/viewform)
 
 Fill in the form with:
 
