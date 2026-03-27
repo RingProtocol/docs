@@ -57,3 +57,17 @@ https://wallet.ring.exchang/?testdapp=YOUR_API_KEY
 2. 通过 postMessage 与父窗口 (Ring Wallet) 通信
 3. Ring Wallet 已连接时， useAccountWagmi() 会返回 isConnected: true
 4. account.isConnected 和 account.address 就会有值
+
+### 4. proxy mode
+x-forwarded-proto and x-forwarded-host are headers typically set by reverse proxies (Nginx, Vercel, Cloudflare, etc.) when forwarding requests to upstream servers.
+In this context:
+1. Direct browser request → No reverse proxy → These headers won't exist
+   - Falls back to https://localhost which is wrong for production
+2. Behind a reverse proxy (e.g., Vercel) → Headers are set by the proxy
+   - Works correctly
+
+
+### 5. origin url server will not allow dapp.com
+However , some external domains do need proxying:
+- Private CDNs with origin restrictions
+- APIs with referer checks (may break if direct-loaded from different origin)
