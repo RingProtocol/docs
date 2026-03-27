@@ -25,8 +25,12 @@ Ring Wallet is our step toward that future.
 | Self-custody | Your keys, your assets. We don’t hold them for you. |
 | No extra fee | We don’t add transaction fees on top of network costs. |
 | AI Agent friendly | Built so agents and automation can interact with your wallet in a secure, programmable way. |
+| Open source | We share our code with you, so you can build on top of it. |
 | Listener to your voice | Designed to respond to how you want to use crypto—simple when you want simple, powerful when you need it. |
 
 ## Integrate DApp
 
 Start DApp integration from [Integrate DApp Overview](./integrate-dapp/overview.md).
+
+# GitHub
+[Source](https://github.com/ringprotocol/ringwallet)
