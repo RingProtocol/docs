@@ -9,7 +9,7 @@ The Ring SDK Core provides the foundational classes and utilities for working wi
 
 This reference documentation covers:
 
-- **[Classes](./classes/overview)** - Core classes like `Token`, `CurrencyAmount`, `Fraction`, and `Price`
+- **[Classes](./classes/Token.md)** - Core classes like `Token`, `CurrencyAmount`, `Fraction`, and `Price`
 - **[Enums](./enums/ChainId)** - Supported chains, trade types, and other enumerations
 - **[Types](./modules.md)** - TypeScript type definitions and interfaces
 
@@ -42,4 +42,4 @@ const USDC = new Token(1, '0xA0b86a33E6417c29C8F6e3b6E4E12A82aA4Ca8e9', 6, 'USDC
 const amount = CurrencyAmount.fromRawAmount(USDC, '1000000') // 1 USDC
 ```
 
-For practical integration examples, see the [SDK v3 Guides](../../v3/guides/01-background.md) and [SDK v4 Guides](../../v4/overview.md).
+For practical integration examples, see the [SDK v2 Overview](../../v2/overview) and [SDK v2 Guides](../../v2/guides/quick-start).

@@ -124,4 +124,4 @@ const amount = CurrencyAmount.fromRawAmount(USDC, '1000000') // 1 USDC
 const readable = amount.toSignificant(6) // "1.000000"
 ```
 
-For more detailed usage, see the individual class documentation and the [SDK Guides](../../v3/guides/01-background.md).
+For more detailed usage, see the individual class documentation and the [SDK v2 Guides](../../v2/guides/quick-start).

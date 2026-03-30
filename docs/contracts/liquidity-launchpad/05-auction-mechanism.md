@@ -326,7 +326,7 @@ Likewise, any `currency` sent directly to the auction and not through `submitBid
 The following limitations regarding total supply and maximum bid prices should be considered:
 
 - The maximum total supply that can be sold in the auction is 1e30 wei of `token`. For a token with 18 decimals, this is 1 trillion tokens.
-- The auction also ensures that the total currency raised does not exceed the maximum allowable liquidity for a Ring v4 liquidity position. The lowest bound for this is 2^107 wei (given the smallest possible tick spacing of 1).
+- The auction also ensures that the total currency raised does not exceed the maximum allowable liquidity for a Uniswap v4 liquidity position used by the current Ring launch flow. The lowest bound for this is 2^107 wei (given the smallest possible tick spacing of 1).
 
 Given a total supply of:
 
@@ -347,6 +347,6 @@ Setting too small of a tick spacing will make the auction extremely gas ineffici
 
 Steps in the auction create the supply issuance schedule. Generally each step should be monotonically increasing in the amount of tokens sold, and the last block of the auction MUST sell a significant amount of tokens.
 
-This is because the final clearing price of the auction is used to initialize a Ring v4 liquidity pool, and if only a small number of tokens are sold at the end, the final price will be easy to manipulate.
+This is because the final clearing price of the auction is used to initialize a Uniswap v4 liquidity pool in the current Ring launch flow, and if only a small number of tokens are sold at the end, the final price will be easy to manipulate.
 
-See the [whitepaper](./docs/assets/whitepaper.pdf) for more details.
+See the [whitepaper](/whitepaper_cca.pdf) for more details.

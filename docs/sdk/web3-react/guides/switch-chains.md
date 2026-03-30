@@ -10,7 +10,7 @@ This guide will cover how to prompt a wallet that has connected to our dApp to s
 
 
 :::info
-For help on setting up `web3-react` and interacting with a MetaMask wallet, please visit our [connecting to wallets](./01-connect-wallet.md) page!
+For help on setting up `web3-react` and interacting with a MetaMask wallet, please visit our [connecting to wallets](./connect-wallet) page!
 :::
 
 
@@ -30,7 +30,7 @@ The core code of this guide can be found in [connections](https://github.com/Uni
 
 ## Switching Chains
 
-Having [setup our application](./01-connect-wallet.md) to use `web3-react` and having built out the ability to [connect and disconnect wallets](./02-connectors.md), we can now move on to switching chains.
+Having [setup our application](./connect-wallet) to use `web3-react` and having built out the ability to [connect and disconnect wallets](./connectors), we can now move on to switching chains.
 
 Switching chains requires two parameters, the `chainId` we want to switch to, and the current `connectionType`:
 

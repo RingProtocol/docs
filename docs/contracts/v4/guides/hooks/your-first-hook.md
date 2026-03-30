@@ -488,4 +488,4 @@ This test case looks very similar to the `afterSwap` one, except we’re testing
 
 ## Next Steps
 
-Congratulations on building your very first hook! You could explore further by going to [Hook Deployment](./05-hook-deployment.mdx) to learn about how hook flags work and see how we will deploy a hook in action.
+Congratulations on building your very first hook! You could explore further by going to [Hook Deployment](./hook-deployment) to learn about how hook flags work and see how we will deploy a hook in action.

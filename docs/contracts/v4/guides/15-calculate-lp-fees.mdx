@@ -4,7 +4,7 @@ title: Calculate LP fees
 
 ## Introduction
 
-With hook introduced in v4, [Dynamic Fees](../concepts/07-dynamic-fees.mdx) is now possible and allow v4 pools to have a flexible and responsive fee structure comparing to v3 pools with static fee tiers(0.05%, 0.3%, 1%). 
+With hook introduced in v4, [Dynamic Fees](../concepts/dynamic-fees) is now possible and allow v4 pools to have a flexible and responsive fee structure comparing to v3 pools with static fee tiers(0.05%, 0.3%, 1%). 
 
 While in v3 we can get the amount for the fees claimed on each liquidity operation in the `Collect` event, in v4 with dynamic fees, swap fees are directly accrued to liquidity positions and can be further handled by hooks at *`afterModifyLiquidity`* - thus we should not emit `feesAccrued` in the event `ModifiyLiquidity`. This not only saves gas on event emission but more importantly avoid causing confusion since the amount of `feesAccrued` could be changed as a result of hook execution.
 

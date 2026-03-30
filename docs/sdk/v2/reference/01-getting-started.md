@@ -23,7 +23,7 @@ The second concern is precision loss due to, for example, chained price ratio ca
 To address this issue, all math operations are performed as fraction operations, ensuring arbitrary precision up
 until the point that values are rounded for display purposes, or truncated to fit inside a fixed bit width.
 
-The Fractions class, among others that the V2 SDK depends on, are exported from the SDK Core to allow interoperability with the V3 SDK. 
+The Fractions class, among others that the V2 SDK depends on, are exported from the SDK Core so they can be shared across Ring SDK packages.
 Refer to the [Core SDK section of the docs](../../core/overview.md) to learn more about these classes.
 
 The SDK works for all chains on which the [factory](../../../contracts/v2/reference/smart-contracts/factory#address) is deployed.
@@ -35,4 +35,4 @@ The [source code is available on GitHub](https://github.com/Uniswap/uniswap-sdk)
 ## Dependencies
 
 The SDK installs a small number of dependencies(https://github.com/RingProtocol/v2-sdk/blob/main/package.json#L24).
-The most important dependency of the V2 SDK is the SDK core, which was previously part of the V2 SDK itself, but later released as its own package to avoid duplicate code between the V2 and V3 SDK.
+The most important dependency of the V2 SDK is the SDK core, which was later released as its own package to avoid duplicate logic across SDK packages.

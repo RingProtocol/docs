@@ -17,7 +17,7 @@ In this example we will cover connecting our dApp to the following connectors:
 
 
 :::info
-For help on setting up `web3-react` and interacting with a MetaMask wallet, please visit our [connecting to wallets](./01-connect-wallet.md) page!
+For help on setting up `web3-react` and interacting with a MetaMask wallet, please visit our [connecting to wallets](./connect-wallet) page!
 :::
 
 
@@ -50,7 +50,7 @@ The core code of this guide can be found in the top level of our [examples repos
 
 ## Building a Coinbase Wallet connector
 
-The second connector in the list of prioritized connectors that [we provided](./01-connect-wallet.md/#building-an-injected-connector) as a parameter to [`Web3ReactProvider`](https://github.com/Uniswap/examples/blob/feat/web3-react/web3-react/src/libs/components/Web3ContextProvider.tsx) is the *Coinbase Wallet* connector:
+The second connector in the list of prioritized connectors that [we provided](./connect-wallet#building-an-injected-connector) as a parameter to [`Web3ReactProvider`](https://github.com/Uniswap/examples/blob/feat/web3-react/web3-react/src/libs/components/Web3ContextProvider.tsx) is the *Coinbase Wallet* connector:
 
 ```typescript reference title="Creating the prioritized Connectors list" referenceLinkText="View on GitHub" customStyling
 https://github.com/Uniswap/examples/blob/8c0e36ca8d2ba4718af944094191f39da62a9c5c/web3-react/src/libs/connections.ts#L33-L39
@@ -162,4 +162,4 @@ https://github.com/Uniswap/examples/blob/8c0e36ca8d2ba4718af944094191f39da62a9c5
 
 ## Next steps
 
-Now that we have gone through building all of the different types of supported connectors, we will learn how to [switch chains](03-switch-chains.md).
+Now that we have gone through building all of the different types of supported connectors, we will learn how to [switch chains](./switch-chains).

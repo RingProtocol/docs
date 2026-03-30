@@ -33,8 +33,8 @@ export const actions = [
   {
     title: 'The Ring smart contracts',
     icon: 'hexagon',
-    to: '/contracts/v4/overview',
-    text: `Learn about the architecture of the Ring Protocol smart contracts through guided examples.`,
+    to: '/contracts/overview',
+    text: `Learn how Few Protocol, Ring Swap (v2), and Uniswap v4 integrations fit together.`,
     color: 'green',
   },
 ]
@@ -65,23 +65,23 @@ export const developerLinks = [
 export const dAppGuides = [
   {
     title: 'Fetch token prices',
-    text: 'Fetch the price of tokens in a specific Pool',
-    to: 'sdk/v2/guides/swaps/quoting',
+    text: 'Understand pricing and reserve-based quotes in Ring Swap (v2)',
+    to: '/sdk/v2/guides/pricing',
   },
   {
     title: 'Create a Trade',
-    text: 'Fetch a Quote for a Trade and execute the Trade',
-    to: '/sdk/v3/guides/swaps/trading',
+    text: 'Construct and execute trades with the v2 SDK',
+    to: '/sdk/v2/guides/trading',
   },
   {
     title: 'Route trades',
-    text: 'Use Routing to get optimized prices for your Trades',
-    to: '/sdk/v3/guides/swaps/routing',
+    text: 'Fetch pair and market data for routing logic',
+    to: '/sdk/v2/guides/fetching-data',
   },
   {
     title: 'Provide liquidity',
-    text: "Contribute to a Pool's liquidity by using tokens to earn fees",
-    to: '/sdk/v3/guides/liquidity/minting',
+    text: 'Derive pair addresses and prepare integrations around Ring Swap (v2)',
+    to: '/sdk/v2/guides/getting-pair-addresses',
   },
 ]
 export const smartContractGuides = [

@@ -14,8 +14,6 @@ Welcome to the Ring API documentation. Ring provides several APIs and data sourc
 The Ring Subgraph provides a GraphQL API for querying historical and real-time data from the Ring protocol.
 
 - **[Subgraph Documentation](./subgraph/overview)** - Learn how to query Ring data using GraphQL
-- **[Subgraph Examples](./subgraph/guides/v4-subgraph-example)** - Practical examples and queries
-- **[v3 Subgraph Guide](./subgraph/guides/v3-subgraph-example)** - Legacy v3 protocol queries
 
 ### Routing API
 The Ring Routing API provides optimized trade routes and quotes for swaps.
@@ -25,7 +23,7 @@ The Ring Routing API provides optimized trade routes and quotes for swaps.
 - **Multi-hop Support** - Complex routing across token pairs
 
 ### Price APIs
-Get real-time and historical price data for tokens on Uniswap.
+Get real-time and historical price data for tokens in Ring-related markets and integrations.
 
 - **Current Prices** - Real-time token prices
 - **Historical Data** - Price charts and historical trends

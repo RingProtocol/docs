@@ -32,15 +32,18 @@ export default function Root({ children }: React.PropsWithChildren<{ open: boole
   const nodeEnv = siteConfig.customFields.nodeEnv
   const stagingEnv = Boolean(siteConfig.customFields.stagingEnv)
   const isProductionEnv = !stagingEnv && nodeEnv === 'production'
+  const analyticsEnabled = Boolean(analyticsProxyUrl)
 
-  // Only initialized analytics once, catching and ignoring the error that is raised on re-initialization
-  try {
-    initializeAnalytics(ANALYTICS_DUMMY_KEY, OriginApplication.DOCS, {
-      proxyUrl: analyticsProxyUrl,
-      isProductionEnv,
-    })
-  } catch {
-    // Ignore error
+  if (analyticsEnabled) {
+    // Only initialize analytics once, catching and ignoring the error raised on re-initialization.
+    try {
+      initializeAnalytics(ANALYTICS_DUMMY_KEY, OriginApplication.DOCS, {
+        proxyUrl: analyticsProxyUrl,
+        isProductionEnv,
+      })
+    } catch {
+      // Ignore error
+    }
   }
 
   // Initialize Google Analytics
@@ -71,6 +74,10 @@ export default function Root({ children }: React.PropsWithChildren<{ open: boole
 
   // Fires on initial render of the page
   useEffect(() => {
+    if (!analyticsEnabled) {
+      return
+    }
+
     sendAnalyticsEvent(SharedEventName.APP_LOADED)
     user.set(CustomUserProperties.USER_AGENT, navigator.userAgent)
     user.set(CustomUserProperties.BROWSER, getBrowser())
@@ -82,14 +89,16 @@ export default function Root({ children }: React.PropsWithChildren<{ open: boole
     getLCP(({ delta }: Metric) =>
       sendAnalyticsEvent(SharedEventName.WEB_VITALS, { largest_contentful_paint_ms: delta }),
     )
-  }, [])
+  }, [analyticsEnabled])
 
   // Fires on route change
   useEffect(() => {
-    // Send to Amplitude via Ring analytics
-    sendAnalyticsEvent(SharedEventName.PAGE_VIEWED, {
-      page: pathname,
-    })
+    if (analyticsEnabled) {
+      // Send to Amplitude via Ring analytics
+      sendAnalyticsEvent(SharedEventName.PAGE_VIEWED, {
+        page: pathname,
+      })
+    }
 
     // Send to Google Analytics
     if (window.gtag && isProductionEnv) {
@@ -99,7 +108,7 @@ export default function Root({ children }: React.PropsWithChildren<{ open: boole
         page_location: window.location.href,
       })
     }
-  }, [pathname, isProductionEnv])
+  }, [analyticsEnabled, pathname, isProductionEnv])
 
   return (
     <>

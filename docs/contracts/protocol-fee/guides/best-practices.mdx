@@ -49,8 +49,7 @@ In the Ring Protocol Fee system, Ring v3 fees *must be collected* to the `AssetS
 :::tip
 We recommend that integrators check and collect Ring v3 fees before calling `Firepit.release()`, to ensure the maximum assets are released.
 
-Collection is available via
-[IV3FeeController.collect()](../technical-reference/IV3FeeController#collect)
+Collection is available via the active fee adapter contracts documented in the technical reference.
 
 ```solidity
 IV3FeeController v3FeeController;
@@ -86,7 +85,7 @@ Because the Ring Protocol Fee system can release native tokens (Ether), recipien
 
 ## Pricing Ring v2 ERC-20 Tokens
 
-For further reading, please see [Read Asset Balance](./read-asset-balance#uniswap-v2-pool-protocol-fees)
+For further reading, please see [Read Asset Balance](./read-asset-balance#ring-v2-pool-protocol-fees)
 
 Ring v2 Protocol Fees are automatically pushed to the `AssetSink` contract, but are represented as ERC-20 LP tokens. These ERC-20 LP tokens represent a combination of `token0` and `token1`
 

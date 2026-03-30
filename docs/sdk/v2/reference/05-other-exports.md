@@ -27,7 +27,7 @@ See [pair addresses](../../../contracts/v2/guides/smart-contract-integration/get
 import { MINIMUM_LIQUIDITY } from '@uniswap/v2-sdk'
 ```
 
-See [minimum liquidity](../../../contracts/v2/reference/smart-contracts/pair#minimum-liquidity).
+See [minimum liquidity](../../../contracts/v2/reference/smart-contracts/pair#minimum_liquidity).
 
 ## InsufficientReservesError
 

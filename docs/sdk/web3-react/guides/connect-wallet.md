@@ -161,6 +161,6 @@ https://github.com/Uniswap/examples/blob/81ec93e97b0afded621e177fe5f34fc9f98f80b
 
 ## Next Steps
 
-Now that we have gone through connecting and disconnecting from an `InjectedConnector`, we will learn how to [connect and disconnect](./02-connectors.md) from all the different types of connectors that `web3-react` supports.
+Now that we have gone through connecting and disconnecting from an `InjectedConnector`, we will learn how to [connect and disconnect](./connectors) from all the different types of connectors that `web3-react` supports.
 
 

@@ -48,31 +48,6 @@ The latest version of Ring Swap and Few Protocol are deployed at the addresses l
 | Ring Swap Pair Init Code | `0xa7ae6a5ec37f0c21bbdac560794258c4089b8ae3ffa6e3909b53c6091764a676` |
 | Few Wrapped Token Init Code | `0x2bdba5734ddf754fb149ef1faa937956c52cfd1f24d68163a95f42d08ec06d38` |
 
-### Blast Mainnet
-
-| Contract | Blast Mainnet Address |
-| --- | --- |
-| Point Operator | `0x264E7Bbc1011E9B740B6a46371F68B085A805C89` |
-| fwUSDB | `0x866f2C06B83Df2ed7Ca9C2D044940E7CD55a06d6` |
-| fwWETH | `0x66714DB8F3397c767d0A602458B5b4E3C0FE7dd1` |
-| Ring Timelock | `0x337c4F3054f091D0E2239ce09c0b112D874dEBf7` |
-| Ring Dao | `0xd2F37FF7eCfAcEB4De1A2bAcb8D9C539A4D6a943` |
-| Ring V2 Swap Factory | `0x24F5Ac9A706De0cF795A8193F6AB3966B14ECfE6` |
-| Ring V3 Swap Factory | `0x890509Fab3dD11D4Ff57d8471b5eAC74687E4C75` |
-| Few Factory | `0x455b20131D59f01d082df1225154fDA813E8CeE9` |
-| Ring Swap Router | `0x7001F706ACB6440d17cBFaD63Fa50a22D51696fF` |
-| UniversalRouter | `0xC9DD682A06dbf10D91e2adbdAC70f3Adb8a3f201` |
-| Permit2 | `0x313C2bD7cEEA9b68E81f36FFf053A570C85C6A8B` |
-| NFTDescriptor | `0x30308554FD2115F406B13A1123f9C93fDF700Bb4` |
-| NonfungibleTokenPositionDescriptor | `0x36A1A616eD16bf724CadFF124CC880A69aDB4A1E` |
-| FewNonfungiblePositionManager | `0x44d8a7885C48C20861B49cD238E612056223D995` |
-
-| Value | Blast Mainnet |
-| --- | --- |
-| Ring V2 Swap Pair Init Code | `0x501ce753061ab6e75837b15f074633bb775f5972f8dc1112fcc829c2e88dc689` |
-| Ring V3 Swap Pool Init Code | `0xe34f199b19b2b4f47f68442619d555527d244f78a3297ea89325f843f87b8b54` |
-| Few Wrapped Token Init Code | `0x075ca97923eddedb5953d92e6c55afa2e88b47caaa7f96d34cc2855679931447` |
-
 ### Hyper Mainnet
 
 | Contract | Hyper Mainnet Address |
