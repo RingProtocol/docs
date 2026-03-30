@@ -190,7 +190,7 @@ const config: Config = {
           },
           {
             to: '/wallet/web3-react/overview',
-            from: ['/sdk/web3-react', '/sdk/web3-react/', '/sdk/web3-react/overview'],
+            from: ['/sdk/web3-react', '/sdk/web3-react/overview'],
           },
           {
             to: '/wallet/web3-react/guides/connect-wallet',
