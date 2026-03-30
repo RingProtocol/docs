@@ -42,7 +42,7 @@ const config: Config = {
     },
     algolia: {
       apiKey: '32465e2ab6f7554ff014e64c0d92171c', //  Search-Only API Key (Public & safe to commit)
-      indexName: 'v3-docs',
+      indexName: 'v4-docs',
       appId: 'S0IDD0YGLZ',
     },
     docs: {

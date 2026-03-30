@@ -5,7 +5,9 @@ sidebar_position: 1
 
 ## Context
 
-Creating a pool on Ring v4 is permissionless and enables the trading of an asset. Ring v4 is a popular destination for creating markets due to its:
+This page describes how to create pools in the current `FewToken + Uniswap v4` integration environment. It should not be read as evidence that Ring operates a separate native `Ring v4` AMM.
+
+Creating a pool in this v4 integration environment is permissionless and enables the trading of an asset. Uniswap v4-style infrastructure is a useful destination for market creation due to its:
 
 * Proven track record and battle-tested codebase
 * Concentrated liquidity, unlocking capital efficiency
@@ -13,7 +15,7 @@ Creating a pool on Ring v4 is permissionless and enables the trading of an asset
 * Gas-efficient architecture
 * Integrations with alternative trading venues
 
-For more information, developers should see [Ring v4 Overview](/contracts/v4/overview)
+For more information, developers should see [Uniswap v4 Integration Overview](/contracts/v4/overview)
 
 The guide covers two approaches to creating a pool:
 1. Create a pool only
@@ -21,7 +23,7 @@ The guide covers two approaches to creating a pool:
 
 ### Setup
 
-Developing with Ring v4 _requires [foundry](https://book.getfoundry.sh)_
+Developing against the current v4 integration stack _requires [foundry](https://book.getfoundry.sh)_
 
 Install the dependencies:
 ```bash
@@ -31,7 +33,7 @@ forge install uniswap/v4-periphery
 
 ## Guide: Create a Pool Only
 
-To initialize a Ring v4 Pool _without initial liquidity_, developers should call [`PoolManager.initialize()`](/contracts/v4/reference/core/interfaces/IPoolManager#initialize)
+To initialize a v4 pool _without initial liquidity_, developers should call [`PoolManager.initialize()`](/contracts/v4/reference/core/interfaces/IPoolManager#initialize)
 
 Creating a pool without liquidity may be useful for "reserving" a pool for future use, when initial liquidity is not available, or when external market makers would provide the starting liquidity
 
@@ -61,7 +63,7 @@ A note on `tickSpacing`:
 
 Lower tick spacing provides improved price precision; however, smaller tick spaces will cause swaps to cross ticks more often, incurring higher gas costs
 
-As a reference, Ring v3 pools are configured with:
+As a reference, concentrated-liquidity v3-style pools are configured with:
 
 | Fee   | Fee Value | Tick Spacing |
 |-------|-----------|--------------|
@@ -79,7 +81,7 @@ IPoolManager(manager).initialize(pool, startingPrice);
     - i.e. `79228162514264337593543950336` is the starting price for a 1:1 pool
 
 ## Guide: Create a Pool & Add Liquidity
-Ring v4's [PositionManager](/contracts/v4/reference/periphery/PositionManager) supports atomic creation of a pool and initial liquidity using [_multicall_](/contracts/v4/reference/periphery/base/Multicall_v4). Developers can create a trading pool, with liquidity, in a single transaction:
+The v4 [PositionManager](/contracts/v4/reference/periphery/PositionManager) supports atomic creation of a pool and initial liquidity using [_multicall_](/contracts/v4/reference/periphery/base/Multicall_v4). Developers can create a trading pool, with liquidity, in a single transaction:
 
 ### 1. Initialize the parameters provided to `multicall()`
 ```solidity
