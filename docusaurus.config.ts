@@ -10,15 +10,11 @@ dotenv.config()
 const config: Config = {
   staticDirectories: ['static'],
   customFields: {
-    // Analytics proxy URL
-    analyticsProxyUrl: process.env.REACT_APP_AMPLITUDE_PROXY_URL,
-    // Determines if staging env
     stagingEnv: process.env.REACT_APP_STAGING,
-    // From node
     nodeEnv: process.env.NODE_ENV,
   },
-  title: 'Ring Protocol',
-  tagline: 'Documentation and Guides',
+  title: 'Ring Protocol Docs',
+  tagline: 'Developer documentation and integration guides',
   url: 'https://docs-ring-protocol.vercel.app',
   baseUrl: '/',
   onBrokenLinks: 'warn',
@@ -92,7 +88,7 @@ const config: Config = {
           label: 'LLMs',
         },
         {
-          label: "Give Feedback",
+          label: "Share Feedback",
           to: 'https://discord.com/invite/TefBNDZBQP',
           target: '_blank',
           rel: 'noreferrer',

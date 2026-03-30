@@ -50,49 +50,55 @@ export default function NavbarContent(): ReactNode {
     <div
       className={clsx(
         'navbar__inner',
-        'w-full h-nav-h flex flex-row items-center px-4 py-[1.15625rem] sm:px-[0.9375rem] sm:py-3',
+        'site-max-width w-full min-h-nav-h flex flex-row items-center rounded-large border border-light-surface-3 bg-light-surface-1/95 px-4 py-3 shadow-light-short backdrop-blur dark:border-dark-surface-3 dark:bg-dark-surface-1/95 dark:shadow-dark-short sm:px-5',
       )}
     >
-      {/* Logo - Left aligned */}
-      <Link className="flex flex-row items-center flex-shrink-0" to="/" target="_self" aria-label="Ring Documentation Home">
+      <Link className="flex flex-row items-center flex-shrink-0" to="/" target="_self" aria-label="Ring Protocol documentation home">
         <MiniUnicon className="w-8 h-8 mr-3" />
-        <p className="Navbar__logo-text body-1 text-light-accent-1 dark:text-dark-accent-1 mb-0">Ring Docs</p>
+        <div className="flex flex-col">
+          <p className="Navbar__logo-text body-1 text-light-accent-1 dark:text-dark-accent-1 mb-0">Ring Protocol</p>
+          <p className="body-4 text-light-neutral-2 dark:text-dark-neutral-2 mb-0">Docs for builders</p>
+        </div>
       </Link>
 
-      {/* Mobile search and menu */}
       <div className="flex flex-row items-center sm:hidden gap-3 ml-auto">
         <div className="flex-1 min-w-0">
           <SearchBar />
         </div>
-        <button className="flex items-center" onClick={mobileSidebar.toggle}>
+        <button
+          className="flex items-center rounded-small border border-light-surface-3 bg-light-surface-2 px-2 py-2 dark:border-dark-surface-3 dark:bg-dark-surface-2"
+          onClick={mobileSidebar.toggle}
+        >
           <Menu />
         </button>
       </div>
 
-      {/* Right side - Nav Links, Search, Theme Toggle, Feedback */}
-      <div className="hidden sm:flex flex-1 justify-end items-center space-x-6 mr-4">
-        {/* Navigation Links */}
-        <nav className="flex flex-row items-center space-x-6">
+      <div className="hidden sm:flex flex-1 items-center justify-between ml-8">
+        <nav className="flex flex-row items-center gap-2 rounded-full border border-light-surface-3 bg-light-surface-2 px-2 py-2 dark:border-dark-surface-3 dark:bg-dark-surface-2">
           {navLinks.map((link) => (
             <Link
               key={link.label}
               to={link.to}
-              className="body-2 text-light-neutral-2 dark:text-dark-neutral-2 hover:text-light-accent-1 hover:dark:text-dark-accent-1 transition-colors"
+              className="rounded-full px-3 py-2 body-3 text-light-neutral-2 dark:text-dark-neutral-2 hover:bg-light-surface-1 hover:text-light-accent-1 dark:hover:bg-dark-surface-1 hover:dark:text-dark-accent-1 transition-colors"
             >
               {link.label}
             </Link>
           ))}
         </nav>
-        <SearchBar />
-        <NavbarColorModeToggle />
-        <Link
-          className="button-label-4 py-2 px-3 bg-light-accent-2 dark:bg-dark-accent-2 hover:bg-light-accent-2-hovered hover:dark:bg-dark-accent-2-hovered transition rounded-small"
-          to="https://discord.com/invite/TefBNDZBQP"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <span className="text-light-accent-1 dark:text-dark-accent-1">Submit Feedback</span>
-        </Link>
+        <div className="flex items-center gap-3">
+          <SearchBar />
+          <div className="rounded-full border border-light-surface-3 bg-light-surface-2 px-1 dark:border-dark-surface-3 dark:bg-dark-surface-2">
+            <NavbarColorModeToggle />
+          </div>
+          <Link
+            className="button-label-4 rounded-full border border-light-surface-3 bg-light-accent-2 px-4 py-2.5 text-light-accent-1 transition hover:bg-light-accent-2-hovered dark:border-dark-surface-3 dark:bg-dark-accent-2 dark:text-dark-accent-1 dark:hover:bg-dark-accent-2-hovered"
+            to="https://discord.com/invite/TefBNDZBQP"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Share feedback
+          </Link>
+        </div>
       </div>
     </div>
   )
