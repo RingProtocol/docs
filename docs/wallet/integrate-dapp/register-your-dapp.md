@@ -4,12 +4,12 @@ title: Register Your DApp
 sidebar_position: 1
 ---
 
-[Register Your DApp](https://docs.google.com/forms/d/e/1FAIpQLSd7wOr0tcy5xwZZcozHlobe-bRjjXO0h9W2v3fMB3j5AkCnlA/viewform)
+[Register Your DApp](https://forms.gle/2GXh5bAEXxpDj8gTA?_imcp=1)
 
 Fill in the form with:
 
 - **DApp Name**
-- **Logo** (256×256 PNG or SVG)
+- **Logo url** (256×256 PNG or SVG)
 - **DApp URL** (e.g. `https://your-dapp.com`)
 
 You will receive an **API Key** (UUID) for testing.
