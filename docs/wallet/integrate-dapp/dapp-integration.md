@@ -6,15 +6,11 @@ sidebar_position: 2
 
 **How does RingWallet run?** RingWallet is a web wallet that opens DApps in an iframe and injects `window.ethereum`, which meets [EIP-6963](https://eips.ethereum.org/EIPS/eip-6963) and [EIP-1193](https://eips.ethereum.org/EIPS/eip-1193).
 
-## 1. Register Your DApp
-
-See [Register Your DApp](./register-your-dapp.md) for the registration steps and required submission details.
-
-## 2. Integrate the SDK
+## 1. Integrate the SDK
 
 **Get the SDK:** Load it from `https://wallet.ring.exchange/dappsdk.js`, or download it and include it in your DApp project (recommended to avoid a runtime dependency on the wallet host).
 
-### 2.1 Add `dappsdk.js` to your project
+### 1.1 Add `dappsdk.js` to your project
 
 You can either **self-host** the SDK or **load it from Ring Wallet**. Self-hosting is recommended so your DApp does not depend on the wallet server at runtime.
 
@@ -86,7 +82,7 @@ export default function Document() {
 }
 ```
 
-### 2.3 Allow CSP (if applicable)
+### 1.3 Allow CSP (if applicable)
 
 If your DApp uses `Content-Security-Policy` headers or meta tags, make sure the policy allows the SDK script to run. Add the following to your `script-src` directive:
 
@@ -102,7 +98,7 @@ script-src 'self' https://wallet.ring.exchange
 
 If you don't have a CSP configured, no changes are needed.
 
-### 2.4 What the SDK Injects
+### 1.4 What the SDK Injects
 
 The SDK uses two standard Ethereum interfaces:
 
@@ -147,11 +143,11 @@ function isInRingWallet() {
 }
 ```
 
-### 2.5 Done
+### 1.5 Done
 
 If your DApp uses standard Ethereum libraries (wagmi, ethers.js, web3.js, RainbowKit, etc.), **no further code changes are needed**. The SDK sets up `window.ethereum` and announces via EIP-6963 automatically.
 
-### 2.6 X-Frame-Options (allow iframe embedding)
+### 1.6 X-Frame-Options (allow iframe embedding)
 
 If Ring Wallet opens your DApp directly in an iframe (the iframe `src` points to your DApp URL), and your site responds with `X-Frame-Options: DENY`, the browser will refuse to load it and you will see an error like:
 
@@ -161,6 +157,6 @@ Refused to display 'https://your-dapp.com/' in a frame because it set 'X-Frame-O
 
 In Vercel preview mode, add `X-Frame-Options: SAMEORIGIN` to your `vercel.json` file to allow embedding in Ring Wallet’s iframe.
 
-## 3. Test
+## 2. Test
 
 See [Test Your DApp](./test-your-dapp.md) for the full verification checklist and test URL examples.
