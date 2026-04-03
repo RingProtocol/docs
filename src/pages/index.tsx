@@ -3,15 +3,7 @@ import React, { FC } from 'react'
 import Link from '@docusaurus/Link'
 import Layout from '@theme/Layout'
 
-import {
-  Emblem1,
-  ThickX,
-  Hexagon,
-  BookOpen,
-  ArrowRight,
-  Github,
-  Npm,
-} from '../components/Icons'
+import { Emblem1, ThickX, Hexagon, BookOpen, ArrowRight, Github, Npm } from '../components/Icons'
 
 export const actions = [
   {
@@ -52,7 +44,8 @@ const heroHighlights = [
 
 const sectionDescriptions = {
   sdk: 'Start with integration patterns, routing, price data, and liquidity flows for apps built on Ring.',
-  contracts: 'Start with FewToken and Ring Swap (v2) contracts first, then move into selective Uniswap v4 integration guidance when needed.',
+  contracts:
+    'Start with FewToken and Ring Swap (v2) contracts first, then move into selective Uniswap v4 integration guidance when needed.',
   resources: 'Reach repositories, deployment references, community channels, and protocol resources quickly.',
 }
 
@@ -137,12 +130,16 @@ const Home = () => {
           <section className="col-span-full sm:col-span-5 rounded-large border border-light-surface-3 bg-light-surface-2 p-6 dark:border-dark-surface-3 dark:bg-dark-surface-2 sm:p-8">
             <div className="inline-flex items-center rounded-full bg-light-surface-1 px-4 py-2 dark:bg-dark-surface-1">
               <Emblem1 className="mr-2" />
-              <span className="button-label-4 text-light-accent-1 dark:text-dark-accent-1">Developer documentation</span>
+              <span className="button-label-4 text-light-accent-1 dark:text-dark-accent-1">
+                Developer documentation
+              </span>
             </div>
-            <h1 className="mt-6 serif-heading-0 text-light-neutral-1 dark:text-dark-neutral-1">Build on Ring without guessing where to start.</h1>
+            <h1 className="mt-6 serif-heading-0 text-light-neutral-1 dark:text-dark-neutral-1">
+              Build on Ring without guessing where to start.
+            </h1>
             <p className="mt-4 max-w-2xl subheading-2 text-light-neutral-2 dark:text-dark-neutral-2">
-              Ring docs are organized around the choices builders actually make: understand the protocol, integrate SDKs,
-              ship contract logic, or connect a wallet.
+              Ring docs are organized around the choices builders actually make: understand the protocol, integrate
+              SDKs, ship contract logic, or connect a wallet.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               {heroLinks.map((link) => (
@@ -167,7 +164,9 @@ const Home = () => {
 
           <aside className="col-span-full sm:col-span-3 flex flex-col gap-gap-large">
             <div className="rounded-large border border-light-surface-3 bg-light-surface-1 p-6 dark:border-dark-surface-3 dark:bg-dark-surface-1">
-              <p className="button-label-4 uppercase tracking-[0.08em] text-light-accent-1 dark:text-dark-accent-1">Start here</p>
+              <p className="button-label-4 uppercase tracking-[0.08em] text-light-accent-1 dark:text-dark-accent-1">
+                Start here
+              </p>
               <div className="mt-4 space-y-4">
                 {actions.map((action) => (
                   <Link
@@ -183,7 +182,9 @@ const Home = () => {
             </div>
 
             <div className="rounded-large border border-light-surface-3 bg-light-surface-1 p-6 dark:border-dark-surface-3 dark:bg-dark-surface-1">
-              <p className="button-label-4 uppercase tracking-[0.08em] text-light-accent-1 dark:text-dark-accent-1">Popular paths</p>
+              <p className="button-label-4 uppercase tracking-[0.08em] text-light-accent-1 dark:text-dark-accent-1">
+                Popular paths
+              </p>
               <div className="mt-4 space-y-3">
                 {dAppGuides.slice(0, 2).map((card) => (
                   <ArticleLinkRow key={card.title} title={card.title} url={card.to} />
@@ -197,11 +198,16 @@ const Home = () => {
         </div>
 
         <div className="default-grid">
-          <Link className="col-span-full sm:col-span-4 rounded-large bg-light-orange-fade p-6 dark:bg-dark-orange-fade" to={actions[0].to}>
+          <Link
+            className="col-span-full sm:col-span-4 rounded-large bg-light-orange-fade p-6 dark:bg-dark-orange-fade"
+            to={actions[0].to}
+          >
             <div className="mb-10 flex">
               <div className="flex flex-row items-center rounded-small bg-light-surface-1 px-3 py-2 dark:bg-dark-surface-1">
                 <BookOpen />
-                <span className="ml-1 button-label-4 text-light-accent-1 dark:text-dark-accent-1">Protocol overview</span>
+                <span className="ml-1 button-label-4 text-light-accent-1 dark:text-dark-accent-1">
+                  Protocol overview
+                </span>
               </div>
             </div>
             <h3 className="subheading-1 text-light-orange-vibrant dark:text-dark-orange-vibrant">{actions[0].title}</h3>
@@ -229,7 +235,9 @@ const Home = () => {
 
         <div className="default-grid py-padding-x-large">
           <div className="col-span-full sm:col-span-2">
-            <p className="button-label-4 uppercase tracking-[0.08em] text-light-accent-1 dark:text-dark-accent-1">SDK workflows</p>
+            <p className="button-label-4 uppercase tracking-[0.08em] text-light-accent-1 dark:text-dark-accent-1">
+              SDK workflows
+            </p>
             <h3 className="mt-3 text-light-neutral-1 dark:text-dark-neutral-1 heading-2">Build with Ring SDKs</h3>
             <p className="mt-3 body-2 text-light-neutral-2 dark:text-dark-neutral-2">{sectionDescriptions.sdk}</p>
           </div>
@@ -244,7 +252,9 @@ const Home = () => {
 
         <div className="default-grid py-padding-x-large">
           <div className="col-span-full sm:col-span-2">
-            <p className="button-label-4 uppercase tracking-[0.08em] text-light-accent-1 dark:text-dark-accent-1">Contract workflows</p>
+            <p className="button-label-4 uppercase tracking-[0.08em] text-light-accent-1 dark:text-dark-accent-1">
+              Contract workflows
+            </p>
             <h3 className="mt-3 text-light-neutral-1 dark:text-dark-neutral-1 heading-2">Build with Ring contracts</h3>
             <p className="mt-3 body-2 text-light-neutral-2 dark:text-dark-neutral-2">{sectionDescriptions.contracts}</p>
           </div>
@@ -259,7 +269,9 @@ const Home = () => {
 
         <div className="default-grid py-padding-x-large">
           <div className="col-span-full sm:col-span-2">
-            <p className="button-label-4 uppercase tracking-[0.08em] text-light-accent-1 dark:text-dark-accent-1">Resources</p>
+            <p className="button-label-4 uppercase tracking-[0.08em] text-light-accent-1 dark:text-dark-accent-1">
+              Resources
+            </p>
             <h3 className="mt-3 text-light-neutral-1 dark:text-dark-neutral-1 heading-2">Quick Links</h3>
             <p className="mt-3 body-2 text-light-neutral-2 dark:text-dark-neutral-2">{sectionDescriptions.resources}</p>
           </div>
@@ -283,7 +295,6 @@ const Home = () => {
             })}
           </div>
         </div>
-
       </div>
     </Layout>
   )
