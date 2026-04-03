@@ -189,6 +189,22 @@ const config: Config = {
             from: ['/wallet/overview.md', '/wallet/overview.mdx'],
           },
           {
+            to: '/wallet/web3-react/overview',
+            from: ['/sdk/web3-react', '/sdk/web3-react/', '/sdk/web3-react/overview'],
+          },
+          {
+            to: '/wallet/web3-react/guides/connect-wallet',
+            from: ['/sdk/web3-react/guides/connect-wallet'],
+          },
+          {
+            to: '/wallet/web3-react/guides/connectors',
+            from: ['/sdk/web3-react/guides/connectors'],
+          },
+          {
+            to: '/wallet/web3-react/guides/switch-chains',
+            from: ['/sdk/web3-react/guides/switch-chains'],
+          },
+          {
             to: '/concepts/overview',
             from: ['/concepts', '/concepts/uniswap-'],
           },
@@ -305,14 +321,6 @@ const config: Config = {
             from: '/sdk/core/reference/enums/SupportedChainId',
           },
           {
-            to: '/sdk/web3-react/guides/connect-wallet',
-            from: ['/docs/wrappers/integrating-with-wallets', '/sdk/web3-react/guides/01-setting-up.md'],
-          },
-          {
-            to: '/sdk/web3-react/guides/connectors',
-            from: '/sdk/web3-react/guides/connectors.md',
-          },
-          {
             to: '/api/overview',
             from: ['/protocol/reference/v3/guides/querying-data', '/sdk/subgraph/subgraph-data'],
           },
@@ -353,7 +361,6 @@ const config: Config = {
         'docs/sdk/swap-widget',
         'docs/sdk/v2',
         'docs/sdk/v3',
-        'docs/sdk/web3-react',
         'docs/universal-router-legacy',
       ],
       title: 'LLMs.txt for Ring v2 Documentation',

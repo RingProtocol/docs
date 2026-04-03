@@ -17,10 +17,10 @@ const footerData = {
           label: 'Feedback',
           href: 'https://discord.com/invite/TefBNDZBQP',
         },
-        {
-          label: 'Whitepaper',
-          href: 'https://app.ring.exchange/whitepaper-v2.pdf',
-        },
+        // {
+        //   label: 'Whitepaper',
+        //   href: 'https://app.ring.exchange/whitepaper-v2.pdf',
+        // },
       ],
     },
     {

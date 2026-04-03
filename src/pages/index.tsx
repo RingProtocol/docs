@@ -68,8 +68,8 @@ export const developerLinks = [
     icon: 'github',
   },
   {
-    title: 'RingProtocol/v4-sdk',
-    href: 'https://github.com/RingProtocol/sdks/tree/main/sdks/v4-sdk',
+    title: 'RingProtocol/ring-sdks',
+    href: 'https://github.com/RingProtocol/ring-sdks',
     icon: 'github',
   },
   {

@@ -33,7 +33,7 @@ This reference documentation covers:
 ## Getting Started
 
 ```typescript
-import { Token, CurrencyAmount, TradeType } from '@uniswap/sdk-core'
+import { Token, CurrencyAmount, TradeType } from '@ring-protocol/sdk-core'
 
 // Create a token
 const USDC = new Token(1, '0xA0b86a33E6417c29C8F6e3b6E4E12A82aA4Ca8e9', 6, 'USDC', 'USD Coin')

@@ -30,9 +30,9 @@ The SDK works for all chains on which the [factory](../../../contracts/v2/refere
 
 ## Code
 
-The [source code is available on GitHub](https://github.com/Uniswap/uniswap-sdk).
+The [source code is available in the Ring SDK monorepo](https://github.com/RingProtocol/ring-sdks/tree/main/sdks/few-v2-sdk).
 
 ## Dependencies
 
-The SDK installs a small number of dependencies(https://github.com/RingProtocol/v2-sdk/blob/main/package.json#L24).
+The SDK installs a small number of dependencies ([package.json](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/few-v2-sdk/package.json)).
 The most important dependency of the V2 SDK is the SDK core, which was later released as its own package to avoid duplicate logic across SDK packages.

@@ -32,5 +32,9 @@ Ring Wallet is our step toward that future.
 
 Start DApp integration from [Integrate DApp Overview](./integrate-dapp/overview.md).
 
+## External Frontend Tutorials
+
+If you need wallet connection guidance for a frontend that will later call the public Ring SDK packages, see [web3-react Integration](./web3-react/overview.md).
+
 # GitHub
 [Source](https://github.com/ringprotocol/ringwallet)
