@@ -27,20 +27,20 @@ const footerData = {
       title: 'GitHub',
       links: [
         {
-          label: 'ring-v4-core',
-          href: 'https://github.com/RingProtocol/v4-core',
+          label: 'ring contracts',
+          href: '/contracts/fewv2/deployments',
         },
         {
           label: 'ring-sdks',
-          href: 'https://github.com/RingProtocol/sdks',
+          href: 'https://github.com/RingProtocol/ring-sdks',
         },
         {
-          label: 'ring-v4-periphery',
+          label: 'v4 integration core',
+          href: 'https://github.com/RingProtocol/v4-core',
+        },
+        {
+          label: 'v4 integration periphery',
           href: 'https://github.com/RingProtocol/v4-periphery',
-        },
-        {
-          label: 'Deployment addresses',
-          href: '/contracts/fewv2/deployments',
         },
       ],
     },
@@ -125,17 +125,17 @@ const Footer: FC = () => {
         </p>
         <div className="flex flex-row space-x-gap-large border-b border-light-surface-3 px-2 py-margin-web dark:border-dark-surface-3 sm:border-0 sm:px-0 sm:py-0">
           {footerData?.footerGithubLink ? (
-            <LinkBase className="group" href={footerData.footerGithubLink} ariaLabel="Link to Ring Labs Github">
+            <LinkBase className="group" href={footerData.footerGithubLink} ariaLabel="Link to Ring Protocol GitHub">
               <Github className="h-6 w-6" />
             </LinkBase>
           ) : null}
           {footerData?.footerXLink ? (
-            <LinkBase className="group" href={footerData.footerXLink} ariaLabel="Link to Ring Labs X account">
+            <LinkBase className="group" href={footerData.footerXLink} ariaLabel="Link to Ring Protocol X account">
               <X className="h-6 w-6" />
             </LinkBase>
           ) : null}
           {footerData?.footerDiscordLink ? (
-            <LinkBase className="group" href={footerData.footerDiscordLink} ariaLabel="Link to Ring Labs Discord">
+            <LinkBase className="group" href={footerData.footerDiscordLink} ariaLabel="Link to Ring Protocol Discord">
               <Discord className="h-6 w-6" />
             </LinkBase>
           ) : null}

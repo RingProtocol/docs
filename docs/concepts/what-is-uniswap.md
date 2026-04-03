@@ -11,7 +11,7 @@ Ring is best understood as a liquidity and asset-layer project, not just as anot
 
 Today, the most important parts of Ring are:
 
-- **Ring Labs**: the team building Ring products and integrations
+- **Ring Protocol team**: the team building Ring products and integrations
 - **Few Protocol**: Ring's asset layer for wrapping original ERC-20 assets into `FewToken`
 - **Ring Swap (v2)**: Ring's native AMM and routing system built around `FewToken`
 - **Uniswap v4 integration**: Ring also uses `FewToken` in Uniswap v4 liquidity environments, but this does **not** mean Ring operates a separate native "Ring v4" AMM

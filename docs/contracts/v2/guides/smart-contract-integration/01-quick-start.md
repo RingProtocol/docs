@@ -134,7 +134,7 @@ contract LiquidityValueCalculator is ILiquidityValueCalculator {
 }
 ```
 
-Finally, we just need to compute the share value. We will leave that as an exercise to the reader.
+Finally, we can compute the share value by applying the LP-token share ratio to each reserve.
 
 ```solidity
 pragma solidity ^0.6.6;
@@ -156,8 +156,10 @@ contract LiquidityValueCalculator is ILiquidityValueCalculator {
         (reserveA, reserveB) = tokenA == pair.token0() ? (reserves0, reserves1) : (reserves1, reserves0);
     }
 
-    function computeLiquidityShareValue(uint liquidity, address tokenA, address tokenB) external override returns (uint tokenAAmount, uint tokenBAmount) {
-        revert('TODO');
+    function computeLiquidityShareValue(uint liquidity, address tokenA, address tokenB) external view override returns (uint tokenAAmount, uint tokenBAmount) {
+        (uint reserveA, uint reserveB, uint totalSupply) = pairInfo(tokenA, tokenB);
+        tokenAAmount = reserveA * liquidity / totalSupply;
+        tokenBAmount = reserveB * liquidity / totalSupply;
     }
 }
 ```
@@ -200,6 +202,4 @@ Learn more about compiling and deploying contracts using Truffle
 [here](https://www.trufflesuite.com/docs/truffle/getting-started/compiling-contracts) and
 [here](https://www.trufflesuite.com/docs/truffle/getting-started/running-migrations) respectively.
 
-## WIP
-
-This guide is a WIP. Please contribute to this guide with the edit button below!
+This example is intentionally minimal so you can adapt it to your own integration, testing, and deployment flow.

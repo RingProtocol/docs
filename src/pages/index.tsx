@@ -52,29 +52,29 @@ const heroHighlights = [
 
 const sectionDescriptions = {
   sdk: 'Start with integration patterns, routing, price data, and liquidity flows for apps built on Ring.',
-  contracts: 'Jump into contract setup, swaps, liquidity, hooks, and other protocol extension surfaces.',
+  contracts: 'Start with FewToken and Ring Swap (v2) contracts first, then move into selective Uniswap v4 integration guidance when needed.',
   resources: 'Reach repositories, deployment references, community channels, and protocol resources quickly.',
 }
 
 export const developerLinks = [
-  {
-    title: 'RingProtocol/v4-core',
-    href: 'https://github.com/RingProtocol/v4-core/',
-    icon: 'github',
-  },
-  {
-    title: 'RingProtocol/v4-periphery',
-    href: 'https://github.com/RingProtocol/v4-periphery',
-    icon: 'github',
-  },
   {
     title: 'RingProtocol/ring-sdks',
     href: 'https://github.com/RingProtocol/ring-sdks',
     icon: 'github',
   },
   {
-    title: 'Deployment addresses',
-    href: '/contracts/v4/deployments',
+    title: 'Ring Protocol contracts',
+    href: '/contracts/fewv2/deployments',
+    icon: 'github',
+  },
+  {
+    title: 'v4 integration core',
+    href: 'https://github.com/RingProtocol/v4-core/',
+    icon: 'github',
+  },
+  {
+    title: 'v4 integration periphery',
+    href: 'https://github.com/RingProtocol/v4-periphery',
     icon: 'github',
   },
 ]
@@ -103,28 +103,28 @@ export const dAppGuides = [
 ]
 export const smartContractGuides = [
   {
-    title: 'Setup your environment',
-    text: 'Prepare your local environment by installing the required dependencies',
-    to: '/contracts/v4/quickstart/hooks/setup',
+    title: 'View deployment addresses',
+    text: 'Start with the published Few Protocol and Ring Swap (v2) contract addresses',
+    to: '/contracts/fewv2/deployments',
   },
   {
-    title: 'Implement a Swap',
-    text: 'Start swapping from a smart contract in Solidity',
-    to: '/contracts/v4/quickstart/swap',
+    title: 'Integrate Ring Swap (v2)',
+    text: 'Use the native Ring Swap (v2) contract flow for Solidity integrations',
+    to: '/contracts/v2/guides/smart-contract-integration/quick-start',
   },
   {
-    title: 'Provide Liquidity',
-    text: 'Provide liquidity from a smart contract in Solidity',
-    to: '/contracts/v4/quickstart/manage-liquidity/setup-liquidity',
+    title: 'Get pair addresses',
+    text: 'Derive Ring Swap (v2) pair addresses for contract-side integrations',
+    to: '/contracts/v2/guides/smart-contract-integration/getting-pair-addresses',
   },
   {
-    title: 'Implement Flash Swaps',
-    text: 'Implement Flash Swaps from a smart contract in Solidity',
-    to: '/contracts/v4/guides/flash-accounting',
+    title: 'Work with FewToken factories',
+    text: 'Resolve FewToken and underlying ERC-20 relationships from Few contracts',
+    to: '/contracts/fewv2/integrating',
   },
   {
-    title: 'Create a Hook',
-    text: 'Create your first hook to customize pool behavior in Solidity',
+    title: 'Build a v4 integration hook',
+    text: 'Use the Uniswap v4 integration path only when you explicitly need v4 hooks',
     to: '/contracts/v4/guides/hooks/your-first-hook',
   },
 ]

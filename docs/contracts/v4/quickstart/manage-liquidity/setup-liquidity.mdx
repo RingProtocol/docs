@@ -3,13 +3,15 @@ title: Setup
 sidebar_position: 0
 ---
 
-For users looking to interact with the canonical Ring v4 `PositionManager`, _v4-periphery_ is a required dependency
+This page describes liquidity management in the current `FewToken + Uniswap v4` integration environment. It should be read as integration guidance, not as documentation for a separate native `Ring v4` AMM.
 
-Currently, developing with Ring v4 _requires [foundry](https://book.getfoundry.sh)_
+For users looking to interact with the canonical v4 `PositionManager`, _v4-periphery_ is a required dependency.
+
+Currently, developing against this v4 integration stack _requires [foundry](https://book.getfoundry.sh)_.
 
 ## Quickstart
 
-_Use [v4-template](https://github.com/new?template_name=v4-template&template_owner=uniswapfoundation)_, which has pre-configured dependencies and tests for Ring v4
+_Use [v4-template](https://github.com/new?template_name=v4-template&template_owner=uniswapfoundation)_, which has pre-configured dependencies and tests for the v4 integration stack.
 
 Clone the repository made from _v4-template_
 ```bash
@@ -25,7 +27,7 @@ forge install
 
 ## Manual Setup
 
-After cloning the repository, and installing foundry, developers can manually set up their Ring v4 environment:
+After cloning the repository and installing foundry, developers can manually set up their v4 integration environment:
 
 1. Initialize a foundry project
     ```bash

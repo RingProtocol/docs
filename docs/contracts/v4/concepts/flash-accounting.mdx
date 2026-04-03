@@ -5,11 +5,13 @@ sidebar_position: 2
 
 ## Flash Accounting
 
+This page describes flash accounting in the current `FewToken + Uniswap v4` integration environment. It should be read as technical integration guidance, not as documentation for a separate native `Ring v4` AMM.
+
 In previous versions of Uniswap, every time a swap was made - including multi-hop swap - tokens were transferred between Pool contracts for intermediate steps.
 
 This design incurred inefficiencies because transferring tokens with external calls to their smart contracts - especially in a multi-hop swap - is quite expensive. This design was required since each pool was its own contract and token transfers were required to maintain accounting and solvency.
 
-With the singleton architecture, a better design was possible and is referred to as _Flash Accounting_. The design became practical with gas efficiencies of [Transient Storage](https://eips.ethereum.org/EIPS/eip-1153). _Flash Accounting_ further reduces the gas cost of trades that cross multiple pools and supports more complex integrations with Ring v4.
+With the singleton architecture, a better design was possible and is referred to as _Flash Accounting_. The design became practical with gas efficiencies of [Transient Storage](https://eips.ethereum.org/EIPS/eip-1153). _Flash Accounting_ further reduces the gas cost of trades that cross multiple pools and supports more complex integrations with this v4 stack.
 
 With _flash accounting_, each balance-changing operation (e.g. swap and liquidity modification) updates an internal net balance known as `delta`. Only the final balance-changes require token transfers.
 

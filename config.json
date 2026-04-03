@@ -1,7 +1,7 @@
 {
   "index_name": "ring-docs",
-  "start_urls": ["https://docs-ring-protocol.vercel.app/"],
-  "sitemap_urls": ["https://docs-ring-protocol.vercel.app/sitemap.xml"],
+  "start_urls": ["https://docs.ring.exchange/"],
+  "sitemap_urls": ["https://docs.ring.exchange/sitemap.xml"],
   "sitemap_alternate_links": true,
   "stop_urls": [],
   "selectors": {

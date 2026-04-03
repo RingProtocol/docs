@@ -2,9 +2,16 @@
 id: Overview
 title: Overview
 sidebar_position: 1
+unlisted: true
 ---
 
 # Introduction & Overview
+
+:::warning
+This section is not part of the current public Ring core launch surface.
+
+The Ring public product line currently centers on `FewToken` and `Ring Swap (v2)`. The liquidity launchpad materials are retained as advanced reference for a future or optional rollout and should not be read as a currently public, broadly supported product commitment.
+:::
 
 ## What is the Ring Liquidity Launchpad?
 
@@ -91,10 +98,10 @@ The following actions must be performed atomically within one transaction.
 
 ## Smart Contracts
 
-| Contract | Description | Source | Mainnet Address | Unichain |
-|----------|-------------|--------|-----------------|----------|
-| **LiquidityLauncher** | Central orchestration contract | [liquidity-launcher](https://github.com/Uniswap/liquidity-launcher) | [0x00000008412db3394C91A5CbD01635c6d140637C](https://etherscan.io/address/0x00000008412db3394C91A5CbD01635c6d140637C) | Coming soon |
-| **UERC20Factory** | Standard ERC-20 token factory | [uerc20-factory](https://github.com/Uniswap/uerc20-factory) | [0x0cde87c11b959e5eb0924c1abf5250ee3f9bd1b5](https://etherscan.io/address/0x0cde87c11b959e5eb0924c1abf5250ee3f9bd1b5) | Coming soon |
-| **LBPStrategyBasicFactory** | LBP strategy factory | [liquidity-launcher](https://github.com/Uniswap/liquidity-launcher) | [0x00000010F37b6524617b17e66796058412bbC487](https://etherscan.io/address/0x00000010F37b6524617b17e66796058412bbC487) | Coming soon |
-| **ContinuousClearingAuction** | Continuous clearing auction factory | [continuous-clearing-auction](https://github.com/Uniswap/continuous-clearing-auction) |[0x0000ccaDF55C911a2FbC0BB9d2942Aa77c6FAa1D](https://etherscan.io/address/0x0000ccaDF55C911a2FbC0BB9d2942Aa77c6FAa1D) | Coming soon |
-| **Permit2** | Token approval manager | [Uniswap](https://github.com/Uniswap/permit2) | [0x000000000022D473030F116dDEE9F6B43aC78BA3](https://etherscan.io/address/0x000000000022D473030F116dDEE9F6B43aC78BA3) | [0x000000000022D473030F116dDEE9F6B43aC78BA3](https://etherscan.io/address/0x000000000022D473030F116dDEE9F6B43aC78BA3) |
+| Contract | Description | Source | Ethereum Mainnet | Additional network status |
+|----------|-------------|--------|------------------|---------------------------|
+| **LiquidityLauncher** | Central orchestration contract | [liquidity-launcher](https://github.com/Uniswap/liquidity-launcher) | [0x00000008412db3394C91A5CbD01635c6d140637C](https://etherscan.io/address/0x00000008412db3394C91A5CbD01635c6d140637C) | Not yet published in these docs |
+| **UERC20Factory** | Standard ERC-20 token factory | [uerc20-factory](https://github.com/Uniswap/uerc20-factory) | [0x0cde87c11b959e5eb0924c1abf5250ee3f9bd1b5](https://etherscan.io/address/0x0cde87c11b959e5eb0924c1abf5250ee3f9bd1b5) | Not yet published in these docs |
+| **LBPStrategyBasicFactory** | LBP strategy factory | [liquidity-launcher](https://github.com/Uniswap/liquidity-launcher) | [0x00000010F37b6524617b17e66796058412bbC487](https://etherscan.io/address/0x00000010F37b6524617b17e66796058412bbC487) | Not yet published in these docs |
+| **ContinuousClearingAuction** | Continuous clearing auction factory | [continuous-clearing-auction](https://github.com/Uniswap/continuous-clearing-auction) | [0x0000ccaDF55C911a2FbC0BB9d2942Aa77c6FAa1D](https://etherscan.io/address/0x0000ccaDF55C911a2FbC0BB9d2942Aa77c6FAa1D) | Not yet published in these docs |
+| **Permit2** | Token approval manager | [Uniswap](https://github.com/Uniswap/permit2) | [0x000000000022D473030F116dDEE9F6B43aC78BA3](https://etherscan.io/address/0x000000000022D473030F116dDEE9F6B43aC78BA3) | Shared upstream deployment |

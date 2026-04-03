@@ -12,8 +12,8 @@ Many different libraries can be used to create an interface and a connection to 
 We'll need to create the basic skeleton for the application. We'll use [create-react-app](https://reactjs.org/docs/create-a-new-react-app.html) for this. We'll also add the dependencies we need. Navigate to your root location in your command line and run:
 
 ```javascript
-yarn create react-app uniswap-demo
-cd uniswap-demo
+yarn create react-app ring-subgraph-demo
+cd ring-subgraph-demo
 yarn add  apollo-client apollo-cache-inmemory apollo-link-http graphql graphql-tag @apollo/react-hooks
 yarn start
 ```
@@ -46,7 +46,7 @@ import { HttpLink } from 'apollo-link-http'
 
 export const client = new ApolloClient({
   link: new HttpLink({
-    uri: 'https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v2',
+    uri: 'https://gateway.thegraph.com/api/<YOUR_API_KEY_HERE>/subgraphs/id/A3Np3RQbaBA6oKJgiwDJeo5T3zrYfGHPWFYayMwtNDum',
   }),
   cache: new InMemoryCache(),
 })
@@ -176,9 +176,9 @@ return (
 
 ### Next steps
 
-This should render a very basic page with these two stats about the Dai token within Uniswap. This is a very basic example of what you can do with the Ring subgraph and we encourage you to build out more complex and interesting tools!
+This should render a very basic page with these two stats about the Dai token within Ring Swap (v2). This is a very basic example of what you can do with the Ring subgraph and we encourage you to build out more complex and interesting tools.
 
-You can visit our [analytics site](https://uniswap.info/) to see a more advanced analytics page, or visit [the github](https://github.com/Uniswap/uniswap-info) for more detailed examples of using the Ring subgraph to create UIs.
+You can visit [Ring analytics](https://app.ring.exchange/#/explore) to see a more advanced public data surface, or review the [Subgraph Overview](/api/subgraph/overview) for the current Ring endpoints and repository links.
 
 ### Review
 
@@ -195,7 +195,7 @@ import gql from 'graphql-tag'
 
 export const client = new ApolloClient({
   link: new HttpLink({
-    uri: 'https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v2',
+    uri: 'https://gateway.thegraph.com/api/<YOUR_API_KEY_HERE>/subgraphs/id/A3Np3RQbaBA6oKJgiwDJeo5T3zrYfGHPWFYayMwtNDum',
   }),
   fetchOptions: {
     mode: 'no-cors',

@@ -5,6 +5,8 @@ sidebar_position: 5
 
 ### Context
 
+This page describes subscriber contracts in the current `FewToken + Uniswap v4` integration environment. It should be read as integration guidance, not as documentation for a separate native `Ring v4` AMM.
+
 For developers looking to support custom _liquidity mining_, Subscriber contracts can be used to receive notifications about position modifications or transfers.
 
 ## Guide
@@ -46,7 +48,7 @@ contract MySubscriber is ISubscriber {
 
 ### 2. A caveat on `unsubscribe()`
 
-To prevent gas griefing during unsubscription, Ring v4 sets a fixed variable [`unsubscribeGasLimit`](/contracts/v4/reference/periphery/interfaces/INotifier#unsubscribegaslimit) when calling a subscriber’s `notifyUnsubscribe()` function.
+To prevent gas griefing during unsubscription, this v4 integration stack uses a fixed [`unsubscribeGasLimit`](/contracts/v4/reference/periphery/interfaces/INotifier#unsubscribegaslimit) when calling a subscriber’s `notifyUnsubscribe()` function.
 
 Without this limit, malicious subscribers could prevent liquidity providers from unsubscribing. If `notifyUnsubscribe()` were to consume too much gas, it would cause the unsubscription transaction to revert, thus leading to a denial-of-service
 

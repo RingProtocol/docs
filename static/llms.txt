@@ -12,12 +12,12 @@ Ring Protocol is a DeFi protocol suite covering swap infrastructure, hook-enable
 - Protocol overviews, swaps, fees, liquidity, governance, and glossary pages
 
 ### Contracts
-- `v4`: core concepts, hooks, deployments, and integration guides
+- `v4`: Uniswap v4 integration concepts, hooks, deployments, and integration guides
 - `v3`: contract references, deployments, and SDK-oriented guides
 - `v2`: legacy contract concepts and integration guides
 - `fewv2`: Ring Swap and Few Protocol deployment and integration docs
 - `morpho-router`: lending router overview, integration, deployments, and technical reference
-- `permit2`, `protocol-fee`, `liquidity-launchpad`, and related protocol modules
+- `permit2`, `liquidity-launchpad`, and related protocol modules
 
 ### SDKs
 - v2, v3, core, and web3-react documentation
@@ -27,7 +27,7 @@ Ring Protocol is a DeFi protocol suite covering swap infrastructure, hook-enable
 
 ## Official Links
 
-- Docs: https://docs-ring-protocol.vercel.app
+- Docs: https://docs.ring.exchange
 - App: https://app.ring.exchange/
 - Explore: https://app.ring.exchange/#/explore
 - Governance: https://www.tally.xyz/gov/ring
