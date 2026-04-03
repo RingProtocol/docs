@@ -21,7 +21,7 @@ The factory holds the generic bytecode responsible for powering pairs. Its prima
 
 [Reference documentation](../../reference/smart-contracts/pair)
 
-[Reference documentation (ERC-20)](../../reference/smart-contracts/pair-erc-20)
+[Reference documentation (ERC-20)](../../reference/smart-contracts/Pair-ERC-20)
 
 Pairs have two primary purposes: serving as automated market makers and keeping track of pool token balances. They also expose data which can be used to build decentralized price oracles.
 
@@ -53,10 +53,10 @@ Typically, smart contracts which need tokens to perform some functionality requi
 
 ### WETH
 
-Unlike Ring V1 pools, V2 pairs do not support ETH directly, so ETH⇄ERC-20 pairs must be emulated with WETH. The motivation behind this choice was to remove ETH-specific code in the core, resulting in a cleaner codebase. End users can be kept fully ignorant of this implementation detail, however, by simply wrapping/unwrapping ETH in the periphery.
+Ring Swap (v2) pairs do not support ETH directly, so ETH⇄ERC-20 pairs must be emulated with WETH. The motivation behind this choice is to remove ETH-specific code in the core, resulting in a cleaner codebase. End users can be kept fully unaware of this implementation detail by wrapping and unwrapping ETH in the periphery.
 
 The router fully supports interacting with any WETH pair via ETH.
 
 ### Minimum Liquidity
 
-To ameliorate rounding errors and increase the theoretical minimum tick size for liquidity provision, pairs burn the first [MINIMUM_LIQUIDITY](../../reference/smart-contracts/pair#minimum_liquidity) pool tokens. For the vast majority of pairs, this will represent a trivial value. The burning happens automatically during the first liquidity provision, after which point the [totalSupply](../../reference/smart-contracts/pair-erc-20#totalsupply) is forevermore bounded.
+To ameliorate rounding errors and increase the theoretical minimum tick size for liquidity provision, pairs burn the first [MINIMUM_LIQUIDITY](../../reference/smart-contracts/pair#minimum_liquidity) pool tokens. For the vast majority of pairs, this will represent a trivial value. The burning happens automatically during the first liquidity provision, after which point the [totalSupply](../../reference/smart-contracts/Pair-ERC-20#totalsupply) is forevermore bounded.

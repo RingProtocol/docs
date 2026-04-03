@@ -1,4 +1,4 @@
-[@uniswap/sdk-core](../README.md) / [Exports](../modules.md) / Percent
+[@ring-protocol/sdk-core](../README.md) / [Exports](../modules.md) / Percent
 
 # Class: Percent
 
@@ -58,7 +58,7 @@
 
 #### Defined in
 
-[entities/fractions/fraction.ts:28](https://github.com/Uniswap/sdk-core/blob/9997e88/src/entities/fractions/fraction.ts#L28)
+[entities/fractions/fraction.ts:28](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L28)
 
 ## Properties
 
@@ -72,7 +72,7 @@
 
 #### Defined in
 
-[entities/fractions/fraction.ts:26](https://github.com/Uniswap/sdk-core/blob/9997e88/src/entities/fractions/fraction.ts#L26)
+[entities/fractions/fraction.ts:26](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L26)
 
 ___
 
@@ -84,7 +84,7 @@ This boolean prevents a fraction from being interpreted as a Percent
 
 #### Defined in
 
-[entities/fractions/percent.ts:19](https://github.com/Uniswap/sdk-core/blob/9997e88/src/entities/fractions/percent.ts#L19)
+[entities/fractions/percent.ts:19](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/percent.ts#L19)
 
 ___
 
@@ -98,7 +98,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/fraction.ts:25](https://github.com/Uniswap/sdk-core/blob/9997e88/src/entities/fractions/fraction.ts#L25)
+[entities/fractions/fraction.ts:25](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L25)
 
 ## Accessors
 
@@ -118,7 +118,7 @@ Fraction.asFraction
 
 #### Defined in
 
-[entities/fractions/fraction.ts:154](https://github.com/Uniswap/sdk-core/blob/9997e88/src/entities/fractions/fraction.ts#L154)
+[entities/fractions/fraction.ts:154](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L154)
 
 ___
 
@@ -136,7 +136,7 @@ Fraction.quotient
 
 #### Defined in
 
-[entities/fractions/fraction.ts:42](https://github.com/Uniswap/sdk-core/blob/9997e88/src/entities/fractions/fraction.ts#L42)
+[entities/fractions/fraction.ts:42](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L42)
 
 ___
 
@@ -154,7 +154,7 @@ Fraction.remainder
 
 #### Defined in
 
-[entities/fractions/fraction.ts:47](https://github.com/Uniswap/sdk-core/blob/9997e88/src/entities/fractions/fraction.ts#L47)
+[entities/fractions/fraction.ts:47](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L47)
 
 ## Methods
 
@@ -178,7 +178,7 @@ Fraction.remainder
 
 #### Defined in
 
-[entities/fractions/percent.ts:21](https://github.com/Uniswap/sdk-core/blob/9997e88/src/entities/fractions/percent.ts#L21)
+[entities/fractions/percent.ts:21](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/percent.ts#L21)
 
 ___
 
@@ -202,7 +202,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/percent.ts:33](https://github.com/Uniswap/sdk-core/blob/9997e88/src/entities/fractions/percent.ts#L33)
+[entities/fractions/percent.ts:33](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/percent.ts#L33)
 
 ___
 
@@ -226,7 +226,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/fraction.ts:91](https://github.com/Uniswap/sdk-core/blob/9997e88/src/entities/fractions/fraction.ts#L91)
+[entities/fractions/fraction.ts:91](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L91)
 
 ___
 
@@ -250,7 +250,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/fraction.ts:99](https://github.com/Uniswap/sdk-core/blob/9997e88/src/entities/fractions/fraction.ts#L99)
+[entities/fractions/fraction.ts:99](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L99)
 
 ___
 
@@ -268,7 +268,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/fraction.ts:51](https://github.com/Uniswap/sdk-core/blob/9997e88/src/entities/fractions/fraction.ts#L51)
+[entities/fractions/fraction.ts:51](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L51)
 
 ___
 
@@ -292,7 +292,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/fraction.ts:83](https://github.com/Uniswap/sdk-core/blob/9997e88/src/entities/fractions/fraction.ts#L83)
+[entities/fractions/fraction.ts:83](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L83)
 
 ___
 
@@ -316,7 +316,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/percent.ts:29](https://github.com/Uniswap/sdk-core/blob/9997e88/src/entities/fractions/percent.ts#L29)
+[entities/fractions/percent.ts:29](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/percent.ts#L29)
 
 ___
 
@@ -340,7 +340,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/percent.ts:25](https://github.com/Uniswap/sdk-core/blob/9997e88/src/entities/fractions/percent.ts#L25)
+[entities/fractions/percent.ts:25](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/percent.ts#L25)
 
 ___
 
@@ -366,7 +366,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/percent.ts:41](https://github.com/Uniswap/sdk-core/blob/9997e88/src/entities/fractions/percent.ts#L41)
+[entities/fractions/percent.ts:41](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/percent.ts#L41)
 
 ___
 
@@ -392,4 +392,4 @@ ___
 
 #### Defined in
 
-[entities/fractions/percent.ts:37](https://github.com/Uniswap/sdk-core/blob/9997e88/src/entities/fractions/percent.ts#L37)
+[entities/fractions/percent.ts:37](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/percent.ts#L37)

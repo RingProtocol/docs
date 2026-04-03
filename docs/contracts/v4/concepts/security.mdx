@@ -4,13 +4,13 @@ title: Security
 sidebar_position: 10
 ---
 
-When building on Ring v4, security should be a primary consideration. This section covers emergency response resources and security best practices specific to v4 implementations.
+This page covers security considerations for `FewToken + Uniswap v4` integration work. It should be read as technical guidance for the current v4 integration stack, not as documentation for a separate native `Ring v4` AMM.
 
 ## Emergency Response
 
 ### SEAL 911 Emergency Hotline
 
-If you encounter a security incident (exploit, vulnerability, or other urgent security matter) while working with Ring v4, the SEAL 911 Emergency Hotline provides immediate access to security experts.
+If you encounter a security incident (exploit, vulnerability, or other urgent security matter) while working with Ring's v4 integration stack, the SEAL 911 Emergency Hotline provides immediate access to security experts.
 
 **Emergency Contact**: https://t.me/seal_911_bot
 
@@ -65,10 +65,10 @@ Similarly, the V4 periphery contracts have been reviewed by various audit provid
 
 ## Bug Bounty Program
 
-Ring v4 contract security programs are published directly through their active bounty providers. You can view the current [bounty page](https://cantina.xyz/bounties/f9df94db-c7b1-434b-bb06-d1360abdd1be) on Cantina.
+Security programs related to the current v4 integration stack are published directly through their active bounty providers. You can view the current [bounty page](https://cantina.xyz/bounties/f9df94db-c7b1-434b-bb06-d1360abdd1be) on Cantina.
 
 ## Additional Security Resources
 
-- Review the [v4 Core contracts](../reference/core/) for implementation details
-- Follow security best practices outlined in the [Hooks documentation](./04-hooks.mdx)
-- Test thoroughly using the provided [test contracts](../reference/core/test/)
+- Review the [v4 Core contracts](../reference/core/IPoolManager) for implementation details
+- Follow security best practices outlined in the [Hooks documentation](./hooks)
+- Test thoroughly using the provided [test contracts](../reference/core/test/PoolTestBase)

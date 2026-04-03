@@ -11,7 +11,7 @@ liquidity between two positions on entirely different Pools.
 
 ### Setup
 
-See the [setup guide](./00-setup-liquidity.mdx)
+See the [setup guide](./setup-liquidity)
 
 ## Guide
 
@@ -30,7 +30,7 @@ Additionally, _liquidity-operations_ do not have to happen prior to _delta-resol
 the two types of actions.
 
 > **However** is good practice to perform _liquidity-operations_ before _delta-resolving_ actions. Minimizing token transfers
-and leveraging [_flash accounting_](../../concepts/02-flash-accounting.mdx) is more gas efficient
+and leveraging [_flash accounting_](../../concepts/flash-accounting) is more gas efficient
 
 Example: `Action.Y` happens after `Action.X` but before `Action.Z`
 ```solidity

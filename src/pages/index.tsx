@@ -2,11 +2,9 @@ import React, { FC } from 'react'
 
 import Link from '@docusaurus/Link'
 import Layout from '@theme/Layout'
-import cn from 'classnames'
 
 import {
   Emblem1,
-  Emblem2,
   ThickX,
   Hexagon,
   BookOpen,
@@ -17,27 +15,46 @@ import {
 
 export const actions = [
   {
-    title: 'What is Ring?',
+    title: 'Understand the protocol',
     icon: 'book-open',
     to: '/concepts/overview',
-    text: 'Learn about the core concepts of the Ring Protocol, Swaps, Pools, Liquidity, and more.',
-    color: 'pink',
+    text: 'Start with Ring concepts, pools, swaps, liquidity, and the protocol architecture.',
+    color: 'orange',
   },
   {
-    title: 'Integrate with Ring',
+    title: 'Integrate the SDKs',
     icon: 'x',
     to: '/sdk/v2/overview',
-    text: `Learn how to integrate with Ring by building a dApp through guided examples.`,
-    color: 'blue',
+    text: 'Use Ring SDKs to fetch data, price assets, route trades, and wire up app flows.',
+    color: 'brown',
   },
   {
-    title: 'The Ring smart contracts',
+    title: 'Work with contracts',
     icon: 'hexagon',
-    to: '/contracts/v4/overview',
-    text: `Learn about the architecture of the Ring Protocol smart contracts through guided examples.`,
+    to: '/contracts/overview',
+    text: 'Reference deployments, contract architecture, and extension points for protocol integrations.',
     color: 'green',
   },
 ]
+
+const heroLinks = [
+  { label: 'Concepts', to: '/concepts/overview' },
+  { label: 'Contracts', to: '/contracts/overview' },
+  { label: 'SDKs', to: '/sdk/v2/overview' },
+  { label: 'Wallet', to: '/wallet/overview' },
+]
+
+const heroHighlights = [
+  { label: 'Core sections', value: '4' },
+  { label: 'Quick start paths', value: '12+' },
+  { label: 'Reference docs', value: '200+' },
+]
+
+const sectionDescriptions = {
+  sdk: 'Start with integration patterns, routing, price data, and liquidity flows for apps built on Ring.',
+  contracts: 'Jump into contract setup, swaps, liquidity, hooks, and other protocol extension surfaces.',
+  resources: 'Reach repositories, deployment references, community channels, and protocol resources quickly.',
+}
 
 export const developerLinks = [
   {
@@ -51,8 +68,8 @@ export const developerLinks = [
     icon: 'github',
   },
   {
-    title: 'RingProtocol/v4-sdk',
-    href: 'https://github.com/RingProtocol/sdks/tree/main/sdks/v4-sdk',
+    title: 'RingProtocol/ring-sdks',
+    href: 'https://github.com/RingProtocol/ring-sdks',
     icon: 'github',
   },
   {
@@ -65,23 +82,23 @@ export const developerLinks = [
 export const dAppGuides = [
   {
     title: 'Fetch token prices',
-    text: 'Fetch the price of tokens in a specific Pool',
-    to: 'sdk/v2/guides/swaps/quoting',
+    text: 'Understand pricing and reserve-based quotes in Ring Swap (v2)',
+    to: '/sdk/v2/guides/pricing',
   },
   {
     title: 'Create a Trade',
-    text: 'Fetch a Quote for a Trade and execute the Trade',
-    to: '/sdk/v3/guides/swaps/trading',
+    text: 'Construct and execute trades with the v2 SDK',
+    to: '/sdk/v2/guides/trading',
   },
   {
     title: 'Route trades',
-    text: 'Use Routing to get optimized prices for your Trades',
-    to: '/sdk/v3/guides/swaps/routing',
+    text: 'Fetch pair and market data for routing logic',
+    to: '/sdk/v2/guides/fetching-data',
   },
   {
     title: 'Provide liquidity',
-    text: "Contribute to a Pool's liquidity by using tokens to earn fees",
-    to: '/sdk/v3/guides/liquidity/minting',
+    text: 'Derive pair addresses and prepare integrations around Ring Swap (v2)',
+    to: '/sdk/v2/guides/getting-pair-addresses',
   },
 ]
 export const smartContractGuides = [
@@ -93,12 +110,12 @@ export const smartContractGuides = [
   {
     title: 'Implement a Swap',
     text: 'Start swapping from a smart contract in Solidity',
-    to: 'contracts/v4/quickstart/swap',
+    to: '/contracts/v4/quickstart/swap',
   },
   {
     title: 'Provide Liquidity',
     text: 'Provide liquidity from a smart contract in Solidity',
-    to: 'contracts/v4/quickstart/manage-liquidity/setup-liquidity',
+    to: '/contracts/v4/quickstart/manage-liquidity/setup-liquidity',
   },
   {
     title: 'Implement Flash Swaps',
@@ -114,71 +131,109 @@ export const smartContractGuides = [
 
 const Home = () => {
   return (
-    <Layout title="Ring Docs" description="Technical Documentation For The Ring Protocol">
+    <Layout title="Ring Protocol Docs" description="Guides and technical references for building on Ring Protocol">
       <div className="content-page-padding w-full flex flex-col">
-        <div className="w-full flex flex-col items-center px-6 py-20 sm:py-16 rounded-large bg-light-surface-2 dark:bg-dark-surface-2">
-          <h1 className="text-center serif-heading-0 text-light-neutral-1 dark:text-dark-neutral-1 flex flex-row items-center flex-wrap justify-center">
-            <span>Build</span>
-            <Emblem1 className="mx-2" />
-            <span>with</span>
-            <Emblem2 className="mx-2" />
-            <span>Ring</span>
-          </h1>
-          <p className="mt-2 text-center subheading-2 text-light-neutral-2 dark:text-dark-neutral-2">
-            Dive into the world of DeFi apps, integrations, and developer tooling built on top of the Ring Protocol.
-          </p>
+        <div className="default-grid py-padding-x-large">
+          <section className="col-span-full sm:col-span-5 rounded-large border border-light-surface-3 bg-light-surface-2 p-6 dark:border-dark-surface-3 dark:bg-dark-surface-2 sm:p-8">
+            <div className="inline-flex items-center rounded-full bg-light-surface-1 px-4 py-2 dark:bg-dark-surface-1">
+              <Emblem1 className="mr-2" />
+              <span className="button-label-4 text-light-accent-1 dark:text-dark-accent-1">Developer documentation</span>
+            </div>
+            <h1 className="mt-6 serif-heading-0 text-light-neutral-1 dark:text-dark-neutral-1">Build on Ring without guessing where to start.</h1>
+            <p className="mt-4 max-w-2xl subheading-2 text-light-neutral-2 dark:text-dark-neutral-2">
+              Ring docs are organized around the choices builders actually make: understand the protocol, integrate SDKs,
+              ship contract logic, or connect a wallet.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              {heroLinks.map((link) => (
+                <Link
+                  key={link.label}
+                  to={link.to}
+                  className="rounded-small border border-light-surface-3 bg-light-surface-1 px-4 py-2 button-label-3 text-light-neutral-1 transition hover:border-light-accent-1 hover:text-light-accent-1 dark:border-dark-surface-3 dark:bg-dark-surface-1 dark:text-dark-neutral-1 dark:hover:border-dark-accent-1 dark:hover:text-dark-accent-1"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+            <div className="mt-10 grid grid-cols-1 gap-4 border-t border-light-surface-3 pt-6 dark:border-dark-surface-3 sm:grid-cols-3">
+              {heroHighlights.map((item) => (
+                <div key={item.label}>
+                  <p className="heading-3 text-light-neutral-1 dark:text-dark-neutral-1">{item.value}</p>
+                  <p className="body-3 text-light-neutral-2 dark:text-dark-neutral-2">{item.label}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <aside className="col-span-full sm:col-span-3 flex flex-col gap-gap-large">
+            <div className="rounded-large border border-light-surface-3 bg-light-surface-1 p-6 dark:border-dark-surface-3 dark:bg-dark-surface-1">
+              <p className="button-label-4 uppercase tracking-[0.08em] text-light-accent-1 dark:text-dark-accent-1">Start here</p>
+              <div className="mt-4 space-y-4">
+                {actions.map((action) => (
+                  <Link
+                    key={action.title}
+                    to={action.to}
+                    className="block rounded-medium border border-light-surface-3 bg-light-surface-2 p-4 transition hover:border-light-accent-1 hover:bg-light-accent-2 dark:border-dark-surface-3 dark:bg-dark-surface-2 dark:hover:border-dark-accent-1 dark:hover:bg-dark-accent-2"
+                  >
+                    <p className="subheading-2 text-light-neutral-1 dark:text-dark-neutral-1">{action.title}</p>
+                    <p className="mt-1 body-3 text-light-neutral-2 dark:text-dark-neutral-2">{action.text}</p>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-large border border-light-surface-3 bg-light-surface-1 p-6 dark:border-dark-surface-3 dark:bg-dark-surface-1">
+              <p className="button-label-4 uppercase tracking-[0.08em] text-light-accent-1 dark:text-dark-accent-1">Popular paths</p>
+              <div className="mt-4 space-y-3">
+                {dAppGuides.slice(0, 2).map((card) => (
+                  <ArticleLinkRow key={card.title} title={card.title} url={card.to} />
+                ))}
+                {smartContractGuides.slice(0, 2).map((card) => (
+                  <ArticleLinkRow key={card.title} title={card.title} url={card.to} />
+                ))}
+              </div>
+            </div>
+          </aside>
         </div>
 
-        <div className="default-grid py-padding-x-large">
-          {actions.map((action, i) => {
-            return (
-              <Link
-                key={action.title}
-                to={action.to}
-                className={cn('col-span-full rounded-medium p-padding-medium', {
-                  'md:col-span-4': i === 0,
-                  'sm:col-span-4 md:col-span-2': i > 0,
-                  'bg-light-accent-2 dark:bg-dark-accent-2': action.color === 'pink',
-                  'bg-light-blue dark:bg-dark-blue': action.color === 'blue',
-                  'bg-light-green dark:bg-dark-green': action.color === 'green',
-                })}
-              >
-                <div>
-                  <div className="mb-8 flex">
-                    {action.icon === 'book-open' ? (
-                      <div className="flex flex-row items-center py-2 px-3 bg-light-surface-1 dark:bg-dark-surface-1 rounded-small">
-                        <BookOpen />
-                        <span className="ml-1 button-label-4 text-light-accent-1 dark:text-dark-accent-1">
-                          Getting started
-                        </span>
-                      </div>
-                    ) : null}
-                    {action.icon === 'x' ? <ThickX /> : null}
-                    {action.icon === 'hexagon' ? <Hexagon /> : null}
-                  </div>
-                  <div>
-                    <h3
-                      className={cn('subheading-1', {
-                        'text-light-accent-1 dark:text-dark-accent-1': action.color === 'pink',
-                        'text-blue-base': action.color === 'blue',
-                        'text-green-base dark:text-green-vibrant': action.color === 'green',
-                      })}
-                    >
-                      {action.title}
-                    </h3>
-                    <p className="mt-1 body-3 text-light-neutral-2 dark:text-dark-neutral-2">{action.text}</p>
-                  </div>
-                </div>
-              </Link>
-            )
-          })}
+        <div className="default-grid">
+          <Link className="col-span-full sm:col-span-4 rounded-large bg-light-orange-fade p-6 dark:bg-dark-orange-fade" to={actions[0].to}>
+            <div className="mb-10 flex">
+              <div className="flex flex-row items-center rounded-small bg-light-surface-1 px-3 py-2 dark:bg-dark-surface-1">
+                <BookOpen />
+                <span className="ml-1 button-label-4 text-light-accent-1 dark:text-dark-accent-1">Protocol overview</span>
+              </div>
+            </div>
+            <h3 className="subheading-1 text-light-orange-vibrant dark:text-dark-orange-vibrant">{actions[0].title}</h3>
+            <p className="mt-2 body-2 text-light-neutral-2 dark:text-dark-neutral-2">{actions[0].text}</p>
+          </Link>
+          <div className="col-span-full sm:col-span-4 flex flex-col gap-gap-large">
+            <Link className="rounded-large bg-light-brown-fade p-6 dark:bg-dark-brown-fade" to={actions[1].to}>
+              <div className="mb-10 flex">
+                <ThickX />
+              </div>
+              <h3 className="subheading-1 text-light-brown-vibrant dark:text-dark-brown-vibrant">{actions[1].title}</h3>
+              <p className="mt-2 body-2 text-light-neutral-2 dark:text-dark-neutral-2">{actions[1].text}</p>
+            </Link>
+            <Link className="rounded-large bg-light-green p-6 dark:bg-dark-green" to={actions[2].to}>
+              <div className="mb-10 flex">
+                <Hexagon />
+              </div>
+              <h3 className="subheading-1 text-green-base dark:text-green-vibrant">{actions[2].title}</h3>
+              <p className="mt-2 body-2 text-light-neutral-2 dark:text-dark-neutral-2">{actions[2].text}</p>
+            </Link>
+          </div>
         </div>
 
         <div className="divider"></div>
 
-        <div className="py-padding-x-large">
-          <h3 className="text-light-neutral-1 dark:text-dark-neutral-1 heading-2">Integrate Ring Dex</h3>
-          <div className="default-grid mt-6">
+        <div className="default-grid py-padding-x-large">
+          <div className="col-span-full sm:col-span-2">
+            <p className="button-label-4 uppercase tracking-[0.08em] text-light-accent-1 dark:text-dark-accent-1">SDK workflows</p>
+            <h3 className="mt-3 text-light-neutral-1 dark:text-dark-neutral-1 heading-2">Build with Ring SDKs</h3>
+            <p className="mt-3 body-2 text-light-neutral-2 dark:text-dark-neutral-2">{sectionDescriptions.sdk}</p>
+          </div>
+          <div className="col-span-full sm:col-span-6 default-grid mt-6 sm:mt-0">
             {dAppGuides.map((card) => (
               <ArticleLinkCard key={card.title} title={card.title} description={card.text} url={card.to} />
             ))}
@@ -187,9 +242,13 @@ const Home = () => {
 
         <div className="divider" />
 
-        <div className="py-padding-x-large">
-          <h3 className="text-light-neutral-1 dark:text-dark-neutral-1 heading-2">Integrate dApp to Ring Wallet</h3>
-          <div className="default-grid mt-6">
+        <div className="default-grid py-padding-x-large">
+          <div className="col-span-full sm:col-span-2">
+            <p className="button-label-4 uppercase tracking-[0.08em] text-light-accent-1 dark:text-dark-accent-1">Contract workflows</p>
+            <h3 className="mt-3 text-light-neutral-1 dark:text-dark-neutral-1 heading-2">Build with Ring contracts</h3>
+            <p className="mt-3 body-2 text-light-neutral-2 dark:text-dark-neutral-2">{sectionDescriptions.contracts}</p>
+          </div>
+          <div className="col-span-full sm:col-span-6 default-grid mt-6 sm:mt-0">
             {smartContractGuides.map((card) => (
               <ArticleLinkCard key={card.title} title={card.title} description={card.text} url={card.to} />
             ))}
@@ -198,9 +257,13 @@ const Home = () => {
 
         <div className="divider" />
 
-        <div className="py-padding-x-large">
-          <h3 className="text-light-neutral-1 dark:text-dark-neutral-1 heading-2">Quick Links</h3>
-          <div className="flex flex-wrap">
+        <div className="default-grid py-padding-x-large">
+          <div className="col-span-full sm:col-span-2">
+            <p className="button-label-4 uppercase tracking-[0.08em] text-light-accent-1 dark:text-dark-accent-1">Resources</p>
+            <h3 className="mt-3 text-light-neutral-1 dark:text-dark-neutral-1 heading-2">Quick Links</h3>
+            <p className="mt-3 body-2 text-light-neutral-2 dark:text-dark-neutral-2">{sectionDescriptions.resources}</p>
+          </div>
+          <div className="col-span-full sm:col-span-6 flex flex-wrap sm:mt-0">
             {developerLinks.map((devLink) => {
               return (
                 <Link
@@ -240,7 +303,7 @@ const ArticleLinkCard: FC<{
       target="_self"
     >
       <div className="flex flex-col w-full space-y-1">
-        <h4 className="transition subheading-2 text-light-neutral-1 dark:text-dark-neutral-1 group-hover:text-light-pink-vibrant dark:group-hover:text-dark-pink-vibrant">
+        <h4 className="transition subheading-2 text-light-neutral-1 dark:text-dark-neutral-1 group-hover:text-light-accent-1 dark:group-hover:text-dark-accent-1">
           {title}
         </h4>
         <p className="body-3 text-light-neutral-2 dark:text-dark-neutral-2">{description}</p>
@@ -248,6 +311,22 @@ const ArticleLinkCard: FC<{
       <div className="transition opacity-0 group-hover:opacity-100">
         <ArrowRight className="my-1 w-5 h-5" />
       </div>
+    </Link>
+  )
+}
+
+const ArticleLinkRow: FC<{
+  title: string
+  url: string
+}> = ({ title, url }) => {
+  return (
+    <Link
+      href={url}
+      className="flex items-center justify-between rounded-small border border-light-surface-3 px-4 py-3 transition hover:border-light-accent-1 hover:bg-light-accent-2 dark:border-dark-surface-3 dark:hover:border-dark-accent-1 dark:hover:bg-dark-accent-2"
+      target="_self"
+    >
+      <span className="body-3 text-light-neutral-1 dark:text-dark-neutral-1">{title}</span>
+      <ArrowRight className="h-4 w-4" />
     </Link>
   )
 }

@@ -21,7 +21,7 @@ const sidebars = {
       label: 'Contracts',
       link: {
         type: 'doc',
-        id: 'contracts/v4/overview',
+        id: 'contracts/overview',
       },
       items: [
         {

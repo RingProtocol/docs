@@ -2,7 +2,7 @@
 [Git Source](https://github.com/Uniswap/phoenix-fees/blob/f7ccbcc4f1be2c8485a362f78f4f1ea34145b2b0/src/crosschain/FirepitSource.sol)
 
 **Inherits:**
-[ResourceManager](/home/toda/dev/phoenix-fees/forge-docs/src/src/base/ResourceManager.sol/abstract.ResourceManager.md), [Nonce](/home/toda/dev/phoenix-fees/forge-docs/src/src/base/Nonce.sol/abstract.Nonce.md)
+[ResourceManager](./ResourceManager), [Nonce](./Nonce)
 
 
 ## State Variables

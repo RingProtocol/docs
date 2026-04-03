@@ -8,7 +8,7 @@ export default function NavbarMobilePrimaryMenu(): ReactNode {
 
   const navLinks = [
     { label: 'Concepts', to: '/concepts/overview' },
-    { label: 'Contracts', to: '/contracts/v4/overview' },
+    { label: 'Contracts', to: '/contracts/overview' },
     { label: 'SDKs', to: '/sdk/v2/overview' },
     // { label: 'APIs', to: '/api/subgraph/overview' },
     { label: 'Wallet', to: '/wallet/overview' },

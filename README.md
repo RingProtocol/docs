@@ -47,7 +47,7 @@ A good example is the [v4 Smart Contracts](./docs/contracts/v4/overview).
 By implementing these consistent principles Ring will have docs that are easy to understand and produce reusable code for its community.
 
 
-A good example is the [v3 SDK Guides](./docs/sdk/v3/guides/01-background.md).
+A good example is a focused product-specific guide with a clear integration path and runnable end state.
 
 ### Technical References
 This should contain the technical reference for the exported interfaces. A good example is the [v4 SDK](./docs/sdk/v4/overview).

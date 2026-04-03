@@ -7,18 +7,23 @@ title: Pair
 constructor(tokenAmountA: CurrencyAmount, tokenAmountB: CurrencyAmount)
 ```
 
-The Pair entity represents a Ring pair with a balance of each of its pair tokens.
+The Pair entity represents a Ring pair with a balance of each of its pair tokens. In Ring Swap, those pair tokens are often `FewToken` addresses rather than the original ERC-20 assets shown in your UI.
 
 ## Example
 
 ```typescript
-import { Pair } from '@uniswap/sdk-core'
-import {ChainId, Token, CurrencyAmount } from '@uniswap/v2-sdk'
+import { ChainId, Token, CurrencyAmount } from '@ring-protocol/sdk-core'
+import { Pair, getFewTokenFromOriginalToken } from '@ring-protocol/v2-sdk'
 
 const HOT = new Token(ChainId.MAINNET, '0xc0FFee0000000000000000000000000000000000', 18, 'HOT', 'Caffeine')
 const NOT = new Token(ChainId.MAINNET, '0xDeCAf00000000000000000000000000000000000', 18, 'NOT', 'Caffeine')
+const fewHOT = getFewTokenFromOriginalToken(HOT, ChainId.MAINNET)
+const fewNOT = getFewTokenFromOriginalToken(NOT, ChainId.MAINNET)
 
-const pair = new Pair(CurrencyAmount.fromRawAmount(HOT, '2000000000000000000'), CurrencyAmount.fromRawAmount(NOT, '1000000000000000000'))
+const pair = new Pair(
+  CurrencyAmount.fromRawAmount(fewHOT, '2000000000000000000'),
+  CurrencyAmount.fromRawAmount(fewNOT, '1000000000000000000')
+)
 ```
 
 ## Static Methods
@@ -29,7 +34,7 @@ const pair = new Pair(CurrencyAmount.fromRawAmount(HOT, '2000000000000000000'), 
 getAddress(tokenA: Token, tokenB: Token): string
 ```
 
-Computes the pair address for the passed [Tokens](token). See [Pair Addresses](../../../contracts/v2/guides/smart-contract-integration/getting-pair-addresses).
+Computes the pair address for the passed [Tokens](../../../sdk/core/reference/classes/Token). Pass the actual pair tokens used in the pool, which are often `FewToken` addresses in Ring Swap. See [Pair Addresses](../../../contracts/v2/guides/smart-contract-integration/getting-pair-addresses).
 
 ## Properties
 
@@ -39,7 +44,7 @@ Computes the pair address for the passed [Tokens](token). See [Pair Addresses](.
 liquidityToken: Token
 ```
 
-A Token representing the liquidity token for the pair. See [Pair (ERC-20)](../../../contracts/v2/reference/smart-contracts/pair-erc-20).
+A Token representing the liquidity token for the pair. See [Pair (ERC-20)](../../../contracts/v2/reference/smart-contracts/Pair-ERC-20).
 
 ### token0
 

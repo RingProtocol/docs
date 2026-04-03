@@ -5,22 +5,24 @@ title: Trading
 
 > Looking for a [quickstart](quick-start)?
 
-The SDK _cannot execute trades or send transactions on your behalf_. Rather, it offers utility classes and functions which make it easy to calculate the data required to safely interact with Uniswap. Nearly everything you need to safely transact with Ring is provided by the [Trade](../reference/trade) entity. However, it is your responsibility to use this data to send transactions in whatever context makes sense for your application.
+The SDK _cannot execute trades or send transactions on your behalf_. Rather, it offers utility classes and functions which make it easy to calculate the data required to safely interact with Ring Swap. Nearly everything you need to safely transact with Ring is provided by the [Trade](../reference/trade) entity. However, it is your responsibility to use this data to send transactions in whatever context makes sense for your application.
 
 This guide will focus exclusively on sending a transaction to the [latest Ring V2 router](../../../contracts/v2/reference/smart-contracts/router-02)
 
 # Sending a Transaction to the Router
 
-Let's say we want to trade 1 WETH for as much DAI as possible:
+Let's say we want to trade 1 WETH for as much DAI as possible. The pair liquidity lives in `FewToken` form, but the route and trade APIs can still be expressed in terms of the original assets:
 
 ```typescript
-import { ChainId, Token, WETH9, CurrencyAmount, TradeType } from '@uniswap/sdk-core'
-import {Trade, Route} from '@uniswap/v2-sdk'
+import { ChainId, Token, WETH9, CurrencyAmount, TradeType } from '@ring-protocol/sdk-core'
+import { Trade, Route, getFewTokenFromOriginalToken } from '@ring-protocol/v2-sdk'
 
 const DAI = new Token(ChainId.MAINNET, '0x6B175474E89094C44Da98b954EedeAC495271d0F', 18)
+const fewDAI = getFewTokenFromOriginalToken(DAI, ChainId.MAINNET)
+const fewWETH = getFewTokenFromOriginalToken(WETH9[DAI.chainId], DAI.chainId)
 
 // See the Fetching Data guide to learn how to get Pair data
-const pair = await createPair(DAI, WETH9[DAI.chainId])
+const pair = await createPair(fewDAI, fewWETH)
 
 const route = new Route([pair], WETH9[DAI.chainId], DAI)
 
@@ -47,7 +49,7 @@ function swapExactETHForTokens(uint amountOutMin, address[] calldata path, addre
 Jumping back to our trading code, we can construct all the necessary parameters:
 
 ```typescript
-import {Percent} from '@uniswap/sdk-core'
+import { Percent } from '@ring-protocol/sdk-core'
 
 const slippageTolerance = new Percent('50', '10000') // 50 bips, or 0.50%
 

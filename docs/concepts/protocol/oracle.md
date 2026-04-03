@@ -5,12 +5,12 @@ sidebar_position: 4
 ---
 
 :::note
-Ring v4 does not include built-in oracle functionality. If you're unfamiliar with oracles, check out the Ethereum Foundation's [oracle overview](https://ethereum.org/en/developers/docs/oracles/).
+Ring's current native swap system is `Ring Swap (v2)`, which does not provide a built-in oracle system of the kind commonly associated with concentrated-liquidity AMMs. If you're unfamiliar with oracles, check out the Ethereum Foundation's [oracle overview](https://ethereum.org/en/developers/docs/oracles/).
 :::
 
-All Ring v3 pools can serve as oracles, offering access to historical price and liquidity data. This capability unlocks a wide range of on-chain use cases.
+This page describes oracle concepts commonly used in concentrated-liquidity AMM designs and in external integration environments such as Uniswap v4. It should not be read as evidence that Ring currently operates a native Ring v3 or Ring v4 oracle system.
 
-Historical data is stored as an array of observations. At first, each pool tracks only a single observation, overwriting it as blocks elapse. This limits how far into the past users may access data. However, any party willing to pay the transaction fees may [increase the number of tracked observations](../../contracts/v3/reference/core/UniswapV3Pool#increaseobservationcardinalitynext) (up to a maximum of `65535`), expanding the period of data availability to ~9 days or more.
+Historical data in concentrated-liquidity AMMs is often stored as an array of observations. At first, a pool may track only a small number of observations, which limits how far into the past users may access data. Expanding the number of tracked observations can increase the usable history window.
 
 Storing price and liquidity history directly in the pool contract substantially reduces the potential for logical errors on the part of the calling contract, and reduces integration costs by eliminating the need to store historical values. Additionally, the v3 oracle's considerable maximum length makes oracle price manipulation significantly more difficult, as the calling contract may cheaply construct a time-weighted average over any arbitrary range inside of (or fully encompassing) the length of the oracle array.
 
@@ -31,7 +31,7 @@ struct Observation {
 }
 ```
 
-`Observation`s may be retrieved via the [`observations`](../../contracts/v3/reference/core/interfaces/pool/IUniswapV3PoolState#observations) method on v3 pools. However, this is _not_ the recommended way to consume oracle data. Instead, prefer [`observe`](../../contracts/v3/reference/core/UniswapV3Pool#observe):
+In many concentrated-liquidity designs, `Observation`s can be retrieved either from direct storage accessors or from a dedicated `observe`-style method. In practice, integrators usually prefer the higher-level observation method because it is easier to work with safely:
 
 ```solidity
 function observe(uint32[] calldata secondsAgos)

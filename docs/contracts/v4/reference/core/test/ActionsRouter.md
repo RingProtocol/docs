@@ -2,7 +2,7 @@
 [Git Source](https://github.com/RingProtocol/v4-core/blob/80311e34080fee64b6fc6c916e9a51a437d0e482/src/test/ActionsRouter.sol)
 
 **Inherits:**
-[IUnlockCallback](/src/interfaces/callback/IUnlockCallback.sol/interface.IUnlockCallback.md), Test
+[IUnlockCallback](../interfaces/IUnlockCallback), Test
 
 A router that handles an arbitrary input of actions.
 TODO: Can continue to add functions per action.
