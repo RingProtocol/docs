@@ -50,7 +50,7 @@ contract AsyncSwapHook is BaseHook {
 
 ## beforeSwap
 
-AsyncSwap only works on exact-input swaps and the *beforeSwap* **must** take the input currency and return [`BeforeSwapDelta`](/contracts/v4/reference/core/types/beforeswapdelta). The hook should `IPoolManager.mint` itself the corresponding tokens equal to the amount of the input (`amountSpecified`). It should then return a `BeforeSwapDelta` where `deltaSpecified = -amountSpecified` (the positive amount).
+AsyncSwap only works on exact-input swaps and the *beforeSwap* **must** take the input currency and return [`BeforeSwapDelta`](/contracts/v4/reference/core/types/BeforeSwapDelta). The hook should `IPoolManager.mint` itself the corresponding tokens equal to the amount of the input (`amountSpecified`). It should then return a `BeforeSwapDelta` where `deltaSpecified = -amountSpecified` (the positive amount).
 
 The funds' movements are as follows:
 

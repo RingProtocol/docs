@@ -1,4 +1,3 @@
-import { DocsSentimentSection } from '@uniswap/analytics-events'
 import React, { useCallback, useState } from 'react'
 import { Happy, Sad, Neutral } from '../Icons'
 import SentimentButton from './SentimentButton'
@@ -9,7 +8,7 @@ export enum Sentiment {
   POSITIVE = 'POSITIVE',
 }
 
-export default function SentimentTracking({ analyticsSection }: { analyticsSection: DocsSentimentSection }) {
+export default function SentimentTracking() {
   const [selectedSentiment, setSelectedSentiment] = useState<null | Sentiment>(null)
 
   const isSentimentSelected = useCallback(
@@ -26,21 +25,18 @@ export default function SentimentTracking({ analyticsSection }: { analyticsSecti
           icon={<Happy className="h-5 w-5 group/positive" />}
           selected={isSentimentSelected(Sentiment.POSITIVE)}
           onSelect={setSelectedSentiment}
-          analyticsSection={analyticsSection}
         />
         <SentimentButton
           sentiment={Sentiment.NEUTRAL}
           icon={<Neutral className="h-5 w-5 group/neutral" />}
           selected={isSentimentSelected(Sentiment.NEUTRAL)}
           onSelect={setSelectedSentiment}
-          analyticsSection={analyticsSection}
         />
         <SentimentButton
           sentiment={Sentiment.NEGATIVE}
           icon={<Sad className="h-5 w-5 group/negative" />}
           selected={isSentimentSelected(Sentiment.NEGATIVE)}
           onSelect={setSelectedSentiment}
-          analyticsSection={analyticsSection}
         />
       </div>
     </div>

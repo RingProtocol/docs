@@ -100,7 +100,7 @@ Key constants used throughout the SDK:
 ### Working with Currencies
 
 ```typescript
-import { Token, Ether } from '@uniswap/sdk-core'
+import { Token, Ether } from '@ring-protocol/sdk-core'
 
 // Native ETH
 const ETH = Ether.onChain(1)
@@ -118,10 +118,10 @@ const USDC = new Token(
 ### Working with Amounts
 
 ```typescript
-import { CurrencyAmount } from '@uniswap/sdk-core'
+import { CurrencyAmount } from '@ring-protocol/sdk-core'
 
 const amount = CurrencyAmount.fromRawAmount(USDC, '1000000') // 1 USDC
 const readable = amount.toSignificant(6) // "1.000000"
 ```
 
-For more detailed usage, see the individual class documentation and the [SDK Guides](../../v3/guides/01-background.md).
+For more detailed usage, see the individual class documentation and the [SDK v2 Guides](../../v2/guides/quick-start).

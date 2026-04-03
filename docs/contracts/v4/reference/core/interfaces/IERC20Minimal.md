@@ -1,7 +1,7 @@
 # IERC20Minimal
 [Git Source](https://github.com/RingProtocol/v4-core/blob/80311e34080fee64b6fc6c916e9a51a437d0e482/src/interfaces/external/IERC20Minimal.sol) - Generated with [forge doc](https://book.getfoundry.sh/reference/forge/forge-doc)
 
-Contains a subset of the full ERC20 interface that is used in Ring V3
+Contains a subset of the full ERC20 interface used by the current v4 integration contracts
 
 
 ## Functions

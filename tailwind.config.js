@@ -41,15 +41,15 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        'basel-grotesk': ['Basel Grotesk', ...fontFamily.sans],
-        riegraf: ['Riegraf', ...fontFamily.serif],
+        'basel-grotesk': ['Inter', ...fontFamily.sans],
+        riegraf: ['Source Serif 4', ...fontFamily.serif],
         'fragment-mono': ['Fragment Mono', ...fontFamily.mono],
       },
       borderRadius: {
-        large: rem(20),
-        medium: rem(16),
-        small: rem(12),
-        'x-small': rem(6),
+        large: rem(16),
+        medium: rem(12),
+        small: rem(10),
+        'x-small': rem(5),
       },
       zIndex: {
         modal: '900',
