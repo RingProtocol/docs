@@ -3,9 +3,11 @@ title: PoolManager
 sidebar_position: 6
 ---
 
-In Ring v3, each liquidity pool was represented by a separate smart contract deployed through the Uniswapv3Factory contract. While this approach provided flexibility, it also led to increased gas costs for pool creation and multi-hop swaps.
+This page describes the `PoolManager` in the current `FewToken + Uniswap v4` integration environment. It should be read as technical integration guidance, not as documentation for a separate native `Ring v4` AMM.
 
-Ring v4 addresses this issue by introducing the Singleton design pattern. The PoolManager contract now serves as a single entry point for all liquidity pools. Instead of deploying separate contracts for each pool, the pool state and logic are encapsulated within the PoolManager itself.
+In Uniswap v3-style concentrated-liquidity systems, each liquidity pool was represented by a separate smart contract deployed through the `UniswapV3Factory` contract. While this approach provided flexibility, it also led to increased gas costs for pool creation and multi-hop swaps.
+
+The current v4 integration stack addresses this issue by introducing the Singleton design pattern. The PoolManager contract now serves as a single entry point for all liquidity pools. Instead of deploying separate contracts for each pool, the pool state and logic are encapsulated within the PoolManager itself.
 
 ## Purpose
 
@@ -13,14 +15,14 @@ The primary purpose of the `PoolManager` is to:
 
 - Efficiently manage liquidity pools
 - Facilitate token swaps
-- Reduce gas costs compared to the factory-based approach in Ring v3
+- Reduce gas costs compared to the factory-based approach in Uniswap v3-style designs
 - Enable extensibility through hooks
 
 ## Architecture
 
 ### Singleton Design
 
-- Ring v4 uses a Singleton design pattern for the `PoolManager`
+- The current v4 integration stack uses a Singleton design pattern for the `PoolManager`
 - All pool state and logic are encapsulated within the `PoolManager` contract
 
 ### Locking Mechanism

@@ -15,12 +15,12 @@ const config: Config = {
   },
   title: 'Ring Protocol Docs',
   tagline: 'Developer documentation and integration guides',
-  url: 'https://docs-ring-protocol.vercel.app',
+  url: process.env.DOCS_SITE_URL || 'https://docs.ring.exchange',
   baseUrl: '/',
-  onBrokenLinks: 'warn',
+  onBrokenLinks: 'throw',
   markdown: {
     hooks: {
-      onBrokenMarkdownLinks: 'ignore',
+      onBrokenMarkdownLinks: 'warn',
     },
   },
   favicon: 'img/favicon.png',
@@ -42,7 +42,7 @@ const config: Config = {
     },
     algolia: {
       apiKey: '32465e2ab6f7554ff014e64c0d92171c', //  Search-Only API Key (Public & safe to commit)
-      indexName: 'v4-docs',
+      indexName: process.env.ALGOLIA_INDEX_NAME || 'ring-docs',
       appId: 'S0IDD0YGLZ',
     },
     docs: {
@@ -140,8 +140,10 @@ const config: Config = {
                 if (
                   item.type === 'category' &&
                   (item.link?.id === 'contracts/the-compact/overview' ||
+                    item.link?.id === 'contracts/protocol-fee/overview' ||
                     item.link?.id === 'api/subgraph/overview' ||
                     item.label === 'The Compact' ||
+                    item.label === 'Protocol Fee' ||
                     item.label === 'APIs')
                 ) {
                   return []

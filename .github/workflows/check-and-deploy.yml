@@ -17,7 +17,7 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: 18.20.4
+          node-version: '20'
           cache: 'yarn'
           cache-dependency-path: yarn.lock
 
@@ -40,7 +40,7 @@ jobs:
   audit_with_lighthouse:
     name: Audit with Lighthouse
     runs-on: ubuntu-latest
-    if: github.ref != 'refs/head/main' && github.ref != 'refs/heads/prod'
+    if: github.ref != 'refs/heads/main' && github.ref != 'refs/heads/prod'
     permissions:
       contents: write
       pull-requests: write

@@ -133,8 +133,8 @@ See https://www.npmjs.com/package/typedoc-plugin-markdown for details.
 If you don't have those, one for the Engineering Managers should be able to help you.
 - Edit config.json file if needed:
     - Start url from updated website
-    - Sitemap URL from updated website: eg for docs: https://docs-ring-protocol.vercel.app/sitemap.xml
-    - Use "v4-docs" as the index name
+    - Sitemap URL from updated website: eg for docs: https://docs.ring.exchange/sitemap.xml
+    - Use "ring-docs" as the index name
 - [Install](https://www.docker.com/products/docker-desktop/) and start running Docker Desktop
 - Install jq `brew install jq`
 - Run `docker run -it --env-file=.env -e "CONFIG=$(cat ./config.json | jq -r tostring)" algolia/docsearch-scraper`
@@ -169,4 +169,4 @@ This command generates static content into the `build` directory and can be serv
 
 
 ## Deployment
-The application automatically deployed to production using [Vercel](https://vercel.com/uniswap/docs) upon merge into **main**.
+The application is automatically deployed to production on Vercel when changes are merged into **main**.

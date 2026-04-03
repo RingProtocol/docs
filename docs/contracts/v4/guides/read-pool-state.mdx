@@ -5,13 +5,15 @@ sidebar_position: 2
 
 ## Introduction
 
-Unlike previous versions, v4 uses a different approach for storing and accessing pool data, which requires understanding the use of [`StateLibrary`](/contracts/v4/reference/core/libraries/StateLibrary) and [`extsload`](/contracts/v4/reference/core/Extsload).
+This page describes pool-state reads in the current `FewToken + Uniswap v4` integration environment. It should be read as integration guidance, not as documentation for a separate native `Ring v4` AMM.
+
+Unlike previous versions, this v4 integration stack uses a different approach for storing and accessing pool data, which requires understanding the use of [`StateLibrary`](/contracts/v4/reference/core/libraries/StateLibrary) and [`extsload`](/contracts/v4/reference/core/Extsload).
 
 ## Understanding the PoolManager Architecture
 
 ### The Singleton Design
 
-In Ring v4, all pools are managed by a single `PoolManager` contract, unlike v3 where each pool was a separate contract. This design offers simplified management since all pools are now accessible through a single contract.
+In this v4 integration stack, all pools are managed by a single `PoolManager` contract, unlike v3 where each pool was a separate contract. This design offers simplified management since all pools are now accessible through a single contract.
 
 This approach significantly reduces deployment costs, simplifies protocol upgrades, and enables more efficient cross-pool interactions. It also allows for easier implementation of new features across all pools simultaneously. 
 
@@ -34,7 +36,7 @@ This design allows all AMM logic to be encapsulated within the `PoolManager` con
 
 ## Reading Pool State in v4
 
-In Ring v4, reading pool state involves a few key concepts and mechanisms that differ from previous versions. At the core of this new structure is a complex mapping within the PoolManager contract:
+In this v4 integration stack, reading pool state involves a few key concepts and mechanisms that differ from previous versions. At the core of this new structure is a complex mapping within the PoolManager contract:
 
 ```solidity
 mapping(PoolId id => Pool.State) internal _pools;
@@ -81,7 +83,7 @@ abstract contract Extsload is IExtsload {
 }
 ```
 
-The `StateLibrary` is a crucial component in Ring v4 for reading pool state. It utilizes the `extsload` function, which is an external wrapper for the `SLOAD` opcode. This allows for efficient reading of arbitrary storage slots.
+The `StateLibrary` is a crucial component in this v4 integration stack for reading pool state. It utilizes the `extsload` function, which is an external wrapper for the `SLOAD` opcode. This allows for efficient reading of arbitrary storage slots.
 
 **How `extsload` works:**
 
@@ -91,7 +93,7 @@ The `StateLibrary` is a crucial component in Ring v4 for reading pool state. It 
 
 This method is more gas-efficient than traditional getter functions, especially when reading multiple storage slots.
 
-Moreover, using `extsload` instead of hand-written Solidity view functions lowers the contract bytecode size. This optimization is particularly important for Ring v4, as the core contracts are nearly at Ethereum's contract size limit.
+Moreover, using `extsload` instead of hand-written Solidity view functions lowers the contract bytecode size. This optimization is particularly important for this v4 integration stack, as the core contracts are nearly at Ethereum's contract size limit.
 
 ### TransientStateLibrary and `exttload`
 
@@ -178,7 +180,7 @@ This function retrieves the current state of the pool, including its price, tick
 
 **Use Case:**
 
-This function is essential for any application that needs to know the current state of a Ring v4 pool. For example:
+This function is essential for any application that needs to know the current state of a pool in this v4 integration stack. For example:
 
 - A price oracle could use this to get the current price of the pool.
 - A trading bot could use this to determine if a trade is profitable given the current price and fees.
@@ -194,7 +196,7 @@ function getPoolLiquidity(PoolKey calldata key) external view returns (uint128 l
 
 **Explanation:**
 
-This function retrieves the current total liquidity in the pool. Liquidity in Ring v4 represents the amount of assets available for trading within the current price range.
+This function retrieves the current total liquidity in the pool. In this v4 integration stack, liquidity represents the amount of assets available for trading within the current price range.
 
 **Use Case:**
 

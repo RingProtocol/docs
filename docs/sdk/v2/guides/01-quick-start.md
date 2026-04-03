@@ -47,4 +47,4 @@ console.log(`The chainId of mainnet is ${CORE.ChainId.MAINNET}.`)
 
 ## Reference
 
-Comprehensive reference material for the SDK is publicly available on the [Ring Labs GitHub](https://github.com/RingProtocol/ring-sdks).
+Comprehensive reference material for the SDK is publicly available in the [Ring SDK monorepo](https://github.com/RingProtocol/ring-sdks).

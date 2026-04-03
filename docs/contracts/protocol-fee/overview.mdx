@@ -1,16 +1,23 @@
 ---
 title: Overview
 sidebar_position: 1
+unlisted: true
 ---
 
 # Ring Protocol Fees
 
-Fees from protocol versions and products such as v2, v3, v4, and Unichain flow into a single onchain collector on each network. From there, specialized contracts handle how those assets are released or transformed (for example, burning UNI).
+:::warning
+This section is not part of the current public Ring launch surface.
+
+The public product line currently centers on `FewToken` and `Ring Swap (v2)`. The protocol-fee materials below are retained as architectural reference for future or internal fee-system work and should not be read as evidence that these contracts are currently live for public integrators.
+:::
+
+This section describes a possible fee-collection architecture in which fees from protocol versions and products flow into a single onchain collector on each network. From there, specialized contracts handle how those assets are released or transformed.
 
 ## Flow of Assets
 
 1. **Fee Sources**
-Each protocol component that generates fees (v2, v3, v4, Unichain, and others) routes those fees through an associated Fee Adapter contract. Adapters define how and when fees are collected and send them to the TokenJar on the same chain.
+Each protocol component that generates fees (for example v2, v3, or other future modules) routes those fees through an associated Fee Adapter contract. Adapters define how and when fees are collected and send them to the TokenJar on the same chain.
 
 2. **TokenJar**
    Each chain has one immutable contract called the **TokenJar**. All fee sources send tokens here. It’s the unified collection point for raw tokens.
@@ -38,7 +45,7 @@ See [Fee Adapters](technical-reference/V4FeeAdapter).
 ### Releasers
 
 Contracts that convert collected fees into protocol value according to defined logic.
-Examples include the Firepit Releaser, which burns UNI in return for assets.
+Examples include a Firepit-style releaser, which burns UNI in return for assets.
 
 See [Releasers](technical-reference/IReleaser.md).
 

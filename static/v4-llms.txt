@@ -1,14 +1,14 @@
-# Ring Protocol v4
+# Ring Protocol Uniswap v4 Integration
 
-- [Overview](https://docs-ring-protocol.vercel.app/contracts/v4/overview): Ring v4 combines concentrated liquidity with hooks, singleton architecture, and gas optimizations across the pool lifecycle.
-- [Hooks](https://docs-ring-protocol.vercel.app/contracts/v4/concepts/hooks): Ring v4 hooks allow developers to attach custom logic to pool initialization, liquidity, swaps, and donations.
-- [Deployments](https://docs-ring-protocol.vercel.app/contracts/v4/deployments): Published Ring v4 deployment addresses across supported networks.
-- [Few Hook Contracts](https://docs-ring-protocol.vercel.app/contracts/v4/guides/hooks/few-hook-contracts): Few Protocol hook contracts and published Ethereum mainnet hook addresses.
-- [Hook Deployment](https://docs-ring-protocol.vercel.app/contracts/v4/guides/hooks/hook-deployment): Hook permission flags, address encoding, and CREATE2 mining workflow.
-- [Building Your First Hook](https://docs-ring-protocol.vercel.app/contracts/v4/guides/hooks/your-first-hook): Introductory guide to building a custom hook.
-- [Create Pool](https://docs-ring-protocol.vercel.app/contracts/v4/quickstart/create-pool): Create and initialize a Ring v4 pool.
-- [Swap](https://docs-ring-protocol.vercel.app/contracts/v4/quickstart/swap): Execute swaps through Ring v4 routing flows.
-- [StateView](https://docs-ring-protocol.vercel.app/contracts/v4/guides/state-view): Read pool state using StateView for offchain and onchain integrations.
-- [Unlock Callback](https://docs-ring-protocol.vercel.app/contracts/v4/guides/unlock-callback): Understand unlock-based execution and settlement deltas.
-- [Custom Accounting](https://docs-ring-protocol.vercel.app/contracts/v4/guides/custom-accounting): Extend pool behavior with custom accounting logic.
-- [Swap Routing](https://docs-ring-protocol.vercel.app/contracts/v4/guides/swap-routing): Route swaps across Ring v4 pools and related routers.
+- [Overview](https://docs.ring.exchange/contracts/v4/overview): Overview of Ring's current `FewToken + Uniswap v4` integration surface and how it differs from Ring Swap (v2).
+- [Hooks](https://docs.ring.exchange/contracts/v4/concepts/hooks): Hook concepts relevant to the current `FewToken + Uniswap v4` integration stack.
+- [Deployments](https://docs.ring.exchange/contracts/v4/deployments): Published Uniswap v4 integration contract addresses referenced by this section.
+- [Few Hook Contracts](https://docs.ring.exchange/contracts/v4/guides/hooks/few-hook-contracts): Few Protocol hook contracts and published Ethereum mainnet hook addresses.
+- [Hook Deployment](https://docs.ring.exchange/contracts/v4/guides/hooks/hook-deployment): Hook permission flags, address encoding, and CREATE2 mining workflow.
+- [Building Your First Hook](https://docs.ring.exchange/contracts/v4/guides/hooks/your-first-hook): Introductory guide to building a custom hook in the current v4 integration environment.
+- [Create Pool](https://docs.ring.exchange/contracts/v4/quickstart/create-pool): Create and initialize a pool in the current Uniswap v4 integration environment.
+- [Swap](https://docs.ring.exchange/contracts/v4/quickstart/swap): Execute swaps through the current v4 integration routing flow.
+- [StateView](https://docs.ring.exchange/contracts/v4/guides/state-view): Read pool state using StateView for offchain and onchain integrations.
+- [Unlock Callback](https://docs.ring.exchange/contracts/v4/guides/unlock-callback): Understand unlock-based execution and settlement deltas.
+- [Custom Accounting](https://docs.ring.exchange/contracts/v4/guides/custom-accounting): Extend pool behavior with custom accounting logic.
+- [Swap Routing](https://docs.ring.exchange/contracts/v4/guides/swap-routing): Route swaps across pools and routers in the current v4 integration stack.
