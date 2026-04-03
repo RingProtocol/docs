@@ -88,7 +88,7 @@ const config: Config = {
           label: 'LLMs',
         },
         {
-          label: "Share Feedback",
+          label: 'Share Feedback',
           to: 'https://discord.com/invite/TefBNDZBQP',
           target: '_blank',
           rel: 'noreferrer',
@@ -106,7 +106,7 @@ const config: Config = {
         //   rel: 'noreferrer',
         // },
         {
-          label: "GitHub",
+          label: 'GitHub',
           to: 'https://github.com/RingProtocol/docs/',
           target: '_blank',
           rel: 'noreferrer',
@@ -257,7 +257,11 @@ const config: Config = {
           },
           {
             to: '/contracts/v2/concepts/protocol-overview/smart-contracts',
-            from: ['/protocol/V2/reference/smart-contracts', '/protocol/V2/concepts/protocol-overview/smart-contracts', '/contracts/v2/reference/smart-co'],
+            from: [
+              '/protocol/V2/reference/smart-contracts',
+              '/protocol/V2/concepts/protocol-overview/smart-contracts',
+              '/contracts/v2/reference/smart-co',
+            ],
           },
           {
             to: '/contracts/v2/reference/API/overview',
@@ -284,11 +288,19 @@ const config: Config = {
           },
           {
             to: '/contracts/v4/guides/hooks/your-first-hook',
-            from: ['/contracts/v4/first-hook/building-your-own-hook', '/tutorials/', '/contracts/v4/guides/hooks/setup'],
+            from: [
+              '/contracts/v4/first-hook/building-your-own-hook',
+              '/tutorials/',
+              '/contracts/v4/guides/hooks/setup',
+            ],
           },
           {
             to: '/contracts/v4/guides/hooks/hook-deployment',
-            from: ['/contracts/v4/concepts/hook-deployment', '/contracts/v4/first-hook/hook-deployment', '/contracts/v4/first-hook/testing-hooks'],
+            from: [
+              '/contracts/v4/concepts/hook-deployment',
+              '/contracts/v4/first-hook/hook-deployment',
+              '/contracts/v4/first-hook/testing-hooks',
+            ],
           },
           {
             to: '/contracts/v4/guides/custom-accounting',
@@ -336,62 +348,62 @@ const config: Config = {
         },
       },
     ],
-    ['docusaurus-plugin-llms',
-    {
-      // Options here
-      generateLLMsTxt: true,
-      generateLLMsFullTxt: true,
-      docsDir: 'docs',
-      ignoreFiles: [
-        'examples/*',
-        'plugins/*',
-        'scripts/*',
-        'src/*',
-        'static/*',
-        'submodules/*',
-        'CONTRIBUTING.md',
-        '02-overview.mdx',
-        'docs/archived',
-        'docs/concepts',
-        'docs/contracts/permit2',
-        'docs/contracts/smart-wallet',
-        'docs/contracts/universal-router',
-        'docs/contracts/v1',
-        'docs/contracts/v2',
-        'docs/contracts/v3',
-        'docs/sdk/core',
-        'docs/sdk/swap-widget',
-        'docs/sdk/v2',
-        'docs/sdk/v3',
-        'docs/universal-router-legacy',
-      ],
-      title: 'LLMs.txt for Ring v2 Documentation',
-      description: 'Complete reference documentation for Ring v2',
-      llmsTxtFilename: 'v2-llms.txt',
-      llmsFullTxtFilename: 'v2-llms-full.txt',
-      includeBlog: false,
-      // Content cleaning options
-      excludeImports: true,
-      removeDuplicateHeadings: true,
-      // Control documentation order
-      includeOrder: [
-        // 'docs/contracts/v4/*',
-        // 'docs/sdk/v4/*',
-        // 'docs/api/*',
-      ],
-      includeUnmatchedLast: true,
-      // Path transformation options
-      pathTransformation: {
-        // Paths to ignore when constructing URLs (will be removed if found)
-        ignorePaths: ['docs'],
-        // Paths to add when constructing URLs (will be prepended if not already present)
-        addPaths: [],
+    [
+      'docusaurus-plugin-llms',
+      {
+        // Options here
+        generateLLMsTxt: true,
+        generateLLMsFullTxt: true,
+        docsDir: 'docs',
+        ignoreFiles: [
+          'examples/*',
+          'plugins/*',
+          'scripts/*',
+          'src/*',
+          'static/*',
+          'submodules/*',
+          'CONTRIBUTING.md',
+          '02-overview.mdx',
+          'docs/archived',
+          'docs/concepts',
+          'docs/contracts/permit2',
+          'docs/contracts/smart-wallet',
+          'docs/contracts/universal-router',
+          'docs/contracts/v1',
+          'docs/contracts/v2',
+          'docs/contracts/v3',
+          'docs/sdk/core',
+          'docs/sdk/swap-widget',
+          'docs/sdk/v2',
+          'docs/sdk/v3',
+          'docs/universal-router-legacy',
+        ],
+        title: 'LLMs.txt for Ring v2 Documentation',
+        description: 'Complete reference documentation for Ring v2',
+        llmsTxtFilename: 'v2-llms.txt',
+        llmsFullTxtFilename: 'v2-llms-full.txt',
+        includeBlog: false,
+        // Content cleaning options
+        excludeImports: true,
+        removeDuplicateHeadings: true,
+        // Control documentation order
+        includeOrder: [
+          // 'docs/contracts/v4/*',
+          // 'docs/sdk/v4/*',
+          // 'docs/api/*',
+        ],
+        includeUnmatchedLast: true,
+        // Path transformation options
+        pathTransformation: {
+          // Paths to ignore when constructing URLs (will be removed if found)
+          ignorePaths: ['docs'],
+          // Paths to add when constructing URLs (will be prepended if not already present)
+          addPaths: [],
+        },
+        // Custom LLM files for specific documentation sections
+        customLLMFiles: [],
       },
-      // Custom LLM files for specific documentation sections
-      customLLMFiles: [
-      ],
-    }
-    ]
+    ],
   ],
 }
 export default config

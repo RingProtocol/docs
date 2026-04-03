@@ -134,7 +134,15 @@ export const MiniUnicon: FC<{
       ) : (
         <>
           <circle cx="48" cy="56" r="28" fill="none" stroke="url(#miniUniconGradient)" strokeWidth="10" />
-          <rect x="64" y="8" width="16" height="6" rx="3" fill="url(#miniUniconGradient)" transform="rotate(-30 72 11)" />
+          <rect
+            x="64"
+            y="8"
+            width="16"
+            height="6"
+            rx="3"
+            fill="url(#miniUniconGradient)"
+            transform="rotate(-30 72 11)"
+          />
         </>
       )}
     </svg>
@@ -188,12 +196,7 @@ export const Emblem2: FC<{
       <circle cx="5" cy="9" r="2.2" fill="currentColor" />
       <circle cx="14" cy="5" r="2.2" fill="currentColor" fillOpacity="0.8" />
       <circle cx="14" cy="13" r="2.2" fill="currentColor" fillOpacity="0.45" />
-      <path
-        d="M6.9 8.2L12 5.8M6.9 9.8L12 12.2"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-      />
+      <path d="M6.9 8.2L12 5.8M6.9 9.8L12 12.2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
     </svg>
   )
 }

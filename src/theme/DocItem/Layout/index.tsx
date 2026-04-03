@@ -74,14 +74,19 @@ export default function DocItemLayout({ children }: Props): ReactNode {
         <DocVersionBanner />
         <div className={clsx(styles.docItemContainer, 'docArticleShell')}>
           <div
-            className={clsx('mb-4 rounded-large border border-light-surface-3 bg-light-surface-2 px-6 py-4 dark:border-dark-surface-3 dark:bg-dark-surface-2 sm:px-8', {
-              'docHeaderConcepts': isConceptDoc,
-              'docHeaderReference': isReferenceDoc,
-            })}
+            className={clsx(
+              'mb-4 rounded-large border border-light-surface-3 bg-light-surface-2 px-6 py-4 dark:border-dark-surface-3 dark:bg-dark-surface-2 sm:px-8',
+              {
+                docHeaderConcepts: isConceptDoc,
+                docHeaderReference: isReferenceDoc,
+              },
+            )}
           >
             <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <p className="button-label-4 uppercase tracking-[0.08em] text-light-accent-1 dark:text-dark-accent-1">{docKindLabel}</p>
+                <p className="button-label-4 uppercase tracking-[0.08em] text-light-accent-1 dark:text-dark-accent-1">
+                  {docKindLabel}
+                </p>
                 {docKindHint ? (
                   <p className="mt-2 body-3 text-light-neutral-2 dark:text-dark-neutral-2">{docKindHint}</p>
                 ) : null}
@@ -99,10 +104,13 @@ export default function DocItemLayout({ children }: Props): ReactNode {
             </div>
           </div>
           <article
-            className={clsx('rounded-large border border-light-surface-3 bg-light-surface-1 px-6 py-8 dark:border-dark-surface-3 dark:bg-dark-surface-1 sm:px-8', {
-              'docArticleConcepts': isConceptDoc,
-              'docArticleReference': isReferenceDoc,
-            })}
+            className={clsx(
+              'rounded-large border border-light-surface-3 bg-light-surface-1 px-6 py-8 dark:border-dark-surface-3 dark:bg-dark-surface-1 sm:px-8',
+              {
+                docArticleConcepts: isConceptDoc,
+                docArticleReference: isReferenceDoc,
+              },
+            )}
           >
             <DocBreadcrumbs />
             <DocVersionBadge />
@@ -120,10 +128,13 @@ export default function DocItemLayout({ children }: Props): ReactNode {
         })}
       >
         <div
-          className={clsx('rounded-large border border-light-surface-3 bg-light-surface-2 p-5 dark:border-dark-surface-3 dark:bg-dark-surface-2', {
-            'docSidePanelConcepts': isConceptDoc,
-            'docSidePanelReference': isReferenceDoc,
-          })}
+          className={clsx(
+            'rounded-large border border-light-surface-3 bg-light-surface-2 p-5 dark:border-dark-surface-3 dark:bg-dark-surface-2',
+            {
+              docSidePanelConcepts: isConceptDoc,
+              docSidePanelReference: isReferenceDoc,
+            },
+          )}
         >
           {docTOC.desktop && (
             <div>
@@ -133,7 +144,9 @@ export default function DocItemLayout({ children }: Props): ReactNode {
           )}
 
           <div className={clsx(docTOC.desktop ? 'mt-6' : '')}>
-            <p className="button-label-4 uppercase tracking-[0.08em] text-light-accent-1 dark:text-dark-accent-1">Tools</p>
+            <p className="button-label-4 uppercase tracking-[0.08em] text-light-accent-1 dark:text-dark-accent-1">
+              Tools
+            </p>
             <div className="mt-3 rounded-medium border border-light-surface-3 bg-light-surface-1 p-3 dark:border-dark-surface-3 dark:bg-dark-surface-1">
               <CopyToAI className="w-full" />
             </div>

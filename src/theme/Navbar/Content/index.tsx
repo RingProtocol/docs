@@ -53,7 +53,12 @@ export default function NavbarContent(): ReactNode {
         'site-max-width w-full min-h-nav-h flex flex-row items-center rounded-large border border-light-surface-3 bg-light-surface-1/95 px-4 py-3 shadow-light-short backdrop-blur dark:border-dark-surface-3 dark:bg-dark-surface-1/95 dark:shadow-dark-short sm:px-5',
       )}
     >
-      <Link className="flex flex-row items-center flex-shrink-0" to="/" target="_self" aria-label="Ring Protocol documentation home">
+      <Link
+        className="flex flex-row items-center flex-shrink-0"
+        to="/"
+        target="_self"
+        aria-label="Ring Protocol documentation home"
+      >
         <MiniUnicon className="w-8 h-8 mr-3" />
         <div className="flex flex-col">
           <p className="Navbar__logo-text body-1 text-light-accent-1 dark:text-dark-accent-1 mb-0">Ring Protocol</p>
