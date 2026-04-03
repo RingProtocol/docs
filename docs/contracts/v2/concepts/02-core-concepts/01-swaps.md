@@ -41,4 +41,4 @@ The takeaway is that **tokens must be transferred to pairs before swap is called
 ## Developer resources
 
 - To see how to implement token swaps in a smart contract read [Trading from a smart contract](../../guides/smart-contract-integration/trading-from-a-smart-contract).
-- To see how to execute a swap from an interface read [Trading (SDK)](../../../../sdk/2.0.0/guides/trading)
+- To see how to execute a swap from an interface read [Trading (SDK)](../../../../sdk/v2/guides/trading)

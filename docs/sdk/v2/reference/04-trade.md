@@ -7,17 +7,22 @@ title: Trade
 constructor(route: Route, amount: CurrencyAmount, tradeType: TradeType)
 ```
 
-The Trade entity represents a fully specified trade along a route. This entity supplies all the information necessary to craft a router transaction.
+The Trade entity represents a fully specified trade along a route. This entity supplies all the information necessary to craft a router transaction. In the FEW-aware Ring SDK, the route can bridge between original assets in your app and `FewToken` liquidity inside the pool path.
 
 ## Example
 
 ```typescript
-import { ChainId, Token, CurrencyAmount, TradeType } from '@uniswap/sdk-core'
-import { Pair, Trade, Route }
+import { ChainId, Token, CurrencyAmount, TradeType } from '@ring-protocol/sdk-core'
+import { Pair, Trade, Route, getFewTokenFromOriginalToken } from '@ring-protocol/v2-sdk'
 
 const HOT = new Token(ChainId.MAINNET, '0xc0FFee0000000000000000000000000000000000', 18, 'HOT', 'Caffeine')
 const NOT = new Token(ChainId.MAINNET, '0xDeCAf00000000000000000000000000000000000', 18, 'NOT', 'Caffeine')
-const HOT_NOT = new Pair(CurrencyAmount.fromRawAmount(HOT, '2000000000000000000'), CurrencyAmount.fromRawAmount(NOT, '1000000000000000000'))
+const fewHOT = getFewTokenFromOriginalToken(HOT, ChainId.MAINNET)
+const fewNOT = getFewTokenFromOriginalToken(NOT, ChainId.MAINNET)
+const HOT_NOT = new Pair(
+  CurrencyAmount.fromRawAmount(fewHOT, '2000000000000000000'),
+  CurrencyAmount.fromRawAmount(fewNOT, '1000000000000000000')
+)
 const NOT_TO_HOT = new Route([HOT_NOT], NOT, HOT)
 
 const trade = new Trade(NOT_TO_HOT, CurrencyAmount.fromRawAmount(NOT, '1000000000000000'), TradeType.EXACT_INPUT)

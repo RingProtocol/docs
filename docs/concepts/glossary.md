@@ -10,7 +10,7 @@ An automated market maker is a smart contract on Ethereum that holds liquidity r
 
 ## Asset
 
-While a digital asset can take many forms, the Ring Protocol supports ERC-20 token pairs, and represents a position in the form of an NFT (ERC-721).
+While a digital asset can take many forms, Ring primarily works with ERC-20 assets. In Ring's current architecture, original ERC-20 assets may also be wrapped into `FewToken` before being used in trading or integrations.
 
 ## Concentrated Liquidity
 
@@ -18,11 +18,11 @@ Liquidity that is allocated within a determined price range.
 
 ## Constant Product Formula
 
-The automated market making algorithm used by Uniswap. In v1 and v2, this was x\*y=k.
+The automated market making formula commonly used by AMMs. In Ring Swap (v2), this follows the familiar x\*y=k model.
 
 ## Core
 
-Smart contracts that are considered foundational, and are essential for Ring to exist. Upgrading to a new version of core would require deploying an entirely new set of smart contracts on Ethereum and would be considered a new version of the Ring Protocol.
+Smart contracts that are considered foundational and essential for Ring to exist.
 
 ## ERC20
 
@@ -30,7 +30,7 @@ ERC20 tokens are fungible tokens on Ethereum. Ring supports all standard ERC20 i
 
 ## Factory
 
-A smart contract that deploys a unique smart contract for any ERC20/ERC20 trading pair.
+A smart contract that deploys a unique trading contract for a token pair.
 
 ## Flash Swap
 
@@ -50,7 +50,7 @@ Digital assets that are stored in a Ring pool contract, and are able to be trade
 
 ## Mid Price
 
-The price between the available buy and sell prices. In Ring v1 and v2, this is the ratio of the two ERC20 token reserves. In V3, this is the ratio of the two ERC20 token reserves available within the current active tick.
+The price between the available buy and sell prices. In Ring Swap (v2), this is the ratio of the two token reserves in the pool.
 
 ## Observation
 
@@ -58,7 +58,7 @@ An instance of historical price and liquidity data of a given pair.
 
 ## Pair
 
-A smart contract deployed from a Ring v1 or v2 factory contract that enables trading between two ERC20 tokens. Pair contracts are now called Pools in v3.
+A smart contract deployed from the Ring Swap (v2) factory that enables trading between two ERC-20 assets.
 
 ## Periphery
 
@@ -66,7 +66,7 @@ External smart contracts that are useful, but not required for Ring to exist. Ne
 
 ## Pool
 
-A contract deployed by the V3 factory that pairs two ERC-20 assets. Different pools may have different fees despite containing the same token pair. Pools were previously called Pairs before the introduction of multiple fee options.
+A contract-based liquidity venue that pairs two assets for trading. In the current Ring docs, the term "pool" is most often used when referring to Uniswap v4 or other non-v2 liquidity environments.
 
 ## Position
 
@@ -90,7 +90,7 @@ An approximation of a limit order, in which a single asset is provided as liquid
 
 ## Reserves
 
-The liquidity available within a pair. This was more commonly referenced before concentrated liquidity was introduced.
+The liquidity available within a pair or pool.
 
 ## Slippage
 

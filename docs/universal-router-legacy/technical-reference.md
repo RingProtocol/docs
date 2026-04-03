@@ -44,36 +44,36 @@ A complete list of commands can be found in the table below:
 
 | Command | Value                                                                                    |
 | :------ | :--------------------------------------------------------------------------------------- |
-| `0x00`  | [`V3_SWAP_EXACT_IN`](./02-technical-reference.md#v3_swap_exact_in)                       |
-| `0x01`  | [`V3_SWAP_EXACT_OUT`](./02-technical-reference.md#v3_swap_exact_out)                     |
-| `0x02`  | [`PERMIT2_TRANSFER_FROM`](./02-technical-reference.md#permit2_transfer_from)             |
-| `0x03`  | [`PERMIT2_PERMIT_BATCH`](./02-technical-reference.md#permit2_permit_batch)               |
-| `0x04`  | [`SWEEP`](./02-technical-reference.md#sweep)                                             |
-| `0x05`  | [`TRANSFER`](./02-technical-reference.md#transfer)                                       |
-| `0x06`  | [`PAY_PORTION`](./02-technical-reference.md#pay_portion)                                 |
+| `0x00`  | [`V3_SWAP_EXACT_IN`](#v3_swap_exact_in)                                                  |
+| `0x01`  | [`V3_SWAP_EXACT_OUT`](#v3_swap_exact_out)                                                |
+| `0x02`  | [`PERMIT2_TRANSFER_FROM`](#permit2_transfer_from)                                        |
+| `0x03`  | [`PERMIT2_PERMIT_BATCH`](#permit2_permit_batch)                                          |
+| `0x04`  | [`SWEEP`](#sweep)                                                                        |
+| `0x05`  | [`TRANSFER`](#transfer)                                                                  |
+| `0x06`  | [`PAY_PORTION`](#pay_portion)                                                            |
 | `0x07`  |                                                                                          |
-| `0x08`  | [`V2_SWAP_EXACT_IN`](./02-technical-reference.md#v2_swap_exact_in)                       |
-| `0x09`  | [`V2_SWAP_EXACT_OUT`](./02-technical-reference.md#v2_swap_exact_out)                     |
-| `0x0a`  | [`PERMIT2_PERMIT`](./02-technical-reference.md#permit2_permit)                           |
-| `0x0b`  | [`WRAP_ETH`](./02-technical-reference.md#wrap_eth)                                       |
-| `0x0c`  | [`UNWRAP_WETH`](./02-technical-reference.md#unwrap_weth)                                 |
-| `0x0d`  | [`PERMIT2_TRANSFER_FROM_BATCH`](./02-technical-reference.md#permit2_transfer_from_batch) |
+| `0x08`  | [`V2_SWAP_EXACT_IN`](#v2_swap_exact_in)                                                  |
+| `0x09`  | [`V2_SWAP_EXACT_OUT`](#v2_swap_exact_out)                                                |
+| `0x0a`  | [`PERMIT2_PERMIT`](#permit2_permit)                                                      |
+| `0x0b`  | [`WRAP_ETH`](#wrap_eth)                                                                  |
+| `0x0c`  | [`UNWRAP_WETH`](#unwrap_weth)                                                            |
+| `0x0d`  | [`PERMIT2_TRANSFER_FROM_BATCH`](#permit2_transfer_from_batch)                            |
 | `0x0e`  |                                                                                          |
 | `0x0f`  |                                                                                          |
-| `0x10`  | [`SEAPORT`](./02-technical-reference.md#seaport)                                         |
-| `0x11`  | [`LOOKS_RARE_721`](./02-technical-reference.md#looks_rare_721)                           |
-| `0x12`  | [`NFTX`](./02-technical-reference.md#nftx)                                               |
-| `0x13`  | [`CRYPTOPUNKS`](./02-technical-reference.md#cryptopunks)                                 |
-| `0x14`  | [`LOOKS_RARE_1155`](./02-technical-reference.md#looks_rare_1155)                         |
-| `0x15`  | [`OWNER_CHECK_721`](./02-technical-reference.md#owner_check_721)                         |
-| `0x16`  | [`OWNER_CHECK_1155`](./02-technical-reference.md#owner_check_1155)                       |
-| `0x17`  | [`SWEEP_ERC721`](./02-technical-reference.md#sweep_erc721)                               |
-| `0x18`  | [`X2Y2_721`](./02-technical-reference.md#x2y2_721)                                       |
-| `0x19`  | [`SUDOSWAP`](./02-technical-reference.md#sudoswap)                                       |
-| `0x1a`  | [`NFT20`](./02-technical-reference.md#nft20)                                             |
-| `0x1b`  | [`X2Y2_1155`](./02-technical-reference.md#x2y2_1155)                                     |
-| `0x1c`  | [`FOUNDATION`](./02-technical-reference.md#foundation)                                   |
-| `0x1d`  | [`SWEEP_ERC1155`](./02-technical-reference.md#sweep_erc1155)                             |
+| `0x10`  | [`SEAPORT`](#seaport)                                                                    |
+| `0x11`  | [`LOOKS_RARE_721`](#looks_rare_721)                                                      |
+| `0x12`  | [`NFTX`](#nftx)                                                                          |
+| `0x13`  | [`CRYPTOPUNKS`](#cryptopunks)                                                            |
+| `0x14`  | [`LOOKS_RARE_1155`](#looks_rare_1155)                                                    |
+| `0x15`  | [`OWNER_CHECK_721`](#owner_check_721)                                                    |
+| `0x16`  | [`OWNER_CHECK_1155`](#owner_check_1155)                                                  |
+| `0x17`  | [`SWEEP_ERC721`](#sweep_erc721)                                                          |
+| `0x18`  | [`X2Y2_721`](#x2y2_721)                                                                  |
+| `0x19`  | [`SUDOSWAP`](#sudoswap)                                                                  |
+| `0x1a`  | [`NFT20`](#nft20)                                                                        |
+| `0x1b`  | [`X2Y2_1155`](#x2y2_1155)                                                                |
+| `0x1c`  | [`FOUNDATION`](#foundation)                                                              |
+| `0x1d`  | [`SWEEP_ERC1155`](#sweep_erc1155)                                                        |
 | `0x1e`  |                                                                                          |
 | `0x1f`  |                                                                                          |
 

@@ -23,7 +23,7 @@
   --ifm-color-primary-light: #5c85fb;
   --ifm-color-primary-lighter: #7697fc;
   --ifm-color-primary-lightest: #a0b8fd;
-  --ifm-font-family-base: 'Basel Grotesk', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+  --ifm-font-family-base: 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
     'Segoe UI Symbol', 'Noto Color Emoji';
   --ifm-menu-color-active: theme(colors.light-accent-1);
   --docsearch-muted-color: theme(colors.light-neutral-2);
@@ -73,12 +73,41 @@ html:has(.theme-doc-markdown) {
 }
 
 .menu__link {
-  @apply font-basel-grotesk text-sm;
+  @apply font-basel-grotesk text-sm rounded-small px-3 py-2 transition-colors;
+}
+
+.theme-doc-sidebar-container {
+  @apply border-r-0 bg-transparent;
+}
+
+.theme-doc-sidebar-menu {
+  @apply mt-4 mb-6 mr-4 rounded-large border border-light-surface-3 bg-light-surface-1 p-3 dark:border-dark-surface-3 dark:bg-dark-surface-1;
+}
+
+.menu {
+  @apply pr-0;
+}
+
+.menu__list {
+  @apply gap-1;
+}
+
+.menu__list-item {
+  @apply mb-1;
+}
+
+.menu__link:hover,
+.menu__caret:hover {
+  @apply bg-light-surface-2 dark:bg-dark-surface-2;
+}
+
+.menu__link--active {
+  @apply bg-light-accent-2 dark:bg-dark-accent-2;
 }
 
 .navbar-sidebar__items:not(.navbar-sidebar__items--show-secondary) .menu__link--active {
-  @apply font-normal !bg-transparent;
-  color: var(--ifm-menu-color) !important;
+  @apply font-normal;
+  color: var(--ifm-menu-color-active) !important;
 }
 
 .navbar-sidebar__items--show-secondary > .menu__link--active {
@@ -150,7 +179,7 @@ html:has(.theme-doc-markdown) {
 }
 
 .docMainContainer_src-theme-DocPage-Layout-Main-styles-module {
-  @apply !mt-nav-h;
+  @apply !mt-nav-h px-0;
 }
 
 .doc .theme-edit-this-page {
@@ -230,6 +259,38 @@ html:has(.theme-doc-markdown) {
   @apply sm:!max-w-full md:!max-w-[75%];
 }
 
+.docArticleShell {
+  @apply pb-8;
+}
+
+.doc-layout-concepts .col.docItemCol_src-theme-DocItem-Layout-styles-module {
+  @apply md:!max-w-[100%];
+}
+
+.docHeaderConcepts {
+  @apply bg-light-blue dark:bg-dark-blue;
+}
+
+.docHeaderReference {
+  @apply bg-light-surface-2 dark:bg-dark-surface-2;
+}
+
+.docArticleConcepts {
+  @apply sm:px-10 md:px-14;
+}
+
+.docArticleReference {
+  @apply sm:px-6 md:px-8;
+}
+
+.docSidePanelConcepts {
+  @apply bg-light-surface-1 dark:bg-dark-surface-1;
+}
+
+.docSidePanelReference {
+  @apply bg-light-surface-2 dark:bg-dark-surface-2;
+}
+
 .theme-doc-footer-edit-meta-row {
   @apply !hidden;
 }
@@ -244,6 +305,65 @@ html:has(.theme-doc-markdown) {
 }
 .theme-doc-markdown {
   @apply !body-2 flex flex-col space-y-6;
+}
+
+.docArticleConcepts .theme-doc-markdown {
+  @apply space-y-8;
+}
+
+.docArticleConcepts .theme-doc-markdown p,
+.docArticleConcepts .theme-doc-markdown li {
+  line-height: 1.75rem;
+}
+
+.docArticleConcepts .theme-doc-markdown h1 {
+  @apply !heading-0;
+}
+
+.docArticleConcepts .theme-doc-markdown h2 {
+  @apply !pt-8;
+}
+
+.docArticleConcepts .theme-doc-markdown blockquote {
+  @apply rounded-r-medium bg-light-surface-2 py-4 dark:bg-dark-surface-2;
+}
+
+.docArticleReference .theme-doc-markdown {
+  @apply space-y-4;
+}
+
+.docArticleReference .theme-doc-markdown h1 {
+  @apply !heading-2 !pt-2;
+}
+
+.docArticleReference .theme-doc-markdown h2 {
+  @apply !heading-3 !pt-5;
+}
+
+.docArticleReference .theme-doc-markdown h3 {
+  @apply !subheading-1 !pt-2;
+}
+
+.docArticleReference .theme-doc-markdown p,
+.docArticleReference .theme-doc-markdown li {
+  line-height: 1.45rem;
+}
+
+.docArticleReference .theme-doc-markdown pre {
+  @apply rounded-medium border border-light-surface-3 dark:border-dark-surface-3;
+}
+
+.docArticleReference .theme-doc-markdown table {
+  @apply block overflow-x-auto rounded-medium border border-light-surface-3 dark:border-dark-surface-3;
+}
+
+.docArticleReference .theme-doc-markdown thead {
+  @apply bg-light-surface-2 dark:bg-dark-surface-2;
+}
+
+.docArticleReference .theme-doc-markdown th,
+.docArticleReference .theme-doc-markdown td {
+  @apply !body-3;
 }
 .theme-doc-markdown h1 {
   @apply !heading-1 !mb-0 md:!pt-8 !pt-6;

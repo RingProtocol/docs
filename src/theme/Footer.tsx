@@ -17,10 +17,10 @@ const footerData = {
           label: 'Feedback',
           href: 'https://discord.com/invite/TefBNDZBQP',
         },
-        {
-          label: 'Whitepaper',
-          href: 'https://app.ring.exchange/whitepaper-v2.pdf',
-        },
+        // {
+        //   label: 'Whitepaper',
+        //   href: 'https://app.ring.exchange/whitepaper-v2.pdf',
+        // },
       ],
     },
     {
@@ -84,14 +84,17 @@ const Footer: FC = () => {
   return (
     <footer className="Footer bg-light-surface-1 px-margin-mobile pt-margin-web dark:bg-dark-surface-1 sm:px-margin-web sm:pb-margin-web">
       <h2 className="sr-only">Footer</h2>
-      <div className="default-grid sm:mb-20">
-        <div className="mb-12 hidden items-start sm:col-span-8 sm:flex md:col-span-4 md:mb-0">
+      <div className="default-grid rounded-large border border-light-surface-3 bg-light-surface-2 p-6 dark:border-dark-surface-3 dark:bg-dark-surface-2 sm:mb-20 sm:p-8">
+        <div className="mb-12 flex flex-col items-start sm:col-span-8 md:col-span-3 md:mb-0">
           <LinkBase href="/" className="flex flex-row items-center">
             <MiniUnicon color="neutral-1" className="mb-[0.1875rem] h-8 w-8" />
-            <p className="body-1 ml-2 text-light-neutral-1 dark:text-dark-neutral-1">Ring Docs</p>
+            <p className="body-1 ml-2 text-light-neutral-1 dark:text-dark-neutral-1">Ring Protocol Docs</p>
           </LinkBase>
+          <p className="mt-4 body-2 text-light-neutral-2 dark:text-dark-neutral-2">
+            A builder-first documentation hub for protocol concepts, integrations, contracts, and wallet flows.
+          </p>
         </div>
-        <div className="col-span-4 sm:col-span-8 sm:flex sm:grid-cols-8 md:col-span-4">
+        <div className="col-span-4 sm:col-span-8 sm:flex sm:grid-cols-8 md:col-span-5">
           <nav className="grid w-full grid-cols-2 gap-gap-large sm:grid-cols-4">
             {footerData.footerLinks && footerData.footerLinks.length > 0 ? (
               <>
@@ -118,7 +121,7 @@ const Footer: FC = () => {
       </div>
       <div className="flex flex-col-reverse border-light-surface-3 dark:border-dark-surface-3 sm:flex-row sm:items-center sm:justify-between sm:border-t sm:pt-padding-large">
         <p className="body-3 my-padding-large text-light-neutral-2 dark:text-dark-neutral-2 sm:my-0">
-          @{new Date().getFullYear()} Ring Docs
+          @{new Date().getFullYear()} Ring Protocol Docs
         </p>
         <div className="flex flex-row space-x-gap-large border-b border-light-surface-3 px-2 py-margin-web dark:border-dark-surface-3 sm:border-0 sm:px-0 sm:py-0">
           {footerData?.footerGithubLink ? (

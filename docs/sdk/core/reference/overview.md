@@ -4,6 +4,8 @@ sidebar_position: 1
 title: Overview
 ---
 
+This reference is generated from the SDK core source. Some symbol breadcrumbs and source links still reflect the upstream generator format, but the package to install for Ring integrations is `@ring-protocol/sdk-core`.
+
 ## Table of contents
 
 ### Enumerations
@@ -48,7 +50,7 @@ title: Overview
 
 #### Defined in
 
-[constants.ts:24](https://github.com/Uniswap/sdk-core/blob/9997e88/src/constants.ts#L24)
+[constants.ts:24](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/constants.ts#L24)
 
 ___
 
@@ -58,7 +60,7 @@ ___
 
 #### Defined in
 
-[entities/currency.ts:4](https://github.com/Uniswap/sdk-core/blob/9997e88/src/entities/currency.ts#L4)
+[entities/currency.ts:4](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/currency.ts#L4)
 
 ## Variables
 
@@ -68,7 +70,7 @@ ___
 
 #### Defined in
 
-[constants.ts:37](https://github.com/Uniswap/sdk-core/blob/9997e88/src/constants.ts#L37)
+[constants.ts:37](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/constants.ts#L37)
 
 ___
 
@@ -84,7 +86,7 @@ Known WETH9 implementation addresses, used in our implementation of Ether#wrappe
 
 #### Defined in
 
-[entities/weth9.ts:6](https://github.com/Uniswap/sdk-core/blob/9997e88/src/entities/weth9.ts#L6)
+[entities/weth9.ts:6](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/weth9.ts#L6)
 
 ## Functions
 
@@ -115,7 +117,7 @@ Returns the percent difference between the mid price and the execution price, i.
 
 #### Defined in
 
-[utils/computePriceImpact.ts:9](https://github.com/Uniswap/sdk-core/blob/9997e88/src/utils/computePriceImpact.ts#L9)
+[utils/computePriceImpact.ts:9](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/utils/computePriceImpact.ts#L9)
 
 ___
 
@@ -144,7 +146,7 @@ ___
 
 #### Defined in
 
-[utils/sortedInsert.ts:5](https://github.com/Uniswap/sdk-core/blob/9997e88/src/utils/sortedInsert.ts#L5)
+[utils/sortedInsert.ts:5](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/utils/sortedInsert.ts#L5)
 
 ___
 
@@ -166,7 +168,7 @@ Computes floor(sqrt(value))
 
 #### Defined in
 
-[utils/sqrt.ts:14](https://github.com/Uniswap/sdk-core/blob/9997e88/src/utils/sqrt.ts#L14)
+[utils/sqrt.ts:14](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/utils/sqrt.ts#L14)
 
 ___
 
@@ -188,4 +190,4 @@ Validates an address and returns the parsed (checksummed) version of that addres
 
 #### Defined in
 
-[utils/validateAndParseAddress.ts:7](https://github.com/Uniswap/sdk-core/blob/9997e88/src/utils/validateAndParseAddress.ts#L7)
+[utils/validateAndParseAddress.ts:7](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/utils/validateAndParseAddress.ts#L7)

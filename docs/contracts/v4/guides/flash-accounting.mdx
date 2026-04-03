@@ -313,7 +313,7 @@ BalanceDelta delta = poolManager.modifyLiquidity(
 // delta.amount1() = -200  (need to provide token1)
 ```
 
-When adding liquidity to a pool, you’ll need to provide both tokens in the pair. The `modifyLiquidity` function returns a [`BalanceDelta`](/contracts/v4/reference/core/types/balancedelta) that indicates how many tokens you need to provide. In this case:
+When adding liquidity to a pool, you’ll need to provide both tokens in the pair. The `modifyLiquidity` function returns a [`BalanceDelta`](/contracts/v4/reference/core/types/BalanceDelta) that indicates how many tokens you need to provide. In this case:
 
 - The negative values in the delta (-100, -200) indicate you need to provide these amounts of each token
 - The values are proportional to the current pool price and your specified price range (tickLower to tickUpper)

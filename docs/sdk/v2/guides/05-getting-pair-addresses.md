@@ -12,36 +12,56 @@ The most obvious way to get the address for a pair is to call [getPair](../../..
 
 ## CREATE2
 
-Thanks to some [fancy footwork in the factory](https://github.com/Uniswap/uniswap-v2-core/blob/master/contracts/UniswapV2Factory.sol#L32), we can also compute pair addresses _without any on-chain lookups_ because of [CREATE2](https://eips.ethereum.org/EIPS/eip-1014). The following values are required for this technique:
+Thanks to some [fancy footwork in the factory](https://github.com/Uniswap/uniswap-v2-core/blob/master/contracts/UniswapV2Factory.sol#L32), we can also compute pair addresses _without any on-chain lookups_ because of [CREATE2](https://eips.ethereum.org/EIPS/eip-1014). In Ring Swap, this is chain-aware: use the factory for the target network and the corresponding entry in `INIT_CODE_HASH_MAP`.
 
 |                        |                                                                                |
 | :--------------------- | :----------------------------------------------------------------------------- |
 | `address`              | The [factory address](../../../contracts/v2/reference/smart-contracts/factory) |
 | `salt`                 | `keccak256(abi.encodePacked(token0, token1))`                                  |
-| `keccak256(init_code)` | `0x96e8ac4277198ff8b6f785478aa9a39f403cb768dd02cbee326c3e7da348845f`           |
+| `keccak256(init_code)` | `INIT_CODE_HASH_MAP[chainId]`                                                    |
 
 - `token0` must be strictly less than `token1` by sort order.
 
 * Can be computed offline.
 * Requires the ability to perform `keccak256`.
+* In Ring Swap, `token0` and `token1` should be the actual pair tokens, which are often `FewToken` addresses rather than the original ERC-20 addresses shown to users.
 
 ## Examples
 
-### TypeScript
+### Preferred SDK Method
 
-This example makes use of the [Ring V2 SDK](../reference/getting-started). In reality, the SDK computes pair addresses behind the scenes, obviating the need to compute them manually like this.
+For most applications, prefer the SDK helper rather than manual CREATE2:
 
 ```typescript
-import { FACTORY_ADDRESS, INIT_CODE_HASH } from '@uniswap/v2-sdk'
+import { ChainId, Token, WETH9 } from '@ring-protocol/sdk-core'
+import { Pair, getFewTokenFromOriginalToken } from '@ring-protocol/v2-sdk'
+
+const DAI = new Token(ChainId.MAINNET, '0x6B175474E89094C44Da98b954EedeAC495271d0F', 18, 'DAI', 'Dai Stablecoin')
+const fewDAI = getFewTokenFromOriginalToken(DAI, ChainId.MAINNET)
+const fewWETH = getFewTokenFromOriginalToken(WETH9[ChainId.MAINNET], ChainId.MAINNET)
+
+const pairAddress = Pair.getAddress(fewDAI, fewWETH)
+```
+
+### Manual TypeScript Example
+
+This example makes use of the [Ring V2 SDK](../reference/getting-started). In practice, `Pair.getAddress()` is usually the safer option because it keeps your app aligned with the FEW-aware SDK behavior.
+
+```typescript
+import { ChainId, Token, WETH9 } from '@ring-protocol/sdk-core'
+import { FACTORY_ADDRESS_MAP, INIT_CODE_HASH_MAP, getFewTokenFromOriginalToken } from '@ring-protocol/v2-sdk'
 import { pack, keccak256 } from '@ethersproject/solidity'
 import { getCreate2Address } from '@ethersproject/address'
 
-const token0 = '0xCAFE000000000000000000000000000000000000' // change me!
-const token1 = '0xF00D000000000000000000000000000000000000' // change me!
+const chainId = ChainId.MAINNET
+const DAI = new Token(chainId, '0x6B175474E89094C44Da98b954EedeAC495271d0F', 18, 'DAI', 'Dai Stablecoin')
+const fewDAI = getFewTokenFromOriginalToken(DAI, chainId)
+const fewWETH = getFewTokenFromOriginalToken(WETH9[chainId], chainId)
+const [token0, token1] = fewDAI.sortsBefore(fewWETH) ? [fewDAI, fewWETH] : [fewWETH, fewDAI]
 
 const pair = getCreate2Address(
-  FACTORY_ADDRESS,
-  keccak256(['bytes'], [pack(['address', 'address'], [token0, token1])]),
-  INIT_CODE_HASH
+  FACTORY_ADDRESS_MAP[chainId],
+  keccak256(['bytes'], [pack(['address', 'address'], [token0.address, token1.address])]),
+  INIT_CODE_HASH_MAP[chainId]
 )
 ```

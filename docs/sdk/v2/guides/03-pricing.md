@@ -7,9 +7,11 @@ title: Pricing
 
 Let's talk pricing. This guide will focus on the two most important Ring prices: the **mid price** and the **execution price**.
 
+In Ring Swap, the pool state is usually keyed by `FewToken` pairs, while your app may still display prices in terms of the original assets. The FEW-aware SDK handles that bridge for you.
+
 # Mid Price
 
-The mid price, in the context of Uniswap, is the price that reflects the _ratio of reserves in one or more pairs_. There are three ways we can think about this price. Perhaps most simply, it defines the relative value of one token in terms of the other. It also represents the price at which you could theoretically trade an infinitesimal amount (ε) of one token for the other. Finally, it can be interpreted as the current _market-clearing or fair value price_ of the assets.
+The mid price is the price that reflects the _ratio of reserves in one or more pairs_. There are three ways we can think about this price. Perhaps most simply, it defines the relative value of one token in terms of the other. It also represents the price at which you could theoretically trade an infinitesimal amount (ε) of one token for the other. Finally, it can be interpreted as the current _market-clearing or fair value price_ of the assets.
 
 Let's consider the mid price for DAI-WETH (that is, the amount of DAI per 1 WETH).
 
@@ -18,13 +20,15 @@ Let's consider the mid price for DAI-WETH (that is, the amount of DAI per 1 WETH
 The simplest way to get the DAI-WETH mid price is to observe the pair directly:
 
 ```typescript
-import { ChainId, Token, WETH9 } from '@uniswap/sdk-core'
-import { Route } from '@uniswap/v2-sdk'
+import { ChainId, Token, WETH9 } from '@ring-protocol/sdk-core'
+import { Route, getFewTokenFromOriginalToken } from '@ring-protocol/v2-sdk'
 
 const DAI = new Token(ChainId.MAINNET, '0x6B175474E89094C44Da98b954EedeAC495271d0F', 18)
+const fewDAI = getFewTokenFromOriginalToken(DAI, ChainId.MAINNET)
+const fewWETH = getFewTokenFromOriginalToken(WETH9[ChainId.MAINNET], ChainId.MAINNET)
 
 // To learn how to get Pair data, refer to the previous guide.
-const pair = await createPair(DAI, WETH9[ChainId.MAINNET])
+const pair = await createPair(fewDAI, fewWETH)
 
 const route = new Route([pair], WETH9[DAI.chainId], DAI)
 
@@ -43,15 +47,18 @@ Finally, you may have noticed that we're formatting the price to 6 significant d
 For the sake of example, let's imagine a direct pair between DAI and WETH _doesn't exist_. In order to get a DAI-WETH mid price we'll need to pick a valid route. Imagine both DAI and WETH have pairs with a third token, USDC. In that case, we can calculate an indirect mid price through the USDC pairs:
 
 ```typescript
-import { ChainId, Token, WETH9} from '@uniswap/sdk-core'
-import { Route, Pair } from '@uniswap/v2-sdk'
+import { ChainId, Token, WETH9 } from '@ring-protocol/sdk-core'
+import { Route, Pair, getFewTokenFromOriginalToken } from '@ring-protocol/v2-sdk'
 
 const USDC = new Token(ChainId.MAINNET, '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48', 6)
 const DAI = new Token(ChainId.MAINNET, '0x6B175474E89094C44Da98b954EedeAC495271d0F', 18)
+const fewUSDC = getFewTokenFromOriginalToken(USDC, ChainId.MAINNET)
+const fewDAI = getFewTokenFromOriginalToken(DAI, ChainId.MAINNET)
+const fewWETH = getFewTokenFromOriginalToken(WETH9[ChainId.MAINNET], ChainId.MAINNET)
 
 // To learn how to get Pair data, refer to the previous guide.
-const USDCWETHPair = await createPair(USDC, WETH9[ChainId.MAINNET])
-const DAIUSDCPair = await createPair(DAI, USDC)
+const USDCWETHPair = await createPair(fewUSDC, fewWETH)
+const DAIUSDCPair = await createPair(fewDAI, fewUSDC)
 
 const route = new Route([USDCWETHPair, DAIUSDCPair], WETH9[ChainId.MAINNET], DAI)
 
@@ -66,13 +73,15 @@ Mid prices are great representations of the _current_ state of a route, but what
 Imagine we're interested in trading 1 WETH for DAI:
 
 ```typescript
-import { ChainId, Token, WETH9, CurrencyAmount, TradeType } from '@uniswap/sdk-core'
-import { Route, Pair, Trade } from '@uniswap/v2-sdk'
+import { ChainId, Token, WETH9, CurrencyAmount, TradeType } from '@ring-protocol/sdk-core'
+import { Route, Pair, Trade, getFewTokenFromOriginalToken } from '@ring-protocol/v2-sdk'
 
 const DAI = new Token(ChainId.MAINNET, '0x6B175474E89094C44Da98b954EedeAC495271d0F', 18)
+const fewDAI = getFewTokenFromOriginalToken(DAI, ChainId.MAINNET)
+const fewWETH = getFewTokenFromOriginalToken(WETH9[DAI.chainId], DAI.chainId)
 
 // To learn how to get Pair data, refer to the previous guide.
-const pair = await createPair(DAI, WETH9[DAI.chainId])
+const pair = await createPair(fewDAI, fewWETH)
 
 const route = new Route([pair], WETH9[DAI.chainId], DAI)
 

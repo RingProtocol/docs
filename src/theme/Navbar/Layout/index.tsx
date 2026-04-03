@@ -30,7 +30,7 @@ export default function NavbarLayout({ children }: Props): ReactNode {
         'navbar',
         'navbar--fixed-top',
         // Custom styling
-        'fixed left-0 right-0 z-nav flex w-screen justify-center bg-light-surface-1 dark:bg-dark-surface-1 dark:border-dark-surface-3',
+        'fixed left-0 right-0 z-nav flex w-screen justify-center bg-transparent px-4 pt-4 sm:px-6',
         hideOnScroll && [styles.navbarHideable, !isNavbarVisible && styles.navbarHidden],
         {
           'navbar--dark': style === 'dark',

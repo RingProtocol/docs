@@ -1,4 +1,8 @@
-import { CurrencyAmount, Percent, Token } from '@uniswap/sdk-core'
+/**
+ * Reference example for upstream Uniswap V3-style liquidity management.
+ * This is not a Ring Swap (v2) or FEW-aware Ring SDK integration example.
+ */
+import { CurrencyAmount, Percent, Token } from '@ring-protocol/sdk-core'
 import { abi as IUniswapV3PoolABI } from '@uniswap/v3-core/artifacts/contracts/interfaces/IUniswapV3Pool.sol/IUniswapV3Pool.json'
 import { nearestUsableTick, NonfungiblePositionManager, Pool, Position } from '@uniswap/v3-sdk'
 import { ethers } from 'ethers'

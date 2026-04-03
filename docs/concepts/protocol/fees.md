@@ -5,18 +5,18 @@ sidebar_position: 3
 ---
 
 :::note
-While v3 uses predefined fee tiers (0.01%, 0.05%, 0.3%, and 1%), v4 introduces flexible fees that can range from 0% to 100%, offering greater customization options for pools.
+Fee behavior depends on the trading system being used. `Ring Swap (v2)` follows the familiar constant-product AMM model, while external integration environments such as `Uniswap v4` may support more flexible fee behavior.
 :::
 
 ## Swap Fees
 
 Swap fees are distributed pro-rata to all in-range[^1] liquidity at the time of the swap. If the spot price moves out of a position’s range, the given liquidity is no longer active and does not generate any fees. If the spot price reverses and reenters the position’s range, the position’s liquidity becomes active again and will generate fees.
 
-Swap fees are not automatically reinvested as they were in previous versions of Uniswap. Instead, they are collected separately from the pool and must be manually redeemed when the owner wishes to collect their fees.
+How fees are collected and accounted for depends on the underlying AMM design.
 
 ## Pool Fees Tiers
 
-Ring v3 introduces multiple pools for each token pair, each with a different swapping fee. Liquidity providers may initially create pools at three fee levels: 0.05%, 0.30%, and 1%. Additional fee levels may be introduced through protocol governance over time.
+In systems with multiple fee tiers, the same token pair may exist in more than one pool with different fees. This can improve market fit for different asset types, but it also requires more careful routing and liquidity analysis.
 
 Breaking pairs into separate pools was previously untenable due to the issue of liquidity fragmentation. Any incentive alignments achieved by more fee optionality invariably resulted in a net loss to traders, due to lower pairwise liquidity and the resulting increase in price impact upon swapping.
 

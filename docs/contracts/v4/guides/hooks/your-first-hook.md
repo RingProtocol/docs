@@ -5,7 +5,7 @@ sidebar_position: 1
 
 ## Introduction
 
-Ring introduced the v4 of their protocol introducing several new concepts such as hooks, flash accounting, singleton architecture and more. The most interesting of these for developers is hooks, and that’s what we’ll be learning about today.
+This guide is about building hooks in the current v4 integration stack. It should be read as integration guidance for `FewToken + Uniswap v4`, not as documentation for a separate native `Ring v4` AMM.
 
 In this guide, we’ll be conceptualizing, understanding and building a basic points hook, which will give you some idea of how to build your own hook.
 
@@ -24,7 +24,7 @@ In order to keep track of these points, we’ll mint the `POINTS` token to the u
 
 Let’s figure out how our hook will work.
 
-From the Ring v4 Documentation, there are several hooks available for developers to integrate with. In our use case, we specifically need the ability to read swaps and figure out what amounts they are swapping for and who they are.
+Within the current v4 hook model, there are several hooks available for developers to integrate with. In our use case, we specifically need the ability to read swaps and figure out what amounts they are swapping for and who they are.
 
 For our hook, we’ll be using `afterSwap` and `afterAddLiquidity` hooks. Why these instead of the `before...` hooks? We’ll dig deeper into this later in this guide.
 
@@ -274,7 +274,7 @@ Let’s start with the most basic ones. We want the user to be swapping in the `
 
 That middle section about figuring out how much `ETH` the user spent seems a little fishy, what’s going on there? Let’s break it down.
 
-When `amountSpecified` is less than 0, it means this is an `exact input for output` swap, essentially where the user is coming in with an exact amount of ETH. In the other case, it’s an `exact output for input` swap, where the user is expecting a specific amount out. In our case, we get this from the precalculated `delta` that Ring V4 gives us as a part of the `afterSwap` hook.
+When `amountSpecified` is less than 0, it means this is an `exact input for output` swap, essentially where the user is coming in with an exact amount of ETH. In the other case, it’s an `exact output for input` swap, where the user is expecting a specific amount out. In our case, we get this from the precalculated `delta` that the v4 hook system gives us as part of the `afterSwap` hook.
 
 #### Hook Logic: `afterAddLiquidity`
 
@@ -488,4 +488,4 @@ This test case looks very similar to the `afterSwap` one, except we’re testing
 
 ## Next Steps
 
-Congratulations on building your very first hook! You could explore further by going to [Hook Deployment](./05-hook-deployment.mdx) to learn about how hook flags work and see how we will deploy a hook in action.
+Congratulations on building your very first hook! You could explore further by going to [Hook Deployment](./hook-deployment) to learn about how hook flags work and see how we will deploy a hook in action.

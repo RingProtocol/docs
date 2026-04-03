@@ -4,33 +4,55 @@ title: The Ring Protocol
 sidebar_position: 2
 ---
 
-
 ## Introduction
 
-Ring Protocol is a major breakthrough from our R&D efforts over the past three years. FEW stands for Financial Elastic Wrapping. In short, Ring Protocol is an asset layer that can be applied to any DEFI protocols. We are launching a series of products on top of Ring Protocol.
+Ring Protocol is built around `FEW`, short for `Financial Elastic Wrapping`.
 
-Both Ring Swap and Ring Launchpad are powered by Ring Protocol. For end users, it may seem like we are just regular AMMs because we have tried to maintain the same user experience familiar to users. However, underneath, we have integrated Ring Protocol on top of them to wrap tokens before interacting with AMMs. This enables many new functions that are not possible in regular AMMs, such as virtual liquidity and leverage trading.
+At a high level, Ring wraps original ERC-20 assets into `FewToken`, then uses those wrapped assets across trading and protocol integrations.
 
-When integrating with the Blast chain, one benefit of this architecture is that we can claim native yield in one step, instead of having to do so from thousands of LP pools. That is why we call ourselves the crazy sister of Blast, due to these seamless features.
+Today, the most important parts of Ring are:
 
-## How does the Ring protocol compare to a typical market?
+- `Few Protocol`: the core wrapping layer
+- `Ring Swap (v2)`: Ring's native AMM built around `FewToken`
+- `Uniswap v4 integration`: `FewToken` can also be used in Uniswap v4 liquidity environments
+- products such as launch infrastructure, wallet, and future lending integrations that build on the same FEW model
 
-To understand how the Ring protocol differs from a traditional exchange, it is helpful to first look at two subjects: how the Automated Market Maker design deviates from traditional central limit order book-based exchanges, and how permissionless systems depart from conventional permissioned systems.
+## How does Ring compare to a typical market?
+
+To understand how Ring differs from a traditional exchange, it is helpful to look at two subjects first:
+
+- how AMMs differ from order-book markets
+- how permissionless systems differ from permissioned systems
 
 ### What is Ring Protocol
 
-Ring Protocol is a full set of decentralized finance products to enable the next generation of decentralized finance. It is an effort of research and development for the past three years.
+Ring Protocol is a liquidity and capital-efficiency protocol designed to increase asset utilization onchain.
 
-Our Mission
-Our vision is to build an universal liquidity protocol for maximizing asset utilization. There are billions of idle assets are parked on-chain, while thousands of crypto projects lack liquidity. Ring Protocol is launching a series of products to reshape the DEFI landscape.
+The core idea is simple:
+
+1. wrap original assets into `FewToken`
+2. use `FewToken` across trading and routing systems
+3. improve usable liquidity and quote competitiveness
+4. earn more order flow and fees from stronger execution
+
+### What Ring is not
+
+Ring should not be understood as a full version-by-version clone of Uniswap.
+
+In particular:
+
+- Ring currently operates `Ring Swap (v2)` as its native swap protocol
+- Ring does **not** currently operate a separate native `Ring v4` AMM
+- when Ring documentation refers to v4 in the current product stack, it should be understood as `FewToken` integration with `Uniswap v4`
+
+### Mission
+
+Ring's mission is to build a universal liquidity protocol for maximizing asset utilization. Large amounts of assets remain idle onchain, while many crypto assets and markets still lack efficient liquidity. Ring aims to improve this through FEW and the products built on top of it.
 
 ### Permissionless Systems
 
-The second departure from traditional markets is the permissionless and immutable design of the Ring protocol. These design decisions were inspired by Ethereum's core tenets, and our commitment to the ideals of permissionless access and immutability as indispensable components of a future in which anyone in the world can access financial services without fear of discrimination or counter-party risk.
+The Ring protocol follows the permissionless design tradition of Ethereum. That means users and integrators should be able to interact with deployed contracts without needing centralized approval.
 
-Permissionless design means that the protocol's services are entirely open for public use, with no ability to selectively restrict who can or cannot use them. Anyone can swap, provide liquidity, or create new markets at will. This is a departure from traditional financial services, which typically restrict access based on geography, wealth status, and age.
+Permissionless design means the protocol's services are open for public use within the constraints of the deployed contracts. This differs from traditional financial systems, which typically restrict access based on geography, wealth, or institutional permission.
 
-The protocol is also immutable, in other words not upgradeable. No party is able to pause the contracts, reverse trade execution, or otherwise change the behavior of the protocol in any way. It is worth noting that Ring Governance has the right (but no obligation) to divert a percentage of swap fees on any pool to a specified address. However, this capability is known to all participants in advance, and to prevent abuse, the percentage is constrained between 10% and 25%.
-
-
-[^1]: Ethereum protocols are sometimes referred to as peer-to-contract systems as well. These are similar to a peer-to-peer systems, but with immutable, persistent programs known as smart contracts taking the place of a peer.
+Ring is also designed around transparent onchain components. That makes the system easier to inspect and reason about, but it also means the protocol boundaries need to be documented clearly so users understand which parts are native Ring systems and which parts are integrations with external infrastructure.

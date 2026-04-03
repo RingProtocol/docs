@@ -2,7 +2,7 @@
 [Git Source](https://github.com/RingProtocol/v4-core/blob/80311e34080fee64b6fc6c916e9a51a437d0e482/src/test/PoolEmptyUnlockTest.sol) - Generated with [forge doc](https://book.getfoundry.sh/reference/forge/forge-doc)
 
 **Inherits:**
-[IUnlockCallback](/src/interfaces/callback/IUnlockCallback.sol/interface.IUnlockCallback.md)
+[IUnlockCallback](../interfaces/IUnlockCallback)
 
 
 ## State Variables

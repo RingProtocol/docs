@@ -18,7 +18,7 @@ enum Action {
 [Git Source](https://github.com/RingProtocol/v4-core/blob/80311e34080fee64b6fc6c916e9a51a437d0e482/src/test/PoolNestedActionsTest.sol)
 
 **Inherits:**
-Test, [IUnlockCallback](/src/interfaces/callback/IUnlockCallback.sol/interface.IUnlockCallback.md)
+Test, [IUnlockCallback](../interfaces/IUnlockCallback)
 
 
 ## State Variables

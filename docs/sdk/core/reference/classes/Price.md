@@ -1,4 +1,4 @@
-[@uniswap/sdk-core](../README.md) / [Exports](../modules.md) / Price
+[@ring-protocol/sdk-core](../README.md) / [Exports](../modules.md) / Price
 
 # Class: Price\<TBase, TQuote\>
 
@@ -77,7 +77,7 @@ Construct a price, either with the base and quote currency amount, or the
 
 #### Defined in
 
-[entities/fractions/price.ts:18](https://github.com/Uniswap/sdk-core/blob/9997e88/src/entities/fractions/price.ts#L18)
+[entities/fractions/price.ts:18](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/price.ts#L18)
 
 ## Properties
 
@@ -87,7 +87,7 @@ Construct a price, either with the base and quote currency amount, or the
 
 #### Defined in
 
-[entities/fractions/price.ts:10](https://github.com/Uniswap/sdk-core/blob/9997e88/src/entities/fractions/price.ts#L10)
+[entities/fractions/price.ts:10](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/price.ts#L10)
 
 ___
 
@@ -101,7 +101,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/fraction.ts:26](https://github.com/Uniswap/sdk-core/blob/9997e88/src/entities/fractions/fraction.ts#L26)
+[entities/fractions/fraction.ts:26](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L26)
 
 ___
 
@@ -115,7 +115,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/fraction.ts:25](https://github.com/Uniswap/sdk-core/blob/9997e88/src/entities/fractions/fraction.ts#L25)
+[entities/fractions/fraction.ts:25](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L25)
 
 ___
 
@@ -125,7 +125,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/price.ts:11](https://github.com/Uniswap/sdk-core/blob/9997e88/src/entities/fractions/price.ts#L11)
+[entities/fractions/price.ts:11](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/price.ts#L11)
 
 ___
 
@@ -135,7 +135,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/price.ts:12](https://github.com/Uniswap/sdk-core/blob/9997e88/src/entities/fractions/price.ts#L12)
+[entities/fractions/price.ts:12](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/price.ts#L12)
 
 ## Accessors
 
@@ -151,7 +151,7 @@ Get the value scaled by decimals for formatting
 
 #### Defined in
 
-[entities/fractions/price.ts:77](https://github.com/Uniswap/sdk-core/blob/9997e88/src/entities/fractions/price.ts#L77)
+[entities/fractions/price.ts:77](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/price.ts#L77)
 
 ___
 
@@ -171,7 +171,7 @@ Fraction.asFraction
 
 #### Defined in
 
-[entities/fractions/fraction.ts:154](https://github.com/Uniswap/sdk-core/blob/9997e88/src/entities/fractions/fraction.ts#L154)
+[entities/fractions/fraction.ts:154](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L154)
 
 ___
 
@@ -189,7 +189,7 @@ Fraction.quotient
 
 #### Defined in
 
-[entities/fractions/fraction.ts:42](https://github.com/Uniswap/sdk-core/blob/9997e88/src/entities/fractions/fraction.ts#L42)
+[entities/fractions/fraction.ts:42](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L42)
 
 ___
 
@@ -207,7 +207,7 @@ Fraction.remainder
 
 #### Defined in
 
-[entities/fractions/fraction.ts:47](https://github.com/Uniswap/sdk-core/blob/9997e88/src/entities/fractions/fraction.ts#L47)
+[entities/fractions/fraction.ts:47](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L47)
 
 ## Methods
 
@@ -231,7 +231,7 @@ Fraction.remainder
 
 #### Defined in
 
-[entities/fractions/fraction.ts:55](https://github.com/Uniswap/sdk-core/blob/9997e88/src/entities/fractions/fraction.ts#L55)
+[entities/fractions/fraction.ts:55](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L55)
 
 ___
 
@@ -255,7 +255,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/fraction.ts:115](https://github.com/Uniswap/sdk-core/blob/9997e88/src/entities/fractions/fraction.ts#L115)
+[entities/fractions/fraction.ts:115](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L115)
 
 ___
 
@@ -279,7 +279,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/fraction.ts:91](https://github.com/Uniswap/sdk-core/blob/9997e88/src/entities/fractions/fraction.ts#L91)
+[entities/fractions/fraction.ts:91](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L91)
 
 ___
 
@@ -303,7 +303,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/fraction.ts:99](https://github.com/Uniswap/sdk-core/blob/9997e88/src/entities/fractions/fraction.ts#L99)
+[entities/fractions/fraction.ts:99](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L99)
 
 ___
 
@@ -323,7 +323,7 @@ Flip the price, switching the base and quote currency
 
 #### Defined in
 
-[entities/fractions/price.ts:49](https://github.com/Uniswap/sdk-core/blob/9997e88/src/entities/fractions/price.ts#L49)
+[entities/fractions/price.ts:49](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/price.ts#L49)
 
 ___
 
@@ -347,7 +347,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/fraction.ts:83](https://github.com/Uniswap/sdk-core/blob/9997e88/src/entities/fractions/fraction.ts#L83)
+[entities/fractions/fraction.ts:83](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L83)
 
 ___
 
@@ -379,7 +379,7 @@ Multiply the price by another price, returning a new price. The other price must
 
 #### Defined in
 
-[entities/fractions/price.ts:57](https://github.com/Uniswap/sdk-core/blob/9997e88/src/entities/fractions/price.ts#L57)
+[entities/fractions/price.ts:57](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/price.ts#L57)
 
 ___
 
@@ -401,7 +401,7 @@ Return the amount of quote currency corresponding to a given amount of the base 
 
 #### Defined in
 
-[entities/fractions/price.ts:67](https://github.com/Uniswap/sdk-core/blob/9997e88/src/entities/fractions/price.ts#L67)
+[entities/fractions/price.ts:67](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/price.ts#L67)
 
 ___
 
@@ -425,7 +425,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/fraction.ts:69](https://github.com/Uniswap/sdk-core/blob/9997e88/src/entities/fractions/fraction.ts#L69)
+[entities/fractions/fraction.ts:69](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L69)
 
 ___
 
@@ -451,7 +451,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/price.ts:85](https://github.com/Uniswap/sdk-core/blob/9997e88/src/entities/fractions/price.ts#L85)
+[entities/fractions/price.ts:85](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/price.ts#L85)
 
 ___
 
@@ -477,4 +477,4 @@ ___
 
 #### Defined in
 
-[entities/fractions/price.ts:81](https://github.com/Uniswap/sdk-core/blob/9997e88/src/entities/fractions/price.ts#L81)
+[entities/fractions/price.ts:81](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/price.ts#L81)

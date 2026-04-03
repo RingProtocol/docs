@@ -10,9 +10,9 @@ Emissaries provide a fallback verification mechanism for sponsors when authorizi
 2.  Accounts using EIP-7702 delegation that leverages EIP-1271.
 3.  Situations where the sponsor wants to delegate claim verification to a trusted third party.
 
-A sponsor assigns an emissary for a specific `lockTag` using [`assignEmissary`](./src/interfaces/ITheCompact.sol#L556). The emissary must implement the [`IEmissary`](./src/interfaces/IEmissary.sol) interface, specifically the `verifyClaim` function.
+A sponsor assigns an emissary for a specific `lockTag` using `assignEmissary`. The emissary must implement the `IEmissary` interface, specifically the `verifyClaim` function.
 
-To change an emissary after one has been assigned, the sponsor must first call [`scheduleEmissaryAssignment`](./src/interfaces/ITheCompact.sol#L566), wait for the `resetPeriod` associated with the `lockTag` to elapse, and then call `assignEmissary` again with the new emissary's address (or `address(0)` to remove).
+To change an emissary after one has been assigned, the sponsor must first call `scheduleEmissaryAssignment`, wait for the `resetPeriod` associated with the `lockTag` to elapse, and then call `assignEmissary` again with the new emissary's address (or `address(0)` to remove).
 
 ### IEmissary Interface
 

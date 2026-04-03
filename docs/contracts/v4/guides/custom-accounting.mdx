@@ -4,17 +4,17 @@ sidebar_position: 3
 ---
 
 ## Introduction
-Ring v4 introduces a set of powerful, interconnected features that proposes a new way automated market makers (AMMs) can function. Custom accounting, hook fees, custom curves, and return deltas might seem like distinct concepts, but they form a cohesive system that enables unprecedented flexibility in decentralized exchange mechanisms.
+This page explains custom accounting in the current `FewToken + Uniswap v4` integration environment. It should be read as technical integration guidance, not as documentation for a separate native `Ring v4` AMM.
 
-These features are grouped together because they collectively represent the core of Ring v4’s customizability. They all relate to how pool state is managed and modified, working in tandem to allow developers to create highly tailored AMM experiences. From dynamic fee structures to unique bonding curves.
+These features are grouped together because they collectively represent the core of v4 customizability. They all relate to how pool state is managed and modified, working in tandem to allow developers to create highly tailored AMM experiences, from dynamic fee structures to unique bonding curves.
 
 ## Brief Overview of Concepts
 
-Before we dive into the details of custom accounting, hook fees, custom curves, and return deltas, let’s explore how these features work in Ring v4.
+Before we dive into the details of custom accounting, hook fees, custom curves, and return deltas, let’s explore how these features work in the v4 integration model.
 
 ### Delta Accounting in v4
 
-As described in [Flash Accounting](/contracts/v4/concepts/flash-accounting) Ring v4 tracks net token transfers with transient storage. Unlike previous versions that tracked absolute token balances, v4 records changes to these balances (*deltas*). This approach is at the core of v4’s enhanced flexibility and efficiency.
+As described in [Flash Accounting](/contracts/v4/concepts/flash-accounting), v4 tracks net token transfers with transient storage. Unlike previous versions that tracked absolute token balances, v4 records changes to these balances (*deltas*). This approach is at the core of v4’s enhanced flexibility and efficiency.
 
 In the v4 architecture, the [`PoolManager`](/contracts/v4/concepts/PoolManager) manages credits or debits per address. After a swap router contract interacts with the PoolManager, the core contract determines that the swap router owes input tokens and must claim output tokens. Token balances are tracked as accumulated deltas in transient storage; and only the final deltas incur token transfers
 
@@ -28,9 +28,9 @@ This system forms the foundation upon which other v4 features, such as hook fees
 
 ### Hook Fees in v4
 
-Hook fees are a feature in Ring v4 that allow hook developers to monetize their hooks or implement custom value distribution mechanisms. Unlike pool fees or dynamic fees, hook fees are entirely separate and are implemented through custom logic in the hook itself.
+Hook fees are a feature in v4 that allow hook developers to monetize their hooks or implement custom value distribution mechanisms. Unlike pool fees or dynamic fees, hook fees are entirely separate and are implemented through custom logic in the hook itself.
 
-Key characteristics of hook fees in Ring v4:
+Key characteristics of hook fees in v4:
 
 **Separate from Pool Fees**
 
@@ -42,7 +42,7 @@ Hook fees are typically calculated and applied in the `beforeSwap` function, all
 
 **Use of BeforeSwapDelta**
 
-Hook fees often utilize the [`BeforeSwapDelta`](/contracts/v4/reference/core/types/beforeswapdelta) mechanism to adjust swap amounts and transfer deltas from the hook to the swap router, enabling precise control over how the fee affects the swap.
+Hook fees often utilize the [`BeforeSwapDelta`](/contracts/v4/reference/core/types/BeforeSwapDelta) mechanism to adjust swap amounts and transfer deltas from the hook to the swap router, enabling precise control over how the fee affects the swap.
 
 **Flexible Implementation**
 
@@ -58,7 +58,7 @@ Keep reading because at the bottom we are providing a step by step guide on how 
 
 ### Custom Curves in v4
 
-Custom Curves in Ring v4 represent a big change in AMM design flexibility. Unlike [Ring v2](/contracts/v2/concepts/protocol-overview/how-uniswap-works) where the x*y=k formula was hardcoded, v4 allows developers to implement a wide variety of pricing models.
+Custom curves in v4 represent a big change in AMM design flexibility. Unlike [Ring v2](/contracts/v2/concepts/protocol-overview/how-uniswap-works), where the x*y=k formula was hardcoded, v4 allows developers to implement a wide variety of pricing models.
 
 This is made possible through the hook system, particularly hooks that can interact with the swap process. Custom curves allow developers to eject the native concentrated liquidity pricing mechanism. These hooks can intercept swap requests, apply custom pricing logic, and return modified swap parameters. This enables the creation of pools with unique characteristics, such as:
 
@@ -67,11 +67,11 @@ This is made possible through the hook system, particularly hooks that can inter
 
 For example, creating a custom curve for a stable swap pool would involve designing a pricing function that maintains tighter price ranges when assets are near parity. This could be achieved by implementing a curve that's flatter in the middle (where assets are at their expected 1:1 ratio) and steeper at the edges (to discourage large imbalances).
 
-This type of custom curve could significantly improve capital efficiency for stable asset pairs, reducing slippage for traders and potentially attracting more liquidity to the pool. It showcases how Ring v4's flexible architecture allows for tailored solutions to specific trading scenarios, opening up new possibilities in decentralized exchange design.
+This type of custom curve could significantly improve capital efficiency for stable asset pairs, reducing slippage for traders and potentially attracting more liquidity to the pool. It showcases how v4's flexible architecture allows for tailored solutions to specific trading scenarios, opening up new possibilities in decentralized exchange design.
 
 ### Return Deltas in v4
 
-Return deltas are a fundamental mechanism in Ring v4's custom accounting system. They allow for precise, programmatic adjustments to the outcomes of operations within the protocol.
+Return deltas are a fundamental mechanism in v4's custom accounting system. They allow for precise, programmatic adjustments to the outcomes of operations within the protocol.
 
 Key aspects of return deltas:
 
@@ -84,7 +84,7 @@ In essence, return deltas allow for bespoke modification of an operation's resul
 
 ## Implementing Hook Fees: A Step-by-Step Guide
 
-In this guide, we'll walk through the process of implementing a custom fee hook in Ring v4. We'll not only show you how to write the code but also explain what's happening under the hood at each step.
+In this guide, we'll walk through the process of implementing a custom fee hook in v4. We'll not only show you how to write the code but also explain what's happening under the hood at each step.
 
 ### Step 1: Setting Up the Hook
 
