@@ -1,5 +1,5 @@
 # PositionInfo
-[Git Source](https://github.com/uniswap/v4-periphery/blob/ea2bf2e1ba6863bb809fc2ff791744f308c4a26d/src/libraries/PositionInfoLibrary.sol) - Generated with [forge doc](https://book.getfoundry.sh/reference/forge/forge-doc)
+[Git Source](https://github.com/RingProtocol/v4-periphery/blob/ea2bf2e1ba6863bb809fc2ff791744f308c4a26d/src/libraries/PositionInfoLibrary.sol) - Generated with [forge doc](https://book.getfoundry.sh/reference/forge/forge-doc)
 
 *PositionInfo is a packed version of solidity structure.
 Using the packaged version saves gas and memory by not storing the structure fields in memory slots.
@@ -22,7 +22,7 @@ type PositionInfo is uint256;
 ```
 
 ## PositionInfoLibrary
-[Git Source](https://github.com/uniswap/v4-periphery/blob/ea2bf2e1ba6863bb809fc2ff791744f308c4a26d/src/libraries/PositionInfoLibrary.sol)
+[Git Source](https://github.com/RingProtocol/v4-periphery/blob/ea2bf2e1ba6863bb809fc2ff791744f308c4a26d/src/libraries/PositionInfoLibrary.sol)
 
 
 ## State Variables
