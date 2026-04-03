@@ -1,5 +1,5 @@
 # PoolInitializer_v4
-[Git Source](https://github.com/uniswap/v4-periphery/blob/ea2bf2e1ba6863bb809fc2ff791744f308c4a26d/src/base/PoolInitializer_v4.sol) - Generated with [forge doc](https://book.getfoundry.sh/reference/forge/forge-doc)
+[Git Source](https://github.com/RingProtocol/v4-periphery/blob/ea2bf2e1ba6863bb809fc2ff791744f308c4a26d/src/base/PoolInitializer_v4.sol) - Generated with [forge doc](https://book.getfoundry.sh/reference/forge/forge-doc)
 
 **Inherits:**
 [ImmutableState](contracts/v4/reference/periphery/base/ImmutableState.md), [IPoolInitializer_v4](contracts/v4/reference/periphery/interfaces/IPoolInitializer_v4.md)
