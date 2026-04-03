@@ -8,7 +8,7 @@ sidebar_position: 2
 
 Swaps are the most common way of interacting with the Ring protocol. For end-users, swapping is straightforward: a user selects an ERC-20 token that they own and a token they would like to trade it for. Executing a swap sells the currently owned tokens for the proportional[^1] amount of the tokens desired, minus the swap fee, which is awarded to liquidity providers[^2]. Swapping with the Ring protocol is a permissionless process.
 
-> note: Using web interfaces (websites) to swap via the Ring protocol can introduce additional permission structures, and may result in different execution behavior compared to using the Ring protocol directly. To learn more about the differences between the protocol and a web interface, see What is Uniswap.
+> note: Using web interfaces (websites) to swap via the Ring protocol can introduce additional permission structures, and may result in different execution behavior compared to using the Ring protocol directly. To learn more about the differences between the protocol and a web interface, see [Ring Overview](/concepts/overview).
 
 Swaps using the Ring protocol are different from traditional order book trades in that they are not executed against discrete orders on a first-in-first-out basis — rather, swaps execute against a passive pool of liquidity, with liquidity providers earning fees proportional to their capital committed
 

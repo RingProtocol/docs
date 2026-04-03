@@ -3,15 +3,17 @@ title:  Set Up Local Environment
 sidebar_position: 0
 ---
 
-Before writing the hook let's first have a local environment properly configured e.g. deploying pool manager, utility routers and test tokens. 
+This page describes hook development in the current `FewToken + Uniswap v4` integration environment. It should be read as integration guidance, not as documentation for a separate native `Ring v4` AMM.
+
+Before writing the hook, let's first have a local environment properly configured, for example by deploying a pool manager, utility routers, and test tokens.
 
 At the end of this guide a development environment will be set up to be used to build the rest of the examples in the Guides section of the docs.
 
-To get started as quickly as possible for building Ring v4 hooks, there is a `Quick Start` section below to clone a boilerplate and get building. To start from scratch and learn the underlying concepts, jump to the `Start from Scratch` section.
+To get started as quickly as possible for building hooks in this v4 integration stack, there is a `Quick Start` section below to clone a boilerplate and get building. To start from scratch and learn the underlying concepts, jump to the `Start from Scratch` section.
 
 ## Quick Start
 
-The Ring [v4-template repo](https://github.com/uniswapfoundation/v4-template) provides a basic foundry environment with required imports already pre-loaded. Click on [`Use this template`](https://github.com/new?template_name=v4-template&template_owner=uniswapfoundation) to create a new repository with it.
+The [v4-template repo](https://github.com/uniswapfoundation/v4-template) provides a basic foundry environment with required imports already pre-loaded. Click on [`Use this template`](https://github.com/new?template_name=v4-template&template_owner=uniswapfoundation) to create a new repository with it.
 
 Or simply clone it and install the dependencies:
 
@@ -226,7 +228,7 @@ forge test --rpc-url 127.0.0.1:8545
 
 ## Appendix: OpenZeppelin Hooks Library
 
-> [OpenZeppelin Hooks Library](https://docs.openzeppelin.com/uniswap-hooks/1.x/), included in [v4-template](https://github.com/uniswapfoundation/v4-template), provides secure and modular reference implementations for Ring v4 Hooks!
+> [OpenZeppelin Hooks Library](https://docs.openzeppelin.com/uniswap-hooks/1.x/), included in [v4-template](https://github.com/uniswapfoundation/v4-template), provides secure and modular reference implementations for hooks in this v4 integration stack.
 
 If you're starting from scratch, you can install the OpenZeppelin Hooks library:
 

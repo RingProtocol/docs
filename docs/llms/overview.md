@@ -6,7 +6,7 @@ title: Overview
 
 # LLMs and AI Integration
 
-Large Language Models (LLMs) and AI tools can help developers better understand and work with the Ring Protocol. This section provides resources and guidance for leveraging AI assistance when building on Uniswap.
+Large Language Models (LLMs) and AI tools can help developers better understand and work with the Ring Protocol. This section provides resources and guidance for leveraging AI assistance when building on Ring.
 
 ## AI-Powered Documentation
 

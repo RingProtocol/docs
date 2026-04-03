@@ -4,7 +4,9 @@ title: Subscriber
 
 ## Introduction
 
-Ring v4 introduces Subscribers, a new mechanism in v4 that allows external contracts (aka Subscribers) to be notified by the PositionManager whenever specific events occur (e.g., liquidity changes, burns). It’s especially useful for designing **liquidity incentive** systems or reward programs.
+This page describes subscribers in the current `FewToken + Uniswap v4` integration environment. It should be read as integration guidance, not as documentation for a separate native `Ring v4` AMM.
+
+Subscribers are a v4 mechanism that allows external contracts (aka Subscribers) to be notified by the PositionManager whenever specific events occur (e.g. liquidity changes or burns). It’s especially useful for designing **liquidity incentive** systems or reward programs.
 
 Before diving into implementation details, let's understand what makes Subscribers valuable. When a position holder subscribes their position to a Subscriber contract, that contract receives notifications about various events: liquidity changes, position burns, and subscription status changes. This flow enables protocols to accurately track and reward liquidity provision.
 
@@ -338,7 +340,7 @@ function notifyModifyLiquidity(
 
 ## Processing Position Burns
 
-When a position is completely removed (burned), Ring v4 calls `notifyBurn`:
+When a position is completely removed (burned), the v4 integration stack calls `notifyBurn`:
 
 ```solidity
 /// @notice Called when a position is fully removed
