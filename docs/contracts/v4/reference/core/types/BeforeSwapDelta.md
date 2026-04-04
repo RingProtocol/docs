@@ -1,5 +1,5 @@
 # BeforeSwapDelta
-[Git Source](https://github.com/RingProtocol/v4-core/blob/80311e34080fee64b6fc6c916e9a51a437d0e482/src/types/BeforeSwapDelta.sol) - Generated with [forge doc](https://book.getfoundry.sh/reference/forge/forge-doc)
+[Git Source](https://github.com/Uniswap/v4-core/blob/80311e34080fee64b6fc6c916e9a51a437d0e482/src/types/BeforeSwapDelta.sol) - Generated with [forge doc](https://book.getfoundry.sh/reference/forge/forge-doc)
 
 
 ```solidity
@@ -7,7 +7,7 @@ type BeforeSwapDelta is int256;
 ```
 
 ## BeforeSwapDeltaLibrary
-[Git Source](https://github.com/RingProtocol/v4-core/blob/80311e34080fee64b6fc6c916e9a51a437d0e482/src/types/BeforeSwapDelta.sol)
+[Git Source](https://github.com/Uniswap/v4-core/blob/80311e34080fee64b6fc6c916e9a51a437d0e482/src/types/BeforeSwapDelta.sol)
 
 Library for getting the specified and unspecified deltas from the BeforeSwapDelta type
 
@@ -44,7 +44,7 @@ function getUnspecifiedDelta(BeforeSwapDelta delta) internal pure returns (int12
 ```
 
 # toBeforeSwapDelta
-[Git Source](https://github.com/RingProtocol/v4-core/blob/80311e34080fee64b6fc6c916e9a51a437d0e482/src/types/BeforeSwapDelta.sol)
+[Git Source](https://github.com/Uniswap/v4-core/blob/80311e34080fee64b6fc6c916e9a51a437d0e482/src/types/BeforeSwapDelta.sol)
 
 
 ```solidity

@@ -35,10 +35,6 @@ const footerData = {
           href: 'https://github.com/RingProtocol/ring-sdks',
         },
         {
-          label: 'v4 integration core',
-          href: 'https://github.com/RingProtocol/v4-core',
-        },
-        {
           label: 'v4 integration periphery',
           href: 'https://github.com/RingProtocol/v4-periphery',
         },

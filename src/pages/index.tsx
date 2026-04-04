@@ -61,11 +61,6 @@ export const developerLinks = [
     icon: 'github',
   },
   {
-    title: 'v4 integration core',
-    href: 'https://github.com/RingProtocol/v4-core/',
-    icon: 'github',
-  },
-  {
     title: 'v4 integration periphery',
     href: 'https://github.com/RingProtocol/v4-periphery',
     icon: 'github',

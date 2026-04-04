@@ -1,5 +1,5 @@
 # Slot0
-[Git Source](https://github.com/RingProtocol/v4-core/blob/80311e34080fee64b6fc6c916e9a51a437d0e482/src/types/Slot0.sol) - Generated with [forge doc](https://book.getfoundry.sh/reference/forge/forge-doc)
+[Git Source](https://github.com/Uniswap/v4-core/blob/80311e34080fee64b6fc6c916e9a51a437d0e482/src/types/Slot0.sol) - Generated with [forge doc](https://book.getfoundry.sh/reference/forge/forge-doc)
 
 *Slot0 is a packed version of solidity structure.
 Using the packaged version saves gas by not storing the structure fields in memory slots.
@@ -23,7 +23,7 @@ type Slot0 is bytes32;
 ```
 
 # Slot0Library
-[Git Source](https://github.com/RingProtocol/v4-core/blob/80311e34080fee64b6fc6c916e9a51a437d0e482/src/types/Slot0.sol)
+[Git Source](https://github.com/Uniswap/v4-core/blob/80311e34080fee64b6fc6c916e9a51a437d0e482/src/types/Slot0.sol)
 
 Library for getting and setting values in the Slot0 type
 

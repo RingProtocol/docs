@@ -98,12 +98,12 @@ function _beforeAddLiquidity(
 
 ### `beforeAddLiquidity` Parameters
 
-When triggering the `beforeAddLiquidity` hook function, there are some parameters we can make use of to customize or extend the behavior of `modifyLiquidity`. These parameters are described in `beforeAddLiquidity` from [`IHooks.sol`](https://github.com/RingProtocol/v4-core/blob/main/src/interfaces/IHooks.sol#L47).
+When triggering the `beforeAddLiquidity` hook function, there are some parameters we can make use of to customize or extend the behavior of `modifyLiquidity`. These parameters are described in `beforeAddLiquidity` from [`IHooks.sol`](https://github.com/Uniswap/v4-core/blob/main/src/interfaces/IHooks.sol#L47).
 
 A brief overview of the parameters:
 - `sender` The initial `msg.sender` for the add liquidity call
 - `key` The key for the pool
-- `params` The parameters for adding liquidity i.e. `ModifyLiquidityParams` from [`IPoolManager.sol`](https://github.com/RingProtocol/v4-core/blob/main/src/interfaces/IPoolManager.sol#L125C12-L125C33)
+- `params` The parameters for adding liquidity i.e. `ModifyLiquidityParams` from [`IPoolManager.sol`](https://github.com/Uniswap/v4-core/blob/main/src/interfaces/IPoolManager.sol#L125C12-L125C33)
 - `hookData` Arbitrary data handed into the `PoolManager` by the liquidity provider to be be passed on to the hook
 
 ## beforeRemoveLiquidity
@@ -124,12 +124,12 @@ function _beforeRemoveLiquidity(
 
 ### `beforeRemoveLiquidity` Parameters
 
-When triggering the `beforeRemoveLiquidity` hook function, there are some parameters we can make use of to customize or extend the behavior of `modifyLiquidity`. These parameters are described in `beforeRemoveLiquidity` from [`IHooks.sol`](https://github.com/RingProtocol/v4-core/blob/main/src/interfaces/IHooks.sol#L78).
+When triggering the `beforeRemoveLiquidity` hook function, there are some parameters we can make use of to customize or extend the behavior of `modifyLiquidity`. These parameters are described in `beforeRemoveLiquidity` from [`IHooks.sol`](https://github.com/Uniswap/v4-core/blob/main/src/interfaces/IHooks.sol#L78).
 
 A brief overview of the parameters:
 - `sender` The initial msg.sender for the remove liquidity call
 - `key` The key for the pool
-- `params` The parameters for removing liquidity i.e. `ModifyLiquidityParams` from [`IPoolManager.sol`](https://github.com/RingProtocol/v4-core/blob/main/src/interfaces/IPoolManager.sol#L125C12-L125C33)
+- `params` The parameters for removing liquidity i.e. `ModifyLiquidityParams` from [`IPoolManager.sol`](https://github.com/Uniswap/v4-core/blob/main/src/interfaces/IPoolManager.sol#L125C12-L125C33)
 - `hookData` Arbitrary data handed into the `PoolManager` by the liquidity provider to be be passed on to the hook
    
 ## A Complete Liquidity Hook Contract

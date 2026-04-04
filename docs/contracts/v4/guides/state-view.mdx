@@ -7,7 +7,7 @@ sidebar_position: 7
 
 This page describes `StateView` in the current `FewToken + Uniswap v4` integration environment. It should be read as integration guidance, not as documentation for a separate native `Ring v4` AMM.
 
-When building against this v4 integration stack, you will often need to read pool state for both onchain and offchain use cases. Onchain contracts can directly invoke the [**StateLibrary**](https://github.com/RingProtocol/v4-core/blob/main/src/libraries/StateLibrary.sol) to execute these reads during transactions, but offchain systems such as frontends or analytics services require a deployed contract with view functions. This is where [**StateView**](https://github.com/RingProtocol/v4-periphery/blob/main/src/lens/StateView.sol) comes in.
+When building against this v4 integration stack, you will often need to read pool state for both onchain and offchain use cases. Onchain contracts can directly invoke the [**StateLibrary**](https://github.com/Uniswap/v4-core/blob/main/src/libraries/StateLibrary.sol) to execute these reads during transactions, but offchain systems such as frontends or analytics services require a deployed contract with view functions. This is where [**StateView**](https://github.com/RingProtocol/v4-periphery/blob/main/src/lens/StateView.sol) comes in.
 
 > *In short: Use StateLibrary within onchain contracts and use StateView with an RPC for frontends and analytics.*
 > 
@@ -96,7 +96,7 @@ With this setup, you can now:
 
 When calling `stateView.read.<function>([poolId])`, be mindful that:
 
-- If you pass an invalid `poolId` (typically a [`bytes32`](https://github.com/RingProtocol/v4-core/blob/main/src/types/PoolId.sol#L6) in this v4 integration stack), the call may revert or return unexpected data.
+- If you pass an invalid `poolId` (typically a [`bytes32`](https://github.com/Uniswap/v4-core/blob/main/src/types/PoolId.sol#L6) in this v4 integration stack), the call may revert or return unexpected data.
 - Consider adding try-catch (or equivalent error handling in your framework) to gracefully handle failures if the pool does not exist or if the call fails onchain.
 
 ## Reading Pool Data
