@@ -4,12 +4,12 @@ sidebar_position: 1
 title: Overview
 ---
 
-Welcome to the Ring Protocol v2 SDK docs. To begin, we recommend looking at the [**Guides**](./guides/01-quick-start.md). The current source of truth for the SDK lives in the [`ring-sdks`](https://github.com/RingProtocol/ring-sdks) monorepo.
+Welcome to the Ring Protocol v2 SDK docs. To begin, we recommend looking at the [**Guides**](./guides/01-quick-start.md). The current source of truth for the SDK lives in the [`sdks`](https://github.com/RingProtocol/sdks) monorepo.
 
 
 ## Ring v2 SDK
 
-- [**Ring SDK Monorepo**](https://github.com/RingProtocol/ring-sdks)
+- [**Ring SDK Monorepo**](https://github.com/RingProtocol/sdks)
 - [**Ring Protocol v2 SDK**](https://www.npmjs.com/package/@ring-protocol/v2-sdk)
 - [**Ring Protocol SDK Core**](https://www.npmjs.com/package/@ring-protocol/sdk-core)
 - [**Uniswap V2-style base SDK**](https://www.npmjs.com/package/@ring-protocol/uniswap-v2-sdk)

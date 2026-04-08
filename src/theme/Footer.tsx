@@ -31,8 +31,8 @@ const footerData = {
           href: '/contracts/fewv2/deployments',
         },
         {
-          label: 'ring-sdks',
-          href: 'https://github.com/RingProtocol/ring-sdks',
+          label: 'sdks',
+          href: 'https://github.com/RingProtocol/sdks',
         },
         {
           label: 'v4 integration periphery',

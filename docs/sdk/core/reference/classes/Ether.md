@@ -53,7 +53,7 @@ Ether is the main usage of a 'native' currency, i.e. for Ethereum mainnet and al
 
 #### Defined in
 
-[entities/ether.ts:11](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/ether.ts#L11)
+[entities/ether.ts:11](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/ether.ts#L11)
 
 ## Properties
 
@@ -69,7 +69,7 @@ The chain ID on which this currency resides
 
 #### Defined in
 
-[entities/baseCurrency.ts:21](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/baseCurrency.ts#L21)
+[entities/baseCurrency.ts:21](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/baseCurrency.ts#L21)
 
 ___
 
@@ -85,7 +85,7 @@ The decimals used in representing currency amounts
 
 #### Defined in
 
-[entities/baseCurrency.ts:25](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/baseCurrency.ts#L25)
+[entities/baseCurrency.ts:25](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/baseCurrency.ts#L25)
 
 ___
 
@@ -99,7 +99,7 @@ ___
 
 #### Defined in
 
-[entities/nativeCurrency.ts:7](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/nativeCurrency.ts#L7)
+[entities/nativeCurrency.ts:7](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/nativeCurrency.ts#L7)
 
 ___
 
@@ -113,7 +113,7 @@ ___
 
 #### Defined in
 
-[entities/nativeCurrency.ts:8](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/nativeCurrency.ts#L8)
+[entities/nativeCurrency.ts:8](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/nativeCurrency.ts#L8)
 
 ___
 
@@ -129,7 +129,7 @@ The name of the currency, i.e. a descriptive textual non-unique identifier
 
 #### Defined in
 
-[entities/baseCurrency.ts:33](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/baseCurrency.ts#L33)
+[entities/baseCurrency.ts:33](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/baseCurrency.ts#L33)
 
 ___
 
@@ -145,7 +145,7 @@ The symbol of the currency, i.e. a short textual non-unique identifier
 
 #### Defined in
 
-[entities/baseCurrency.ts:29](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/baseCurrency.ts#L29)
+[entities/baseCurrency.ts:29](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/baseCurrency.ts#L29)
 
 ___
 
@@ -159,7 +159,7 @@ ___
 
 #### Defined in
 
-[entities/ether.ts:21](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/ether.ts#L21)
+[entities/ether.ts:21](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/ether.ts#L21)
 
 ## Accessors
 
@@ -180,7 +180,7 @@ NativeCurrency.wrapped
 
 #### Defined in
 
-[entities/ether.ts:15](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/ether.ts#L15)
+[entities/ether.ts:15](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/ether.ts#L15)
 
 ## Methods
 
@@ -206,7 +206,7 @@ Returns whether this currency is functionally equivalent to the other currency
 
 #### Defined in
 
-[entities/ether.ts:27](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/ether.ts#L27)
+[entities/ether.ts:27](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/ether.ts#L27)
 
 ___
 
@@ -226,4 +226,4 @@ ___
 
 #### Defined in
 
-[entities/ether.ts:23](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/ether.ts#L23)
+[entities/ether.ts:23](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/ether.ts#L23)

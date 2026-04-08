@@ -17,7 +17,7 @@
 
 #### Defined in
 
-[constants.ts:27](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/constants.ts#L27)
+[constants.ts:27](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/constants.ts#L27)
 
 ___
 
@@ -27,4 +27,4 @@ ___
 
 #### Defined in
 
-[constants.ts:28](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/constants.ts#L28)
+[constants.ts:28](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/constants.ts#L28)

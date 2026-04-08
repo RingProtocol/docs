@@ -76,7 +76,7 @@
 
 #### Defined in
 
-[entities/fractions/currencyAmount.ts:40](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/currencyAmount.ts#L40)
+[entities/fractions/currencyAmount.ts:40](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/fractions/currencyAmount.ts#L40)
 
 ## Properties
 
@@ -86,7 +86,7 @@
 
 #### Defined in
 
-[entities/fractions/currencyAmount.ts:14](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/currencyAmount.ts#L14)
+[entities/fractions/currencyAmount.ts:14](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/fractions/currencyAmount.ts#L14)
 
 ___
 
@@ -96,7 +96,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/currencyAmount.ts:15](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/currencyAmount.ts#L15)
+[entities/fractions/currencyAmount.ts:15](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/fractions/currencyAmount.ts#L15)
 
 ___
 
@@ -110,7 +110,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/fraction.ts:26](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L26)
+[entities/fractions/fraction.ts:26](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L26)
 
 ___
 
@@ -124,7 +124,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/fraction.ts:25](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L25)
+[entities/fractions/fraction.ts:25](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L25)
 
 ## Accessors
 
@@ -144,7 +144,7 @@ Fraction.asFraction
 
 #### Defined in
 
-[entities/fractions/fraction.ts:154](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L154)
+[entities/fractions/fraction.ts:154](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L154)
 
 ___
 
@@ -162,7 +162,7 @@ Fraction.quotient
 
 #### Defined in
 
-[entities/fractions/fraction.ts:42](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L42)
+[entities/fractions/fraction.ts:42](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L42)
 
 ___
 
@@ -180,7 +180,7 @@ Fraction.remainder
 
 #### Defined in
 
-[entities/fractions/fraction.ts:47](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L47)
+[entities/fractions/fraction.ts:47](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L47)
 
 ___
 
@@ -194,7 +194,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/currencyAmount.ts:91](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/currencyAmount.ts#L91)
+[entities/fractions/currencyAmount.ts:91](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/fractions/currencyAmount.ts#L91)
 
 ## Methods
 
@@ -218,7 +218,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/currencyAmount.ts:47](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/currencyAmount.ts#L47)
+[entities/fractions/currencyAmount.ts:47](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/fractions/currencyAmount.ts#L47)
 
 ___
 
@@ -242,7 +242,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/currencyAmount.ts:64](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/currencyAmount.ts#L64)
+[entities/fractions/currencyAmount.ts:64](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/fractions/currencyAmount.ts#L64)
 
 ___
 
@@ -266,7 +266,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/fraction.ts:91](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L91)
+[entities/fractions/fraction.ts:91](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L91)
 
 ___
 
@@ -290,7 +290,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/fraction.ts:99](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L99)
+[entities/fractions/fraction.ts:99](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L99)
 
 ___
 
@@ -308,7 +308,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/fraction.ts:51](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L51)
+[entities/fractions/fraction.ts:51](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L51)
 
 ___
 
@@ -332,7 +332,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/fraction.ts:83](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L83)
+[entities/fractions/fraction.ts:83](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L83)
 
 ___
 
@@ -356,7 +356,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/currencyAmount.ts:59](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/currencyAmount.ts#L59)
+[entities/fractions/currencyAmount.ts:59](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/fractions/currencyAmount.ts#L59)
 
 ___
 
@@ -380,7 +380,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/currencyAmount.ts:53](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/currencyAmount.ts#L53)
+[entities/fractions/currencyAmount.ts:53](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/fractions/currencyAmount.ts#L53)
 
 ___
 
@@ -400,7 +400,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/currencyAmount.ts:86](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/currencyAmount.ts#L86)
+[entities/fractions/currencyAmount.ts:86](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/fractions/currencyAmount.ts#L86)
 
 ___
 
@@ -426,7 +426,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/currencyAmount.ts:77](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/currencyAmount.ts#L77)
+[entities/fractions/currencyAmount.ts:77](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/fractions/currencyAmount.ts#L77)
 
 ___
 
@@ -452,7 +452,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/currencyAmount.ts:69](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/currencyAmount.ts#L69)
+[entities/fractions/currencyAmount.ts:69](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/fractions/currencyAmount.ts#L69)
 
 ___
 
@@ -482,7 +482,7 @@ Construct a currency amount with a denominator that is not equal to 1
 
 #### Defined in
 
-[entities/fractions/currencyAmount.ts:32](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/currencyAmount.ts#L32)
+[entities/fractions/currencyAmount.ts:32](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/fractions/currencyAmount.ts#L32)
 
 ___
 
@@ -511,4 +511,4 @@ Returns a new currency amount instance from the unitless amount of token, i.e. t
 
 #### Defined in
 
-[entities/fractions/currencyAmount.ts:22](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/currencyAmount.ts#L22)
+[entities/fractions/currencyAmount.ts:22](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/fractions/currencyAmount.ts#L22)

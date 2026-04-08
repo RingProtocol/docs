@@ -20,7 +20,7 @@
 
 #### Defined in
 
-[chains.ts:38](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/chains.ts#L38)
+[chains.ts:38](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/chains.ts#L38)
 
 ___
 
@@ -30,7 +30,7 @@ ___
 
 #### Defined in
 
-[chains.ts:39](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/chains.ts#L39)
+[chains.ts:39](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/chains.ts#L39)
 
 ___
 
@@ -40,7 +40,7 @@ ___
 
 #### Defined in
 
-[chains.ts:40](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/chains.ts#L40)
+[chains.ts:40](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/chains.ts#L40)
 
 ___
 
@@ -50,7 +50,7 @@ ___
 
 #### Defined in
 
-[chains.ts:41](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/chains.ts#L41)
+[chains.ts:41](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/chains.ts#L41)
 
 ___
 
@@ -60,7 +60,7 @@ ___
 
 #### Defined in
 
-[chains.ts:42](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/chains.ts#L42)
+[chains.ts:42](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/chains.ts#L42)
 
 ___
 
@@ -70,7 +70,7 @@ ___
 
 #### Defined in
 
-[chains.ts:43](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/chains.ts#L43)
+[chains.ts:43](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/chains.ts#L43)
 
 ___
 
@@ -80,4 +80,4 @@ ___
 
 #### Defined in
 
-[chains.ts:44](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/chains.ts#L44)
+[chains.ts:44](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/chains.ts#L44)
