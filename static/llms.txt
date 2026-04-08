@@ -20,7 +20,8 @@ Ring Protocol is a DeFi protocol suite covering swap infrastructure, hook-enable
 - `permit2`, `liquidity-launchpad`, and related protocol modules
 
 ### SDKs
-- v2, v3, core, and web3-react documentation
+- Ring SDK documentation for `@ring-protocol/sdk-core`, `@ring-protocol/v2-sdk`, and `@ring-protocol/uniswap-v2-sdk`
+- `web3-react` documentation is published separately under the Wallet section as an external frontend integration, not as part of the main Ring SDK package set
 
 ### APIs
 - Subgraph and query-related documentation

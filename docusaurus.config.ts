@@ -352,7 +352,7 @@ const config: Config = {
       'docusaurus-plugin-llms',
       {
         // Options here
-        generateLLMsTxt: true,
+        generateLLMsTxt: false,
         generateLLMsFullTxt: true,
         docsDir: 'docs',
         ignoreFiles: [
@@ -372,16 +372,13 @@ const config: Config = {
           'docs/contracts/v1',
           'docs/contracts/v2',
           'docs/contracts/v3',
-          'docs/sdk/core',
           'docs/sdk/swap-widget',
-          'docs/sdk/v2',
           'docs/sdk/v3',
           'docs/universal-router-legacy',
         ],
-        title: 'LLMs.txt for Ring v2 Documentation',
-        description: 'Complete reference documentation for Ring v2',
-        llmsTxtFilename: 'v2-llms.txt',
-        llmsFullTxtFilename: 'v2-llms-full.txt',
+        title: 'LLMs.txt for Ring Protocol Documentation',
+        description: 'Expanded reference documentation for Ring Protocol integrations, contracts, and SDKs',
+        llmsFullTxtFilename: 'llms-full.txt',
         includeBlog: false,
         // Content cleaning options
         excludeImports: true,

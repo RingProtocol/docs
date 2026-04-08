@@ -22,12 +22,14 @@ Use the built-in AI integration features throughout the documentation:
 
 ## LLMs.txt
 
-This documentation includes an [LLMs.txt file](/llms.txt) that provides comprehensive context about Ring for AI systems. This file helps ensure AI assistants can provide accurate and up-to-date information about:
+This documentation includes a curated [LLMs.txt file](/llms.txt) and a generated `llms-full.txt` export for AI systems. Together they help AI assistants provide accurate and up-to-date information about:
 
 - Protocol architecture and concepts
 - Smart contract interfaces and functionality
-- SDK usage and integration patterns
+- SDK usage and integration patterns for `@ring-protocol/sdk-core`, `@ring-protocol/v2-sdk`, and `@ring-protocol/uniswap-v2-sdk`
 - Development best practices
+
+Wallet connection material for `web3-react` remains documented under the Wallet section because it is an external frontend integration rather than part of the main Ring SDK package set.
 
 ## Best Practices for AI-Assisted Development
 

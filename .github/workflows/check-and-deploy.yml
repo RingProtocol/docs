@@ -37,6 +37,9 @@ jobs:
       - name: Check Formatting
         run: yarn prettier --check .
 
+      - name: Build Documentation
+        run: yarn build
+
   audit_with_lighthouse:
     name: Audit with Lighthouse
     runs-on: ubuntu-latest
