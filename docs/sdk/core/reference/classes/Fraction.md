@@ -58,7 +58,7 @@
 
 #### Defined in
 
-[entities/fractions/fraction.ts:28](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L28)
+[entities/fractions/fraction.ts:28](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L28)
 
 ## Properties
 
@@ -68,7 +68,7 @@
 
 #### Defined in
 
-[entities/fractions/fraction.ts:26](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L26)
+[entities/fractions/fraction.ts:26](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L26)
 
 ___
 
@@ -78,7 +78,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/fraction.ts:25](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L25)
+[entities/fractions/fraction.ts:25](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L25)
 
 ## Accessors
 
@@ -94,7 +94,7 @@ Helper method for converting any super class back to a fraction
 
 #### Defined in
 
-[entities/fractions/fraction.ts:154](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L154)
+[entities/fractions/fraction.ts:154](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L154)
 
 ___
 
@@ -108,7 +108,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/fraction.ts:42](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L42)
+[entities/fractions/fraction.ts:42](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L42)
 
 ___
 
@@ -122,7 +122,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/fraction.ts:47](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L47)
+[entities/fractions/fraction.ts:47](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L47)
 
 ## Methods
 
@@ -142,7 +142,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/fraction.ts:55](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L55)
+[entities/fractions/fraction.ts:55](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L55)
 
 ___
 
@@ -162,7 +162,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/fraction.ts:115](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L115)
+[entities/fractions/fraction.ts:115](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L115)
 
 ___
 
@@ -182,7 +182,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/fraction.ts:91](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L91)
+[entities/fractions/fraction.ts:91](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L91)
 
 ___
 
@@ -202,7 +202,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/fraction.ts:99](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L99)
+[entities/fractions/fraction.ts:99](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L99)
 
 ___
 
@@ -216,7 +216,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/fraction.ts:51](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L51)
+[entities/fractions/fraction.ts:51](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L51)
 
 ___
 
@@ -236,7 +236,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/fraction.ts:83](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L83)
+[entities/fractions/fraction.ts:83](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L83)
 
 ___
 
@@ -256,7 +256,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/fraction.ts:107](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L107)
+[entities/fractions/fraction.ts:107](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L107)
 
 ___
 
@@ -276,7 +276,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/fraction.ts:69](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L69)
+[entities/fractions/fraction.ts:69](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L69)
 
 ___
 
@@ -298,7 +298,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/fraction.ts:138](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L138)
+[entities/fractions/fraction.ts:138](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L138)
 
 ___
 
@@ -320,7 +320,7 @@ ___
 
 #### Defined in
 
-[entities/fractions/fraction.ts:123](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L123)
+[entities/fractions/fraction.ts:123](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L123)
 
 ___
 
@@ -340,4 +340,4 @@ ___
 
 #### Defined in
 
-[entities/fractions/fraction.ts:33](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L33)
+[entities/fractions/fraction.ts:33](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/fractions/fraction.ts#L33)

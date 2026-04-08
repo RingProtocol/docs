@@ -58,7 +58,7 @@ BaseCurrency.constructor
 
 #### Defined in
 
-[entities/baseCurrency.ts:42](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/baseCurrency.ts#L42)
+[entities/baseCurrency.ts:42](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/baseCurrency.ts#L42)
 
 ## Properties
 
@@ -74,7 +74,7 @@ BaseCurrency.chainId
 
 #### Defined in
 
-[entities/baseCurrency.ts:21](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/baseCurrency.ts#L21)
+[entities/baseCurrency.ts:21](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/baseCurrency.ts#L21)
 
 ___
 
@@ -90,7 +90,7 @@ BaseCurrency.decimals
 
 #### Defined in
 
-[entities/baseCurrency.ts:25](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/baseCurrency.ts#L25)
+[entities/baseCurrency.ts:25](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/baseCurrency.ts#L25)
 
 ___
 
@@ -104,7 +104,7 @@ BaseCurrency.isNative
 
 #### Defined in
 
-[entities/nativeCurrency.ts:7](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/nativeCurrency.ts#L7)
+[entities/nativeCurrency.ts:7](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/nativeCurrency.ts#L7)
 
 ___
 
@@ -118,7 +118,7 @@ BaseCurrency.isToken
 
 #### Defined in
 
-[entities/nativeCurrency.ts:8](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/nativeCurrency.ts#L8)
+[entities/nativeCurrency.ts:8](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/nativeCurrency.ts#L8)
 
 ___
 
@@ -134,7 +134,7 @@ BaseCurrency.name
 
 #### Defined in
 
-[entities/baseCurrency.ts:33](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/baseCurrency.ts#L33)
+[entities/baseCurrency.ts:33](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/baseCurrency.ts#L33)
 
 ___
 
@@ -150,7 +150,7 @@ BaseCurrency.symbol
 
 #### Defined in
 
-[entities/baseCurrency.ts:29](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/baseCurrency.ts#L29)
+[entities/baseCurrency.ts:29](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/baseCurrency.ts#L29)
 
 ## Accessors
 
@@ -171,7 +171,7 @@ BaseCurrency.wrapped
 
 #### Defined in
 
-[entities/baseCurrency.ts:62](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/baseCurrency.ts#L62)
+[entities/baseCurrency.ts:62](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/baseCurrency.ts#L62)
 
 ## Methods
 
@@ -197,4 +197,4 @@ BaseCurrency.equals
 
 #### Defined in
 
-[entities/baseCurrency.ts:56](https://github.com/RingProtocol/ring-sdks/blob/main/sdks/sdk-core/src/entities/baseCurrency.ts#L56)
+[entities/baseCurrency.ts:56](https://github.com/RingProtocol/sdks/blob/main/sdks/sdk-core/src/entities/baseCurrency.ts#L56)
