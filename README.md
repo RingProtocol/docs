@@ -1,14 +1,14 @@
 # Ring Documentation
 
-This web application contains all documentation for Ring products. It is built using [Docusaurus 2](https://v2.docusaurus.io/), a modern static website generator.
+This web application contains all documentation for Ring Protocol products. It is built using [Docusaurus 3](https://docusaurus.io/), a modern static website generator.
 
 # Project Layout
 
 ### Ring documentation is broken down into four sections:
-- Concepts - General Ring information or concepts useful for using Ring products, such as *Hooks* and *Fees*
-- Contracts - Ring smart contracts including *v4*, *v3*, *Universal Router*, *Permit2*, *v2*, and *v1*
-- SDKs - Ring integrations such as the *v4-sdk*, *v3-sdk* and the *Swap Widget*
-- APIs - The Ring APIs such the *Subgraph API*
+- Concepts - General Ring information and protocol concepts, including FEW, swaps, liquidity, and governance
+- Contracts - Ring and integration-facing smart contracts, including Few Protocol, Ring Swap, v4 integrations, and related modules
+- SDKs - Ring SDKs for `@ring-protocol/sdk-core`, `@ring-protocol/v2-sdk`, and `@ring-protocol/uniswap-v2-sdk`
+- APIs - Ring data access surfaces such as the subgraph
 
 ### Each item in a section should include the following:
 - *Overview*
@@ -50,7 +50,7 @@ By implementing these consistent principles Ring will have docs that are easy to
 A good example is a focused product-specific guide with a clear integration path and runnable end state.
 
 ### Technical References
-This should contain the technical reference for the exported interfaces. A good example is the [v4 SDK](./docs/sdk/v4/overview).
+This should contain the technical reference for the exported interfaces. A good example is the [Ring SDK Core reference](./docs/sdk/core/reference/overview.md).
 These files can be created using the [guides below](#how-to-create-a-technical-reference).
 
 # Contributing to Ring Docs
@@ -94,7 +94,7 @@ Let's walk through an example by considering the *Permit2* smart contract:
 ## How to generate markdown files from solidity Natspec comments
 
 Install solidity doc gen
-`npm install solidity-docgen`
+`yarn add --dev solidity-docgen`
 
 Configure solidity-docgen in your `hardhat.config.js` file:
 ```javascript
@@ -116,12 +116,12 @@ Run `npx hardhat docgen` to generate documentation
 
 # How to generate markdown files from typescript comments
 
-`npm install --save-dev typedoc typedoc-plugin-markdown`
+`yarn add --dev typedoc typedoc-plugin-markdown`
 
 Depending on how your project was created, you might have to install Typescript:
-`npm install --save-dev typescript`
+`yarn add --dev typescript`
 
-`npx typedoc --out <docs> src/index.ts`
+`yarn typedoc --out <docs> src/index.ts`
 
 You might have to use the `--skipErrorChecking` flag to the `typedoc` command for cases where types are fetched during transpile time, such as contract ABIs.
 

@@ -31,7 +31,7 @@ const footerData = {
           href: '/contracts/fewv2/deployments',
         },
         {
-          label: 'sdks',
+          label: 'Ring SDKs',
           href: 'https://github.com/RingProtocol/sdks',
         },
         {

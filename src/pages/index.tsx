@@ -51,7 +51,7 @@ const sectionDescriptions = {
 
 export const developerLinks = [
   {
-    title: 'RingProtocol/sdks',
+    title: 'Ring SDKs',
     href: 'https://github.com/RingProtocol/sdks',
     icon: 'github',
   },
