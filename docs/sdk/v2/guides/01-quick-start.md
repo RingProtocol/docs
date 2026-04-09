@@ -33,7 +33,7 @@ const DAI = new Token(ChainId.MAINNET, '0x6B175474E89094C44Da98b954EedeAC495271d
 const fewDAI = getFewTokenFromOriginalToken(DAI, ChainId.MAINNET)
 
 console.log(`The chainId of mainnet is ${ChainId.MAINNET}.`)
-console.log(`The Ring pair token address is ${fewDAI.address}.`)
+console.log(`The few token address is ${fewDAI.address}.`)
 ```
 
 ## CommonJS (require)
