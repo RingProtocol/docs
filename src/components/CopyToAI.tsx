@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { useLocation } from '@docusaurus/router'
 
 interface CopyToAIProps {
@@ -9,6 +9,24 @@ const CopyToAI: React.FC<CopyToAIProps> = ({ className = '' }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [copied, setCopied] = useState(false)
   const location = useLocation()
+  const buttonRef = useRef<HTMLButtonElement>(null)
+  const menuRef = useRef<HTMLDivElement>(null)
+
+  const closeMenu = useCallback(() => setIsOpen(false), [])
+
+  useEffect(() => {
+    if (!isOpen) {
+      return
+    }
+    const onClickOutside = (e: MouseEvent) => {
+      if (menuRef.current?.contains(e.target as Node) || buttonRef.current?.contains(e.target as Node)) {
+        return
+      }
+      closeMenu()
+    }
+    document.addEventListener('mousedown', onClickOutside)
+    return () => document.removeEventListener('mousedown', onClickOutside)
+  }, [isOpen, closeMenu])
 
   const getCurrentPageContent = (): string => {
     // Get the main content area
@@ -72,9 +90,23 @@ ${cleanedContent}`
     }
   }
 
+  const getMenuPosition = (): React.CSSProperties => {
+    if (!buttonRef.current) {
+      return {}
+    }
+    const rect = buttonRef.current.getBoundingClientRect()
+    return {
+      position: 'fixed',
+      top: rect.bottom + 4,
+      right: Math.max(8, window.innerWidth - rect.right),
+      zIndex: 9999,
+    }
+  }
+
   return (
     <div className={`relative inline-block ${className}`}>
       <button
+        ref={buttonRef}
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-2 px-3 py-2 text-sm bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-700 rounded-md hover:bg-blue-100 dark:hover:bg-blue-900/40 transition-colors"
         aria-label="Copy to AI assistant"
@@ -94,7 +126,11 @@ ${cleanedContent}`
       </button>
 
       {isOpen && (
-        <div className="absolute top-full mt-1 right-0 w-48 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-md shadow-lg z-50">
+        <div
+          ref={menuRef}
+          style={getMenuPosition()}
+          className="w-48 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-md shadow-lg"
+        >
           <div className="py-1">
             <button
               onClick={handleChatGPT}
@@ -132,9 +168,6 @@ ${cleanedContent}`
           </div>
         </div>
       )}
-
-      {/* Click outside to close */}
-      {isOpen && <div className="fixed inset-0 z-40" onClick={() => setIsOpen(false)} aria-hidden="true" />}
     </div>
   )
 }
