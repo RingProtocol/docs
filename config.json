@@ -1,5 +1,5 @@
 {
-  "index_name": "ring-docs",
+  "index_name": "v3-docs",
   "start_urls": ["https://docs.ring.exchange/"],
   "sitemap_urls": ["https://docs.ring.exchange/sitemap.xml"],
   "sitemap_alternate_links": true,

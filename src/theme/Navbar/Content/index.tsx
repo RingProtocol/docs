@@ -1,7 +1,7 @@
 import React, { type ReactNode } from 'react'
 import { useNavbarMobileSidebar } from '@docusaurus/theme-common/internal'
 import NavbarColorModeToggle from '@theme/Navbar/ColorModeToggle'
-import SearchBar from '@theme/SearchBar'
+// import SearchBar from '@theme/SearchBar'
 import Link from '@docusaurus/Link'
 import { Menu, MiniUnicon } from '@site/src/components/Icons'
 import clsx from 'clsx'
@@ -67,9 +67,9 @@ export default function NavbarContent(): ReactNode {
       </Link>
 
       <div className="flex flex-row items-center sm:hidden gap-3 ml-auto">
-        <div className="flex-1 min-w-0">
+        {/* <div className="flex-1 min-w-0">
           <SearchBar />
-        </div>
+        </div> */}
         <button
           className="flex items-center rounded-small border border-light-surface-3 bg-light-surface-2 px-2 py-2 dark:border-dark-surface-3 dark:bg-dark-surface-2"
           onClick={mobileSidebar.toggle}
@@ -91,7 +91,7 @@ export default function NavbarContent(): ReactNode {
           ))}
         </nav>
         <div className="flex items-center gap-3">
-          <SearchBar />
+          {/* <SearchBar /> */}
           <div className="rounded-full border border-light-surface-3 bg-light-surface-2 px-1 dark:border-dark-surface-3 dark:bg-dark-surface-2">
             <NavbarColorModeToggle />
           </div>
