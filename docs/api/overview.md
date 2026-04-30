@@ -6,54 +6,27 @@ title: Overview
 
 ## Ring APIs
 
-Welcome to the Ring API documentation. Ring provides several APIs and data sources to help developers integrate with and build on top of the Ring protocol.
+The **Ring Routing API** is a partner-facing quote service. It returns the best executable swap quote on a given pair, with execution-ready calldata, routing across Ring Swap v2, Uniswap v3 / v4, and FewToken-wrapped pools — and optionally racing external aggregators (1inch, Bitget, Enso, HiUni) for best execution.
 
-## Available APIs
+## Quote API
 
-### Subgraph API
-The Ring Subgraph provides a GraphQL API for querying historical and real-time data from the Ring protocol.
+```
+POST https://gateway.ring.exchange/v1/partner/quote
+```
 
-- **[Subgraph Documentation](./subgraph/overview)** - Learn how to query Ring data using GraphQL
+Returns the optimal swap quote for a token pair, plus the router contract address and calldata to submit on-chain.
 
-### Routing API
-The Ring Routing API provides optimized trade routes and quotes for swaps.
+→ See the **[Routing API reference](./routing/overview)** for headers, request/response schema, supported chains, and examples.
 
-- **Smart Order Routing** - Find the best prices across multiple pools
-- **Gas Optimization** - Routes optimized for gas efficiency
-- **Multi-hop Support** - Complex routing across token pairs
+## Getting access
 
-### Price APIs
-Get real-time and historical price data for tokens in Ring-related markets and integrations.
+The Routing API is gated by an API key issued per partner. To request access, email **[contact@ring.exchange](mailto:contact@ring.exchange)** with:
 
-- **Current Prices** - Real-time token prices
-- **Historical Data** - Price charts and historical trends
-- **Pool Information** - Liquidity and volume data
+- Project name and website / app URL
+- A short description of how you plan to use the API
+- Estimated traffic (requests per day, peak rps if known)
+- Filler / executor contract address (if applicable)
 
-## Getting Started
+The Ring team will review and reply with your API key and assigned `x-partner-id` slug.
 
-### For Developers
-If you're building applications that need to:
-- Query historical trading data → Use the **Subgraph API**
-- Get optimal swap routes → Use the **Routing API**
-- Display token prices → Use the **Price APIs**
-
-### For Data Analysis
-The Subgraph API is perfect for:
-- Analytics dashboards
-- Trading strategy research
-- Protocol metrics and insights
-- DeFi research and analysis
-
-## Rate Limits and Usage
-
-- **Subgraph API**: Generous rate limits via The Graph
-- **Routing API**: Production-ready with caching
-- **Price APIs**: Real-time updates with historical data
-
-## Support and Resources
-
-- **Discord**: Join the Ring developer community
-- **GitHub**: Explore code examples and integrations
-- **Documentation**: Comprehensive guides and references
-
-Ready to start building? Choose the API that fits your needs from the navigation menu.
+Default rate limits per partner: **10 rps**, burst **20**, **5,000,000 requests / month**. Custom limits available on request.
