@@ -67,11 +67,11 @@ const config: Config = {
           docId: 'sdk/v2/overview',
           label: 'SDKs',
         },
-        // {
-        //   type: 'doc',
-        //   docId: 'api/subgraph/overview',
-        //   label: 'APIs',
-        // },
+        {
+          type: 'doc',
+          docId: 'api/overview',
+          label: 'APIs',
+        },
         {
           type: 'doc',
           docId: 'wallet/overview',
@@ -141,10 +141,8 @@ const config: Config = {
                   item.type === 'category' &&
                   (item.link?.id === 'contracts/the-compact/overview' ||
                     item.link?.id === 'contracts/protocol-fee/overview' ||
-                    item.link?.id === 'api/subgraph/overview' ||
                     item.label === 'The Compact' ||
-                    item.label === 'Protocol Fee' ||
-                    item.label === 'APIs')
+                    item.label === 'Protocol Fee')
                 ) {
                   return []
                 }
