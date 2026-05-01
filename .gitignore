@@ -39,5 +39,8 @@ CLAUDE.md
 claude.md
 v4-sdk-baseline-assessment.md
 
+# OMC session data
+.omc/
+
 # Ignore external repositories
 v4-subgraph/
