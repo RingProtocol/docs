@@ -6,7 +6,7 @@ title: Routing API
 
 # Ring Routing API
 
-A partner-facing quote endpoint that returns the best executable swap quote, routing across Ring Swap v2, Uniswap v3 / v4, and FewToken-wrapped pools, with the option to race external aggregators (1inch, Bitget, Enso, HiUni) for best execution.
+A partner-facing quote endpoint that returns the best executable swap quote from Ring Protocol Pools.
 
 ## Endpoint
 
@@ -64,8 +64,7 @@ curl -X POST "https://gateway.ring.exchange/v1/partner/quote" \
 
 | Field | Default | Description |
 |---|---|---|
-| `protocols` | `["V2", "V3", "V4", "FewV2"]` | Which DEX liquidity sources to consider for the route. |
-| `aggregators` | `[]` | External aggregators to race against the DEX route. Available: `AGT_1INCH`, `AGT_BITGET`, `AGT_ENSO`, `AGT_HIUNI`. The best price wins. |
+| `protocols` | `["FewV2"]` | Liquidity sources to consider for the route. Currently only `FewV2` is supported. |
 | `autoSlippage` | — | Set to `DEFAULT` for automatic slippage selection. |
 
 ## Response
@@ -123,11 +122,11 @@ The endpoint does **not** validate sender balances or token approvals — it onl
 
 | Field | Description |
 |---|---|
-| `routing` | Which source produced the winning quote: `CLASSIC` (Ring / Uniswap DEX route) or `AGGREGATOR` (one of the `AGT_*` aggregators). |
+| `routing` | Routing mode used to produce the quote. Currently `CLASSIC`. |
 | `quote.input.amount`, `quote.output.amount` | Final input and output amounts (wei). |
 | `quote.slippage` | Effective slippage applied (percent). |
 | `quote.gasFee`, `quote.gasFeeUSD` | Estimated gas fee in wei and USD. |
-| `quote.route` | Ordered list of pool hops (CLASSIC route only). |
+| `quote.route` | Ordered list of pool hops used for the quote. |
 | `quote.quoteId`, `requestId` | UUIDs — useful for support tickets and log correlation. |
 
 ## Errors
@@ -145,9 +144,7 @@ The endpoint does **not** validate sender balances or token approvals — it onl
 - **Token addresses**: use the checksummed ERC-20 contract address. For native ETH, use `0x0000000000000000000000000000000000000000`.
 - **Amounts** are strings in the token's smallest unit.
 - **Permit2**: when `permitData` is present in the response, sign the typed data with the swapper key and include the signature in your transaction. Without it, the swap will revert.
-- **`FewV2` routing** is included in the default protocol set and routes through FewToken-wrapped liquidity, which can offer better pricing for certain pairs.
-- **Aggregators are best-effort**: aggregator availability depends on pair liquidity. The router falls back to the DEX route if every aggregator returns nothing.
-- **`EXACT_OUTPUT` support**: `AGT_1INCH` and `AGT_HIUNI` accept `EXACT_OUTPUT`; `AGT_BITGET` and `AGT_ENSO` accept `EXACT_INPUT` only and are skipped on `EXACT_OUTPUT` requests.
+- **`FewV2` routing**: quotes are sourced from Ring Protocol Pools and route through FewToken-wrapped liquidity, which can offer better pricing for certain pairs.
 
 ## Getting access
 
