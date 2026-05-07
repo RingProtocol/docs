@@ -65,7 +65,25 @@ curl -X POST "https://gateway.ring.exchange/v1/partner/quote" \
 | Field | Default | Description |
 |---|---|---|
 | `protocols` | `["FewV2"]` | Liquidity sources to consider for the route. Currently only `FewV2` is supported. |
+| `slippageTolerance` | — | Fixed maximum slippage tolerance as a percentage value. For example, `0.5` means 0.5%, and `1` means 1%. |
 | `autoSlippage` | — | Set to `DEFAULT` for automatic slippage selection. |
+
+Use `slippageTolerance` when you want to set a fixed maximum slippage. Use `autoSlippage: "DEFAULT"` when you want the API to select slippage automatically.
+
+Example with fixed slippage:
+
+```json
+{
+  "tokenIn": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+  "tokenOut": "0x0000000000000000000000000000000000000000",
+  "amount": "1000000000101000000",
+  "tokenInChainId": 1,
+  "tokenOutChainId": 1,
+  "swapper": "0xYourFillerContractAddress",
+  "type": "EXACT_INPUT",
+  "slippageTolerance": 0.5
+}
+```
 
 ## Response
 
