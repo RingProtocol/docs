@@ -16,7 +16,6 @@ Ring Protocol is a DeFi protocol suite covering swap infrastructure, hook-enable
 - `v3`: contract references, deployments, and SDK-oriented guides
 - `v2`: legacy contract concepts and integration guides
 - `fewv2`: Ring Swap and Few Protocol deployment and integration docs
-- `morpho-router`: lending router overview, integration, deployments, and technical reference
 - `permit2`, `liquidity-launchpad`, and related protocol modules
 
 ### SDKs
