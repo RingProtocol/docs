@@ -1,6 +1,7 @@
 ---
 title: Technical Reference
 sidebar_position: 4
+unlisted: true
 ---
 
 # FewMorphoRouter Technical Reference

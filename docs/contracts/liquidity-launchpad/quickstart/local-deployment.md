@@ -39,13 +39,7 @@ interface IDistributionStrategy {
 }
 ```
 
-The factory contract is deployed to the same address across the following networks:
-| Network  | Address                                    | Commit Hash                              | Version          |
-| -------- | ------------------------------------------ | ---------------------------------------- | ---------------- |
-| Mainnet  | 0x0000ccaDF55C911a2FbC0BB9d2942Aa77c6FAa1D | 154fd189022858707837112943c09346869c964f | v1.0.0-candidate |
-| Unichain | 0x0000ccaDF55C911a2FbC0BB9d2942Aa77c6FAa1D | 154fd189022858707837112943c09346869c964f | v1.0.0-candidate |
-| Base     | 0x0000ccaDF55C911a2FbC0BB9d2942Aa77c6FAa1D | 154fd189022858707837112943c09346869c964f | v1.0.0-candidate |
-| Sepolia  | 0x0000ccaDF55C911a2FbC0BB9d2942Aa77c6FAa1D | 154fd189022858707837112943c09346869c964f | v1.0.0-candidate |
+Ring deployment addresses for the factory contract have not been published yet.
 
 ### Deploying a new `ContinuousClearingAuction` contract directly
 CCA auctions can be deployed directly by calling the constructor:

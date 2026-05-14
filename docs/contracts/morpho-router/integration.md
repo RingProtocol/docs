@@ -1,6 +1,7 @@
 ---
 title: Integration Guide
 sidebar_position: 2
+unlisted: true
 ---
 
 # Integrating FewMorphoRouter

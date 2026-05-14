@@ -1,6 +1,7 @@
 ---
 title: Deployment Addresses
 sidebar_position: 3
+unlisted: true
 ---
 
 # FewMorphoRouter Deployments
