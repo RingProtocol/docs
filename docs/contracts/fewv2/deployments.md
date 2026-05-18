@@ -70,15 +70,6 @@ can be used as a fallback RPC.
 | Ring Swap Pair Init Code | `0xa7ae6a5ec37f0c21bbdac560794258c4089b8ae3ffa6e3909b53c6091764a676` |
 | Few Wrapped Token Init Code | `0x2bdba5734ddf754fb149ef1faa937956c52cfd1f24d68163a95f42d08ec06d38` |
 
-#### MegaETH Deployment Notes
-
-- `Core` is initialized.
-- `Core` governor has been transferred to the timelock at `0xb0BEa0daA0E57c43d92711f9dF2d0D54CebEEA72`.
-- The deployer governor has been revoked.
-- Timelock admin is `0x9336D0C82299Da0ab178271792954ADFD6f10fD7`.
-- Timelock delay is `172800` seconds, or 2 days.
-- `Permit2` and `Multicall3` are MegaETH OP Stack preinstalls, not contracts deployed by Ring.
-
 ### BSC Mainnet
 
 | Contract | BSC Mainnet Address |
