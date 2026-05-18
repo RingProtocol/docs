@@ -32,6 +32,53 @@ The latest version of Ring Swap and Few Protocol are deployed at the addresses l
 | Ring Swap Pair Init Code | `0xa7ae6a5ec37f0c21bbdac560794258c4089b8ae3ffa6e3909b53c6091764a676` |
 | Few Wrapped Token Init Code | `0x2bdba5734ddf754fb149ef1faa937956c52cfd1f24d68163a95f42d08ec06d38` |
 
+### MegaETH Mainnet
+
+| Value | MegaETH Mainnet |
+| --- | --- |
+| Network Name | `MegaETH Mainnet` |
+| Chain ID | `4326` |
+| Native Token | `ETH` |
+| Official RPC | `https://mainnet.megaeth.com/rpc` |
+| Official WebSocket | `wss://mainnet.megaeth.com/ws` |
+| dRPC | `https://megaeth.drpc.org` |
+| Etherscan | [mega.etherscan.io](https://mega.etherscan.io/) |
+| Blockscout | [megaeth.blockscout.com](https://megaeth.blockscout.com/) |
+| MegaETH Docs | [docs.megaeth.com](https://docs.megaeth.com/) |
+| Network Status | [uptime.megaeth.com](https://uptime.megaeth.com/) |
+
+The official RPC may reject some unauthenticated script requests. For CLI usage, `https://megaeth.drpc.org`
+can be used as a fallback RPC.
+
+| Contract | MegaETH Mainnet Address |
+| --- | --- |
+| WETH | `0x4200000000000000000000000000000000000006` |
+| Core | `0x732819C68c72D09465B8FaDF8156A79d21E87DCA` |
+| Few Factory | `0x6AE74eC9D067C734060FC5edB66fC6D48682970E` |
+| fwWETH | `0x65c46c31E340D6C546309733CF50Ef4d150094C4` |
+| FewETHWrapper | `0xb0Bd0CD58551b71079F36B198276832242D02C0F` |
+| Ring Swap Factory | `0x47C436602d2598d0ef4b50888F29a528B6Bccc95` |
+| UniswapV2Router02 | `0xE73442C4b87283D75768F3668B411fc2348B429b` |
+| Ring Swap Router | `0x88a9A29FA981721C04fdC367ab7e3C83A4C65db9` |
+| UniversalRouter | `0x9256667638ED96ba4eCb30bD23efD2A182e1bC98` |
+| Timelock | `0xb0BEa0daA0E57c43d92711f9dF2d0D54CebEEA72` |
+| Permit2 | `0x000000000022D473030F116dDEE9F6B43aC78BA3` |
+| Multicall3 | `0xcA11bde05977b3631167028862bE2a173976CA11` |
+
+| Value | MegaETH Mainnet |
+| --- | --- |
+| Ring Swap Pair Init Code | `0xa7ae6a5ec37f0c21bbdac560794258c4089b8ae3ffa6e3909b53c6091764a676` |
+| Few Wrapped Token Init Code | `0x2bdba5734ddf754fb149ef1faa937956c52cfd1f24d68163a95f42d08ec06d38` |
+
+#### MegaETH Deployment Notes
+
+- `Core` is initialized.
+- `Core` governor has been transferred to the timelock at `0xb0BEa0daA0E57c43d92711f9dF2d0D54CebEEA72`.
+- The deployer governor has been revoked.
+- Timelock admin is `0x9336D0C82299Da0ab178271792954ADFD6f10fD7`.
+- Timelock delay is `172800` seconds, or 2 days.
+- `Permit2` and `Multicall3` are MegaETH OP Stack preinstalls, not contracts deployed by Ring.
+
 ### BSC Mainnet
 
 | Contract | BSC Mainnet Address |
