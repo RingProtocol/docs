@@ -4,8 +4,6 @@ title: SignatureTransfer
 sidebar_position: 1
 ---
 
-> [**Source Code**](https://github.com/Uniswap/permit2/blob/main/src/SignatureTransfer.sol)
-
 ## Overview
 
 The main entry points on this contract are:

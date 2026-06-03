@@ -17,10 +17,6 @@ const footerData = {
           label: 'Feedback',
           href: 'https://discord.com/invite/TefBNDZBQP',
         },
-        // {
-        //   label: 'Whitepaper',
-        //   href: 'https://app.ring.exchange/whitepaper-v2.pdf',
-        // },
       ],
     },
     {
@@ -28,7 +24,7 @@ const footerData = {
       links: [
         {
           label: 'ring contracts',
-          href: '/contracts/fewv2/deployments',
+          href: '/contracts/v2/deployments',
         },
         {
           label: 'Ring SDKs',
@@ -56,10 +52,6 @@ const footerData = {
     {
       title: 'Community',
       links: [
-        // {
-        //   label: 'Blog',
-        //   href: 'https://uniswapfoundation.org/blog/',
-        // },
         {
           label: 'Governance',
           href: 'https://www.tally.xyz/gov/ring',

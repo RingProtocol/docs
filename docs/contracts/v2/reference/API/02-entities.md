@@ -1,17 +1,18 @@
 ---
 id: entities
 title: Entities
+draft: true
 ---
 
 Entities define the schema of the subgraph, and represent the data that can be queried. Within each entity are sets of fields that store useful information related to the entity. Below is a list of the available entities within the Ring Subgraph, and descriptions for the available fields.
 
-To see an interactive sandbox of all entities see the [Graph Explorer](https://thegraph.com/explorer/subgraph/uniswap/uniswap-v2).
+This draft is hidden until the current Ring subgraph schema and sandbox URL are finalized.
 
 Each entity is defined with a value type, which will always be a base AssemblyScript type, or a custom type provided by The Graph's custom TypeScript library. For more information on value types see [here](https://thegraph.com/docs/en/developing/assemblyscript-api/#api-reference).
 
 ### Ring Factory
 
-The Ring Factory entity is responsible for storing aggregate information across all Ring pairs. It can be used to view stats about total liquidity, volume, amount of pairs and more. There is only one UniswapFactory entity in the subgraph.
+The Ring Factory entity is responsible for storing aggregate information across all Ring pairs. It can be used to view stats about total liquidity, volume, amount of pairs and more. There is only one RingFactory entity in the subgraph.
 
 | Field Name        | Value Type | Description                                                     |
 | ----------------- | ---------- | --------------------------------------------------------------- |
@@ -47,7 +48,7 @@ Information about a pair. Includes references to each token within the pair, vol
 | Field Name           | Value Type          | Description                                                                                                         |
 | -------------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------- |
 | id                   | ID                  | pair contract address                                                                                               |
-| factory              | UniswapFactory      | reference to Ring factory entity                                                                                 |
+| factory              | RingFactory      | reference to Ring factory entity                                                                                 |
 | token0               | Token               | reference to token0 as stored in pair contract                                                                      |
 | token1               | Token               | reference to token1 as stored in pair contract                                                                      |
 | reserve0             | BigDecimal          | reserve of token0                                                                                                   |
@@ -69,7 +70,7 @@ Information about a pair. Includes references to each token within the pair, vol
 
 ### User
 
-A user entity is created for any address that provides liquidity to a pool on Uniswap. This entity
+A user entity is created for any address that provides liquidity to a pool on Ring Swap. This entity
 can be used to track open positions for users. LiquidyPosition entities can be referenced to get
 specific data about each position.
 
@@ -178,11 +179,11 @@ be used in other places in the subgraph.
 
 ## Historical Entities
 
-The subgraph tracks aggregated information grouped by days to provide insights to daily activity on Uniswap. While [time travel queries](https://blocklytics.org/blog/ethereum-blocks-subgraph-made-for-time-travel/) can be used for direct comparison against values in the past, it is much more expensive to query grouped data. For this reason the subgraph tracks information grouped in daily buckets, using timestamps provided by contract events. These entities can be used to query things like total volume on a given day, price of a token on a given day, etc.
+The subgraph tracks aggregated information grouped by days to provide insights to daily activity on Ring Swap. While [time travel queries](https://blocklytics.org/blog/ethereum-blocks-subgraph-made-for-time-travel/) can be used for direct comparison against values in the past, it is much more expensive to query grouped data. For this reason the subgraph tracks information grouped in daily buckets, using timestamps provided by contract events. These entities can be used to query things like total volume on a given day, price of a token on a given day, etc.
 
 For each DayData type, a new entity is created each day.
 
-### UniswapDayData
+### RingDayData
 
 Tracks data across all pairs aggregated into a daily bucket.
 

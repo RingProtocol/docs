@@ -17,7 +17,7 @@ For most Ring Swap integrations, install:
 npm install @ring-protocol/sdk-core @ring-protocol/v2-sdk
 ```
 
-Use `@ring-protocol/uniswap-v2-sdk` only if you explicitly need the lower-level Uniswap V2-style primitives rather than the FEW-aware Ring layer.
+Use `@ring-protocol/uniswap-v2-sdk` only if you explicitly need the lower-level v2-compatible primitives rather than the FEW-aware Ring layer.
 
 ## Usage
 

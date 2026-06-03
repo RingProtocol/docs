@@ -1,205 +1,84 @@
 ---
 id: quick-start
-title: Smart Contract Quick start
+title: Smart Contract Quick Start
 ---
 
-Developing smart contracts for Ethereum involves a variety of off-chain tools used for producing and testing bytecode
-that runs on the [Ethereum Virtual Machine (EVM)](<https://eth.wiki/en/concepts/evm/ethereum-virtual-machine-(evm)-awesome-list>).
-Some tools also include workflows for deploying this bytecode to the Ethereum network and testnets.
-There are many options for these tools. This guide walks you through writing and testing a simple smart contract that
-interacts with the Ring Protocol using one specific set of tools (`truffle` + `npm` + `mocha`).
+This guide shows the minimal contract-side setup for integrating with Ring Swap (v2).
 
-## Requirements
+Ring Swap paths are FewToken-aware. If your user starts from an original ERC-20 asset, resolve the corresponding
+FewToken address before quoting or building a swap path. See the [FewToken integration guide](../../fewtoken/integrating)
+for the wrapping layer.
 
-To follow this guide, you must have the following installed:
+## Choose the Target Chain
 
-- [nodejs >= v12.x & npm >= 6.x](https://nodejs.org/en/)
+Start from the current [Ring Swap deployments](../../deployments):
 
-## Bootstrapping a project
+1. Select the target chain.
+2. Copy the `Ring Swap Router` address.
+3. Copy the `Ring Swap Factory` address if your contract needs to validate pairs or derive pair addresses.
+4. Use the `Ring Swap Pair Init Code` for deterministic CREATE2 pair-address calculations.
 
-You can start from scratch, but it's easier to use a tool like `truffle` to bootstrap an empty project.
-Create an empty directory and run `npx truffle init` inside that directory to unbox the default
-[Truffle box](https://www.trufflesuite.com/boxes).
+## Define the Minimal Interfaces
 
-```shell script
-mkdir demo
-cd demo
-npx truffle init
-```
-
-## Setting up npm
-
-In order to reference the Ring V2 contracts, you should use the npm artifacts we deploy containing the core and
-periphery smart contracts and interfaces. To add npm dependencies, we must first initialize the npm package.
-We can run `npm init` in the same directory to create a `package.json` file. You can accept all the defaults and
-modify them later.
-
-```shell script
-npm init
-```
-
-## Adding dependencies
-
-Now that we have an npm package, we can add our dependencies. Let's add both the
-[`@uniswap/v2-core`](https://www.npmjs.com/package/@uniswap/v2-core) and
-[`@uniswap/v2-periphery`](https://www.npmjs.com/package/@uniswap/v2-periphery) packages.
-
-```shell script
-npm i --save @uniswap/v2-core
-npm i --save @uniswap/v2-periphery
-```
-
-If you check the `node_modules/@uniswap` directory, you can now find the Ring V2 contracts.
-
-```shell script
-moody@MacBook-Pro ~/I/u/demo> ls node_modules/@uniswap/v2-core/contracts
-UniswapV2ERC20.sol    UniswapV2Pair.sol     libraries/
-UniswapV2Factory.sol  interfaces/           test/
-moody@MacBook-Pro ~/I/u/demo> ls node_modules/@uniswap/v2-periphery/contracts/
-UniswapV2Migrator.sol  examples/              test/
-UniswapV2Router01.sol  interfaces/
-UniswapV2Router02.sol  libraries/
-```
-
-These packages include both the smart contract source code and the build artifacts.
-
-## Writing our contract
-
-We can now get started writing our example contract.
-For writing Solidity, we recommend IntelliJ or VSCode with a solidity plugin, but you can use any text editor.
-Let's write a contract that returns the value of some amount of liquidity shares for a given token pair.
-First create a couple of files:
-
-```shell script
-mkdir contracts/interfaces
-touch contracts/interfaces/ILiquidityValueCalculator.sol
-touch contracts/LiquidityValueCalculator.sol
-```
-
-This will be the interface of the contract we implement. Put it in `contracts/interfaces/ILiquidityValueCalculator.sol`.
+For simple swaps, most integrations only need the router interface:
 
 ```solidity
-pragma solidity ^0.6.6;
+pragma solidity ^0.8.20;
 
-interface ILiquidityValueCalculator {
-    function computeLiquidityShareValue(uint liquidity, address tokenA, address tokenB) external returns (uint tokenAAmount, uint tokenBAmount);
+interface IRingSwapRouter {
+    function WETH() external pure returns (address);
+
+    function swapExactTokensForTokens(
+        uint amountIn,
+        uint amountOutMin,
+        address[] calldata path,
+        address to,
+        uint deadline
+    ) external returns (uint[] memory amounts);
 }
 ```
 
-Now let's start with the constructor. You need to know where the `UniswapV2Factory` is deployed in order to compute the
-address of the pair and look up the total supply of liquidity shares, plus the amounts for the reserves.
-We can store this address as a parameter passed to the constructor.
+For pair validation or reserve reads, use the pair and factory interfaces from the
+[smart contract reference](../../reference/smart-contracts/factory).
 
-The factory address is constant on mainnet and all testnets, so it may be tempting to make this value a constant in your contract,
-but since we need to unit test the contract it should be an argument. You can use solidity immutables to save on gas
-when accessing this variable.
+## Approve and Swap
+
+Your contract must hold the input tokens and approve the router before swapping:
 
 ```solidity
-pragma solidity ^0.6.6;
+pragma solidity ^0.8.20;
 
-import './interfaces/ILiquidityValueCalculator.sol';
+interface IERC20 {
+    function approve(address spender, uint value) external returns (bool);
+    function transferFrom(address from, address to, uint value) external returns (bool);
+}
 
-contract LiquidityValueCalculator is ILiquidityValueCalculator {
-    address public factory;
-    constructor(address factory_) public {
-        factory = factory_;
+contract ExampleRingSwap {
+    IRingSwapRouter public immutable router;
+
+    constructor(address router_) {
+        router = IRingSwapRouter(router_);
+    }
+
+    function swapExactInput(
+        IERC20 inputToken,
+        uint amountIn,
+        uint amountOutMin,
+        address[] calldata path,
+        address recipient
+    ) external returns (uint[] memory amounts) {
+        require(inputToken.transferFrom(msg.sender, address(this), amountIn), 'transferFrom failed');
+        require(inputToken.approve(address(router), amountIn), 'approve failed');
+
+        return router.swapExactTokensForTokens(amountIn, amountOutMin, path, recipient, block.timestamp);
     }
 }
 ```
 
-Now we need to be able to look up the total supply of liquidity for a pair, and its token balances.
-Let's put this in a separate function. To implement it, we must:
+## Integration Notes
 
-1. Look up the pair address
-2. Get the reserves of the pair
-3. Get the total supply of the pair liquidity
-4. Sort the reserves in the order of tokenA, tokenB
-
-The [`UniswapV2Library`](../../reference/smart-contracts/library) has some helpful methods for this.
-
-```solidity
-pragma solidity ^0.6.6;
-
-import './interfaces/ILiquidityValueCalculator.sol';
-import '@uniswap/v2-periphery/contracts/libraries/UniswapV2Library.sol';
-import '@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol';
-
-contract LiquidityValueCalculator is ILiquidityValueCalculator {
-    function pairInfo(address tokenA, address tokenB) internal view returns (uint reserveA, uint reserveB, uint totalSupply) {
-        IUniswapV2Pair pair = IUniswapV2Pair(UniswapV2Library.pairFor(factory, tokenA, tokenB));
-        totalSupply = pair.totalSupply();
-        (uint reserves0, uint reserves1,) = pair.getReserves();
-        (reserveA, reserveB) = tokenA == pair.token0() ? (reserves0, reserves1) : (reserves1, reserves0);
-    }
-}
-```
-
-Finally, we can compute the share value by applying the LP-token share ratio to each reserve.
-
-```solidity
-pragma solidity ^0.6.6;
-
-import './interfaces/ILiquidityValueCalculator.sol';
-import '@uniswap/v2-periphery/contracts/libraries/UniswapV2Library.sol';
-import '@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol';
-
-contract LiquidityValueCalculator is ILiquidityValueCalculator {
-    address public factory;
-    constructor(address factory_) public {
-        factory = factory_;
-    }
-
-    function pairInfo(address tokenA, address tokenB) internal view returns (uint reserveA, uint reserveB, uint totalSupply) {
-        IUniswapV2Pair pair = IUniswapV2Pair(UniswapV2Library.pairFor(factory, tokenA, tokenB));
-        totalSupply = pair.totalSupply();
-        (uint reserves0, uint reserves1,) = pair.getReserves();
-        (reserveA, reserveB) = tokenA == pair.token0() ? (reserves0, reserves1) : (reserves1, reserves0);
-    }
-
-    function computeLiquidityShareValue(uint liquidity, address tokenA, address tokenB) external view override returns (uint tokenAAmount, uint tokenBAmount) {
-        (uint reserveA, uint reserveB, uint totalSupply) = pairInfo(tokenA, tokenB);
-        tokenAAmount = reserveA * liquidity / totalSupply;
-        tokenBAmount = reserveB * liquidity / totalSupply;
-    }
-}
-```
-
-## Writing tests
-
-In order to test your contract, you need to:
-
-1. Bring up a testnet
-2. Deploy the `UniswapV2Factory`
-3. Deploy at least 2 ERC20 tokens for a pair
-4. Create a pair for the factory
-5. Deploy your `LiquidityValueCalculator` contract
-6. Call `LiquidityValueCalculator#computeLiquidityShareValue`
-7. Verify the result with an assertion
-
-\#1 is handled for you automatically by the `truffle test` command.
-
-Note that you should only deploy the precompiled Ring contracts in the `build` directories for unit tests.
-This is because solidity appends a metadata hash to compiled contract artifacts which includes the hash of the contract
-source code path, and compilations on other machines will not result in the exact same bytecode.
-This is problematic because in Ring V2 we use the hash of the bytecode in the v2-periphery
-[`UniswapV2Library`](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/libraries/UniswapV2Library.sol#L24),
-to compute the pair address.
-
-To get the bytecode for deploying UniswapV2Factory, you can import the file via:
-
-```javascript
-const UniswapV2FactoryBytecode = require('@uniswap/v2-core/build/UniswapV2Factory.json').bytecode
-```
-
-We recommend using a standard ERC20 from `@openzeppelin/contracts` for deploying an ERC20.
-
-You can read more about deploying contracts and writing tests using Truffle
-[here](https://www.trufflesuite.com/docs/truffle/testing/writing-tests-in-javascript).
-
-## Compiling and deploying the contract
-
-Learn more about compiling and deploying contracts using Truffle
-[here](https://www.trufflesuite.com/docs/truffle/getting-started/compiling-contracts) and
-[here](https://www.trufflesuite.com/docs/truffle/getting-started/running-migrations) respectively.
-
-This example is intentionally minimal so you can adapt it to your own integration, testing, and deployment flow.
+- Use FewToken addresses in Ring Swap paths when the pool is FewToken-native.
+- Do not hardcode upstream deployment addresses. Ring deployments differ by chain.
+- Price checks should come from an external quote, oracle, or SDK calculation before submitting the transaction.
+- For deterministic pair addresses, prefer the Ring SDK helper when possible so chain-specific factory and init-code
+  values stay aligned with the current deployment table.

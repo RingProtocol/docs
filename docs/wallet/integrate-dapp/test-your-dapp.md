@@ -4,10 +4,10 @@ title: Test Your DApp
 sidebar_position: 4
 ---
 
-Let developing dapp showed in Ring wallet Dapp list with DApp Key or name.
+Use your DApp key or name to show an in-review DApp in the Ring Wallet DApp list.
 
 ```text
-https://wallet.ring.exchange/?testdapp=YOUR_API_KEY or YOUR_DAPP_NAME
+https://wallet.ring.exchange/?testdapp=YOUR_API_KEY_OR_DAPP_NAME
 ```
 
 Your DApp will appear in the DApp list even while in review. Click it to verify:

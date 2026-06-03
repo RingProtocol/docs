@@ -4,7 +4,7 @@
 **Inherits:**
 [ImmutableState](contracts/v4/reference/periphery/base/ImmutableState.md), IUnlockCallback
 
-A contract that only allows the Ring v4 PoolManager to call the unlockCallback
+A contract that only allows the v4 PoolManager to call the unlockCallback
 
 
 ## Functions
@@ -46,4 +46,3 @@ function unlockCallback(bytes calldata data) external onlyPoolManager returns (b
 ```solidity
 function _unlockCallback(bytes calldata data) internal virtual returns (bytes memory);
 ```
-

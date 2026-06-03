@@ -6,7 +6,9 @@ title: Overview
 
 ## Ring APIs
 
-The **Ring Routing API** is a partner-facing quote service. It returns the best executable swap quote on a given pair, with execution-ready calldata, routing across Ring Swap v2, Uniswap v3 / v4, and FewToken-wrapped pools — and optionally racing external aggregators (1inch, Bitget, Enso, HiUni) for best execution.
+The **Ring Routing API** is a partner-facing quote service. It returns the best executable swap quote on a given pair,
+with execution-ready calldata, routing across Ring Swap (v2), FewToken-wrapped pools, Uniswap v4 integration paths,
+and selected external aggregator routes. This does not imply additional native Ring AMM product lines.
 
 ## Quote API
 
@@ -16,7 +18,7 @@ POST https://gateway.ring.exchange/v1/partner/quote
 
 Returns the optimal swap quote for a token pair, plus the router contract address and calldata to submit on-chain.
 
-→ See the **[Routing API reference](./routing/overview)** for headers, request/response schema, supported chains, and examples.
+See the **[Routing API reference](./routing/overview)** for headers, request/response schema, supported chains, and examples.
 
 ## Getting access
 

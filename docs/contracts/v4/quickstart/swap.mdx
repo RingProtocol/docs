@@ -16,8 +16,6 @@ forge install Uniswap/v4-core
 forge install RingProtocol/v4-periphery
 forge install uniswap/permit2
 forge install uniswap/universal-router
-forge install uniswap/v3-core
-forge install uniswap/v2-core
 forge install OpenZeppelin/openzeppelin-contracts
 ```
 In the `remappings.txt`, add the following:
@@ -26,8 +24,6 @@ In the `remappings.txt`, add the following:
 @ring-protocol/v4-periphery/=lib/v4-periphery/
 @uniswap/permit2/=lib/permit2/
 @uniswap/universal-router/=lib/universal-router/
-@uniswap/v3-core/=lib/v3-core/
-@uniswap/v2-core/=lib/v2-core/
 @openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/
 [...]
 ```
@@ -76,7 +72,7 @@ In this step, we're importing the necessary contracts and interfaces:
 
 ### Step 2: Implement Token Approval with Permit2
 
-`UniversalRouter` integrates with [Permit2](https://github.com/Uniswap/permit2), to enable users to have more safety, flexibility, and control over their ERC20 token approvals.
+`UniversalRouter` integrates with Permit2, to enable users to have more safety, flexibility, and control over their ERC20 token approvals.
 
 Before we can execute swaps, we need to ensure our contract can transfer tokens. We’ll implement a function to approve the Universal Router to spend tokens on behalf of our contract.
 

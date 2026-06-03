@@ -21,19 +21,24 @@ To differentiate between the "typical" trading case and the flash swap case, pai
 function uniswapV2Call(address sender, uint amount0, uint amount1, bytes calldata data);
 ```
 
-The logic behind this identification strategy is simple: the vast majority of valid flash swap use cases involve interactions with external protocols. The best way to pass information dictating how these interactions happen (function arguments, safety parameters, addresses, etc.) is via the `data` parameter. It's expected that `data` will be `abi.decode`d from within `uniswapV2Call`. In the rare case where no data is required, callers should ensure that `data.length` equals 1 (i.e. encode a single junk byte as `bytes`), and then ignore this argument in `uniswapV2Call`.
+The v2-compatible callback selector is named `uniswapV2Call` for ABI compatibility. The logic behind this
+identification strategy is simple: the vast majority of valid flash swap use cases involve interactions with external
+protocols. The best way to pass information dictating how these interactions happen (function arguments, safety
+parameters, addresses, etc.) is via the `data` parameter. It's expected that `data` will be `abi.decode`d from within
+the callback. In the rare case where no data is required, callers should ensure that `data.length` equals 1 (i.e. encode
+a single junk byte as `bytes`), and then ignore this argument in the callback.
 
 Pairs call `uniswapV2Call` with the `sender` argument set to the `msg.sender` of the `swap`. `amount0` and `amount1` are simply `amount0Out` and `amount1Out`.
 
-## Using uniswapV2Call
+## Using the Callback
 
 There are several conditions that should be checked in all `uniswapV2Call` functions:
 
 ```solidity
 function uniswapV2Call(address sender, uint amount0, uint amount1, bytes calldata data) {
-  address token0 = IUniswapV2Pair(msg.sender).token0(); // fetch the address of token0
-  address token1 = IUniswapV2Pair(msg.sender).token1(); // fetch the address of token1
-  assert(msg.sender == IUniswapV2Factory(factoryV2).getPair(token0, token1)); // ensure that msg.sender is a V2 pair
+  address token0 = IRingSwapPair(msg.sender).token0(); // fetch the address of token0
+  address token1 = IRingSwapPair(msg.sender).token1(); // fetch the address of token1
+  assert(msg.sender == IRingSwapFactory(factoryV2).getPair(token0, token1)); // ensure that msg.sender is a Ring Swap pair
   // rest of the function goes here!
 }
 ```
@@ -42,7 +47,9 @@ The first 2 lines simply fetch the token addresses from the pair, and the 3rd en
 
 ## Repayment
 
-At the end of `uniswapV2Call`, contracts must return enough tokens to the pair to make it whole. Specifically, this means that the product of the pair reserves after the swap, discounting all token amounts sent by 0.3% LP fee, must be greater than before.
+At the end of the callback, contracts must return enough tokens to the pair to make it whole. Specifically, this means
+that the product of the pair reserves after the swap, discounting all token amounts sent by 0.3% LP fee, must be greater
+than before.
 
 ## Multi-Token
 
@@ -64,24 +71,16 @@ It may be more intuitive to rewrite this formula in terms of a "fee" levied on t
 
 So, the effective fee on the withdrawn amount is `.003 / .997 ≈ 0.3009027%`.
 
-## Resources
-
-For further exploration of flash swaps, see the <a href='/whitepaper.pdf' target='_blank' rel='noopener noreferrer'>whitepaper</a>.
-
 ## Example
 
-A fully functional example of flash swaps is available: [`ExampleFlashSwap.sol`](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/examples/ExampleFlashSwap.sol).
+Ring-specific flash swap examples will be published after the examples are finalized.
 
 ## Interface
 
 ```solidity
-import '@uniswap/v2-core/contracts/interfaces/IUniswapV2Callee.sol';
-```
-
-```solidity
 pragma solidity >=0.5.0;
 
-interface IUniswapV2Callee {
+interface IRingV2Callee {
   function uniswapV2Call(address sender, uint amount0, uint amount1, bytes calldata data) external;
 }
 ```

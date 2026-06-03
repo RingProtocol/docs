@@ -26,16 +26,14 @@ This documentation includes a curated [LLMs.txt file](/llms.txt) and a generated
 
 - Protocol architecture and concepts
 - Smart contract interfaces and functionality
-- SDK usage and integration patterns for `@ring-protocol/sdk-core`, `@ring-protocol/v2-sdk`, and `@ring-protocol/uniswap-v2-sdk`
+- SDK usage and integration patterns for `@ring-protocol/sdk-core`, `@ring-protocol/v2-sdk`, and lower-level v2-compatible primitives
 - Development best practices
-
-Wallet connection material for `web3-react` remains documented under the Wallet section because it is an external frontend integration rather than part of the main Ring SDK package set.
 
 ## Best Practices for AI-Assisted Development
 
 When using AI tools for Ring development:
 
-1. **Provide Context**: Always include relevant protocol version (v2, v3, v4) in your queries
+1. **Provide Context**: Always name the relevant Ring surface, such as Ring Swap (v2), FewToken wrapping, or Uniswap v4 integration
 2. **Verify Code**: Always test and verify AI-generated code before deployment
 3. **Reference Documentation**: Cross-check AI responses against official documentation
 4. **Security First**: Have AI-generated smart contracts audited before production use

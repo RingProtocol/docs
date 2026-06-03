@@ -9,7 +9,7 @@ A collection of immutable state variables, commonly used across multiple contrac
 
 ## State Variables
 ### poolManager
-The Ring v4 PoolManager contract
+The v4 PoolManager contract
 
 
 ```solidity
@@ -42,4 +42,3 @@ Thrown when the caller is not PoolManager
 ```solidity
 error NotPoolManager();
 ```
-

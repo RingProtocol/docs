@@ -7,45 +7,45 @@ import { Emblem1, ThickX, Hexagon, BookOpen, ArrowRight, Github, Npm } from '../
 
 export const actions = [
   {
-    title: 'Understand the protocol',
+    title: 'Integrate Ring Swap (v2)',
     icon: 'book-open',
-    to: '/concepts/overview',
-    text: 'Start with Ring concepts, pools, swaps, liquidity, and the protocol architecture.',
+    to: '/contracts/v2/overview',
+    text: "Build against Ring's native FewToken AMM and router product line.",
     color: 'orange',
   },
   {
-    title: 'Integrate the SDKs',
+    title: 'Use FewToken wrapping',
     icon: 'x',
-    to: '/sdk/v2/overview',
-    text: 'Use Ring SDKs to fetch data, price assets, route trades, and wire up app flows.',
+    to: '/contracts/v2/fewtoken/integrating',
+    text: 'Resolve FewToken addresses and understand the wrapping layer behind Ring Swap.',
     color: 'brown',
   },
   {
-    title: 'Work with contracts',
+    title: 'Use v4 integrations',
     icon: 'hexagon',
-    to: '/contracts/overview',
-    text: 'Reference deployments, contract architecture, and extension points for protocol integrations.',
+    to: '/contracts/v4/overview',
+    text: 'Use FewToken and Few hooks in Uniswap v4 environments when the integration needs v4.',
     color: 'green',
   },
 ]
 
 const heroLinks = [
-  { label: 'Concepts', to: '/concepts/overview' },
-  { label: 'Contracts', to: '/contracts/overview' },
-  { label: 'SDKs', to: '/sdk/v2/overview' },
-  { label: 'Wallet', to: '/wallet/overview' },
+  { label: 'Ring Swap (v2)', to: '/contracts/v2/overview' },
+  { label: 'FewToken Wrapping', to: '/contracts/v2/fewtoken/integrating' },
+  { label: 'Deployments', to: '/contracts/v2/deployments' },
+  { label: 'Uniswap v4 Integration', to: '/contracts/v4/overview' },
 ]
 
 const heroHighlights = [
-  { label: 'Core sections', value: '4' },
-  { label: 'Quick start paths', value: '12+' },
-  { label: 'Reference docs', value: '200+' },
+  { label: 'Native swap product', value: 'Ring Swap' },
+  { label: 'Asset layer', value: 'FEW' },
+  { label: 'External integration', value: 'v4 hooks' },
 ]
 
 const sectionDescriptions = {
-  sdk: 'Start with integration patterns, routing, price data, and liquidity flows for apps built on Ring.',
+  sdk: 'Use the Ring Swap SDK for FEW-aware pricing, routing, pair discovery, and trade construction.',
   contracts:
-    'Start with FewToken and Ring Swap (v2) contracts first, then move into selective Uniswap v4 integration guidance when needed.',
+    'Start with Ring Swap (v2) and its FewToken wrapping flow, then move into Uniswap v4 integration only when the workflow needs v4 hooks or pools.',
   resources: 'Reach repositories, deployment references, community channels, and protocol resources quickly.',
 }
 
@@ -57,7 +57,7 @@ export const developerLinks = [
   },
   {
     title: 'Ring Protocol contracts',
-    href: '/contracts/fewv2/deployments',
+    href: '/contracts/v2/deployments',
     icon: 'github',
   },
   {
@@ -69,22 +69,22 @@ export const developerLinks = [
 
 export const dAppGuides = [
   {
-    title: 'Fetch token prices',
-    text: 'Understand pricing and reserve-based quotes in Ring Swap (v2)',
+    title: 'Price FewToken routes',
+    text: 'Understand reserve-based quotes for Ring Swap (v2)',
     to: '/sdk/v2/guides/pricing',
   },
   {
-    title: 'Create a Trade',
-    text: 'Construct and execute trades with the v2 SDK',
+    title: 'Create a Ring Swap trade',
+    text: 'Construct FEW-aware trades with the Ring Swap SDK',
     to: '/sdk/v2/guides/trading',
   },
   {
-    title: 'Route trades',
-    text: 'Fetch pair and market data for routing logic',
+    title: 'Fetch pair data',
+    text: 'Read Ring Swap pair reserves and metadata for routing logic',
     to: '/sdk/v2/guides/fetching-data',
   },
   {
-    title: 'Provide liquidity',
+    title: 'Find pair addresses',
     text: 'Derive pair addresses and prepare integrations around Ring Swap (v2)',
     to: '/sdk/v2/guides/getting-pair-addresses',
   },
@@ -92,23 +92,23 @@ export const dAppGuides = [
 export const smartContractGuides = [
   {
     title: 'View deployment addresses',
-    text: 'Start with the published Few Protocol and Ring Swap (v2) contract addresses',
-    to: '/contracts/fewv2/deployments',
+    text: 'Start with the published Ring Swap, FewFactory, router, hook, and init-code addresses',
+    to: '/contracts/v2/deployments',
   },
   {
     title: 'Integrate Ring Swap (v2)',
-    text: 'Use the native Ring Swap (v2) contract flow for Solidity integrations',
+    text: "Use Ring Swap's native FewToken contract flow for Solidity integrations",
     to: '/contracts/v2/guides/smart-contract-integration/quick-start',
   },
   {
-    title: 'Get pair addresses',
-    text: 'Derive Ring Swap (v2) pair addresses for contract-side integrations',
-    to: '/contracts/v2/guides/smart-contract-integration/getting-pair-addresses',
+    title: 'Resolve FewToken addresses',
+    text: 'Map original ERC-20 assets to the FewToken addresses used by Ring Swap',
+    to: '/contracts/v2/fewtoken/get-fewtoken-address-via-fewfactory',
   },
   {
-    title: 'Work with FewToken factories',
-    text: 'Resolve FewToken and underlying ERC-20 relationships from Few contracts',
-    to: '/contracts/fewv2/integrating',
+    title: 'Recover underlying tokens',
+    text: 'Map FewToken addresses back to their original ERC-20 assets',
+    to: '/contracts/v2/fewtoken/get-erc20-token-address-via-fewfactory',
   },
   {
     title: 'Build a v4 integration hook',
@@ -130,11 +130,11 @@ const Home = () => {
               </span>
             </div>
             <h1 className="mt-6 serif-heading-0 text-light-neutral-1 dark:text-dark-neutral-1">
-              Build on Ring without guessing where to start.
+              Build on Ring Swap, FewToken, and v4 hooks without guessing the product boundary.
             </h1>
             <p className="mt-4 max-w-2xl subheading-2 text-light-neutral-2 dark:text-dark-neutral-2">
-              Ring docs are organized around the choices builders actually make: understand the protocol, integrate
-              SDKs, ship contract logic, or connect a wallet.
+              Ring docs are organized around the current public stack: Ring Swap (v2) as the native AMM product, Few
+              Protocol as the wrapping layer, and Uniswap v4 integration where FewToken hooks are needed.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               {heroLinks.map((link) => (
@@ -233,7 +233,7 @@ const Home = () => {
             <p className="button-label-4 uppercase tracking-[0.08em] text-light-accent-1 dark:text-dark-accent-1">
               SDK workflows
             </p>
-            <h3 className="mt-3 text-light-neutral-1 dark:text-dark-neutral-1 heading-2">Build with Ring SDKs</h3>
+            <h3 className="mt-3 text-light-neutral-1 dark:text-dark-neutral-1 heading-2">Build with Ring Swap SDK</h3>
             <p className="mt-3 body-2 text-light-neutral-2 dark:text-dark-neutral-2">{sectionDescriptions.sdk}</p>
           </div>
           <div className="col-span-full sm:col-span-6 default-grid mt-6 sm:mt-0">

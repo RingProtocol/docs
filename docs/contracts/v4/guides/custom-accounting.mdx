@@ -4,7 +4,7 @@ sidebar_position: 3
 ---
 
 ## Introduction
-This page explains custom accounting in the current `FewToken + Uniswap v4` integration environment. It should be read as technical integration guidance, not as documentation for a separate native `Ring v4` AMM.
+This page explains custom accounting in the current `FewToken + Uniswap v4` integration environment. It should be read as technical integration guidance, not as documentation for a separate native v4 AMM.
 
 These features are grouped together because they collectively represent the core of v4 customizability. They all relate to how pool state is managed and modified, working in tandem to allow developers to create highly tailored AMM experiences, from dynamic fee structures to unique bonding curves.
 
@@ -58,7 +58,7 @@ Keep reading because at the bottom we are providing a step by step guide on how 
 
 ### Custom Curves in v4
 
-Custom curves in v4 represent a big change in AMM design flexibility. Unlike [Ring v2](/contracts/v2/concepts/protocol-overview/how-uniswap-works), where the x*y=k formula was hardcoded, v4 allows developers to implement a wide variety of pricing models.
+Custom curves in v4 represent a big change in AMM design flexibility. Unlike [Ring Swap (v2)](/contracts/v2/concepts/how-ring-swap-works/ring-swap-model), where the x*y=k formula is fixed, v4 allows developers to implement a wide variety of pricing models.
 
 This is made possible through the hook system, particularly hooks that can interact with the swap process. Custom curves allow developers to eject the native concentrated liquidity pricing mechanism. These hooks can intercept swap requests, apply custom pricing logic, and return modified swap parameters. This enables the creation of pools with unique characteristics, such as:
 
@@ -77,7 +77,7 @@ Key aspects of return deltas:
 
 1. **Dual Adjustment**: Return deltas simultaneously modify the balance changes (deltas) for both the hook contract and the swap router. This dual nature ensures that custom logic is accurately reflected across the entire system.
 2. **Credits and Debts Modification**: By adjusting these deltas, return deltas effectively alter the credits and debts owed by the hook and the swap router. This allows for complex economic models to be implemented directly within the protocol.
-3. **Native Pricing Bypass**: Return deltas enable hooks to implement custom curves that can completely bypass Uniswap's native pricing mechanism. This opens up possibilities for entirely new types of automated market makers within the Ring ecosystem.
+3. **Native Pricing Bypass**: Return deltas enable hooks to implement custom curves that can completely bypass the v4 pool's native pricing mechanism. This opens up possibilities for entirely new types of automated market makers within the Ring ecosystem.
 4. **Hook Fee Implementation**: Through return deltas, hooks can implement their own fee structures, separate from the core protocol fees.
 
 In essence, return deltas allow for bespoke modification of an operation's result -- enabling features that were previously impossible in earlier versions of the protocol.

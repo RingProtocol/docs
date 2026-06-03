@@ -12,7 +12,9 @@ The most obvious way to get the address for a pair is to call [getPair](../../..
 
 ## CREATE2
 
-Thanks to some [fancy footwork in the factory](https://github.com/Uniswap/uniswap-v2-core/blob/master/contracts/UniswapV2Factory.sol#L32), we can also compute pair addresses _without any on-chain lookups_ because of [CREATE2](https://eips.ethereum.org/EIPS/eip-1014). In Ring Swap, this is chain-aware: use the factory for the target network and the corresponding entry in `INIT_CODE_HASH_MAP`.
+Ring Swap pair addresses can also be computed _without any on-chain lookups_ because the factory uses
+[CREATE2](https://eips.ethereum.org/EIPS/eip-1014). In Ring Swap, this is chain-aware: use the factory for the target
+network and the corresponding entry in `INIT_CODE_HASH_MAP`.
 
 |                        |                                                                                |
 | :--------------------- | :----------------------------------------------------------------------------- |

@@ -5,7 +5,7 @@ sidebar_position: 1
 
 ## Introduction
 
-This guide is about building hooks in the current v4 integration stack. It should be read as integration guidance for `FewToken + Uniswap v4`, not as documentation for a separate native `Ring v4` AMM.
+This guide is about building hooks in the current v4 integration stack. It should be read as integration guidance for `FewToken + Uniswap v4`, not as documentation for a separate native v4 AMM.
 
 In this guide, we’ll be conceptualizing, understanding and building a basic points hook, which will give you some idea of how to build your own hook.
 
@@ -28,7 +28,7 @@ Within the current v4 hook model, there are several hooks available for develope
 
 For our hook, we’ll be using `afterSwap` and `afterAddLiquidity` hooks. Why these instead of the `before...` hooks? We’ll dig deeper into this later in this guide.
 
-_Note: To initiate the swap in the first place, this is where [`UniversalRouter`](../../../../contracts/universal-router/01-overview.md) comes into play where we will pass in the [`V4_SWAP`](https://github.com/Uniswap/universal-router/blob/main/contracts/libraries/Commands.sol#L35) command to `UniversalRouter.execute`._
+_Note: To initiate the swap in the first place, this is where [`UniversalRouter`](../../../../contracts/universal-router/01-overview.md) comes into play where we will pass in the `V4_SWAP` command to `UniversalRouter.execute`._
 
 ## Let’s create our hook!
 
@@ -36,17 +36,8 @@ We’ll call this hook `PointsHook` and create it in such a way that any pool pa
 
 ### Setting things up
 
-The Ring [v4-template repo](https://github.com/uniswapfoundation/v4-template) provides a basic foundry environment with required imports already pre-loaded. Click on [`Use this template`](https://github.com/new?template_name=v4-template&template_owner=uniswapfoundation) to create a new repository with it.
-
-Or simply clone it and install the dependencies:
-
-```bash
-git clone https://github.com/uniswapfoundation/v4-template.git
-cd v4-template
-# requires foundry
-forge install
-forge test
-```
+Start from a Foundry project with `v4-core` and Ring's `v4-periphery` installed. See the
+[hook setup guide](../../quickstart/hooks/setup) for the current local environment setup.
 
 After that let's create a new contract `PointsHook.sol` in `src` folder with the following codes:
 

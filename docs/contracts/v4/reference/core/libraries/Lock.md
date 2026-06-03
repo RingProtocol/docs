@@ -1,5 +1,4 @@
 # Lock
-[Git Source](https://github.com/Uniswap/v4-core/blob/80311e34080fee64b6fc6c916e9a51a437d0e482/src/libraries/Lock.sol) - Generated with [forge doc](https://book.getfoundry.sh/reference/forge/forge-doc)
 
 This is a temporary library that allows us to use transient storage (tstore/tload)
 TODO: This library can be deleted when we have the transient keyword support in solidity.

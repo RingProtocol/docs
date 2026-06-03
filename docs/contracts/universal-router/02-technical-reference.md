@@ -36,29 +36,15 @@ A single bit flag, that signals whether or not the command should be allowed to 
 
 ### `command`
 
-A 5 bit unique identifier for the command that should be carried out. The values of these commands can be found within [Commands.sol](https://github.com/Uniswap/universal-router/blob/main/contracts/libraries/Commands.sol), or can be viewed in the table below.
+A 5 bit unique identifier for the command that should be carried out. The command values supported by the current Ring
+Universal Router are listed below.
 
 The command types that are not defined do not have an assigned command at this moment in time. Providing one of these identifiers will cause the transaction to revert with `InvalidCommandType`.
 
-## v2 vs v1 Overview
-
-**Note:** For details on the previous version, see [Universal Router (Legacy)](../../universal-router-legacy/overview).
-
-| Feature                   | v1                        | v2                                       |
-| ------------------------- | ------------------------- | ---------------------------------------- |
-| NFT support               | ✅ Multiple marketplaces  | ❌ Removed                               |
-| v4 pool interaction       | ❌ Not supported          | ✅ `V4_SWAP`, `V4_POSITION_MANAGER_CALL` |
-| v3/v4 position management | ❌ Not supported          | ✅ `V3_POSITION_MANAGER_*` / `V4_*`      |
-| Commands                  | 0x00–0x3f (dense NFT ops) | 0x00–0x21 (compact core logic)           |
-| Permit2-based transfers   | ✅                        | ✅ Extended with batch & position flows  |
-| Sub-plan execution        | ✅ `EXECUTE_SUB_PLAN`     | ✅ Still supported                       |
-
-## Supported Commands (v2)
+## Documented Commands
 
 | Command | Name                          |
 | ------: | ----------------------------- |
-|  `0x00` | `V3_SWAP_EXACT_IN`            |
-|  `0x01` | `V3_SWAP_EXACT_OUT`           |
 |  `0x02` | `PERMIT2_TRANSFER_FROM`       |
 |  `0x03` | `PERMIT2_PERMIT_BATCH`        |
 |  `0x04` | `SWEEP`                       |
@@ -72,8 +58,6 @@ The command types that are not defined do not have an assigned command at this m
 |  `0x0d` | `PERMIT2_TRANSFER_FROM_BATCH` |
 |  `0x0e` | `BALANCE_CHECK_ERC20`         |
 |  `0x10` | `V4_SWAP`                     |
-|  `0x11` | `V3_POSITION_MANAGER_PERMIT`  |
-|  `0x12` | `V3_POSITION_MANAGER_CALL`    |
 |  `0x13` | `V4_INITIALIZE_POOL`          |
 |  `0x14` | `V4_POSITION_MANAGER_CALL`    |
 |  `0x21` | `EXECUTE_SUB_PLAN`            |
@@ -87,36 +71,6 @@ Each command requires its own input structure. Inputs are encoded using `abi.enc
 ---
 
 ## Swap Commands
-
-### `0x00` – V3_SWAP_EXACT_IN
-
-**Parameters:**
-
-- `address recipient`
-- `uint256 amountIn`
-- `uint256 amountOutMin`
-- `bytes path`
-- `bool payerIsUser`
-
-**Calls:** `v3SwapExactInput(...)` in V3SwapModule  
-**Usage:** Ideal for deterministic trades where the input amount is fixed.
-
----
-
-### `0x01` – V3_SWAP_EXACT_OUT
-
-**Parameters:**
-
-- `address recipient`
-- `uint256 amountOut`
-- `uint256 amountInMax`
-- `bytes path`
-- `bool payerIsUser`
-
-**Calls:** `v3SwapExactOutput(...)`  
-**Usage:** When the user wants to receive a precise amount of output tokens, regardless of price volatility, within a max budget.
-
----
 
 ### `0x08` – V2_SWAP_EXACT_IN
 
@@ -278,7 +232,7 @@ Each command requires its own input structure. Inputs are encoded using `abi.enc
 
 ---
 
-## v3 & v4 Advanced
+## v4 Integration Actions
 
 ## `0x10` – V4_SWAP
 
@@ -286,7 +240,7 @@ Each command requires its own input structure. Inputs are encoded using `abi.enc
 
 - **`bytes actions`**  
   Encoded action identifiers specifying the type of swap or payment action.  
-  For available action types, see [Ring v4 Actions](../v4/reference/periphery/libraries/Actions).
+  For available action types, see [v4 Actions](../v4/reference/periphery/libraries/Actions).
 
 - **`bytes[] params`**
   ABI-encoded parameters array, corresponding one-to-one with each action provided in `actions`.
@@ -300,7 +254,7 @@ Executes actions via `V4SwapRouter._handleAction(action, params)`:
 - Payment-related actions (`settle`, `take`) call internal balance management methods (`_settle(...)`, `_take(...)`).
 - Swap actions ultimately call `_swap(...)`, executing swaps via `PoolManager.swap(...)`.
 
-**Usage:** Executes a swap on Ring v4 using the provided parameters.
+**Usage:** Executes a swap through the v4 integration stack using the provided parameters.
 
 ### Internal Flow:
 
@@ -315,33 +269,6 @@ V4SwapRouter.\_handleAction(action, params)
 ↓ swap calls route to
 \_swap(...) → PoolManager.swap(...)
 ```
-
----
-
-### `0x11` – V3_POSITION_MANAGER_PERMIT
-
-**Parameters:**
-
-- `address spender`
-- `uint256 tokenId`
-- `uint256 deadline`
-- `uint8 v, bytes32 r, bytes32 s`
-
-**Calls:** NonfungiblePositionManager.permit(...)  
-**Usage:** Grants router permission to operate on a user’s v3 NFT.
-
----
-
-### `0x12` – V3_POSITION_MANAGER_CALL
-
-**Parameters:**
-
-- `bytes callData`
-
-**Calls:** Arbitrary call to NonfungiblePositionManager  
-**Usage:** Executes v3 NFT ops like `burn`, `collect`, `decreaseLiquidity`.
-
----
 
 ### `0x13` – V4_INITIALIZE_POOL
 
@@ -384,17 +311,11 @@ V4SwapRouter.\_handleAction(action, params)
 To allow a command to fail without reverting the entire transaction, set the high bit:
 
 ```solidity
-command = 0x80 | 0x00; // V3_SWAP_EXACT_IN with ALLOW_REVERT
+command = 0x80 | 0x08; // V2_SWAP_EXACT_IN with ALLOW_REVERT
 ```
 
 Be sure to follow such commands with cleanup logic (e.g., `SWEEP`) to handle unused ETH or tokens.
 
-## References
+## Deployment Addresses
 
-- [Ring Universal Router GitHub](https://github.com/Uniswap/universal-router)
-- [Latest Commands.sol](https://github.com/Uniswap/universal-router/blob/main/contracts/libraries/Commands.sol)
-
-## Legacy Documentation
-
-- [Universal Router (Legacy) Overview](../../universal-router-legacy/overview)
-- [Universal Router (Legacy) Technical Reference](../../universal-router-legacy/technical-reference)
+Use the current [Ring Swap deployments](../v2/deployments) for Universal Router addresses.

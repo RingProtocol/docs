@@ -4,8 +4,6 @@ title: AllowanceTransfer
 sidebar_position: 2
 ---
 
-> [**Source Code**](https://github.com/Uniswap/permit2/blob/main/src/AllowanceTransfer.sol)
-
 ## Overview
 
 The main entry points on this contract are:

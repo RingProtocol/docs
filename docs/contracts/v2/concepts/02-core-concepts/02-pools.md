@@ -23,10 +23,7 @@ To retrieve the underlying liquidity, plus any fees accrued, liquidity providers
 
 As liquidity tokens are themselves tradable assets, liquidity providers may sell, transfer, or otherwise use their liquidity tokens in any way they see fit.
 
-> Learn more with advanced topics:
-
-- [Understanding Returns](../../concepts/advanced-topics/understanding-returns)
-- [Fees](../../concepts/advanced-topics/fees)
+LP returns depend on pool reserves, trade flow, swap fees, and how much of the pool's liquidity a position represents.
 
 ## Why pools?
 

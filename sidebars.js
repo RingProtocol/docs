@@ -109,16 +109,6 @@ const sidebars = {
     //   ],
     // },
   ],
-  universalRouterLegacy: [
-    {
-      type: 'category',
-      label: 'Universal Router (Legacy)',
-      items: [
-        { type: 'doc', id: 'universal-router-legacy/overview', label: 'Overview' },
-        { type: 'doc', id: 'universal-router-legacy/technical-reference', label: 'Technical Reference' },
-      ],
-    },
-  ],
 }
 
 module.exports = sidebars

@@ -85,7 +85,7 @@ uint8 internal constant TICK_UPPER_OFFSET = 32;
 ## Functions
 ### poolId
 
-*This poolId is NOT compatible with the poolId used in UniswapV4 core. It is truncated to 25 bytes, and just used to lookup PoolKey in the poolKeys mapping.*
+*This poolId is NOT compatible with the poolId used in v4 core. It is truncated to 25 bytes, and just used to lookup PoolKey in the poolKeys mapping.*
 
 
 ```solidity
@@ -157,5 +157,4 @@ function initialize(PoolKey memory _poolKey, int24 _tickLower, int24 _tickUpper)
 |Name|Type|Description|
 |----|----|-----------|
 |`info`|`PositionInfo`|packed position info, with the truncated poolId and the hasSubscriber flag set to false|
-
 

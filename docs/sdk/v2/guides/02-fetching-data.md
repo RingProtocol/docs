@@ -105,7 +105,7 @@ async function createPair(tokenA: Token, tokenB: Token): Promise<Pair> {
   const pairAddress = Pair.getAddress(tokenA, tokenB)
 
   // Setup provider, import necessary ABI ...
-  const pairContract = new ethers.Contract(pairAddress, uniswapV2poolABI, provider)
+  const pairContract = new ethers.Contract(pairAddress, ringV2PairABI, provider)
   const reserves = await pairContract["getReserves"]()
   const [reserve0, reserve1] = reserves
 

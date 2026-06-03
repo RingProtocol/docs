@@ -7,10 +7,9 @@ Interface for the ImmutableState contract
 ## Functions
 ### poolManager
 
-The Ring v4 PoolManager contract
+The v4 PoolManager contract
 
 
 ```solidity
 function poolManager() external view returns (IPoolManager);
 ```
-

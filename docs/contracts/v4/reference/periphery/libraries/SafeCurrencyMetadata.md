@@ -3,7 +3,6 @@
 
 can produce symbols and decimals from inconsistent or absent ERC20 implementations
 
-*Reference: https://github.com/Uniswap/solidity-lib/blob/master/contracts/libraries/SafeERC20Namer.sol*
 
 
 ## State Variables

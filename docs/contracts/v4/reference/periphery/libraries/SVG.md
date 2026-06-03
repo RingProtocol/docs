@@ -66,7 +66,7 @@ string constant curve8 = "M1 1C1 97 49 145 145 145";
 ## Functions
 ### generateSVG
 
-Generate the SVG associated with a Ring v4 NFT
+Generate the SVG associated with a v4 position NFT
 
 
 ```solidity
@@ -374,4 +374,3 @@ struct SVGParams {
     string y3;
 }
 ```
-

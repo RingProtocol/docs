@@ -4,7 +4,7 @@ title: Security
 sidebar_position: 10
 ---
 
-This page covers security considerations for `FewToken + Uniswap v4` integration work. It should be read as technical guidance for the current v4 integration stack, not as documentation for a separate native `Ring v4` AMM.
+This page covers security considerations for `FewToken + Uniswap v4` integration work. It should be read as technical guidance for the current v4 integration stack, not as documentation for a separate native v4 AMM.
 
 ## Emergency Response
 
@@ -40,32 +40,10 @@ v4's flash accounting system requires careful implementation to prevent exploita
 ### Pool Manager Interactions
 Direct interactions with the PoolManager require thorough understanding of the locking mechanism and callback patterns.
 
-## Audits
+## Audit and Bounty Status
 
-Uniswap's V4 core contracts have undergone a handful of extensive security reviews by multiple providers, with some reviews still ongoing. Below is a list of completed and draft reports. The full list can be found in the respective repositories' [audits directory](https://github.com/Uniswap/v4-core/blob/main/docs/security/audits):
-
-> [Open Zeppelin report](https://github.com/Uniswap/v4-core/blob/main/docs/security/audits/OpenZeppelin_audit_core.pdf) from July 17th 2024.
-
-> [Certora draft report](https://github.com/Uniswap/v4-core/blob/main/docs/security/audits/DRAFT_Certora_audit_core.pdf) from July 2024.
-
-> [Trail of Bits report](https://github.com/Uniswap/v4-core/blob/main/docs/security/audits/TrailOfBits_audit_core.pdf) from September 5th 2024.
-
-> [Spearbit draft report](https://github.com/Uniswap/v4-core/blob/main/docs/security/audits/DRAFT_Spearbit_audit_core.pdf) from September 5th 2024.
-
-> [ABDK draft report](https://github.com/Uniswap/v4-core/blob/main/docs/security/audits/DRAFT_ABDK_audit_core.pdf) from September 5th 2024.
-
-
-Similarly, the V4 periphery contracts have been reviewed by various audit providers, and the full list is inside the periphery repository's [audits directory](https://github.com/RingProtocol/v4-periphery/tree/main/audits): 
-
-> [Open Zeppelin report](https://github.com/RingProtocol/v4-periphery/blob/main/audits/OpenZeppelin_audit_periphery_universal_router.pdf) from September 5th 2024.
-
-> [Spearbit draft report](https://github.com/RingProtocol/v4-periphery/blob/main/audits/DRAFT_Spearbit_audit_periphery.pdf) from September 5th 2024.
-
-> [ABDK draft report](https://github.com/RingProtocol/v4-periphery/blob/main/audits/DRAFT_ABDK_audit_periphery_universal_router.pdf) from September 5th 2024.
-
-## Bug Bounty Program
-
-Security programs related to the current v4 integration stack are published directly through their active bounty providers. You can view the current [bounty page](https://cantina.xyz/bounties/f9df94db-c7b1-434b-bb06-d1360abdd1be) on Cantina.
+Ring-specific audit and bounty materials should be published only after the Ring team has confirmed the exact scope,
+version, and reporting channel. Until then, this page should not be read as a list of active Ring security programs.
 
 ## Additional Security Resources
 

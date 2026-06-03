@@ -2,7 +2,7 @@
 title: IPoolManager
 ---
 
-The `IPoolManager` interface defines the main methods for interacting with the Ring V4 pool manager contract. It exposes the core _swap lifecycle_ operations
+The `IPoolManager` interface defines the main methods for interacting with the v4 `PoolManager` contract used by this integration stack. It exposes the core _swap lifecycle_ operations
 
 ## ModifyLiquidityParams
 
@@ -21,7 +21,7 @@ Structure used to execute a swap in a pool.
 
 - `zeroForOne`: Direction of the swap (true for token0 to token1, false for token1 to token0)
 - `amountSpecified`: The desired input amount if negative (exactIn), or the desired output amount if positive (exactOut)
-- `sqrtPriceLimitX96`: Slippage limit represented as [Q64X96](https://uniswapv3book.com/milestone_3/more-on-fixed-point-numbers.html#:~:text=The%20Q64.,and%2018%20signify%20decimal%20places.) notation
+- `sqrtPriceLimitX96`: Slippage limit represented as Q64X96 notation
 
 Used in the `swap` function to define the behavior of our swap.
 

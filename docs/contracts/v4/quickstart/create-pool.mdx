@@ -5,7 +5,7 @@ sidebar_position: 1
 
 ## Context
 
-This page describes how to create pools in the current `FewToken + Uniswap v4` integration environment. It should not be read as evidence that Ring operates a separate native `Ring v4` AMM.
+This page describes how to create pools in the current `FewToken + Uniswap v4` integration environment. It should not be read as evidence that Ring operates a separate native v4 AMM.
 
 Creating a pool in this v4 integration environment is permissionless and enables the trading of an asset. Uniswap v4-style infrastructure is a useful destination for market creation due to its:
 
@@ -63,7 +63,7 @@ A note on `tickSpacing`:
 
 Lower tick spacing provides improved price precision; however, smaller tick spaces will cause swaps to cross ticks more often, incurring higher gas costs
 
-As a reference, concentrated-liquidity v3-style pools are configured with:
+As a reference, common concentrated-liquidity fee configurations include:
 
 | Fee   | Fee Value | Tick Spacing |
 |-------|-----------|--------------|
@@ -180,4 +180,5 @@ PositionManager(posm).multicall{value: ethToSend}(params);
 ```
 > Excess Ether is **NOT** refunded unless developers encoded `SWEEP` in the `actions` parameter
 
-For a full end-to-end script, developers should see [v4-template's scripts](https://github.com/uniswapfoundation/v4-template/tree/main/script)
+Ring-specific end-to-end scripts should be published only after the Ring team has finalized the supported hook and pool
+creation workflow.
