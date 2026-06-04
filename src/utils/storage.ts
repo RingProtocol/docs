@@ -46,5 +46,5 @@ export class StorageManager<T> {
 
 export type Theme = 'dark' | 'light'
 
-const THEME_STORAGE_NAME = 'uniswap-ui-theme'
+const THEME_STORAGE_NAME = 'ring-ui-theme'
 export const ThemeManager = new StorageManager<Theme>(THEME_STORAGE_NAME)

@@ -7,7 +7,7 @@ Interface for the PoolInitializer_v4 contract
 ## Functions
 ### initializePool
 
-Initialize a Ring v4 Pool
+Initialize a v4 pool
 
 *If the pool is already initialized, this function will not revert and just return type(int24).max*
 
@@ -27,5 +27,4 @@ function initializePool(PoolKey calldata key, uint160 sqrtPriceX96) external pay
 |Name|Type|Description|
 |----|----|-----------|
 |`<none>`|`int24`|The current tick of the pool, or type(int24).max if the pool creation failed, or the pool already existed|
-
 

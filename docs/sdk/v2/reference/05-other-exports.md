@@ -11,7 +11,7 @@ Additional constants, helpers, and error types exported by the Ring v2 SDK.
 import { FACTORY_ADDRESS_MAP } from '@ring-protocol/v2-sdk'
 ```
 
-The [factory address](../../../contracts/v2/reference/smart-contracts/factory#address). Use `FACTORY_ADDRESS_MAP[chainId]` for the network you are targeting.
+The Ring Swap factory address. Check [Ring Swap deployments](../../../contracts/v2/deployments) and use `FACTORY_ADDRESS_MAP[chainId]` for the network you are targeting.
 
 ## INIT_CODE_HASH
 

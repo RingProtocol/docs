@@ -168,7 +168,7 @@ ___
 • `get` **wrapped**(): [`Token`](Token.md)
 
 Return the wrapped version of this currency that can be used with the Ring contracts. Currencies must
-implement this to be used in Uniswap
+implement this to be used in Ring contracts
 
 #### Returns
 

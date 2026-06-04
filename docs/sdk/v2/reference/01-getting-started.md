@@ -26,7 +26,7 @@ until the point that values are rounded for display purposes, or truncated to fi
 The Fractions class, among others that the V2 SDK depends on, are exported from the SDK Core so they can be shared across Ring SDK packages.
 Refer to the [Core SDK section of the docs](../../core/overview.md) to learn more about these classes.
 
-The SDK works for all chains on which the [factory](../../../contracts/v2/reference/smart-contracts/factory#address) is deployed.
+The SDK works for all chains on which the Ring Swap factory is deployed. Check the current [Ring Swap deployments](../../../contracts/v2/deployments) before integrating.
 
 ## Code
 

@@ -5,7 +5,7 @@ title: Common Errors
 
 This document covers a few error codes frequently encountered while building on Ring V2.
 
-## UniswapV2: K
+## RingV2: K
 
 This is an error that is frequently encountered, and requires a bit of context to understand it.
 
@@ -51,13 +51,14 @@ Negative rebasing tokens have solved this error by altering their token contract
 
 Positive rebasing tokens arbitrarily increase the balances of token holders. When a positive rebase happens, it creates a surplus that is unaccounted for in the trading pair. Because the extra tokens are unaccounted for in the trading pair, anyone can call skim() on the trading pair and effectively steal the positive difference from the rebalance.
 
-While positive rebalancing does not break any functionality of Uniswap, those interested in them should be aware that the positive balance found in any pair will be freely available for taking.
+While positive rebalancing does not break pair accounting by itself, integrators should be aware that any positive
+balance found in a pair is freely available for taking.
 
 ### A Note on Rebasing Tokens
 
 For those interested in building a rebasing token, a word of caution: many contracts involving decentralized trading and liquidity provisioning will break upon interacting with your token. An example approach that will lead to much easier integration in future protocols can be found in [CHAI](https://chai.money/about.html). CHAI uses a wrapper function that contains the rebalancing within the wrapper, such that the redeemable token can be easily integrated into many different systems.
 
-# UniswapV2: LOCKED
+# RingV2: LOCKED
 
 The LOCKED error is a guard built into the router contract that prevents customized reentrancy contracts from attempting to return malicious code into the router contract at the end of a transaction.
 
@@ -71,11 +72,11 @@ This is an error with either Metamask or Ganache-CLI. It usually occurs after a 
 
 A temporary fix is available by restarting the local fork and resetting metamask.
 
-# UniswapV2: TRANSFER_FAILED
+# RingV2: TRANSFER_FAILED
 
 This means the core contract was unable to send tokens to the recipient. This is most likely due to a scam token, where the token owner has maliciously disabled the transfer function in a way that allows users to buy the token, but not sell them.
 
-# UniswapV2: EXPIRED
+# RingV2: EXPIRED
 
 This is a result of a transaction that took too long to be broadcast to the mainnet.
 

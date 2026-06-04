@@ -15,7 +15,7 @@ First you must use an external price source to calculate the safety parameters f
 
 It is also important to ensure that your contract controls enough ETH/tokens to make the swap, and has granted approval to the router to withdraw this many tokens.
 
-_Check out the [Pricing](../../concepts/advanced-topics/pricing#pricing-trades) page for a more in depth discussion on getting prices._
+_For SDK-based pricing helpers, see the [Ring Swap SDK pricing guide](/sdk/v2/guides/pricing)._
 
 ## Example
 
@@ -35,7 +35,7 @@ require(DAI.transferFrom(msg.sender, address(this), amountIn), 'transferFrom fai
 Now that our contract owns 50 DAI, we need to approve to the [router](../../reference/smart-contracts/router-02) to withdraw this DAI:
 
 ```solidity
-require(DAI.approve(address(UniswapV2Router02), amountIn), 'approve failed.');
+require(DAI.approve(address(router), amountIn), 'approve failed.');
 ```
 
 ### swapExactTokensForETH
@@ -46,8 +46,8 @@ Now we're ready to swap:
 // amountOutMin must be retrieved from an oracle of some kind
 address[] memory path = new address[](2);
 path[0] = address(DAI);
-path[1] = UniswapV2Router02.WETH();
-UniswapV2Router02.swapExactTokensForETH(amountIn, amountOutMin, path, msg.sender, block.timestamp);
+path[1] = router.WETH();
+router.swapExactTokensForETH(amountIn, amountOutMin, path, msg.sender, block.timestamp);
 ```
 
 ## Safety Considerations

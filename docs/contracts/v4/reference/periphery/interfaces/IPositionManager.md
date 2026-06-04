@@ -10,7 +10,7 @@ Interface for the PositionManager contract
 ## Functions
 ### modifyLiquidities
 
-Unlocks Ring v4 PoolManager and batches actions for modifying liquidity
+Unlocks the v4 PoolManager and batches actions for modifying liquidity
 
 *This is the standard entrypoint for the PositionManager*
 
@@ -151,4 +151,3 @@ Thrown when calling transfer, subscribe, or unsubscribe when the PoolManager is 
 ```solidity
 error PoolManagerMustBeLocked();
 ```
-

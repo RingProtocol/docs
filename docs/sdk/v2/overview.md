@@ -1,22 +1,28 @@
 ---
 id: overview
 sidebar_position: 1
-title: Overview
+title: Ring Swap SDK
 ---
 
-Welcome to the Ring Protocol v2 SDK docs. To begin, we recommend looking at the [**Guides**](./guides/01-quick-start.md). The current source of truth for the SDK lives in the [`sdks`](https://github.com/RingProtocol/sdks) monorepo.
+Welcome to the Ring Swap SDK docs. To begin, we recommend looking at the
+[**Guides**](./guides/01-quick-start.md). The current source of truth for the SDK lives in the
+[`sdks`](https://github.com/RingProtocol/sdks) monorepo.
 
+## Ring Swap SDK
 
-## Ring v2 SDK
+Use `@ring-protocol/v2-sdk` for normal Ring Swap integrations. The package name reflects the
+v2-style constant-product contract family that Ring Swap is compatible with; it should not be read
+as a separate Ring product generation.
 
 - [**Ring SDK Monorepo**](https://github.com/RingProtocol/sdks)
-- [**Ring Protocol v2 SDK**](https://www.npmjs.com/package/@ring-protocol/v2-sdk)
+- [**Ring Swap SDK**](https://www.npmjs.com/package/@ring-protocol/v2-sdk)
 - [**Ring Protocol SDK Core**](https://www.npmjs.com/package/@ring-protocol/sdk-core)
-- [**Uniswap V2-style base SDK**](https://www.npmjs.com/package/@ring-protocol/uniswap-v2-sdk)
+- [**V2-style base SDK**](https://www.npmjs.com/package/@ring-protocol/uniswap-v2-sdk)
 
 [![npm version](https://img.shields.io/npm/v/@ring-protocol/v2-sdk/latest.svg)](https://www.npmjs.com/package/@ring-protocol/v2-sdk/v/latest)
 [![npm bundle size (scoped version)](https://img.shields.io/bundlephobia/minzip/@ring-protocol/v2-sdk/latest.svg)](https://bundlephobia.com/result?p=@ring-protocol/v2-sdk@latest)
 
-Use `@ring-protocol/v2-sdk` for normal Ring Swap integrations. It is the FEW-aware SDK layer and includes helper APIs for deriving and recognizing `FewToken` addresses.
+`@ring-protocol/v2-sdk` is the FEW-aware Ring Swap SDK layer. It includes helper APIs for deriving and
+recognizing `FewToken` addresses.
 
-Use `@ring-protocol/uniswap-v2-sdk` only when you explicitly want the lower-level Uniswap V2-style primitives rather than the higher-level Ring integration layer.
+Use `@ring-protocol/uniswap-v2-sdk` only when you explicitly want the lower-level v2-compatible primitives rather than the higher-level Ring integration layer.

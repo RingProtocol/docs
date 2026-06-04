@@ -3,7 +3,6 @@
 
 provides utility functions for converting addresses to strings
 
-*Reference: https://github.com/Uniswap/solidity-lib/blob/master/contracts/libraries/AddressStringUtil.sol*
 
 
 ## Functions

@@ -5,9 +5,10 @@ sidebar_position: 2
 
 ## Flash Accounting
 
-This page describes flash accounting in the current `FewToken + Uniswap v4` integration environment. It should be read as technical integration guidance, not as documentation for a separate native `Ring v4` AMM.
+This page describes flash accounting in the current `FewToken + Uniswap v4` integration environment. It should be read as technical integration guidance, not as documentation for a separate native v4 AMM.
 
-In previous versions of Uniswap, every time a swap was made - including multi-hop swap - tokens were transferred between Pool contracts for intermediate steps.
+In older pool-per-contract AMM designs, every swap - including multi-hop swaps - transfers tokens between pool contracts
+for intermediate steps.
 
 This design incurred inefficiencies because transferring tokens with external calls to their smart contracts - especially in a multi-hop swap - is quite expensive. This design was required since each pool was its own contract and token transfers were required to maintain accounting and solvency.
 
@@ -15,8 +16,8 @@ With the singleton architecture, a better design was possible and is referred to
 
 With _flash accounting_, each balance-changing operation (e.g. swap and liquidity modification) updates an internal net balance known as `delta`. Only the final balance-changes require token transfers.
 
-![Flash Accounting Step 1](./images/Uniswap_V4_Flash_Accounting_Step_1.png)
-![Flash Accounting Step 2](./images/Uniswap_V4_Flash_Accounting_Step_2.png)
+![Flash Accounting Step 1](./images/Ring_V4_Flash_Accounting_Step_1.png)
+![Flash Accounting Step 2](./images/Ring_V4_Flash_Accounting_Step_2.png)
 
 For example from the above diagrams - let's say you have 20 `USDC` and 20 `USDT` but you want to add liquidity with 15 `USDC` and 25 `USDT`. Previously this would require multiple external calls as tokens were transferred between Pool contracts when swapping from `USDC` to `USDT`. But now with v4's Flash Accounting we only need to keep track of `delta` - thus we can `swap` and `modifyLiquidity` in a single call and only the final balance-changes involve actual token transfers.
 
@@ -42,13 +43,13 @@ To ensure correctness and atomicity in complex operations like a multi-hop swap 
 The following diagrams visualize how the above steps will be implemented:
 
 1. `unlock` the `PoolManager`
-![Flash Accounting Locking Mechanism Step 1](./images/Uniswap_V4_Locking_Mechanism_Step_1.png)
+![Flash Accounting Locking Mechanism Step 1](./images/Ring_V4_Locking_Mechanism_Step_1.png)
 
 2. Implement `unlockCallback` and proceed with any desired pool actions
-![Flash Accounting Locking Mechanism Step 2](./images/Uniswap_V4_Locking_Mechanism_Step_2.png)
+![Flash Accounting Locking Mechanism Step 2](./images/Ring_V4_Locking_Mechanism_Step_2.png)
 
 3. The actual token transfer happens at the end and the *delta* should be resolved
-![Flash Accounting Locking Mechanism Step 3](./images/Uniswap_V4_Locking_Mechanism_Step_3.png)
+![Flash Accounting Locking Mechanism Step 3](./images/Ring_V4_Locking_Mechanism_Step_3.png)
 
 
 ### Balance Delta
@@ -59,11 +60,11 @@ The balances resolved above is what we refer as the `delta`, a field held in the
 
 ## Swapping
 
-![Multi-hop swaps on V3 vs V4](./images/Uniswap_V4_Multihop_Swaps.png)
+![Multi-hop swaps with flash accounting](./images/Ring_V4_Multihop_Swaps.png)
 
 As shown in the above diagram, for example - let's say you want to swap `ETH` for `DAI`. Assuming this requires a multi-hop swap going from `ETH` to `USDC` and then from `USDC` to `DAI`.
 
-### Previously on v3
+### Earlier pool-per-contract flow
 
 1. `ETH` is transferred to `ETH <> USDC` pool contract
 

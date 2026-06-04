@@ -37,18 +37,16 @@ TWAPs can be used directly or as the basis for moving averages (EMAs and SMAs) a
 A few notes:
 
 - For a 10-minute TWAP, sample once every 10 minutes. For a 1-week TWAP, sample once every week.
-- For a simple TWAP, the cost of manipulation increases (approx. linear) with liquidity on Uniswap, as well as (approx. linear) with the length of time over which you average.
+- For a simple TWAP, the cost of manipulation increases with Ring Swap liquidity and with the length of time over which you average.
 - The Cost of an attack is relatively simple to estimate. Moving the price 5% on a 1-hour TWAP is approximately equal to the amount lost to arbitrage and fees for moving the price 5% every block for 1 hour.
 
-There are some nuances that are good to be aware of when using Ring V2 as an oracle, especially where manipulation resistance is concerned. The <a href='/whitepaper.pdf' target='_blank' rel='noopener noreferrer'>whitepaper</a> elaborates on some of them. Additional oracle-focused developer guides and documentation will be released soon.
-
-In the meantime, check out our [example implementation](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/examples/ExampleOracleSimple.sol) of a 24 hr TWAP Oracle built on Ring V2!
+There are some nuances that are good to be aware of when using Ring V2 as an oracle, especially where manipulation resistance is concerned. Additional oracle-focused developer guides and documentation will be released once Ring-specific examples are finalized.
 
 ### Manipulation resistance
 
 The cost of manipulating the price for a specific time period can be roughly estimated as the amount lost to arbitrage and fees every block for the entire period. For larger liquidity pools and over longer time periods, this attack is impractical, as the cost of manipulation typically exceeds the value at stake.
 
-Other factors, such as network congestion, can reduce the cost of attack. For more information about Ring V2 security considerations, see the [Security](../advanced-topics/security) documentation.
+Other factors, such as network congestion, can reduce the cost of attack. Treat TWAP windows, liquidity depth, and the value secured by the oracle as part of the integration's security model.
 
 ## Building an oracle
 

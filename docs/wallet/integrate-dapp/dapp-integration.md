@@ -25,9 +25,9 @@ Copy **`public/dappsdk.js`** from this repo into your DApp’s static/public dir
 | Vue (Vite) | `public/dappsdk.js` |
 
 **Option B — Load from Ring Wallet**  
-Use the script URL from the wallet host (e.g. `https://wallet.ring.exchange/dappsdk.js`). You always get the latest SDK, but your DApp depends on that origin being available and you must allow it in CSP (see §2.3).
+Use the script URL from the wallet host (e.g. `https://wallet.ring.exchange/dappsdk.js`). You always get the latest SDK, but your DApp depends on that origin being available and you must allow it in CSP (see §1.3).
 
-### 2.2 Add the script tag
+### 1.2 Add the script tag
 
 **If self-hosting**, add the following `<script>` tag to the **top of `<head>`**, **before** your application bundle:
 
@@ -149,13 +149,13 @@ If your DApp uses standard Ethereum libraries (wagmi, ethers.js, web3.js, Rainbo
 
 ### 1.6 X-Frame-Options (allow iframe embedding)
 
-If Ring Wallet opens your DApp directly in an iframe (the iframe `src` points to your DApp URL), and your site responds with `X-Frame-Options: DENY`, the browser will refuse to load it and you will see an error like:
+If Ring Wallet opens your DApp directly in an iframe (the iframe `src` points to your DApp URL), and your site responds with `X-Frame-Options: DENY` or `X-Frame-Options: SAMEORIGIN`, the browser will refuse to load it and you will see an error like:
 
 ```text
 Refused to display 'https://your-dapp.com/' in a frame because it set 'X-Frame-Options' to 'deny'.
 ```
 
-In Vercel preview mode, add `X-Frame-Options: SAMEORIGIN` to your `vercel.json` file to allow embedding in Ring Wallet’s iframe.
+Fix: remove or adjust that response header so the page can be embedded by Ring Wallet's iframe. Common sources include Next.js `headers`, Vercel `vercel.json`, and security headers set by a reverse proxy or CDN.
 
 ## 2. Test
 

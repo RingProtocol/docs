@@ -1,5 +1,4 @@
 # ActionsRouter
-[Git Source](https://github.com/Uniswap/v4-core/blob/80311e34080fee64b6fc6c916e9a51a437d0e482/src/test/ActionsRouter.sol)
 
 **Inherits:**
 [IUnlockCallback](../interfaces/IUnlockCallback), Test
@@ -9,7 +8,6 @@ TODO: Can continue to add functions per action.
 
 
 ## Actions
-[Git Source](https://github.com/Uniswap/v4-core/blob/80311e34080fee64b6fc6c916e9a51a437d0e482/src/test/ActionsRouter.sol) - Generated with [forge doc](https://book.getfoundry.sh/reference/forge/forge-doc)
 
 
 ```solidity

@@ -3,9 +3,9 @@ id: library
 title: Library
 ---
 
-## Code
+## Usage
 
-[`UniswapV2Library.sol`](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/libraries/UniswapV2Library.sol)
+These helper functions describe the Ring Swap v2-compatible math and pair-address utilities used by integrations.
 
 ## Internal Functions
 

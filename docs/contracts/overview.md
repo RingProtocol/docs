@@ -8,34 +8,39 @@ sidebar_position: 1
 
 If you are new to Ring, the contracts documentation should be read in this order:
 
-1. `Few Protocol`
-2. `Ring Swap (v2)`
+1. `Ring Swap (v2)`
+2. `FewToken Wrapping`
 3. `Uniswap v4 Integration`
-4. `Liquidity Launchpad`
 
 ## How Ring's contract stack is organized
 
-Ring's current contract stack is centered on `Few Protocol`.
+Ring's public contract stack is organized around a native swap product and the FEW asset layer behind it.
 
-- `Few Protocol` wraps original ERC-20 assets into `FewToken`
-- `Ring Swap (v2)` is Ring's native AMM and router system
-- `Uniswap v4 Integration` documents how `FewToken` is used in Uniswap v4 environments
+- `Ring Swap (v2)` is Ring's native AMM and router product line.
+- `FewToken Wrapping` covers the FewFactory/FewToken layer used inside Ring Swap pools and routes.
+- `Uniswap v4 Integration` documents how `FewToken` and Few hooks are used in Uniswap v4 environments.
 
 This distinction is important:
 
-- Ring currently operates `Ring Swap (v2)` as its native swap protocol
-- Ring does **not** currently operate a separate native `Ring v4` AMM
-- v4-related material in these docs should generally be understood as integration with `Uniswap v4`
+- `Ring Swap (v2)` should remain visible as a top-level Ring product.
+- Ring docs should not imply additional native AMM product lines.
+- v4-related material in these docs should be understood as integration with `Uniswap v4`, not as a separate
+  native v4 product line.
 
 ## Recommended starting points
-
-### Few Protocol
-
-Start here if you want to understand the core Ring mechanism.
 
 ### Ring Swap (v2)
 
 Start here if you want to integrate Ring's native swap system.
+
+### FewToken Wrapping
+
+Start here if you want to resolve `FewToken` addresses or map wrapped assets back to underlying ERC-20 tokens.
+
+### Ring Protocol Contracts
+
+Start here if you need the current Ring Swap, FewFactory, UniversalRouter, Permit2, wrapper, hook,
+and init-code deployments.
 
 ### Uniswap v4 Integration
 

@@ -3,11 +3,7 @@ id: Pair-ERC-20
 title: Pair (ERC-20)
 ---
 
-This documentation covers ERC-20 functionality for denominating pool tokens. For Uniswap-specific functionality, see [Pair](../smart-contracts/pair).
-
-## Code
-
-[`UniswapV2ERC20.sol`](https://github.com/Uniswap/uniswap-v2-core/blob/master/contracts/UniswapV2ERC20.sol)
+This documentation covers ERC-20 functionality for Ring Swap pool tokens. For pair-specific functionality, see [Pair](../smart-contracts/pair).
 
 ## Events
 
@@ -43,7 +39,7 @@ Returns `Ring V2` for all pairs.
 function symbol() external pure returns (string memory);
 ```
 
-Returns `UNI-V2` for all pairs.
+Returns the LP token symbol configured by the deployed pair contract.
 
 ### decimals
 
@@ -148,13 +144,9 @@ Sets the allowance for a spender where approval is granted via a signature.
 ## Interface
 
 ```solidity
-import '@uniswap/v2-core/contracts/interfaces/IUniswapV2ERC20.sol';
-```
-
-```solidity
 pragma solidity >=0.5.0;
 
-interface IUniswapV2ERC20 {
+interface IRingSwapPairERC20 {
   event Approval(address indexed owner, address indexed spender, uint value);
   event Transfer(address indexed from, address indexed to, uint value);
 
@@ -176,11 +168,3 @@ interface IUniswapV2ERC20 {
   function permit(address owner, address spender, uint value, uint deadline, uint8 v, bytes32 r, bytes32 s) external;
 }
 ```
-
-## ABI
-
-```typescript
-import IUniswapV2ERC20 from '@uniswap/v2-core/build/IUniswapV2ERC20.json'
-```
-
-[https://unpkg.com/@uniswap/v2-core@1.0.0/build/IUniswapV2ERC20.json](https://unpkg.com/@uniswap/v2-core@1.0.0/build/IUniswapV2ERC20.json)

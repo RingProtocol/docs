@@ -5,7 +5,7 @@ sidebar_position: 2
 
 ## Introduction
 
-This page describes pool-state reads in the current `FewToken + Uniswap v4` integration environment. It should be read as integration guidance, not as documentation for a separate native `Ring v4` AMM.
+This page describes pool-state reads in the current `FewToken + Uniswap v4` integration environment. It should be read as integration guidance, not as documentation for a separate native v4 AMM.
 
 Unlike previous versions, this v4 integration stack uses a different approach for storing and accessing pool data, which requires understanding the use of [`StateLibrary`](/contracts/v4/reference/core/libraries/StateLibrary) and [`extsload`](/contracts/v4/reference/core/Extsload).
 
@@ -13,7 +13,7 @@ Unlike previous versions, this v4 integration stack uses a different approach fo
 
 ### The Singleton Design
 
-In this v4 integration stack, all pools are managed by a single `PoolManager` contract, unlike v3 where each pool was a separate contract. This design offers simplified management since all pools are now accessible through a single contract.
+In this v4 integration stack, all pools are managed by a single `PoolManager` contract, unlike earlier pool-per-contract designs where each pool was a separate contract. This design offers simplified management since all pools are now accessible through a single contract.
 
 This approach significantly reduces deployment costs, simplifies protocol upgrades, and enables more efficient cross-pool interactions. It also allows for easier implementation of new features across all pools simultaneously. 
 
@@ -65,7 +65,7 @@ struct State {
 
 This complex structure allows for efficient storage of multiple pools and their associated data within a single contract. However, it also means that traditional getter functions would be inefficient or impractical for accessing this data, especially for nested mappings like `ticks` and `positions`.
 
-To address this, Ring V4 introduces the StateLibrary and the concept of using `extsload` for reading pool state. These mechanisms provide efficient ways to access the data stored in this complex structure.
+To address this, the v4 integration stack uses `StateLibrary` and `extsload` for reading pool state. These mechanisms provide efficient ways to access the data stored in this complex structure.
 
 ### The StateLibrary and `extsload`
 

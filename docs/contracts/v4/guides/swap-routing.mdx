@@ -5,7 +5,7 @@ sidebar_position: 4
 
 ## Introduction to Universal Router for v4 Swaps
 
-This page should be read as integration guidance for `FewToken + Uniswap v4`, not as documentation for a separate native `Ring v4` AMM. In this architecture, pools are managed by a single `PoolManager` contract, and developers can use the Universal Router to execute swaps on v4 pools.
+This page should be read as integration guidance for `FewToken + Uniswap v4`, not as documentation for a separate native v4 AMM. In this architecture, pools are managed by a single `PoolManager` contract, and developers can use the Universal Router to execute swaps on v4 pools.
 
 ## What is the Universal Router?
 
@@ -113,7 +113,7 @@ In this step, we’re importing the necessary contracts and interfaces:
 
 ### Step 2: Implement Token Approval with Permit2
 
-`UniversalRouter` integrates with [Permit2](https://github.com/Uniswap/permit2), to enable users to have more safety, flexibility, and control over their ERC20 token approvals.
+`UniversalRouter` integrates with Permit2, to enable users to have more safety, flexibility, and control over their ERC20 token approvals.
 
 Before we can execute swaps, we need to ensure our contract can transfer tokens. We’ll implement a function to approve the Universal Router to spend tokens on behalf of our contract.
 

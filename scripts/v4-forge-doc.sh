@@ -44,7 +44,7 @@ process_doc() {
     # Fix the Git source link
     # replace `https://github.com/RingProtocol/docs/blob/47e3c30ae8a0d7c086bf3e41bd0e7e3a854e280b/src/interfaces/IPositionManager.sol`
     # with `https://github.com/RingProtocol/v4-{component}/blob/47e3c30ae8a0d7c086bf3e41bd0e7e3a854e280b/src/interfaces/IPositionManager.sol`
-    sed -i '' -e "s|uniswap/docs/|uniswap/v4-${component}/|g" "$new_file"
+    sed -i '' -e "s|RingProtocol/docs/|RingProtocol/v4-${component}/|g" "$new_file"
 
     # Add note about forge doc, if its not already added
     if $first_file; then

@@ -9,9 +9,13 @@ sidebar_position: 1
 Fill in the form with:
 
 - **DApp Name**
-- **Logo url** (256×256 PNG or SVG)
+- **Logo URL** (256×256 PNG or SVG)
 - **DApp URL** (e.g. `https://your-dapp.com`)
 
 You will receive an **API Key** (UUID) for testing.
 
-The test url: https://wallet.ring.com/?testdapp=YOUR_API_KEY, this will show your DApp in the wallet.
+Use the test URL to preview your DApp inside Ring Wallet:
+
+```text
+https://wallet.ring.exchange/?testdapp=YOUR_API_KEY
+```

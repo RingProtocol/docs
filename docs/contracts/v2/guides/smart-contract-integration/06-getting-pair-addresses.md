@@ -12,13 +12,14 @@ The most obvious way to get the address for a pair is to call [getPair](../../re
 
 ## CREATE2
 
-Thanks to some [fancy footwork in the factory](https://github.com/Uniswap/uniswap-v2-core/blob/master/contracts/UniswapV2Factory.sol#L32), we can also compute pair addresses _without any on-chain lookups_ because of [CREATE2](https://eips.ethereum.org/EIPS/eip-1014). The following values are required for this technique:
+Ring Swap pair addresses can also be computed _without any on-chain lookups_ because the factory uses
+[CREATE2](https://eips.ethereum.org/EIPS/eip-1014). The following values are required for this technique:
 
-|                        |                                                                        |
-| :--------------------- | :--------------------------------------------------------------------- |
-| `address`              | The [factory address](../../reference/smart-contracts/factory#address) |
-| `salt`                 | `keccak256(abi.encodePacked(token0, token1))`                          |
-| `keccak256(init_code)` | `0x96e8ac4277198ff8b6f785478aa9a39f403cb768dd02cbee326c3e7da348845f`   |
+|                        |                                                                                   |
+| :--------------------- | :-------------------------------------------------------------------------------- |
+| `address`              | The [factory address](../../reference/smart-contracts/factory#deployments)        |
+| `salt`                 | `keccak256(abi.encodePacked(token0, token1))`                                     |
+| `keccak256(init_code)` | The `Ring Swap Pair Init Code` for the target chain from the deployment table.     |
 
 - `token0` must be strictly less than `token1` by sort order.
 
@@ -30,14 +31,15 @@ Thanks to some [fancy footwork in the factory](https://github.com/Uniswap/uniswa
 ### Solidity
 
 ```solidity
-address factory = 0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f;
+address factory = 0xeb2A625B704d73e82946D8d026E1F588Eed06416; // Ring Swap Factory on Ethereum mainnet
 address token0 = 0xCAFE000000000000000000000000000000000000; // change me!
 address token1 = 0xF00D000000000000000000000000000000000000; // change me!
+bytes32 initCodeHash = 0xa7ae6a5ec37f0c21bbdac560794258c4089b8ae3ffa6e3909b53c6091764a676;
 
 address pair = address(uint160(bytes20(keccak256(abi.encodePacked(
   hex'ff',
   factory,
   keccak256(abi.encodePacked(token0, token1)),
-  hex'96e8ac4277198ff8b6f785478aa9a39f403cb768dd02cbee326c3e7da348845f'
+  initCodeHash
 ))));
 ```

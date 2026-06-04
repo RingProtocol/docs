@@ -4,7 +4,7 @@
 **Inherits:**
 [SafeCallback](contracts/v4/reference/periphery/base/SafeCallback.md)
 
-Abstract contract for performing a combination of actions on Ring v4.
+Abstract contract for performing a combination of actions through the v4 integration stack.
 
 *Suggested uint256 action values are defined in Actions.sol, however any definition can be used*
 
@@ -107,4 +107,3 @@ emitted when an inheriting contract does not support an action
 ```solidity
 error UnsupportedAction(uint256 action);
 ```
-

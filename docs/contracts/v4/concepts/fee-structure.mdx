@@ -6,7 +6,7 @@ sidebar_position: 9
 
 ## Overview of Fee Types
 
-This page describes fee behavior in the current `FewToken + Uniswap v4` integration environment. It should be read as technical integration guidance, not as documentation for a separate native `Ring v4` AMM.
+This page describes fee behavior in the current `FewToken + Uniswap v4` integration environment. It should be read as technical integration guidance, not as documentation for a separate native v4 AMM.
 
 In this v4 integration stack, there are three main types of fees to understand:
 
@@ -29,8 +29,8 @@ LP fees are set by the pool initializer at pool creation and may be static or dy
 ### Static LP Fees
 
 - **Immutable** once set during pool initialization
-- **Unlimited fee options** in v4 (major improvement from v3)
-- In **v3**, LP fee options were limited to: 0.01%, 0.05%, 0.30%, and 1.00%
+- **Unlimited fee options** in v4-style pools
+- Integrators should confirm the selected LP fee from the pool configuration instead of assuming fixed fee tiers
 
 ### Dynamic LP Fees
 
@@ -58,11 +58,9 @@ Protocol fees are configured **per pool** with the following characteristics:
 
 ## Swap Fees
 
-### Key Change from v3 to v4
+### Sequential Fee Application
 
-**v3 behavior**: Swap fee = LP fee (protocol fee was a percentage taken from LP fees)
-
-**v4 behavior**: Swap fee = effective total fee after applying both protocol and LP fees sequentially
+In this v4 integration stack, the swap fee is the effective total fee after applying both protocol and LP fees sequentially.
 
 ### Application Order
 

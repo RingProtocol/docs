@@ -1,11 +1,11 @@
 ---
 id: queries
 title: Queries
+draft: true
 ---
 
-The subgraph can be queried to retrieve important information about Uniswap, pairs, tokens, transactions, users, and more. This page will provide examples for common queries.
-
-To try these queries and run your own visit the [subgraph sandbox](https://thegraph.com/explorer/subgraph/uniswap/uniswap-v2).
+The subgraph can be queried to retrieve important information about Ring Swap pairs, tokens, transactions, users, and
+more. This draft page is hidden until the current Ring subgraph schema is finalized.
 
 ### Global Data
 
@@ -17,7 +17,7 @@ All time volume in USD, total liquidity in USD, all time transaction count.
 
 ```
 {
- uniswapFactory(id: "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f"){
+ ringFactory(id: "<RING_SWAP_FACTORY_ADDRESS>"){
    totalVolumeUSD
    totalLiquidityUSD
    txCount
@@ -31,7 +31,7 @@ To get a snapshot of past state, use The Graph's block query feature and query a
 
 ```
 {
- uniswapFactory(id: "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f", block: {number: 10291203}){
+ ringFactory(id: "<RING_SWAP_FACTORY_ADDRESS>", block: {number: 10291203}){
    totalVolumeUSD
    totalLiquidityUSD
    txCount
@@ -72,7 +72,7 @@ Fetch a snapshot of the current state of the pair with common values. This examp
 }
 ```
 
-#### All pairs in Uniswap
+#### All pairs in Ring Swap
 
 The Graph limits entity return amounts to 1000 per query as of now. To get all pairs on Ring use a loop and graphql skip query to fetch multiple chunks of 1000 pairs. The query would look like this (where skip is some incrementing variable passed into your query).
 
@@ -88,7 +88,7 @@ The Graph limits entity return amounts to 1000 per query as of now. To get all p
 
 #### Most liquid pairs
 
-Order by liquidity to get the most liquid pairs in Uniswap.
+Order by liquidity to get the most liquid pairs in Ring Swap.
 
 ```
 {
@@ -152,7 +152,7 @@ Token data can be fetched using the token contract address as an ID. Token data 
 
 #### Token Overview
 
-Get a snapshot of the current stats on a token in Uniswap. This query fetches current stats on DAI.
+Get a snapshot of the current stats on a token in Ring Swap. This query fetches current stats on DAI.
 The allPairs field gets the first 200 pairs DAI is included in sorted by liquidity in derived USD.
 
 ```
@@ -168,9 +168,9 @@ The allPairs field gets the first 200 pairs DAI is included in sorted by liquidi
 }
 ```
 
-#### All Tokens in Uniswap
+#### All Tokens in Ring Swap
 
-Similar to fetching all pairs (see above), you can query all tokens in Uniswap. Because The Graph service limits return size to 1000 entities use graphql skip query. (Note this query will not work in the graph sandbox and more resembles the structure of a query you'd pass to some graphql middleware like [Apollo](https://www.apollographql.com/)).
+Similar to fetching all pairs (see above), you can query all tokens in Ring Swap. Because The Graph service limits return size to 1000 entities use graphql skip query. (Note this query will not work in the graph sandbox and more resembles the structure of a query you'd pass to some graphql middleware like [Apollo](https://www.apollographql.com/)).
 
 ```
 {

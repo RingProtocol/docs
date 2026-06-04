@@ -1,17 +1,16 @@
 ---
 id: router-02
-title: Router02
+title: Router
 ---
 
-Because routers are stateless and do not hold token balances, they can be replaced safely and trustlessly, if necessary. This may happen if more efficient smart contract patterns are discovered, or if additional functionality is desired. For this reason, routers have _release numbers_, starting at `01`. This is currently recommended release, `02`.
+Because routers are stateless and do not hold token balances, Ring Swap router deployments can be replaced safely if more
+efficient patterns or additional functionality are needed. Use the router listed for the target chain in the current
+Ring Swap deployment table.
 
-## Code
+## Deployments
 
-[`UniswapV2Router02.sol`](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/UniswapV2Router02.sol)
-
-## Address
-
-`UniswapV2Router02` is deployed at `0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D` on the Ethereum [mainnet](https://etherscan.io/address/0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D), and the [Ropsten](https://ropsten.etherscan.io/address/0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D), [Rinkeby](https://rinkeby.etherscan.io/address/0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D), [Görli](https://goerli.etherscan.io/address/0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D), and [Kovan](https://kovan.etherscan.io/address/0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D) testnets. It was built from commit [6961711](https://github.com/Uniswap/uniswap-v2-periphery/tree/69617118cda519dab608898d62aaa79877a61004).
+Use the current [Ring Swap deployments](../../deployments) for router addresses. The values on that page are the
+canonical addresses for Ring integrations.
 
 ## Read-Only Functions
 
@@ -21,7 +20,7 @@ Because routers are stateless and do not hold token balances, they can be replac
 function factory() external pure returns (address);
 ```
 
-Returns [factory address](../smart-contracts/factory#address).
+Returns [factory address](../smart-contracts/factory#deployments).
 
 ### WETH
 
@@ -29,7 +28,7 @@ Returns [factory address](../smart-contracts/factory#address).
 function WETH() external pure returns (address);
 ```
 
-Returns the [canonical WETH address](https://blog.0xproject.com/canonical-weth-a9aa7d0279dd) on the Ethereum [mainnet](https://etherscan.io/address/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2), or the [Ropsten](https://ropsten.etherscan.io/address/0xc778417e063141139fce010982780140aa0cd5ab), [Rinkeby](https://rinkeby.etherscan.io/address/0xc778417e063141139fce010982780140aa0cd5ab), [Görli](https://goerli.etherscan.io/address/0xb4fbf271143f4fbf7b91a5ded31805e42b2208d6), or [Kovan](https://kovan.etherscan.io/address/0xd0a1e359811322d97991e03f863a0c30c2cf029c) testnets.
+Returns the wrapped native-token address configured for the target Ring Swap router deployment.
 
 ### quote
 
@@ -530,13 +529,9 @@ Identical to [swapExactTokensForETH](#swapexacttokensforeth), but succeeds for t
 ## Interface
 
 ```solidity
-import '@uniswap/v2-periphery/contracts/interfaces/IUniswapV2Router02.sol';
-```
-
-```solidity
 pragma solidity >=0.6.2;
 
-interface IUniswapV2Router01 {
+interface IRingSwapRouterBase {
     function factory() external pure returns (address);
     function WETH() external pure returns (address);
 
@@ -630,7 +625,7 @@ interface IUniswapV2Router01 {
     function getAmountsIn(uint amountOut, address[] calldata path) external view returns (uint[] memory amounts);
 }
 
-interface IUniswapV2Router02 is IUniswapV2Router01 {
+interface IRingSwapRouter is IRingSwapRouterBase {
     function removeLiquidityETHSupportingFeeOnTransferTokens(
         address token,
         uint liquidity,
@@ -671,11 +666,3 @@ interface IUniswapV2Router02 is IUniswapV2Router01 {
     ) external;
 }
 ```
-
-## ABI
-
-```typescript
-import IUniswapV2Router02 from '@uniswap/v2-periphery/build/IUniswapV2Router02.json'
-```
-
-[https://unpkg.com/@uniswap/v2-periphery@1.1.0-beta.0/build/IUniswapV2Router02.json](https://unpkg.com/@uniswap/v2-periphery@1.1.0-beta.0/build/IUniswapV2Router02.json)

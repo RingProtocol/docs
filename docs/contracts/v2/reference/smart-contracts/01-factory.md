@@ -3,13 +3,10 @@ id: factory
 title: Factory
 ---
 
-## Code
+## Deployments
 
-[`UniswapV2Factory.sol`](https://github.com/Uniswap/uniswap-v2-core/blob/master/contracts/UniswapV2Factory.sol)
-
-## Address
-
-`UniswapV2Factory` is deployed at `0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f` on the Ethereum [mainnet](https://etherscan.io/address/0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f), and the [Ropsten](https://ropsten.etherscan.io/address/0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f), [Rinkeby](https://rinkeby.etherscan.io/address/0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f), [Görli](https://goerli.etherscan.io/address/0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f), and [Kovan](https://kovan.etherscan.io/address/0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f) testnets. It was built from commit [8160750](https://github.com/Uniswap/uniswap-v2-core/tree/816075049f811f1b061bca81d5d040b96f4c07eb).
+Use the current [Ring Swap deployments](../../deployments) for factory addresses and init code hashes. Do not use
+upstream deployment tables for Ring Swap integrations.
 
 ## Events
 
@@ -61,7 +58,7 @@ Returns the total number of pairs created through the factory so far.
 function feeTo() external view returns (address);
 ```
 
-See [Protocol Charge Calculation](../../concepts/advanced-topics/fees).
+Returns the address configured to receive protocol fee output when protocol-fee collection is enabled.
 
 ### feeToSetter
 
@@ -87,13 +84,9 @@ Creates a pair for `tokenA` and `tokenB` if one doesn't exist already.
 ## Interface
 
 ```solidity
-import '@uniswap/v2-core/contracts/interfaces/IUniswapV2Factory.sol';
-```
-
-```solidity
 pragma solidity >=0.5.0;
 
-interface IUniswapV2Factory {
+interface IRingSwapFactory {
   event PairCreated(address indexed token0, address indexed token1, address pair, uint);
 
   function getPair(address tokenA, address tokenB) external view returns (address pair);
@@ -106,11 +99,3 @@ interface IUniswapV2Factory {
   function createPair(address tokenA, address tokenB) external returns (address pair);
 }
 ```
-
-## ABI
-
-```typescript
-import IUniswapV2Factory from '@uniswap/v2-core/build/IUniswapV2Factory.json'
-```
-
-[https://unpkg.com/@uniswap/v2-core@1.0.0/build/IUniswapV2Factory.json](https://unpkg.com/@uniswap/v2-core@1.0.0/build/IUniswapV2Factory.json)

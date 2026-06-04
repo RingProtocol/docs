@@ -42,7 +42,7 @@ const config: Config = {
     },
     // algolia: {
     //   apiKey: '32465e2ab6f7554ff014e64c0d92171c', //  Search-Only API Key (Public & safe to commit)
-    //   indexName: process.env.ALGOLIA_INDEX_NAME || 'v3-docs',
+    //   indexName: process.env.ALGOLIA_INDEX_NAME || 'ring-docs',
     //   appId: 'S0IDD0YGLZ',
     // },
     docs: {
@@ -99,12 +99,6 @@ const config: Config = {
         //   target: '_blank',
         //   rel: 'noreferrer',
         // },
-        // {
-        //   label: "Whitepaper",
-        //   to: 'https://app.ring.exchange/whitepaper-v4.pdf',
-        //   target: '_blank',
-        //   rel: 'noreferrer',
-        // },
         {
           label: 'GitHub',
           to: 'https://github.com/RingProtocol/docs/',
@@ -133,26 +127,6 @@ const config: Config = {
         docs: {
           routeBasePath: '/',
           sidebarPath: './sidebars.js',
-          sidebarItemsGenerator: async ({ defaultSidebarItemsGenerator, ...args }) => {
-            const sidebarItems = await defaultSidebarItemsGenerator(args)
-            const filterSidebarItems = (items: any[]): any[] =>
-              items.flatMap((item: any) => {
-                if (
-                  item.type === 'category' &&
-                  (item.link?.id === 'contracts/the-compact/overview' ||
-                    item.link?.id === 'contracts/protocol-fee/overview' ||
-                    item.label === 'The Compact' ||
-                    item.label === 'Protocol Fee')
-                ) {
-                  return []
-                }
-                if (item.type === 'category' && item.items) {
-                  return [{ ...item, items: filterSidebarItems(item.items) }]
-                }
-                return [item]
-              })
-            return filterSidebarItems(sidebarItems)
-          },
           remarkPlugins: [math],
           rehypePlugins: [katex],
           editUrl: 'https://github.com/RingProtocol/docs/tree/main/',
@@ -189,32 +163,10 @@ const config: Config = {
             from: ['/wallet/overview.md', '/wallet/overview.mdx'],
           },
           {
-            to: '/wallet/web3-react/overview',
-            from: ['/sdk/web3-react', '/sdk/web3-react/overview'],
-          },
-          {
-            to: '/wallet/web3-react/guides/connect-wallet',
-            from: ['/sdk/web3-react/guides/connect-wallet'],
-          },
-          {
-            to: '/wallet/web3-react/guides/connectors',
-            from: ['/sdk/web3-react/guides/connectors'],
-          },
-          {
-            to: '/wallet/web3-react/guides/switch-chains',
-            from: ['/sdk/web3-react/guides/switch-chains'],
-          },
-          {
             to: '/concepts/overview',
-            from: ['/concepts', '/concepts/uniswap-'],
-          },
-          {
-            to: '/concepts/uniswap-protocol',
             from: [
-              '/protocol/V2/concepts/protocol-overview/how-uniswap-works',
+              '/concepts',
               '/protocol/V2/concepts/core-',
-              '/contracts/v2/concepts/protocol-overview/how-uniswap-work',
-              '/V2/concepts/protocol-overview/01-how-uniswap-works',
               '/protocol/V2/concepts/protocol',
               '/protocol/V2/concepts/protocol-overview/',
             ],
@@ -223,7 +175,6 @@ const config: Config = {
             to: '/concepts/protocol/swaps',
             from: [
               '/protocol/concepts/advanced/integration-issues',
-              '/protocol/concepts/V3-overview/swaps',
               '/protocol/V2/concepts/core-concepts/swaps',
               '/concepts/introduction/swaps',
               '/concepts/protocol/liquidity',
@@ -231,7 +182,7 @@ const config: Config = {
           },
           {
             to: '/concepts/protocol/fees',
-            from: ['/protocol/concepts/V3-overview/fees', '/protocol/V2/concepts/advanced-topics/fees'],
+            from: ['/protocol/V2/concepts/advanced-topics/fees'],
           },
           {
             to: '/concepts/glossary',
@@ -242,31 +193,66 @@ const config: Config = {
             from: ['/contracts/', '/reference/smart-contracts', '/protocol', '/v4'],
           },
           {
+            to: '/contracts/v2/deployments',
+            from: ['/docs/deployments', '/deployments'],
+          },
+          {
             to: '/contracts/v2/overview',
+            from: ['/contracts/fewv2', '/contracts/fewv2/overview'],
+          },
+          {
+            to: '/contracts/v2/deployments',
+            from: '/contracts/fewv2/deployments',
+          },
+          {
+            to: '/contracts/v2/fewtoken/integrating',
+            from: '/contracts/fewv2/integrating',
+          },
+          {
+            to: '/contracts/v2/fewtoken/get-fewtoken-address-via-fewfactory',
+            from: '/contracts/fewv2/get-fewtoken-address-via-fewfactory',
+          },
+          {
+            to: '/contracts/v2/fewtoken/get-erc20-token-address-via-fewfactory',
+            from: '/contracts/fewv2/get-erc20-token-address-via-fewfactory',
+          },
+          {
+            to: '/contracts/v2/concepts/how-ring-swap-works/ring-swap-model',
             from: [
               '/protocol/V2',
               '/protocol/V2/concepts/protocol-',
               '/v2/',
               '/contracts/v2',
               '/contracts/v2/overview.md',
+              '/contracts/v2/concepts/protocol-overview',
               '/contracts/v2/concepts/protocol-overview/how-',
+              '/contracts/v2/concepts/protocol-overview/ring-swap-model',
               '/protocol/v2/introduction',
             ],
           },
           {
-            to: '/contracts/v2/concepts/protocol-overview/smart-contracts',
+            to: '/contracts/v2/concepts/how-ring-swap-works/ecosystem-participants',
+            from: '/contracts/v2/concepts/protocol-overview/ecosystem-participants',
+          },
+          {
+            to: '/contracts/v2/concepts/how-ring-swap-works/glossary',
+            from: '/contracts/v2/concepts/protocol-overview/glossary',
+          },
+          {
+            to: '/contracts/v2/concepts/how-ring-swap-works/smart-contracts',
             from: [
               '/protocol/V2/reference/smart-contracts',
               '/protocol/V2/concepts/protocol-overview/smart-contracts',
+              '/contracts/v2/concepts/protocol-overview/smart-contracts',
               '/contracts/v2/reference/smart-co',
             ],
           },
           {
-            to: '/contracts/v2/reference/API/overview',
+            to: '/contracts/v2/overview',
             from: '/protocol/V2/reference/core',
           },
           {
-            to: '/contracts/v2/concepts/advanced-topics/understanding-returns',
+            to: '/contracts/v2/concepts/core-concepts/pools',
             from: '/protocol/V2/concepts/advanced-topics/understanding-returns',
           },
           {
@@ -334,7 +320,7 @@ const config: Config = {
           },
           {
             to: '/api/overview',
-            from: ['/protocol/reference/v3/guides/querying-data', '/sdk/subgraph/subgraph-data'],
+            from: '/sdk/subgraph/subgraph-data',
           },
           {
             to: '/',
@@ -369,10 +355,7 @@ const config: Config = {
           'docs/contracts/universal-router',
           'docs/contracts/v1',
           'docs/contracts/v2',
-          'docs/contracts/v3',
           'docs/sdk/swap-widget',
-          'docs/sdk/v3',
-          'docs/universal-router-legacy',
         ],
         title: 'LLMs.txt for Ring Protocol Documentation',
         description: 'Expanded reference documentation for Ring Protocol integrations, contracts, and SDKs',

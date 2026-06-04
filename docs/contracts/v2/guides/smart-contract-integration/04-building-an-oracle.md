@@ -31,9 +31,7 @@ are weighted equally with historical prices, it is enough to
 store the cumulative price once per period (e.g. once per 24 hours.)
 
 Computing the average price over these data points gives you 'fixed windows',
-which can be updated after the lapse of each period. We wrote
-an example oracle of this kind
-[here](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/examples/ExampleOracleSimple.sol).
+which can be updated after the lapse of each period.
 
 This example does not limit the maximum size of the fixed window, i.e.
 it only requires that the window size is greater than 1 period (e.g. 24 hours).
@@ -49,9 +47,8 @@ There are at least
 that you can compute using the Ring cumulative price variable.
 
 [Simple moving averages](https://www.investopedia.com/terms/s/sma.asp)
-give equal weight to each price measurement. We have built
-an example of a sliding window oracle
-[here](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/examples/ExampleSlidingWindowOracle.sol).
+give equal weight to each price measurement. A sliding-window oracle stores several observations inside the
+window and rotates them as time advances.
 
 [Exponential moving averages](https://www.investopedia.com/terms/e/ema.asp)
 give more weight to the most recent price measurements. We do not yet have an example written for this type of oracle.
@@ -81,16 +78,15 @@ price, you should use the cumulative price values from the current block. If the
 in the current block, e.g. because there has not been any liquidity event (`mint`/`burn`/`swap`) on the pair in the current
 block, you can compute the cumulative price counterfactually.
 
-We provide a library for use in oracle contracts that has the method
-[`UniswapV2OracleLibrary#currentCumulativePrices`](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/libraries/UniswapV2OracleLibrary.sol#L16)
-for getting the cumulative price as of the current block.
+Oracle helper libraries commonly expose a `currentCumulativePrices` method for getting the cumulative price as of the
+current block.
 The current cumulative price returned by this method is computed _counterfactually_, meaning it requires no call to
 the relative gas-expensive `#sync` method on the pair.
 It is correct regardless of whether a swap has already executed in the current block.
 
 ## Notes on overflow
 
-The `UniswapV2Pair` cumulative price variables are designed to eventually overflow,
+Ring Swap pair cumulative price variables are designed to eventually overflow,
 i.e. `price0CumulativeLast` and `price1CumulativeLast` and `blockTimestampLast` will overflow through 0.
 
 This should not pose an issue to your oracle design, as the price average computation is concerned with differences
@@ -104,9 +100,7 @@ This is feasible because the pair is only concerned with the time that elapses b
 the cumulative prices, which is always expected to be less than `2^32` seconds.
 
 When computing time elapsed within your own oracle, you can simply store the `block.timestamp` of your observations
-as `uint256`, and avoid dealing with overflow math for computing the time elapsed between observations. This is how the
-[ExampleSlidingWindowOracle](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/examples/ExampleSlidingWindowOracle.sol)
-handles observation timestamps.
+as `uint256`, and avoid dealing with overflow math for computing the time elapsed between observations.
 
 ## Integrating the oracle
 
@@ -133,7 +127,3 @@ maintenance calls by other parties.
 It is possible to avoid regularly storing this cumulative price at the
 start of the period by utilizing storage proofs. However, this approach has limitations,
 especially in regard to gas cost and maximum length of the time period over which the average price can be measured.
-If you wish to try this approach, you can follow
-[this repository by Keydonix](https://github.com/Keydonix/uniswap-oracle/).
-
-Keydonix has developed a general purpose price feed oracle built on Ring v2 that supports arbitrary time windows (up to 256 blocks) and doesn't require any active maintenance.

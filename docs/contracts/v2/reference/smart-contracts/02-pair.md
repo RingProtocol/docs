@@ -3,15 +3,11 @@ id: pair
 title: Pair
 ---
 
-This documentation covers Uniswap-specific functionality. For ERC-20 functionality, see [Pair (ERC-20)](../smart-contracts/Pair-ERC-20).
+This documentation covers Ring Swap pair functionality. For ERC-20 functionality, see [Pair (ERC-20)](../smart-contracts/Pair-ERC-20).
 
-## Code
+## Deployments
 
-[`UniswapV2Pair.sol`](https://github.com/Uniswap/uniswap-v2-core/blob/master/contracts/UniswapV2Pair.sol)
-
-## Address
-
-See [Pair Addresses](../../guides/smart-contract-integration/getting-pair-addresses).
+Pair addresses are deterministic for each Ring Swap factory. See [Pair Addresses](../../guides/smart-contract-integration/getting-pair-addresses).
 
 ## Events
 
@@ -62,7 +58,7 @@ Emitted each time reserves are updated via [mint](#mint-1), [burn](#burn-1), [sw
 function MINIMUM_LIQUIDITY() external pure returns (uint);
 ```
 
-Returns `1000` for all pairs. See [Minimum Liquidity](../../concepts/protocol-overview/smart-contracts#minimum-liquidity).
+Returns `1000` for all pairs. See [Minimum Liquidity](../../concepts/how-ring-swap-works/smart-contracts#minimum-liquidity).
 
 ### factory
 
@@ -70,7 +66,7 @@ Returns `1000` for all pairs. See [Minimum Liquidity](../../concepts/protocol-ov
 function factory() external view returns (address);
 ```
 
-Returns the [factory address](../smart-contracts/factory#address).
+Returns the [factory address](../smart-contracts/factory#deployments).
 
 ### token0
 
@@ -94,7 +90,7 @@ Returns the address of the pair token with the higher sort order.
 function getReserves() external view returns (uint112 reserve0, uint112 reserve1, uint32 blockTimestampLast);
 ```
 
-Returns the reserves of token0 and token1 used to price trades and distribute liquidity. See [Pricing](../../concepts/advanced-topics/pricing). Also returns the `block.timestamp` (mod `2**32`) of the last block during which an interaction occurred for the pair.
+Returns the reserves of token0 and token1 used to price trades and distribute liquidity. Also returns the `block.timestamp` (mod `2**32`) of the last block during which an interaction occurred for the pair.
 
 ### price0CumulativeLast
 
@@ -118,7 +114,7 @@ See [Oracles](../../concepts/core-concepts/oracles).
 function kLast() external view returns (uint);
 ```
 
-Returns the product of the reserves as of the most recent liquidity event. See [Protocol Charge Calculation](../../concepts/advanced-topics/fees#protocol-charge-calculation).
+Returns the product of the reserves as of the most recent liquidity event. This value is used when protocol-fee accounting is enabled.
 
 ## State-Changing Functions
 
@@ -158,7 +154,7 @@ Swaps tokens. For regular swaps, `data.length` must be `0`. Also see [Flash Swap
 function skim(address to) external;
 ```
 
-See the <a href='/whitepaper.pdf' target='_blank' rel='noopener noreferrer'>whitepaper</a>.
+Transfers any token balance above the stored reserves to `to`.
 
 ### sync
 
@@ -166,20 +162,16 @@ See the <a href='/whitepaper.pdf' target='_blank' rel='noopener noreferrer'>whit
 function sync() external;
 ```
 
-See the <a href='/whitepaper.pdf' target='_blank' rel='noopener noreferrer'>whitepaper</a>.
+Updates stored reserves to match the pair's current token balances.
 
 - Emits [Sync](#sync).
 
 ## Interface
 
 ```solidity
-import '@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol';
-```
-
-```solidity
 pragma solidity >=0.5.0;
 
-interface IUniswapV2Pair {
+interface IRingSwapPair {
   event Approval(address indexed owner, address indexed spender, uint value);
   event Transfer(address indexed from, address indexed to, uint value);
 
@@ -228,11 +220,3 @@ interface IUniswapV2Pair {
   function sync() external;
 }
 ```
-
-## ABI
-
-```typescript
-import IUniswapV2Pair from '@uniswap/v2-core/build/IUniswapV2Pair.json'
-```
-
-[https://unpkg.com/@uniswap/v2-core@1.0.0/build/IUniswapV2Pair.json](https://unpkg.com/@uniswap/v2-core@1.0.0/build/IUniswapV2Pair.json)

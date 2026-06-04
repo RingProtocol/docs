@@ -10,25 +10,28 @@ Fee behavior depends on the trading system being used. `Ring Swap (v2)` follows 
 
 ## Swap Fees
 
-Swap fees are distributed pro-rata to all in-range[^1] liquidity at the time of the swap. If the spot price moves out of a position’s range, the given liquidity is no longer active and does not generate any fees. If the spot price reverses and reenters the position’s range, the position’s liquidity becomes active again and will generate fees.
+In Ring Swap (v2), each pair applies a swap fee to trades. That fee is retained by the pair and effectively distributed
+pro-rata to liquidity providers through the pool's reserves. Liquidity providers do not claim a separate fee balance from
+the pair; fees are reflected in the value of their LP position.
 
 How fees are collected and accounted for depends on the underlying AMM design.
 
-## Pool Fees Tiers
+## Ring Swap (v2) Fee Model
 
-In systems with multiple fee tiers, the same token pair may exist in more than one pool with different fees. This can improve market fit for different asset types, but it also requires more careful routing and liquidity analysis.
+Ring Swap (v2) follows the constant-product pair model used by v2-style AMMs:
 
-Breaking pairs into separate pools was previously untenable due to the issue of liquidity fragmentation. Any incentive alignments achieved by more fee optionality invariably resulted in a net loss to traders, due to lower pairwise liquidity and the resulting increase in price impact upon swapping.
+- each pair has a single pool for a token pair
+- liquidity providers deposit both assets into the pair
+- swaps move the pair price along the constant-product curve
+- the swap fee increases the pool reserves relative to outstanding LP supply
 
-The introduction of concentrated liquidity decouples total liquidity from price impact. With price impact concerns out of the way, breaking pairs into multiple pools becomes a feasible approach to improving the functionality of a pool for assets previously underserved by the 0.30% swap fee.
+Ring-specific deployments and pair addresses should always be checked from the current [Ring Swap deployments](/contracts/v2/deployments).
 
-## Finding The Right Pool Fee
+## External v4 Integration
 
-We anticipate that certain types of assets will gravitate towards specific fee tiers, based on where the incentives for both swappers and liquidity providers come nearest to alignment.
+When `FewToken` is used in external Uniswap v4 environments, fee behavior may be configured by that v4 pool and its hooks.
+Those mechanics belong to the [Uniswap v4 Integration](/contracts/v4/overview) section and should not be read as a
+separate native v4 AMM.
 
-We expect low volatility assets (stable coins) will likely congregate in the lowest fee tier, as the price risk for liquidity providers holding these assets is very low, and those swapping will be motivated to pursue an execution price closest to 1:1 as they can get.
-
-Similarly, we anticipate more exotic assets, or those traded rarely, will naturally gravitate towards a higher fee - as liquidity providers will be motivated to offset the cost risk of holding these assets for the duration of their position.
-
-
-[^1]: In-range liquidity refers to the liquidity contained in any positions which span both sides of the spot price.
+For current v2 integrations, default to the Ring Swap (v2) fee model unless the integration explicitly routes through a
+documented v4 pool.
