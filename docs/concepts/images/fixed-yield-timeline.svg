@@ -1,0 +1,51 @@
+<svg width="1040" height="420" viewBox="0 0 1040 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1040" height="420" rx="28" fill="#0B0F1A"/>
+  <rect x="34" y="34" width="972" height="352" rx="22" fill="#101624" stroke="#26334A"/>
+  <text x="74" y="84" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">Fixed Yield timeline</text>
+  <text x="74" y="114" fill="#9BA7BD" font-family="Inter, Arial, sans-serif" font-size="16">
+    Deposit USDR during one subscription window, then exit after the shared maturity.
+  </text>
+
+  <line x1="142" y1="220" x2="900" y2="220" stroke="#33415F" stroke-width="8" stroke-linecap="round"/>
+  <line x1="142" y1="220" x2="482" y2="220" stroke="#5F6CFF" stroke-width="8" stroke-linecap="round"/>
+  <line x1="482" y1="220" x2="900" y2="220" stroke="#21C08B" stroke-width="8" stroke-linecap="round"/>
+
+  <circle cx="142" cy="220" r="18" fill="#5F6CFF"/>
+  <circle cx="482" cy="220" r="18" fill="#5F6CFF"/>
+  <circle cx="900" cy="220" r="18" fill="#21C08B"/>
+
+  <g transform="translate(70 148)">
+    <rect width="178" height="62" rx="14" fill="#172033" stroke="#33415F"/>
+    <text x="20" y="27" fill="#9BA7BD" font-family="Inter, Arial, sans-serif" font-size="13">Subscription opens</text>
+    <text x="20" y="50" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700">Deposit USDR</text>
+  </g>
+
+  <g transform="translate(390 148)">
+    <rect width="184" height="62" rx="14" fill="#172033" stroke="#33415F"/>
+    <text x="20" y="27" fill="#9BA7BD" font-family="Inter, Arial, sans-serif" font-size="13">Subscription closes</text>
+    <text x="20" y="50" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700">Lock starts</text>
+  </g>
+
+  <g transform="translate(792 148)">
+    <rect width="190" height="62" rx="14" fill="#14261F" stroke="#2D7D5E"/>
+    <text x="20" y="27" fill="#9BA7BD" font-family="Inter, Arial, sans-serif" font-size="13">Maturity</text>
+    <text x="20" y="50" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700">Exit position</text>
+  </g>
+
+  <g transform="translate(128 260)">
+    <text x="0" y="0" fill="#C7D0E2" font-family="Inter, Arial, sans-serif" font-size="15">Approve and deposit while the tranche is open.</text>
+  </g>
+  <g transform="translate(428 260)">
+    <text x="0" y="0" fill="#C7D0E2" font-family="Inter, Arial, sans-serif" font-size="15">Principal is wrapped into fwUSDR.</text>
+  </g>
+  <g transform="translate(760 260)">
+    <text x="0" y="0" fill="#C7D0E2" font-family="Inter, Arial, sans-serif" font-size="15">Withdraw principal plus USDR reward.</text>
+  </g>
+
+  <g transform="translate(72 316)">
+    <rect width="896" height="44" rx="12" fill="#0D1320" stroke="#26334A"/>
+    <text x="20" y="28" fill="#C7D0E2" font-family="Inter, Arial, sans-serif" font-size="15">
+      Rewards are fixed at 6% APR and paid from USDR reserves funded in the vault before deposits open.
+    </text>
+  </g>
+</svg>

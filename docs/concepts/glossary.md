@@ -1,7 +1,7 @@
 ---
 id: glossary
 title: Glossary
-sidebar_position: 6
+sidebar_position: 8
 ---
 
 ## Automated Market Maker
@@ -35,6 +35,11 @@ A smart contract that deploys a unique trading contract for a token pair.
 ## Flash Swap
 
 A trade that uses the tokens purchased before paying for them.
+
+## Fixed Yield
+
+A Ring Interface flow where users deposit USDR during a subscription window and can exit after a shared maturity to
+receive principal plus a fixed USDR reward.
 
 ## Invariant
 
@@ -111,3 +116,8 @@ The price space between two nearest ticks.
 ## Tick
 
 The boundaries between discrete areas in price space.
+
+## USDR Mint
+
+A Ring Interface flow where users deposit supported stablecoins such as USDT, USDC, or DAI and receive USDR 1:1 through
+the mint-only USDR minter.
