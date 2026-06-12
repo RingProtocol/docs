@@ -1,45 +1,48 @@
-<svg width="1040" height="420" viewBox="0 0 1040 420" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1040" height="420" rx="28" fill="#0B0F1A"/>
-  <rect x="34" y="34" width="972" height="352" rx="22" fill="#101624" stroke="#26334A"/>
+<svg width="1040" height="460" viewBox="0 0 1040 460" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1040" height="460" rx="28" fill="#0B0F1A"/>
+  <rect x="34" y="34" width="972" height="392" rx="22" fill="#101624" stroke="#26334A"/>
+
   <text x="74" y="84" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">USDR Mint flow</text>
   <text x="74" y="114" fill="#9BA7BD" font-family="Inter, Arial, sans-serif" font-size="16">
-    Deposit a supported stablecoin and receive USDR 1:1 through the mint-only contract.
+    <tspan x="74" dy="0">Deposit a supported stablecoin and receive USDR 1:1</tspan>
+    <tspan x="74" dy="22">through the mint-only contract.</tspan>
   </text>
 
-  <g transform="translate(72 158)">
+  <g transform="translate(72 166)">
     <rect width="172" height="116" rx="18" fill="#172033" stroke="#33415F"/>
-    <text x="26" y="39" fill="#9BA7BD" font-family="Inter, Arial, sans-serif" font-size="14">User deposits</text>
-    <text x="26" y="72" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700">USDT</text>
-    <text x="91" y="72" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700">USDC</text>
-    <text x="26" y="98" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700">DAI</text>
+    <text x="26" y="38" fill="#9BA7BD" font-family="Inter, Arial, sans-serif" font-size="14">User deposits</text>
+    <text x="26" y="68" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700">USDT / USDC</text>
+    <text x="26" y="96" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700">DAI</text>
   </g>
 
-  <path d="M264 216H338" stroke="#5F6CFF" stroke-width="4" stroke-linecap="round"/>
-  <path d="M338 216L324 204M338 216L324 228" stroke="#5F6CFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M264 224H318" stroke="#5F6CFF" stroke-width="4" stroke-linecap="round"/>
+  <path d="M318 224L304 212M318 224L304 236" stroke="#5F6CFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
 
-  <g transform="translate(360 132)">
-    <rect width="250" height="168" rx="20" fill="#111B2E" stroke="#5F6CFF" stroke-width="2"/>
+  <g transform="translate(340 142)">
+    <rect width="330" height="178" rx="20" fill="#111B2E" stroke="#5F6CFF" stroke-width="2"/>
     <text x="28" y="42" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700">RingStableMinter</text>
-    <text x="28" y="75" fill="#9BA7BD" font-family="Inter, Arial, sans-serif" font-size="15">1. checks the stable whitelist</text>
-    <text x="28" y="101" fill="#9BA7BD" font-family="Inter, Arial, sans-serif" font-size="15">2. enforces the debt ceiling</text>
-    <text x="28" y="127" fill="#9BA7BD" font-family="Inter, Arial, sans-serif" font-size="15">3. wraps backing into FewToken</text>
-    <text x="28" y="153" fill="#9BA7BD" font-family="Inter, Arial, sans-serif" font-size="15">4. mints fwUSDR and unwraps USDR</text>
+    <text x="28" y="76" fill="#9BA7BD" font-family="Inter, Arial, sans-serif" font-size="15">1. checks the stable whitelist</text>
+    <text x="28" y="102" fill="#9BA7BD" font-family="Inter, Arial, sans-serif" font-size="15">2. enforces the debt ceiling</text>
+    <text x="28" y="128" fill="#9BA7BD" font-family="Inter, Arial, sans-serif" font-size="15">3. wraps stable backing</text>
+    <text x="28" y="154" fill="#9BA7BD" font-family="Inter, Arial, sans-serif" font-size="15">4. mints fwUSDR</text>
+    <text x="46" y="176" fill="#9BA7BD" font-family="Inter, Arial, sans-serif" font-size="15">and unwraps USDR</text>
   </g>
 
-  <path d="M630 216H704" stroke="#5F6CFF" stroke-width="4" stroke-linecap="round"/>
-  <path d="M704 216L690 204M704 216L690 228" stroke="#5F6CFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M692 224H732" stroke="#5F6CFF" stroke-width="4" stroke-linecap="round"/>
+  <path d="M732 224L718 212M732 224L718 236" stroke="#5F6CFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
 
-  <g transform="translate(726 158)">
-    <rect width="242" height="116" rx="18" fill="#14261F" stroke="#2D7D5E"/>
-    <text x="28" y="39" fill="#9BA7BD" font-family="Inter, Arial, sans-serif" font-size="14">User receives</text>
+  <g transform="translate(754 166)">
+    <rect width="214" height="116" rx="18" fill="#14261F" stroke="#2D7D5E"/>
+    <text x="28" y="38" fill="#9BA7BD" font-family="Inter, Arial, sans-serif" font-size="14">User receives</text>
     <text x="28" y="76" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="800">USDR</text>
     <text x="114" y="76" fill="#21C08B" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700">1:1</text>
   </g>
 
-  <g transform="translate(72 316)">
-    <rect width="896" height="44" rx="12" fill="#0D1320" stroke="#26334A"/>
-    <text x="20" y="28" fill="#C7D0E2" font-family="Inter, Arial, sans-serif" font-size="15">
-      The mint contract has no redeem path and does not create LP positions. Exits use external USDR liquidity.
+  <g transform="translate(72 346)">
+    <rect width="896" height="58" rx="12" fill="#0D1320" stroke="#26334A"/>
+    <text x="20" y="24" fill="#C7D0E2" font-family="Inter, Arial, sans-serif" font-size="15">
+      <tspan x="20" dy="0">No redeem path and no LP positions are created in the mint transaction.</tspan>
+      <tspan x="20" dy="23">Users exit USDR through external USDR liquidity.</tspan>
     </text>
   </g>
 </svg>
