@@ -38,8 +38,8 @@ A trade that uses the tokens purchased before paying for them.
 
 ## Fixed Yield
 
-A Ring Interface flow where users deposit USDR during a subscription window and can exit after a shared maturity to
-receive principal plus a fixed USDR reward.
+A Ring Interface flow where users deposit USDR, earn fixed USDR rewards by elapsed time, and can withdraw principal
+without a maturity lock.
 
 ## Invariant
 

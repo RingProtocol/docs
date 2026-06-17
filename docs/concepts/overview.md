@@ -15,7 +15,7 @@ Today, the most important parts of Ring are:
 - **Few Protocol**: Ring's asset layer for wrapping original ERC-20 assets into `FewToken`
 - **Ring Swap (v2)**: Ring's native AMM and routing system built around `FewToken`
 - **USDR Mint**: a mint-only flow for depositing supported stablecoins and receiving `USDR` 1:1
-- **Fixed Yield**: a fixed-term `USDR` deposit product with fixed USDR rewards after maturity
+- **Fixed Yield**: a no-lock `USDR` deposit product with fixed rewards that accrue by elapsed time
 - **Uniswap v4 integration**: Ring also uses `FewToken` in Uniswap v4 liquidity environments, but this does **not** mean Ring operates a separate native v4 AMM
 - **Ring Interface**: the main web interface for interacting with Ring products
 

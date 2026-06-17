@@ -2,67 +2,70 @@
   <rect width="1040" height="460" rx="28" fill="#0B0F1A"/>
   <rect x="34" y="34" width="972" height="392" rx="22" fill="#101624" stroke="#26334A"/>
 
-  <text x="74" y="84" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">Fixed Yield timeline</text>
+  <text x="74" y="84" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">Fixed Yield flow</text>
   <text x="74" y="114" fill="#9BA7BD" font-family="Inter, Arial, sans-serif" font-size="16">
-    <tspan x="74" dy="0">Deposit USDR during one subscription window,</tspan>
-    <tspan x="74" dy="22">then exit after the shared maturity.</tspan>
+    <tspan x="74" dy="0">Deposit USDR, earn fixed 6% APR by time,</tspan>
+    <tspan x="74" dy="22">and withdraw principal whenever you choose.</tspan>
   </text>
 
   <line x1="142" y1="224" x2="900" y2="224" stroke="#33415F" stroke-width="8" stroke-linecap="round"/>
-  <line x1="142" y1="224" x2="482" y2="224" stroke="#5F6CFF" stroke-width="8" stroke-linecap="round"/>
-  <line x1="482" y1="224" x2="900" y2="224" stroke="#21C08B" stroke-width="8" stroke-linecap="round"/>
+  <line x1="142" y1="224" x2="520" y2="224" stroke="#5F6CFF" stroke-width="8" stroke-linecap="round"/>
+  <line x1="520" y1="224" x2="900" y2="224" stroke="#21C08B" stroke-width="8" stroke-linecap="round"/>
 
   <circle cx="142" cy="224" r="18" fill="#5F6CFF"/>
-  <circle cx="482" cy="224" r="18" fill="#5F6CFF"/>
+  <circle cx="520" cy="224" r="18" fill="#5F6CFF"/>
   <circle cx="900" cy="224" r="18" fill="#21C08B"/>
 
   <g transform="translate(70 150)">
-    <rect width="182" height="66" rx="14" fill="#172033" stroke="#33415F"/>
-    <text x="20" y="27" fill="#9BA7BD" font-family="Inter, Arial, sans-serif" font-size="13">Subscription opens</text>
+    <rect width="204" height="66" rx="14" fill="#172033" stroke="#33415F"/>
+    <text x="20" y="27" fill="#9BA7BD" font-family="Inter, Arial, sans-serif" font-size="13">Step 1</text>
     <text x="20" y="52" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700">Deposit USDR</text>
   </g>
 
-  <g transform="translate(386 150)">
-    <rect width="192" height="66" rx="14" fill="#172033" stroke="#33415F"/>
-    <text x="20" y="27" fill="#9BA7BD" font-family="Inter, Arial, sans-serif" font-size="13">Subscription closes</text>
-    <text x="20" y="52" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700">Lock starts</text>
+  <g transform="translate(410 150)">
+    <rect width="220" height="66" rx="14" fill="#172033" stroke="#33415F"/>
+    <text x="20" y="27" fill="#9BA7BD" font-family="Inter, Arial, sans-serif" font-size="13">Step 2</text>
+    <text x="20" y="52" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700">Accrue rewards</text>
   </g>
 
-  <g transform="translate(788 150)">
-    <rect width="194" height="66" rx="14" fill="#14261F" stroke="#2D7D5E"/>
-    <text x="20" y="27" fill="#9BA7BD" font-family="Inter, Arial, sans-serif" font-size="13">Maturity</text>
-    <text x="20" y="52" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700">Exit position</text>
+  <g transform="translate(766 150)">
+    <rect width="216" height="66" rx="14" fill="#14261F" stroke="#2D7D5E"/>
+    <text x="20" y="27" fill="#9BA7BD" font-family="Inter, Arial, sans-serif" font-size="13">Any time</text>
+    <text x="20" y="52" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700">Withdraw / claim</text>
   </g>
 
   <g transform="translate(72 272)">
-    <rect width="244" height="54" rx="12" fill="#0D1320" stroke="#26334A"/>
+    <rect width="244" height="64" rx="12" fill="#0D1320" stroke="#26334A"/>
     <text x="18" y="22" fill="#C7D0E2" font-family="Inter, Arial, sans-serif" font-size="14">
       <tspan x="18" dy="0">Approve and deposit</tspan>
-      <tspan x="18" dy="20">while the tranche is open.</tspan>
+      <tspan x="18" dy="20">USDR while the reward</tspan>
+      <tspan x="18" dy="20">program is open.</tspan>
     </text>
   </g>
 
   <g transform="translate(398 272)">
-    <rect width="244" height="54" rx="12" fill="#0D1320" stroke="#26334A"/>
+    <rect width="244" height="64" rx="12" fill="#0D1320" stroke="#26334A"/>
     <text x="18" y="22" fill="#C7D0E2" font-family="Inter, Arial, sans-serif" font-size="14">
       <tspan x="18" dy="0">Principal is wrapped</tspan>
-      <tspan x="18" dy="20">into fwUSDR.</tspan>
+      <tspan x="18" dy="20">into fwUSDR and earns</tspan>
+      <tspan x="18" dy="20">6% APR by elapsed time.</tspan>
     </text>
   </g>
 
   <g transform="translate(724 272)">
-    <rect width="244" height="54" rx="12" fill="#0D1320" stroke="#26334A"/>
+    <rect width="244" height="64" rx="12" fill="#0D1320" stroke="#26334A"/>
     <text x="18" y="22" fill="#C7D0E2" font-family="Inter, Arial, sans-serif" font-size="14">
-      <tspan x="18" dy="0">Withdraw principal</tspan>
-      <tspan x="18" dy="20">plus USDR reward.</tspan>
+      <tspan x="18" dy="0">Claim rewards, or exit</tspan>
+      <tspan x="18" dy="20">to receive principal plus</tspan>
+      <tspan x="18" dy="20">earned USDR rewards.</tspan>
     </text>
   </g>
 
-  <g transform="translate(72 350)">
-    <rect width="896" height="54" rx="12" fill="#0D1320" stroke="#26334A"/>
-    <text x="20" y="23" fill="#C7D0E2" font-family="Inter, Arial, sans-serif" font-size="15">
-      <tspan x="20" dy="0">Rewards are fixed at 6% APR and paid from USDR reserves</tspan>
-      <tspan x="20" dy="22">funded in the vault before deposits open.</tspan>
+  <g transform="translate(72 356)">
+    <rect width="896" height="48" rx="12" fill="#0D1320" stroke="#26334A"/>
+    <text x="20" y="22" fill="#C7D0E2" font-family="Inter, Arial, sans-serif" font-size="15">
+      <tspan x="20" dy="0">Program end stops new reward accrual; it is not a lock on user principal.</tspan>
+      <tspan x="20" dy="20">Reward reserves must cover the full active cap through the configured program end.</tspan>
     </text>
   </g>
 </svg>
