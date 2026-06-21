@@ -36,6 +36,10 @@ console.log(`The chainId of mainnet is ${ChainId.MAINNET}.`)
 console.log(`The few token address is ${fewDAI.address}.`)
 ```
 
+:::warning Use FewFactory-derived addresses
+`fw` symbols and `Few Wrapped` names are display metadata. For routing and approvals, derive the FewToken from the original ERC-20 with the SDK, or validate that `FewFactory.getWrappedToken(underlying)` returns the candidate FewToken address.
+:::
+
 ## CommonJS (require)
 
 ```typescript

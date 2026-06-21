@@ -26,3 +26,12 @@ as a separate Ring product generation.
 recognizing `FewToken` addresses.
 
 Use `@ring-protocol/uniswap-v2-sdk` only when you explicitly want the lower-level v2-compatible primitives rather than the higher-level Ring integration layer.
+
+## FewToken Address Resolution
+
+For Ring Swap integrations, derive FewToken addresses from the original ERC-20 with the official SDK or resolve them from the official `FewFactory`. A FewToken address is supported when `FewFactory.getWrappedToken(underlying)` returns that address; `symbol` and `name` are display metadata.
+
+Approval spender selection depends on the integration path:
+
+- Official router flow: approve only the official Ring Router, Universal Router, or Permit2 address for the chain.
+- Manual wrap flow: approve only the canonical FewToken returned by `FewFactory`.

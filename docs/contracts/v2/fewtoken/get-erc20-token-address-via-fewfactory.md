@@ -1,6 +1,6 @@
 ---
 title: Get ERC20 Token Address from FewToken
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 FewTokens wrap original ERC20 tokens. In UI and analytics workflows, you may need to map back to the underlying token.
