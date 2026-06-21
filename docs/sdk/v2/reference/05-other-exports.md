@@ -71,4 +71,6 @@ Returns a `Token` instance representing the wrapped `FewToken` for an original t
 import { isFewToken } from '@ring-protocol/v2-sdk'
 ```
 
-Returns `true` when the provided token instance already represents a `FewToken`.
+Returns `true` when the provided token instance appears to represent a `FewToken` by SDK metadata conventions.
+
+Use this helper only for SDK compatibility or display logic. It does not prove that a token was returned by the official `FewFactory`. For production routing and approvals, derive FewToken addresses from the original ERC-20 or validate an external wrapper with `FewFactory.getWrappedToken(underlying)`.
