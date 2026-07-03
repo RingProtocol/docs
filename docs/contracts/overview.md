@@ -10,7 +10,8 @@ If you are new to Ring, the contracts documentation should be read in this order
 
 1. `Ring Swap (v2)`
 2. `FewToken Wrapping`
-3. `Uniswap v4 Integration`
+3. `Launchpad`
+4. `Uniswap v4 Integration`
 
 ## How Ring's contract stack is organized
 
@@ -18,6 +19,7 @@ Ring's public contract stack is organized around a native swap product and the F
 
 - `Ring Swap (v2)` is Ring's native AMM and router product line.
 - `FewToken Wrapping` covers the FewFactory/FewToken layer used inside Ring Swap pools and routes.
+- `Launchpad` covers meme token creation and Uniswap v4 `TOKEN/fwWETH` pool initialization.
 - `Uniswap v4 Integration` documents how `FewToken` and Few hooks are used in Uniswap v4 environments.
 
 This distinction is important:
@@ -36,6 +38,10 @@ Start here if you want to integrate Ring's native swap system.
 ### FewToken Wrapping
 
 Start here if you want to resolve `FewToken` addresses or map wrapped assets back to underlying ERC-20 tokens.
+
+### Launchpad
+
+Start here if you want to create meme tokens, index launch events, integrate launch-time buys, or claim creator revenue.
 
 ### Ring Protocol Contracts
 
