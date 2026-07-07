@@ -50,7 +50,7 @@ export default function NavbarContent(): ReactNode {
     <div
       className={clsx(
         'navbar__inner',
-        'site-max-width w-full min-h-nav-h flex flex-row items-center rounded-large border border-light-surface-3 bg-light-surface-1/95 px-4 py-3 shadow-light-short backdrop-blur dark:border-dark-surface-3 dark:bg-dark-surface-1/95 dark:shadow-dark-short sm:px-5',
+        'site-max-width w-full min-h-nav-h flex flex-row items-center px-4 py-3 sm:px-5',
       )}
     >
       <Link
