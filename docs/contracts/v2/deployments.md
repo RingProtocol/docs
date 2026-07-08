@@ -4,6 +4,8 @@ sidebar_position: 2
 ---
 
 The latest Ring Swap (v2), FewFactory, router, wrapper, and hook contracts are deployed at the addresses listed below.
+The `UniversalRouter` rows are the Ring Universal Router addresses used by the current Ring Interface for classic
+Ring Swap flows.
 
 ## Mainnet Deployments
 
@@ -14,7 +16,7 @@ The latest Ring Swap (v2), FewFactory, router, wrapper, and hook contracts are d
 | Ring Swap Factory | `0xeb2A625B704d73e82946D8d026E1F588Eed06416` |
 | Few Factory | `0x7D86394139bf1122E82FDF45Bb4e3b038A4464DD` |
 | Ring Swap Router | `0x39d1d8fcC5E6EEAf567Bce4e29B94fec956D3519` |
-| UniversalRouter | `0xEff87A51f5Abd015F1AFCD5737BBab450eA15A24` |
+| UniversalRouter | `0x24e743CcE93235641f2be8Ce7ffC6330903ab96f` |
 | Permit2 | `0x000000000022D473030F116dDEE9F6B43aC78BA3` |
 | FewETHWrapper | `0xAda6059b4F6244Acd8934095Ed0162C5Df6B5ebB` |
 | FewETHHook | `0x044301939dEB7ca53C4733dd4D9B3bc5Ea0c6888` |
@@ -93,7 +95,7 @@ The latest Ring Swap (v2), FewFactory, router, wrapper, and hook contracts are d
 | Ring Swap Factory | `0x9BfFC3B30D6659e3D84754cc38865B3D60B4980E` |
 | Few Factory | `0xb3Ad7754f363af676dC1C5be40423FE538a47920` |
 | Ring Swap Router | `0x224749CDd5791480ECEBE452e5FFAEfEf94Cd254` |
-| UniversalRouter | `0x9a8C67C02250EC50f16b6143D139CbDB131f1e07` |
+| UniversalRouter | `0xcc1d0c42CC672Fcb610Db8934635Acd0F605Fd86` |
 | Permit2 | `0x000000000022D473030F116dDEE9F6B43aC78BA3` |
 | FewETHWrapper | `0x20E6B1260d12910C0Ab13c1AbEBCFe24AE9c4fe7` |
 
@@ -109,7 +111,7 @@ The latest Ring Swap (v2), FewFactory, router, wrapper, and hook contracts are d
 | Ring Swap Factory | `0x1246Fa62467a9AC0892a2d2A9F9aafC2F5609442` |
 | Few Factory | `0x974Cc3F3468cd9C12731108148C4DABFB5eE556F` |
 | Ring Swap Router | `0xD69ed581480239357515e200560353AF1BbaA46A` |
-| UniversalRouter | `0xf293096D3C33610461a7bd101D201683111749b8` |
+| UniversalRouter | `0x4e30E64faeF7c9Aee835904a48DC27eDA40e2CA7` |
 | Permit2 | `0x000000000022D473030F116dDEE9F6B43aC78BA3` |
 | FewETHWrapper | `0xEeE400Eabfba8F60f4e6B351D8577394BeB972CD` |
 
@@ -125,7 +127,7 @@ The latest Ring Swap (v2), FewFactory, router, wrapper, and hook contracts are d
 | Ring Swap Factory | `0xEeE400Eabfba8F60f4e6B351D8577394BeB972CD` |
 | Few Factory | `0x974Cc3F3468cd9C12731108148C4DABFB5eE556F` |
 | Ring Swap Router | `0xf9d7ff2f6A0c3631A807199276a493Af8097916F` |
-| UniversalRouter | `0xE17e4e8A43c1A0a1844BDe72ACA86Be3B81b28aF` |
+| UniversalRouter | `0xa7f0381288753e01171752483413E53f8D7faf4D` |
 | Permit2 | `0x000000000022D473030F116dDEE9F6B43aC78BA3` |
 | FewETHWrapper | `0xc43a3Dd1b16168e00297315d679840e30A89df42` |
 
@@ -141,7 +143,7 @@ The latest Ring Swap (v2), FewFactory, router, wrapper, and hook contracts are d
 | Ring Swap Factory | `0xEeE400Eabfba8F60f4e6B351D8577394BeB972CD` |
 | Few Factory | `0x974Cc3F3468cd9C12731108148C4DABFB5eE556F` |
 | Ring Swap Router | `0xf9d7ff2f6A0c3631A807199276a493Af8097916F` |
-| UniversalRouter | `0x3374bEa3C2A347231f93Fc366346AD6e56c7af49` |
+| UniversalRouter | `0x5dF345fB4e5F4791869bFD9cbCa941D931e6E781` |
 | Permit2 | `0x000000000022D473030F116dDEE9F6B43aC78BA3` |
 | FewETHWrapper | `0xc43a3Dd1b16168e00297315d679840e30A89df42` |
 
