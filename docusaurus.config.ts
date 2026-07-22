@@ -23,7 +23,7 @@ const config: Config = {
       onBrokenMarkdownLinks: 'warn',
     },
   },
-  favicon: 'img/favicon.png',
+  favicon: 'img/ring-logo.svg',
   organizationName: 'RingProtocol',
   projectName: 'docs',
   headTags: [

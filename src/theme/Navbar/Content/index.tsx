@@ -3,7 +3,7 @@ import { useNavbarMobileSidebar } from '@docusaurus/theme-common/internal'
 import NavbarColorModeToggle from '@theme/Navbar/ColorModeToggle'
 // import SearchBar from '@theme/SearchBar'
 import Link from '@docusaurus/Link'
-import { Menu, MiniUnicon } from '@site/src/components/Icons'
+import { Menu } from '@site/src/components/Icons'
 import clsx from 'clsx'
 
 // function useNavbarItems() {
@@ -59,7 +59,7 @@ export default function NavbarContent(): ReactNode {
         target="_self"
         aria-label="Ring Protocol documentation home"
       >
-        <MiniUnicon className="w-8 h-8 mr-3" />
+        <img className="mr-3 h-8 w-8 shrink-0 object-contain" src="/img/ring-logo.svg" alt="" aria-hidden="true" />
         <div className="flex flex-col">
           <p className="Navbar__logo-text body-1 text-light-accent-1 dark:text-dark-accent-1 mb-0">Ring Protocol</p>
           <p className="body-4 text-light-neutral-2 dark:text-dark-neutral-2 mb-0">Docs for builders</p>
