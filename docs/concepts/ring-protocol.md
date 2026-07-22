@@ -33,7 +33,7 @@ The core idea is simple:
 1. wrap original assets into `FewToken`
 2. use `FewToken` across trading and routing systems
 3. improve usable liquidity and quote competitiveness
-4. earn more order flow and fees from stronger execution
+4. capture more order flow and fees from stronger execution
 
 ### What Ring is not
 

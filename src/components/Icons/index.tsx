@@ -99,56 +99,6 @@ export const ArrowRight: FC<{
   )
 }
 
-export const MiniUnicon: FC<{
-  className?: string
-  color?: 'accent-1' | 'neutral-1'
-}> = ({ className, color = 'accent-1' }) => {
-  return (
-    <svg className={cn('MiniUnicon', className)} viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="miniUniconGradient" x1="0" y1="96" x2="96" y2="0" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#FF6AD5" />
-          <stop offset="100%" stopColor="#7C88FF" />
-        </linearGradient>
-      </defs>
-      {color === 'neutral-1' ? (
-        <>
-          <circle
-            cx="48"
-            cy="56"
-            r="28"
-            fill="none"
-            strokeWidth="10"
-            className={cn('stroke-light-neutral-1 dark:stroke-dark-neutral-1')}
-          />
-          <rect
-            x="64"
-            y="8"
-            width="16"
-            height="6"
-            rx="3"
-            className={cn('fill-light-neutral-1 dark:fill-dark-neutral-1')}
-            transform="rotate(-30 72 11)"
-          />
-        </>
-      ) : (
-        <>
-          <circle cx="48" cy="56" r="28" fill="none" stroke="url(#miniUniconGradient)" strokeWidth="10" />
-          <rect
-            x="64"
-            y="8"
-            width="16"
-            height="6"
-            rx="3"
-            fill="url(#miniUniconGradient)"
-            transform="rotate(-30 72 11)"
-          />
-        </>
-      )}
-    </svg>
-  )
-}
-
 export const Emblem1: FC<{
   className?: string
   color?: 'accent-1'

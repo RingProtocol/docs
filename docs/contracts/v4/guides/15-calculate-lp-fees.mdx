@@ -33,7 +33,7 @@ function modifyLiquidity(PoolKey memory key, IPoolManager.ModifyLiquidityParams 
 }
 ```
 
-In this guide we will go through how you can calculate fees earned for a LP position in v4 specifically the **uncollected fees** and **total lifetime fees**.
+In this guide we will go through how you can calculate LP position fee amounts in v4, specifically the **uncollected fees** and **total lifetime fees**.
 
 ## Contract Setup
 
@@ -100,7 +100,7 @@ uint128 tokenAmount =
     (FullMath.mulDiv(feeGrowthInsideX128 - feeGrowthInsideLastX128, liquidity, FixedPoint128.Q128)).toUint128();
 ```
 
-### Calculate lifetime fees earned for a LP range
+### Calculate lifetime fee totals for a LP range
 
 Create a new function `getLifetimeFee(PositionConfig config, uint256 tokenId)`:
 

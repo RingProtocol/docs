@@ -155,7 +155,7 @@ Most of the code at this point should be self-explanatory. It’s not doing anyt
 
 ### Points Logic
 
-First, let’s setup the `POINTS` token that we’ll reward users with via creating another contract `PointsToken.sol` and import relevant dependencies like `ERC20` and `Owned`.
+First, let’s set up the `POINTS` token that the hook can issue by creating another contract `PointsToken.sol` and importing relevant dependencies like `ERC20` and `Owned`.
 
 ```solidity
 // SPDX-License-Identifier: MIT

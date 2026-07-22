@@ -167,7 +167,7 @@ While **StateView** exposes many functions, here are several essential calls for
     - Used to assess trading depth and volatility.
 3. **[`getPositionInfo(poolId, positionId)`](/contracts/v4/reference/periphery/lens/StateView#getpositioninfo)**
     - Returns `(uint128 liquidity, uint256 feeGrowthInside0Last, uint256 feeGrowthInside1Last)`.
-    - Critical for tracking user positions, especially to calculate earned fees over time.
+    - Critical for tracking user positions, especially to calculate accrued fees over time.
 4. **[`getFeeGrowthGlobals(poolId)`](/contracts/v4/reference/periphery/lens/StateView#getfeegrowthglobals)**
     - Returns `(uint256 feeGrowthGlobal0, uint256 feeGrowthGlobal1)`.
     - Useful for analytics around total fee accumulation in the pool.

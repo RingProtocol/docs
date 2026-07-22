@@ -10,7 +10,7 @@ This page describes fee behavior in the current `FewToken + Uniswap v4` integrat
 
 In this v4 integration stack, there are three main types of fees to understand:
 
-- **LP Fee**: Fees earned by liquidity providers
+- **LP Fee**: Fees allocated to liquidity providers
 - **Protocol Fee**: Fees collected by the protocol
 - **Swap Fee**: Total fee paid by swappers (calculated by applying protocol fee and LP fee sequentially)
 
@@ -67,9 +67,9 @@ In this v4 integration stack, the swap fee is the effective total fee after appl
 1. **Protocol fee** applied first to the input amount
 2. **LP fee** applied second to the remaining input (after protocol fee deduction)
 
-**Impact on LP Earnings:**
+**Impact on LP Fee Share:**
 
-Note that this sequential application means introducing or increasing protocol fees will reduce LP earnings even if swap volume remains constant, since LPs now earn fees on a smaller base amount.
+Note that this sequential application means introducing or increasing protocol fees will reduce the LP fee share even if swap volume remains constant, since LP fees are calculated on a smaller base amount.
 
 ### Fee Cap
 

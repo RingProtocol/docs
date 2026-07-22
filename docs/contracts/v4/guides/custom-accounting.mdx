@@ -63,7 +63,7 @@ Custom curves in v4 represent a big change in AMM design flexibility. Unlike [Ri
 This is made possible through the hook system, particularly hooks that can interact with the swap process. Custom curves allow developers to eject the native concentrated liquidity pricing mechanism. These hooks can intercept swap requests, apply custom pricing logic, and return modified swap parameters. This enables the creation of pools with unique characteristics, such as:
 
 - Stable asset pairs with minimal price impact
-- Curves for special token types like rebasing tokens, RWAs, vault tokens
+- Curves for special token types like rebasing tokens, RWAs, or wrapped position tokens
 
 For example, creating a custom curve for a stable swap pool would involve designing a pricing function that maintains tighter price ranges when assets are near parity. This could be achieved by implementing a curve that's flatter in the middle (where assets are at their expected 1:1 ratio) and steeper at the edges (to discourage large imbalances).
 

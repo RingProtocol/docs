@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import { MiniUnicon, Github, X, Discord } from '../components/Icons'
+import { Github, X, Discord } from '../components/Icons'
 
 import { LinkBase, TextButton } from '../components/base/Button'
 
@@ -75,7 +75,12 @@ const Footer: FC = () => {
       <div className="default-grid rounded-large border border-light-surface-3 bg-light-surface-2 p-6 dark:border-dark-surface-3 dark:bg-dark-surface-2 sm:mb-20 sm:p-8">
         <div className="mb-12 flex flex-col items-start sm:col-span-8 md:col-span-3 md:mb-0">
           <LinkBase href="/" className="flex flex-row items-center">
-            <MiniUnicon color="neutral-1" className="mb-[0.1875rem] h-8 w-8" />
+            <img
+              className="mb-[0.1875rem] h-8 w-8 shrink-0 object-contain"
+              src="/img/ring-logo.svg"
+              alt=""
+              aria-hidden="true"
+            />
             <p className="body-1 ml-2 text-light-neutral-1 dark:text-dark-neutral-1">Ring Protocol Docs</p>
           </LinkBase>
           <p className="mt-4 body-2 text-light-neutral-2 dark:text-dark-neutral-2">
