@@ -6,8 +6,8 @@ sidebar_position: 5
 This page describes subscribers in the current `FewToken + Uniswap v4` integration environment. It should be read as integration guidance, not as documentation for a separate native v4 AMM.
 
 Subscribers in this v4 integration stack allow liquidity-position owners to opt in to a contract that receives _notifications_.
-The new design is intended to support _liquidity mining_, additional rewards given to in-range liquidity providers. Through notification logic, position owners do not need
-to risk their liquidity position and its underlying assets. Older incentive designs often required fully transferring the
+The design can support external accounting for in-range liquidity positions. Through notification logic, position owners do not need
+to risk their liquidity position and its underlying assets. Older opt-in designs often required fully transferring the
 liquidity position to an external contract; that pattern would give the external contract full ownership and control of the liquidity position.
 
 When a position owner _subscribes_ to a contract, the contract will receive notifcations when:

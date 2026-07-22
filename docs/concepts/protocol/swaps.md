@@ -10,7 +10,7 @@ Swaps are the most common way of interacting with the Ring protocol. For end-use
 
 > note: Using web interfaces (websites) to swap via the Ring protocol can introduce additional permission structures, and may result in different execution behavior compared to using the Ring protocol directly. To learn more about the differences between the protocol and a web interface, see [Ring Overview](/concepts/overview).
 
-Swaps using the Ring protocol are different from traditional order book trades in that they are not executed against discrete orders on a first-in-first-out basis — rather, swaps execute against a passive pool of liquidity, with liquidity providers earning fees proportional to their capital committed
+Swaps using the Ring protocol are different from traditional order book trades in that they are not executed against discrete orders on a first-in-first-out basis — rather, swaps execute against a passive pool of liquidity, with fees allocated to liquidity providers in proportion to their capital committed
 
 ## Price Impact
 

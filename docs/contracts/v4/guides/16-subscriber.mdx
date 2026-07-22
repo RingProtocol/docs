@@ -6,9 +6,9 @@ title: Subscriber
 
 This page describes subscribers in the current `FewToken + Uniswap v4` integration environment. It should be read as integration guidance, not as documentation for a separate native v4 AMM.
 
-Subscribers are a v4 mechanism that allows external contracts (aka Subscribers) to be notified by the PositionManager whenever specific events occur (e.g. liquidity changes or burns). It’s especially useful for designing **liquidity incentive** systems or reward programs.
+Subscribers are a v4 mechanism that allows external contracts (aka Subscribers) to be notified by the PositionManager whenever specific events occur (e.g. liquidity changes or burns). It’s especially useful for designing external position accounting systems.
 
-Before diving into implementation details, let's understand what makes Subscribers valuable. When a position holder subscribes their position to a Subscriber contract, that contract receives notifications about various events: liquidity changes, position burns, and subscription status changes. This flow enables protocols to accurately track and reward liquidity provision.
+Before diving into implementation details, let's understand what makes Subscribers valuable. When a position holder subscribes their position to a Subscriber contract, that contract receives notifications about various events: liquidity changes, position burns, and subscription status changes. This flow enables protocols to accurately track liquidity provision.
 
 Subscribers become of aware of the liquidity position, without needing to own the position and its underlying capital.
 
@@ -31,9 +31,9 @@ This method is called whenever a position subscribes to your contract. The `toke
 
 For example, you might use this data parameter to specify:
 
-- Lock-up duration for rewards
+- Lock-up duration for subscriptions
 - Campaign-specific settings
-- Custom reward parameters
+- Custom accounting parameters
 
 > ***Note**: The data parameter is entirely optional and its interpretation is up to your implementation.*
 > 
@@ -126,7 +126,7 @@ contract MySubscriber is ISubscriber {
 }
 ```
 
-> ***Note**: This is a basic implementation. Your actual contract will need more sophisticated tracking depending on your reward mechanism.*
+> ***Note**: This is a basic implementation. Your actual contract will need more sophisticated tracking depending on your accounting model.*
 > 
 
 ### Step 2: Deploy Subscriber
@@ -223,32 +223,32 @@ Since Subscriber contracts often handle value distribution, security is paramoun
 
 ### Value Distribution
 
-- **Custody**: Implement secure mechanisms for handling reward tokens
-- **Calculation**: Ensure reward calculations are accurate and cannot be manipulated
+- **Custody**: Implement secure mechanisms for handling any value-bearing assets
+- **Calculation**: Ensure distribution calculations are accurate and cannot be manipulated
 
 ### Protection Against Exploitation
 
 Be aware of potential attack vectors:
 
 - Users can artificially inflate `feesAccrued` in single-position pools
-- Malicious actors might attempt to claim rewards they haven't earned
+- Malicious actors might attempt to manipulate accounting state
 
 > ***Warning**: Always validate inputs and implement thorough checks before distributing any value.*
 > 
 
 ## Implementation Example
 
-Let’s build a **minimal** Subscriber implementation that demonstrates how to handle position events. In practice, you’d likely extend these concepts to include reward calculations or more complex accounting.
+Let’s build a **minimal** Subscriber implementation that demonstrates how to handle position events. In practice, you’d likely extend these concepts to include more complex accounting.
 
-> ***Note**: The code below focuses on the essential mechanics of receiving notifications. A production system will need additional logic for security, reward distribution, and user interaction.*
+> ***Note**: The code below focuses on the essential mechanics of receiving notifications. A production system will need additional logic for security, value distribution, and user interaction.*
 > 
 
-### Basic Reward Tracking
+### Basic Position Tracking
 
 First, we set up our contract with the necessary data structures and references:
 
 ```solidity
-contract LiquidityRewardsSubscriber is ISubscriber {
+contract LiquidityAccountingSubscriber is ISubscriber {
     // 1) Store subscription timestamps and liquidity for each position
     struct PositionData {
         uint256 subscriptionTime;
@@ -336,7 +336,7 @@ function notifyModifyLiquidity(
 ### Why This Is Important
 
 - **`liquidityChange`** can be positive (liquidity added) or negative (liquidity removed). We update our internal tracking accordingly.
-- **`feesAccrued`** is provided if the user also collects fees during this action. In a more advanced version, you could track these fees for reward calculations.
+- **`feesAccrued`** is provided if the user also collects fees during this action. In a more advanced version, you could track these fees for accounting.
 
 ## Processing Position Burns
 
@@ -368,7 +368,7 @@ To put this into practice:
 
 ```solidity
 // 1. Deploy the subscriber
-LiquidityRewardsSubscriber subscriber = new LiquidityRewardsSubscriber(positionManager);
+LiquidityAccountingSubscriber subscriber = new LiquidityAccountingSubscriber(positionManager);
 
 // 2. Users then subscribe their positions
 positionManager.subscribe(tokenId, subscriber, "");
@@ -382,7 +382,7 @@ positionManager.subscribe(tokenId, subscriber, "");
 
 > This example is deliberately minimal. A real-world Subscriber would need:
 > 
-> - **Reward Distribution**: Logic that calculates and distributes incentives based on `subscriptionTime`, `currentLiquidity`, or `feesAccrued`.
+> - **Value Distribution**: Logic that calculates and distributes values based on `subscriptionTime`, `currentLiquidity`, or `feesAccrued`.
 > - **Security Checks**: Safeguards against malicious actors who might inflate fees, manipulate liquidity changes, or spam subscribe/unsubscribe cycles.
-> - **Access Control**: Roles or permissions if only certain addresses are allowed to manage rewards or update parameters.
+> - **Access Control**: Roles or permissions if only certain addresses are allowed to manage configuration or update parameters.
 > - **Gas Optimization**: Especially if you expect many positions to subscribe/unsubscribe frequently.

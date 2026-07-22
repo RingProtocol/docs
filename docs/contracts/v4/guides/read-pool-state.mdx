@@ -228,14 +228,14 @@ function getPositionInfo(
 This function retrieves information about a specific liquidity position. It returns:
 
 - `liquidity`: The amount of liquidity in the position.
-- `feeGrowthInside0LastX128` and `feeGrowthInside1LastX128`: The last recorded cumulative fees earned per unit of liquidity for each token.
+- `feeGrowthInside0LastX128` and `feeGrowthInside1LastX128`: The last recorded cumulative fee growth per unit of liquidity for each token.
 
 **Use Case:**
 
 This function is crucial for applications that need to manage or analyze individual liquidity positions:
 
-- A liquidity management dashboard could use this to display a user's current positions and earned fees.
-- An automated liquidity provision system could use this to decide when to rebalance or compound rewards.
+- A liquidity management dashboard could use this to display a user's current positions and accrued fees.
+- An automated liquidity provision system could use this to decide when to rebalance positions.
 - An analytics tool could use this to calculate the performance of different liquidity provision strategies.
 
 ### `getFeeGrowthGlobal`
@@ -257,7 +257,7 @@ This function retrieves the global fee growth for both tokens in the pool. These
 
 Global fee growth is essential for several advanced operations:
 
-- Calculating the fees earned by a position that has been held for a long time.
+- Calculating the fee amount for a position that has been held for a long time.
 - Analyzing the overall fee generation of a pool over its lifetime.
 - Comparing the performance of different pools or fee tiers.
 
