@@ -1,9 +1,11 @@
 {
   "schemaVersion": 4,
+  "manifestVersion": 1,
+  "updatedAt": "2026-07-27T14:13:24Z",
   "chainId": 1,
   "network": "ethereum",
   "poolManager": "0x000000000004444c5dc75cb358380d2e3de08a90",
-  "scope": "PoolKey and initialization data for the FewToken pools in Ring's aggregator integration request.",
+  "scope": "PoolKey and initialization data for Ring's primary FewToken pools on Uniswap v4.",
   "counts": {
     "pools": 30,
     "fewTokenTradingPools": 21,

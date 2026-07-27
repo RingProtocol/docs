@@ -24,9 +24,9 @@ hooks
 The pool ID is the hash of this key. Aggregators must keep every field exactly as published because changing the fee,
 tick spacing, currency order, or hook address identifies a different pool.
 
-## Pools requested for integration
+## Primary FewToken pools on Ethereum
 
-Ring is requesting quote and routing support for the 30 Ethereum mainnet pools below. The set contains 21 FewToken
+The 30 Ethereum mainnet pools below are Ring's primary FewToken pools on Uniswap v4. The set contains 21 FewToken
 trading pools and nine wrapper pools. Pools are listed alphabetically within each type; their order does not indicate
 priority.
 
@@ -79,10 +79,13 @@ These pools connect an underlying asset with its FewToken representation through
 
 ## Machine-readable integration manifest
 
-The [Ethereum integration manifest](/data/fewtoken-v4-pools-ethereum.json) lists the 30 pools in this integration
-request and provides the `PoolKey` and initialization data needed for ingestion and testing. It is not a live
-liquidity or quote API. Integrators should read current pool state from Ethereum `PoolManager` before quoting or
-routing. Each entry has this structure:
+The [Ethereum integration manifest](/data/fewtoken-v4-pools-ethereum.json) lists the 30 pools covered by this guide
+and provides the `PoolKey` and initialization data needed for ingestion and testing. It is not a live liquidity or
+quote API. Integrators should read current pool state from Ethereum `PoolManager` before quoting or routing.
+
+The top-level `schemaVersion` changes when the JSON structure changes. `manifestVersion` increments when the listed
+pool set or one of its published parameters changes. `updatedAt` records when the manifest was last updated. Each
+entry has this structure:
 
 ```json
 {
@@ -143,7 +146,7 @@ engine cannot read the pool, simulate the swap, and return an executable result.
 A wrapper pool converts between an underlying asset and its FewToken representation. Its token-specific hook wraps or
 unwraps during `beforeSwap` and returns the swap delta to `PoolManager`.
 
-The requested wrapper pools use:
+The listed wrapper pools use:
 
 ```text
 fee: 0 (0%)
@@ -168,7 +171,7 @@ slippage protection, and `hookData` required by the execution path.
 
 FewToken liquidity support is complete when:
 
-- all 30 requested pools can be discovered by their complete `PoolKey`
+- all 30 listed pools can be discovered by their complete `PoolKey`
 - the quote engine can read current pool state and return valid quotes when the pool supports the requested size
 - a pool can enter the route when it improves the quote
 - the router can produce executable calldata with the correct currencies, fee, tick spacing, hook, direction, amount,
