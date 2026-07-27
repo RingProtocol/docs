@@ -1,14 +1,14 @@
 {
   "schemaVersion": 4,
-  "manifestVersion": 1,
-  "updatedAt": "2026-07-27T14:13:24Z",
+  "manifestVersion": 2,
+  "updatedAt": "2026-07-27T14:55:48Z",
   "chainId": 1,
   "network": "ethereum",
   "poolManager": "0x000000000004444c5dc75cb358380d2e3de08a90",
   "scope": "PoolKey and initialization data for Ring's primary FewToken pools on Uniswap v4.",
   "counts": {
-    "pools": 30,
-    "fewTokenTradingPools": 21,
+    "pools": 25,
+    "fewTokenTradingPools": 16,
     "wrapperPools": 9
   },
   "pools": [
@@ -86,44 +86,6 @@
       "links": {
         "uniswapExplorer": "https://app.uniswap.org/explore/pools/ethereum/0x278f11274052a2e85cf010cc2c895b769e71cd25e490f3881d876f6dc5c1ba98",
         "initializeTransaction": "https://etherscan.io/tx/0x44a7c4f522c1a5915011232f671208dc34fec7ebbebe0b232ae96f9598b2d4cb"
-      }
-    },
-    {
-      "pair": "fwPAXG/fwxaut",
-      "type": "FewToken Trading",
-      "currency0": {
-        "name": "fwPAXG",
-        "address": "0x0cacc8cab03ef297d57cc2aa0c8d9d3f4dd604b6",
-        "etherscan": "https://etherscan.io/address/0x0cacc8cab03ef297d57cc2aa0c8d9d3f4dd604b6"
-      },
-      "currency1": {
-        "name": "fwxaut",
-        "address": "0x46d73dee442a7ba2c1c6948a1114acbf69d76ccd",
-        "etherscan": "https://etherscan.io/address/0x46d73dee442a7ba2c1c6948a1114acbf69d76ccd"
-      },
-      "fee": {
-        "raw": 500,
-        "percent": "0.05%"
-      },
-      "tickSpacing": 10,
-      "hook": null,
-      "poolId": "0xe3d4387729003be1a5ac06443c8347b3af9043c9bbe1f087fd8b1d15434ca610",
-      "poolKey": {
-        "currency0": "0x0cacc8cab03ef297d57cc2aa0c8d9d3f4dd604b6",
-        "currency1": "0x46d73dee442a7ba2c1c6948a1114acbf69d76ccd",
-        "fee": 500,
-        "tickSpacing": 10,
-        "hooks": "0x0000000000000000000000000000000000000000"
-      },
-      "initialization": {
-        "block": 22855840,
-        "transactionHash": "0x634229cac92ccb3c5048aef387b172b2a5ae761cc49bd141c96fd1e48d4ada2f",
-        "sqrtPriceX96": "79367031159743302702636",
-        "tick": -276289
-      },
-      "links": {
-        "uniswapExplorer": "https://app.uniswap.org/explore/pools/ethereum/0xe3d4387729003be1a5ac06443c8347b3af9043c9bbe1f087fd8b1d15434ca610",
-        "initializeTransaction": "https://etherscan.io/tx/0x634229cac92ccb3c5048aef387b172b2a5ae761cc49bd141c96fd1e48d4ada2f"
       }
     },
     {
@@ -656,158 +618,6 @@
       "links": {
         "uniswapExplorer": "https://app.uniswap.org/explore/pools/ethereum/0x2dbdb92a8162fb5d7709d39d34a4ecf6de6cbc64122bfc1c4a6b75b29a8429ad",
         "initializeTransaction": "https://etherscan.io/tx/0x61b2b7ae0b7f892d10ca4dc6caffa53150572bcdfdd2aedd7a2626129f021171"
-      }
-    },
-    {
-      "pair": "fwWBTC/fwUNI",
-      "type": "FewToken Trading",
-      "currency0": {
-        "name": "fwWBTC",
-        "address": "0x2078f336fdd260f708bec4a20c82b063274e1b23",
-        "etherscan": "https://etherscan.io/address/0x2078f336fdd260f708bec4a20c82b063274e1b23"
-      },
-      "currency1": {
-        "name": "fwUNI",
-        "address": "0xe8e1f50392bd61d0f8f48e8e7af51d3b8a52090a",
-        "etherscan": "https://etherscan.io/address/0xe8e1f50392bd61d0f8f48e8e7af51d3b8a52090a"
-      },
-      "fee": {
-        "raw": 3000,
-        "percent": "0.3%"
-      },
-      "tickSpacing": 60,
-      "hook": null,
-      "poolId": "0x8f484d0af27622d51f2fd103d8d279ac4990e0849579bcf1fcd3e63369a6eb49",
-      "poolKey": {
-        "currency0": "0x2078f336fdd260f708bec4a20c82b063274e1b23",
-        "currency1": "0xe8e1f50392bd61d0f8f48e8e7af51d3b8a52090a",
-        "fee": 3000,
-        "tickSpacing": 60,
-        "hooks": "0x0000000000000000000000000000000000000000"
-      },
-      "initialization": {
-        "block": 21814620,
-        "transactionHash": "0xbeb3b377db4bab52055e938adf74fe188815665428e44762c26d7c9dfec93c24",
-        "sqrtPriceX96": "816366891847754514971350022790686321",
-        "tick": 322977
-      },
-      "links": {
-        "uniswapExplorer": "https://app.uniswap.org/explore/pools/ethereum/0x8f484d0af27622d51f2fd103d8d279ac4990e0849579bcf1fcd3e63369a6eb49",
-        "initializeTransaction": "https://etherscan.io/tx/0xbeb3b377db4bab52055e938adf74fe188815665428e44762c26d7c9dfec93c24"
-      }
-    },
-    {
-      "pair": "fwWBTC/fwWETH",
-      "type": "FewToken Trading",
-      "currency0": {
-        "name": "fwWBTC",
-        "address": "0x2078f336fdd260f708bec4a20c82b063274e1b23",
-        "etherscan": "https://etherscan.io/address/0x2078f336fdd260f708bec4a20c82b063274e1b23"
-      },
-      "currency1": {
-        "name": "fwWETH",
-        "address": "0xa250cc729bb3323e7933022a67b52200fe354767",
-        "etherscan": "https://etherscan.io/address/0xa250cc729bb3323e7933022a67b52200fe354767"
-      },
-      "fee": {
-        "raw": 3000,
-        "percent": "0.3%"
-      },
-      "tickSpacing": 60,
-      "hook": null,
-      "poolId": "0x2ea68fd8c70c6fc10b741f5804f73ffd3189c611f7389f492d792456794e0764",
-      "poolKey": {
-        "currency0": "0x2078f336fdd260f708bec4a20c82b063274e1b23",
-        "currency1": "0xa250cc729bb3323e7933022a67b52200fe354767",
-        "fee": 3000,
-        "tickSpacing": 60,
-        "hooks": "0x0000000000000000000000000000000000000000"
-      },
-      "initialization": {
-        "block": 21814585,
-        "transactionHash": "0x9d50813c73acd45cf18f15e784b558862ceb6089682379c480c9f7c666cf3a8b",
-        "sqrtPriceX96": "48007418417553602870203653584857784",
-        "tick": 266304
-      },
-      "links": {
-        "uniswapExplorer": "https://app.uniswap.org/explore/pools/ethereum/0x2ea68fd8c70c6fc10b741f5804f73ffd3189c611f7389f492d792456794e0764",
-        "initializeTransaction": "https://etherscan.io/tx/0x9d50813c73acd45cf18f15e784b558862ceb6089682379c480c9f7c666cf3a8b"
-      }
-    },
-    {
-      "pair": "fwweETH/fwwstETH",
-      "type": "FewToken Trading",
-      "currency0": {
-        "name": "fwweETH",
-        "address": "0x9553d5f1f564ede30f5a9f0274cd0af7a00546e7",
-        "etherscan": "https://etherscan.io/address/0x9553d5f1f564ede30f5a9f0274cd0af7a00546e7"
-      },
-      "currency1": {
-        "name": "fwwstETH",
-        "address": "0xb90e63487bc6a4fa3d58f707510dab3c28a63137",
-        "etherscan": "https://etherscan.io/address/0xb90e63487bc6a4fa3d58f707510dab3c28a63137"
-      },
-      "fee": {
-        "raw": 500,
-        "percent": "0.05%"
-      },
-      "tickSpacing": 10,
-      "hook": null,
-      "poolId": "0xe8b4e3ea01851893fc209b0440642e76beac7803b4c91273fad805876316a25f",
-      "poolKey": {
-        "currency0": "0x9553d5f1f564ede30f5a9f0274cd0af7a00546e7",
-        "currency1": "0xb90e63487bc6a4fa3d58f707510dab3c28a63137",
-        "fee": 500,
-        "tickSpacing": 10,
-        "hooks": "0x0000000000000000000000000000000000000000"
-      },
-      "initialization": {
-        "block": 22872611,
-        "transactionHash": "0xe80eb4655c9b7322e505d3e717b3f7073e81cd4c0da0becf4309484d009c9720",
-        "sqrtPriceX96": "74618227976821548934366987640",
-        "tick": -1199
-      },
-      "links": {
-        "uniswapExplorer": "https://app.uniswap.org/explore/pools/ethereum/0xe8b4e3ea01851893fc209b0440642e76beac7803b4c91273fad805876316a25f",
-        "initializeTransaction": "https://etherscan.io/tx/0xe80eb4655c9b7322e505d3e717b3f7073e81cd4c0da0becf4309484d009c9720"
-      }
-    },
-    {
-      "pair": "fwWETH/fwUNI",
-      "type": "FewToken Trading",
-      "currency0": {
-        "name": "fwWETH",
-        "address": "0xa250cc729bb3323e7933022a67b52200fe354767",
-        "etherscan": "https://etherscan.io/address/0xa250cc729bb3323e7933022a67b52200fe354767"
-      },
-      "currency1": {
-        "name": "fwUNI",
-        "address": "0xe8e1f50392bd61d0f8f48e8e7af51d3b8a52090a",
-        "etherscan": "https://etherscan.io/address/0xe8e1f50392bd61d0f8f48e8e7af51d3b8a52090a"
-      },
-      "fee": {
-        "raw": 3000,
-        "percent": "0.3%"
-      },
-      "tickSpacing": 60,
-      "hook": null,
-      "poolId": "0x9c03436d98a853a141f730558f1cd0e7fa0e405a8e80e7fac92751ad97a0aed5",
-      "poolKey": {
-        "currency0": "0xa250cc729bb3323e7933022a67b52200fe354767",
-        "currency1": "0xe8e1f50392bd61d0f8f48e8e7af51d3b8a52090a",
-        "fee": 3000,
-        "tickSpacing": 60,
-        "hooks": "0x0000000000000000000000000000000000000000"
-      },
-      "initialization": {
-        "block": 21750081,
-        "transactionHash": "0x2f529fe9523aa86e999efcc523051102a464e477be4d7bdc9688b7c9c626dbfa",
-        "sqrtPriceX96": "1330075241693464831110264727465",
-        "tick": 56416
-      },
-      "links": {
-        "uniswapExplorer": "https://app.uniswap.org/explore/pools/ethereum/0x9c03436d98a853a141f730558f1cd0e7fa0e405a8e80e7fac92751ad97a0aed5",
-        "initializeTransaction": "https://etherscan.io/tx/0x2f529fe9523aa86e999efcc523051102a464e477be4d7bdc9688b7c9c626dbfa"
       }
     },
     {
