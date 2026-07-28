@@ -50,19 +50,22 @@ This hook is useful when you need:
 
 The following hook contracts are currently published for Ethereum mainnet:
 
-| Hook Contract | Ethereum Mainnet Address | Pool ID |
-| --- | --- | --- |
-| `FewETHHook` | `0x044301939dEB7ca53C4733dd4D9B3bc5Ea0c6888` | `0x7a5a8f5a36a6a2e9961caf6bb047a5a7580d0fe16a532aad93efc596028dfa54` |
-| `FewUNIHook` | `0x4b3E2a8cF36c7EB0fBa2A5b39B20c896C6f22888` | `0x301d41ff23b73b209ab2b1112f4effd0d8ff978ec29d743c1431463f84cbec24` |
-| `FewWBTCHook` | `0x0FE942AFdb2F51e25cbf892aAd175C6A574F2888` | `0x18605c7a76101aeccc414cc300dd5e5ae44b30d6c247ba164ccd88952c259735` |
-| `FewUSDCHook` | `0x4b2EB653D13E6C9ac5A0A01fDe22F2C8d6592888` | `0x5837e6b4fd4b8193f2f7a8b4490c0f154344bb9a52b36a885578ff6d3193fc47` |
-| `FewDAIHook` | `0x85B648a64Aed6307D5d5Ce26e6Ae086C17Bde888` | `0xf906beb74154ca4d057b7079c90eb1044efaf40ef468e62ec983930cf80a1e2b` |
-| `FewUSDTHook` | `0xBAdF77d50478b4432eF1F243B9C0bC7869486888` | `0x7db868544c8f7f6ddb107c7749c94f03c9e0155f2138aef3f8a020e4a469d95a` |
-| `FewCBBTCHook` | `0x8347b7A3807C681513D2B51b8223e59aA16a2888` | `0x8f8b0b21fb429ffb5210f2bf0f8b7cb267b944a0c61beaae35f20f6839c0f33b` |
-| `FewweETHHook` | `0x877323adBf747f85eb8D182D42f01f34A5492888` | `0x6933dfbf7441cc4ee4439843fdd464e215a6c90f07c5a769198e2a047f1f3f3e` |
-| `FewwstETHHook` | `0x75ae0292E8AD3ab60B9A1A7B3046d3F4Abdfa888` | `0xe7c2f30fd89238331b0e3e6ac6351578d5e3091b7839eff321c29cf88e17274e` |
+| Pair | Hook Contract | Ethereum Mainnet Address | Pool ID |
+| --- | --- | --- | --- |
+| ETH / `fwWETH` | `FewETHHook` | `0x044301939dEB7ca53C4733dd4D9B3bc5Ea0c6888` | `0x7a5a8f5a36a6a2e9961caf6bb047a5a7580d0fe16a532aad93efc596028dfa54` |
+| UNI / `fwUNI` | `FewUNIHook` | `0x4b3E2a8cF36c7EB0fBa2A5b39B20c896C6f22888` | `0x301d41ff23b73b209ab2b1112f4effd0d8ff978ec29d743c1431463f84cbec24` |
+| WBTC / `fwWBTC` | `FewWBTCHook` | `0x0FE942AFdb2F51e25cbf892aAd175C6A574F2888` | `0x18605c7a76101aeccc414cc300dd5e5ae44b30d6c247ba164ccd88952c259735` |
+| USDC / `fwUSDC` | `FewUSDCHook` | `0x4b2EB653D13E6C9ac5A0A01fDe22F2C8d6592888` | `0x5837e6b4fd4b8193f2f7a8b4490c0f154344bb9a52b36a885578ff6d3193fc47` |
+| DAI / `fwDAI` | `FewDAIHook` | `0x85B648a64Aed6307D5d5Ce26e6Ae086C17Bde888` | `0xf906beb74154ca4d057b7079c90eb1044efaf40ef468e62ec983930cf80a1e2b` |
+| USDT / `fwUSDT` | `FewUSDTHook` | `0xBAdF77d50478b4432eF1F243B9C0bC7869486888` | `0x7db868544c8f7f6ddb107c7749c94f03c9e0155f2138aef3f8a020e4a469d95a` |
+| cbBTC / `fwcbBTC` | `FewCBBTCHook` | `0x8347b7A3807C681513D2B51b8223e59aA16a2888` | `0x8f8b0b21fb429ffb5210f2bf0f8b7cb267b944a0c61beaae35f20f6839c0f33b` |
+| weETH / `fwweETH` | `FewweETHHook` | `0x877323adBf747f85eb8D182D42f01f34A5492888` | `0x6933dfbf7441cc4ee4439843fdd464e215a6c90f07c5a769198e2a047f1f3f3e` |
+| wstETH / `fwwstETH` | `FewwstETHHook` | `0x75ae0292E8AD3ab60B9A1A7B3046d3F4Abdfa888` | `0xe7c2f30fd89238331b0e3e6ac6351578d5e3091b7839eff321c29cf88e17274e` |
 
 For the broader Ring Swap and Few deployment list, see [Ring Protocol Contracts](/contracts/v2/deployments).
+
+For complete `PoolKey` data, initialization transactions, and aggregator routing requirements, see
+[FewToken Liquidity and Aggregator Integration](/contracts/v4/guides/fewtoken-liquidity-aggregation).
 
 ## How Few Hooks Work
 

@@ -38,3 +38,6 @@ If you are new to Ring, read these sections first:
 4. `Contracts > Ring Swap (v2)`
 
 Then use this section as a technical integration reference for Uniswap v4-related workflows.
+
+For aggregator onboarding, pool data, and route verification requirements, see
+[FewToken Liquidity and Aggregator Integration](/contracts/v4/guides/fewtoken-liquidity-aggregation).
