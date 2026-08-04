@@ -45,3 +45,6 @@ v4-sdk-baseline-assessment.md
 
 # Ignore external repositories
 v4-subgraph/
+
+# Internal team notes, never publish
+internal/
