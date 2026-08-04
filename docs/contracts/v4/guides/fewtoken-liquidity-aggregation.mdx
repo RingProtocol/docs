@@ -30,6 +30,12 @@ The 25 Ethereum mainnet pools below are Ring's primary FewToken pools on Uniswap
 trading pools and nine wrapper pools. Pools are listed alphabetically within each type; their order does not indicate
 priority.
 
+The two pool types play different roles in a route. The FewToken trading pools carry the core FewToken liquidity and
+are standard Uniswap v4 concentrated-liquidity pools with no hook, so they require no hook-specific handling. The
+wrapper pools are optional route edges: each uses a token-specific Few hook to convert between an underlying asset
+and its FewToken, which lets a route start or end in the underlying asset. Wrapper-hook support is not required to
+quote or swap through the FewToken trading pools.
+
 The [machine-readable integration manifest](/data/fewtoken-v4-pools-ethereum.json) contains the same 25 pools with
 their complete `PoolKey`, initialization block, initialization transaction, initial `sqrtPriceX96`, and initial tick.
 
@@ -174,6 +180,10 @@ FewToken liquidity support is complete when:
 - at least one mainnet transaction succeeds through a FewToken trading pool and at least one succeeds through a
   wrapper-hook pool
 - the quote response or transaction trace identifies the FewToken pool or the aggregator's FewToken liquidity source
+
+Support can ship in stages. Trading-pool support is a valid first release on its own because those pools require no
+hook handling. Wrapper-pool support completes the integration by adding underlying-asset entry and exit points to
+FewToken routes.
 
 ## Technical references
 
