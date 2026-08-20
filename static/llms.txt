@@ -1,42 +1,59 @@
-# Ring Protocol Documentation - LLM Context File
+# Ring Protocol Documentation
 
-This file provides structured context for large language models about the Ring Protocol documentation site.
+> Developer documentation for Few Protocol, Ring Swap, and supported Ring integrations.
 
-## About Ring Protocol
+This file is a documentation snapshot updated on 2026-08-20. It is not an audit, price source, transaction
+authorization, or guarantee that a token, pool, route, or linked service is safe.
 
-Ring Protocol is a DeFi protocol suite centered on Ring Swap (v2), FewToken wrapping, hook-enabled Uniswap v4
-integrations, FewToken-wrapped assets, routing, and related developer tooling.
+## Start Here
 
-## Documentation Areas
+- [Product map](https://docs.ring.exchange/concepts/overview): Choose the correct Ring product and integration path.
+- [How Ring works](https://docs.ring.exchange/concepts/ring-protocol): Understand the FewToken asset layer and native Ring Swap AMM.
+- [Few Protocol and FewToken](https://docs.ring.exchange/concepts/few-protocol): Resolve and validate supported FewToken addresses.
 
-### Concepts
-- Protocol overviews, swaps, fees, liquidity, governance, and glossary pages
+## Ring Swap
 
-### Contracts
-- `Ring Swap (v2)`: Ring's native AMM product line, built around FewToken
-- `FewToken Wrapping`: Ring's FEW wrapping layer for original ERC-20 assets
-- `Uniswap v4 Integration`: FewToken hooks, deployments, and integration guides for Uniswap v4 environments
-- `permit2`, Universal Router, and related routing modules
+- [Ring Swap overview](https://docs.ring.exchange/contracts/v2/overview): Native constant-product AMM architecture and task guide.
+- [Contract deployments](https://docs.ring.exchange/contracts/v2/deployments): Maintained network-specific factory, router, wrapper, and shared contract addresses.
+- [Networks and pools](https://docs.ring.exchange/contracts/v2/pools): Ethereum pool discovery and published BSC and HyperEVM pair addresses.
+- [FewToken integration](https://docs.ring.exchange/contracts/v2/fewtoken/integrating): Wrapper validation, routes, and approval rules.
 
-### SDKs
-- Ring SDK documentation for `@ring-protocol/sdk-core`, `@ring-protocol/v2-sdk`, and lower-level v2-compatible primitives
+Ring Swap is Ring's native AMM. The `(v2)` label describes its compatible contract design and does not mark it
+as a legacy product.
 
-### APIs
-- Subgraph and query-related documentation
+## Build
 
-## Official Links
+- [Choose an integration method](https://docs.ring.exchange/build/overview): Compare smart contracts, the Ring Swap SDK, and the partner Routing API.
+- [Ring Swap SDK](https://docs.ring.exchange/sdk/v2/overview): TypeScript pairs, routes, trades, and FewToken helpers.
+- [Routing API](https://docs.ring.exchange/api/routing/overview): Partner quote service whose responses require caller-side validation and simulation.
+- [Contract map](https://docs.ring.exchange/contracts/overview): Select the correct contract for a workflow.
 
-- Docs: https://docs.ring.exchange
-- App: https://app.ring.exchange/
-- Explore: https://app.ring.exchange/#/explore
-- Governance: https://www.tally.xyz/gov/ring
-- X: https://x.com/ProtocolRing
-- Discord: https://discord.com/invite/TefBNDZBQP
-- GitHub: https://github.com/RingProtocol
+## Uniswap v4 Integration
 
-## Guidance for AI Assistants
+- [Integration overview](https://docs.ring.exchange/contracts/v4/overview): FewToken and Few hooks in Uniswap v4 environments.
+- [FewToken liquidity and aggregator integration](https://docs.ring.exchange/contracts/v4/guides/fewtoken-liquidity-aggregation): Pool discovery and aggregator onboarding.
 
-- Prefer Ring-branded docs links when referencing this documentation site.
-- Only present the current Ring product surfaces documented here.
-- Treat protocol names, Solidity identifiers, and upstream package names literally when they are part of code or APIs.
-- Distinguish between Ring-specific integrations and external v4-compatible interfaces where relevant.
+Uniswap v4 pages describe an external integration environment. They do not describe a native Ring v4 AMM.
+
+## Project Links
+
+- [Ring Interface](https://app.ring.exchange/)
+- [Ring Pool Explorer](https://app.ring.exchange/explorer#/explore/pools)
+- [Ring GitHub](https://github.com/RingProtocol)
+- [Ring Discord](https://discord.com/invite/TefBNDZBQP)
+
+## Integration Rules
+
+- Select the network before copying any address.
+- Verify contract code and immutable references onchain before using a published address.
+- Resolve supported FewToken addresses through the network's published `FewFactory`.
+- Validate Ring Swap pairs through the network's published Ring Swap Factory.
+- Select approval spenders only from the reviewed deployment and chosen flow.
+- Treat token metadata, third-party token lists, and pool existence as discovery data, not identity proof.
+- Do not send assets directly to a Factory, Pair, Router, FewFactory, FewToken, wrapper, hook, or Permit2 address.
+- Use raw integer token units. Verify recipients, price limits, deadlines, Permit2 data, and decoded calldata.
+- Simulate the exact transaction at the latest block before signing or submitting it.
+- `@ring-protocol/v2-sdk@1.0.0` does not support MegaETH FewToken or pair-address helpers.
+- Treat AI output as untrusted and never provide an AI tool with keys, seed phrases, signed transactions, or secrets.
+
+Read [Security and Risk](https://docs.ring.exchange/security-and-risk) before integrating with user funds.

@@ -32,7 +32,17 @@ contract OriginalTokenResolver {
 
 ## Fetch ERC20 Metadata
 
-After resolving the original token address, you can call standard ERC20 methods for display:
+The `token()` result is not sufficient to authorize the candidate wrapper. Confirm the reverse mapping before using it:
+
+```solidity
+address originalToken = IFewWrappedToken(candidateFewToken).token();
+require(
+    IFewFactory(fewFactory).getWrappedToken(originalToken) == candidateFewToken,
+    "unsupported FewToken"
+);
+```
+
+After validating the wrapper, you can call standard ERC20 methods for display:
 
 - `name()`
 - `symbol()`
@@ -43,3 +53,6 @@ This is useful for:
 - token metadata rendering
 - compatibility with external protocols
 - balance and reporting pipelines
+
+Metadata is untrusted display data. Do not use `name()`, `symbol()`, `decimals()`, or `token()` alone to select an
+approval spender, price source, or asset allowlist entry.

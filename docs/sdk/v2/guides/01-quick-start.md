@@ -37,7 +37,12 @@ console.log(`The few token address is ${fewDAI.address}.`)
 ```
 
 :::warning Use FewFactory-derived addresses
-`fw` symbols and `Few Wrapped` names are display metadata. For routing and approvals, derive the FewToken from the original ERC-20 with the SDK, or validate that `FewFactory.getWrappedToken(underlying)` returns the candidate FewToken address.
+`fw` symbols and `Few Wrapped` names are display metadata. The SDK can derive a candidate FewToken address on a
+supported chain, but routing and approval logic must also require that the selected
+`FewFactory.getWrappedToken(underlying)` returns that address onchain.
+
+The published v1.0.0 package does not support MegaETH FewToken derivation. On any supported chain, verify the derived
+address against the deployed FewFactory before using it with funds. Do not use `isFewToken()` as an authorization check.
 :::
 
 ## CommonJS (require)

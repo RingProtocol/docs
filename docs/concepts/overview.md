@@ -1,43 +1,45 @@
 ---
 id: overview
-title: Ring Overview
+title: Start Here
 sidebar_position: 1
 pagination_next: concepts/ring-protocol
 ---
 
-## Start Here
+# Start Here
 
-Ring is best understood as a liquidity and asset-layer project, not just as another swap frontend.
+Ring Protocol uses a wrapped asset layer called FEW to connect assets to trading and liquidity systems.
+Ring Swap is the native AMM built on that layer.
 
-Today, the most important parts of Ring are:
+## Product map
 
-- **Ring Protocol team**: the team building Ring products and integrations
-- **Few Protocol**: Ring's asset layer for wrapping original ERC-20 assets into `FewToken`
-- **Ring Swap (v2)**: Ring's native AMM and routing system built around `FewToken`
-- **Uniswap v4 integration**: Ring also uses `FewToken` in Uniswap v4 liquidity environments, but this does **not** mean Ring operates a separate native v4 AMM
-- **Ring Interface**: the main web interface for interacting with Ring products
+| Product | Role | Use it when |
+| --- | --- | --- |
+| **Few Protocol** | Maps an original ERC-20 to its supported `FewToken` through a chain-specific `FewFactory` | You need to wrap an asset, resolve a FewToken address, or validate a wrapper |
+| **Ring Swap (v2)** | Ring's native constant-product AMM and routing system | You need Ring pools, swaps, liquidity, or contract integrations |
+| **Ring Interface** | The web application for swaps, liquidity, and pool discovery | You want to use Ring without building an integration |
+| **Uniswap v4 Integration** | An external liquidity environment where FewToken and Few hooks can be used | Your integration specifically targets Uniswap v4 pools or hooks |
 
-## What makes Ring different
+The `(v2)` in Ring Swap describes its contract design. Ring Swap is the current native AMM, not a legacy
+section and not one step in a public Ring v2, v3, v4 product ladder.
 
-The main idea behind Ring is `FEW`, short for `Financial Elastic Wrapping`.
+## Choose a path
 
-Rather than treating swap as the entire product, Ring introduces an asset layer first:
+| Goal | Start here |
+| --- | --- |
+| Find a pool or use the web app | [Ring Pool Explorer](https://app.ring.exchange/explorer#/explore/pools) |
+| Find contract addresses | [Ring Swap deployments](/contracts/v2/deployments) |
+| Find BSC or HyperEVM pool addresses | [Networks and pools](/contracts/v2/pools) |
+| Integrate Ring Swap in a contract | [Smart contract quick start](/contracts/v2/guides/smart-contract-integration/quick-start) |
+| Build quotes and trades in TypeScript | [Ring Swap SDK](/sdk/v2/overview) |
+| Request executable quotes from a service | [Routing API](/api/routing/overview) |
+| Resolve or validate a FewToken | [FewToken integration](/contracts/v2/fewtoken/integrating) |
+| Build with Uniswap v4 hooks or pools | [Uniswap v4 integration](/contracts/v4/overview) |
 
-1. original ERC-20 assets are wrapped into `FewToken`
-2. `FewToken` is then used in trading, routing, and other protocol integrations
-3. the goal is to expand usable liquidity and improve quote competitiveness
+## Supported Ring Swap networks
 
-This means Ring should be thought of as:
+The maintained Ring Swap deployment reference covers Ethereum, MegaETH, BNB Smart Chain, and HyperEVM.
+Addresses are chain-specific. Always select the network first, then use the contracts and pools listed for
+that network and verify them onchain. The published v2 SDK does not support every network in the deployment table.
 
-- a capital-efficiency protocol
-- a liquidity amplification layer
-- a trading and routing infrastructure project built around FEW
-
-## How to read these docs
-
-If you are new to Ring, the recommended reading order is:
-
-1. `The Ring Protocol` for the high-level model
-2. `Few Protocol` for the core asset layer
-3. `Ring Swap (v2)` for the native swap system
-4. `Uniswap v4 Integration` for how `FewToken` is used outside Ring Swap
+Next, read [How Ring Works](./ring-protocol) for the architecture or go directly to
+[Ring Swap](/contracts/v2/overview) to start an integration.

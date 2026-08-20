@@ -7,8 +7,10 @@ Ring Swap uses wrapped tokens (FewTokens) in pools and swap paths.
 
 When you quote prices or build routes, use FewToken addresses instead of original ERC20 token addresses.
 
-:::warning FewFactory is the only source of truth
-Treat an address as a supported FewToken only when it is returned by the official `FewFactory` for the underlying ERC-20. Token `symbol`, `name`, `token()`, and pool existence do not define FewToken identity. See [FewToken Integration → FewToken Address Resolution](./integrating#fewtoken-address-resolution).
+:::warning Verify the FewFactory first
+Treat an address as a supported FewToken only when it is returned by the published and independently verified
+`FewFactory` for the selected chain. Token `symbol`, `name`, `token()`, and pool existence do not define FewToken
+identity. See [FewToken Integration: FewToken Address Resolution](./integrating#fewtoken-address-resolution).
 :::
 
 ## FewFactory Interface
@@ -30,9 +32,10 @@ interface IFewFactory {
 }
 
 contract FewTokenHelper {
-    address public fewFactory;
+    address public immutable fewFactory;
 
     constructor(address _fewFactory) {
+        require(_fewFactory.code.length > 0, "FewFactory has no code");
         fewFactory = _fewFactory;
     }
 
@@ -66,7 +69,8 @@ path = [fwTokenA, fwUSDC, fwTokenB]
 
 ## Validating an External Wrapper
 
-If a `(underlying, wrapper)` pair reaches your code from an external source (a pool's `token0`/`token1`, a quote, a router, an API), confirm it is canonical before routing, approving, or wrapping:
+If a `(underlying, wrapper)` pair reaches your code from an external source, confirm it before routing, approving, or
+wrapping:
 
 ```solidity
 function isCanonicalFewToken(address underlying, address wrapper) external view returns (bool) {
@@ -75,4 +79,6 @@ function isCanonicalFewToken(address underlying, address wrapper) external view 
 }
 ```
 
-Use a wrapper only when this check passes. Approval spender addresses should be selected from official Ring deployments or from the canonical FewToken returned by `FewFactory`.
+Use a wrapper only when this check passes. Then select the approval spender for the exact flow. Original tokens approve
+the Ring Swap Router for normal swaps, the verified FewToken for manual wrap, or Permit2 for a reviewed Universal Router
+flow. See [Security and Risk](/security-and-risk#approval-spenders).

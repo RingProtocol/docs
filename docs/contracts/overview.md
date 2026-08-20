@@ -1,47 +1,44 @@
 ---
 id: overview
-title: Contracts Overview
+title: Contract Map
 sidebar_position: 1
 ---
 
-# Contracts Overview
+# Contract Map
 
-If you are new to Ring, the contracts documentation should be read in this order:
+Start with Ring Swap unless your integration explicitly targets Uniswap v4.
 
-1. `Ring Swap (v2)`
-2. `FewToken Wrapping`
-3. `Uniswap v4 Integration`
+## Native Ring contracts
 
-## How Ring's contract stack is organized
+| Component | Responsibility | Use it for |
+| --- | --- | --- |
+| `FewFactory` | Resolves the canonical FewToken for an original ERC-20 | Wrapper discovery and validation |
+| `FewToken` | Wraps an original asset for use in Ring systems | Manual wrapping and unwrapping |
+| Ring Swap Factory | Creates and indexes Ring Swap pairs | Pair discovery and validation |
+| Ring Swap Pair | Holds two FewToken reserves and executes swaps | Reserve reads, LP accounting, and direct pair integrations |
+| Ring Swap Router | Coordinates normal swap and liquidity flows | Smart contract integrations |
+| Universal Router | Executes command-based routes across supported paths | Interface and advanced routing flows |
+| Permit2 | Provides shared allowance and signature-transfer flows | Router approvals |
 
-Ring's public contract stack is organized around a native swap product and the FEW asset layer behind it.
+Use [Contract Deployments](/contracts/v2/deployments) for network-specific addresses and
+[Networks and Pools](/contracts/v2/pools) for published pair addresses.
 
-- `Ring Swap (v2)` is Ring's native AMM and router product line.
-- `FewToken Wrapping` covers the FewFactory/FewToken layer used inside Ring Swap pools and routes.
-- `Uniswap v4 Integration` documents how `FewToken` and Few hooks are used in Uniswap v4 environments.
+## External integration contracts
 
-This distinction is important:
+The [Uniswap v4 Integration](/contracts/v4/overview) section covers PoolManager, PositionManager, hooks, and
+related contracts used in Uniswap v4 environments. These contracts are not a separate native Ring AMM.
 
-- `Ring Swap (v2)` should remain visible as a top-level Ring product.
-- Ring docs should not imply additional native AMM product lines.
-- v4-related material in these docs should be understood as integration with `Uniswap v4`, not as a separate
-  native v4 product line.
+## Choose the correct entry point
 
-## Recommended starting points
+| Task | Entry point |
+| --- | --- |
+| Resolve a FewToken | `FewFactory` |
+| Find or validate a Ring Swap pair | Ring Swap Factory |
+| Execute a standard swap | Ring Swap Router or Universal Router |
+| Provide Ring Swap liquidity | Ring Swap Router |
+| Build a TypeScript route | [Ring Swap SDK](/sdk/v2/overview) |
+| Request executable calldata | [Routing API](/api/routing/overview) |
+| Build a Few hook or use a Uniswap v4 pool | [Uniswap v4 Integration](/contracts/v4/overview) |
 
-### Ring Swap (v2)
-
-Start here if you want to integrate Ring's native swap system.
-
-### FewToken Wrapping
-
-Start here if you want to resolve `FewToken` addresses or map wrapped assets back to underlying ERC-20 tokens.
-
-### Ring Protocol Contracts
-
-Start here if you need the current Ring Swap, FewFactory, UniversalRouter, Permit2, wrapper, hook,
-and init-code deployments.
-
-### Uniswap v4 Integration
-
-Start here if you want to understand how `FewToken` interacts with Uniswap v4 liquidity and related infrastructure.
+Do not select a contract from its name alone. Select the network and workflow first, then use the official
+address published for that path.

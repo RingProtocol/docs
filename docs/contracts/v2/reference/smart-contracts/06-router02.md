@@ -3,14 +3,14 @@ id: router-02
 title: Router
 ---
 
-Because routers are stateless and do not hold token balances, Ring Swap router deployments can be replaced safely if more
-efficient patterns or additional functionality are needed. Use the router listed for the target chain in the current
-Ring Swap deployment table.
+Ring Swap routers coordinate token transfers, wrapping, swaps, and liquidity calls. A later router deployment does not
+automatically authorize or replace an older address for every integration. Use an explicit, reviewed router allowlist
+for the target chain and flow.
 
 ## Deployments
 
-Use the current [Ring Swap deployments](../../deployments) for router addresses. The values on that page are the
-canonical addresses for Ring integrations.
+Use [Ring Swap deployments](../../deployments) as the maintained router directory. Verify router bytecode and its
+`factory()`, `fewFactory()`, `WETH()`, and `fwWETH()` results onchain before granting an allowance.
 
 ## Read-Only Functions
 

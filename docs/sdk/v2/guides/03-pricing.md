@@ -5,13 +5,15 @@ title: Pricing
 
 > Looking for a [quickstart](quick-start)?
 
-Let's talk pricing. This guide will focus on the two most important Ring prices: the **mid price** and the **execution price**.
+This guide covers the route **mid price** and a trade's **execution price**.
 
 In Ring Swap, the pool state is usually keyed by `FewToken` pairs, while your app may still display prices in terms of the original assets. The FEW-aware SDK handles that bridge for you.
 
 # Mid Price
 
-The mid price is the price that reflects the _ratio of reserves in one or more pairs_. There are three ways we can think about this price. Perhaps most simply, it defines the relative value of one token in terms of the other. It also represents the price at which you could theoretically trade an infinitesimal amount (ε) of one token for the other. Finally, it can be interpreted as the current _market-clearing or fair value price_ of the assets.
+The mid price reflects the reserve ratio across one or more pairs. It is the route's marginal spot price before price
+impact for a nonzero trade. It is not an independent market price, fair-value estimate, or manipulation-resistant
+oracle. Pool reserves can change within a block and can be moved temporarily.
 
 Let's consider the mid price for DAI-WETH (that is, the amount of DAI per 1 WETH).
 
@@ -68,7 +70,11 @@ console.log(route.midPrice.invert().toSignificant(6)) // 0.000527331
 
 # Execution Price
 
-Mid prices are great representations of the _current_ state of a route, but what about trades? It turns out that it makes sense to define another price, the _execution_ price of a trade, as the ratio of assets sent/received.
+The execution price is the modeled ratio of assets sent and received for a specific trade against the sampled
+reserves. It includes the trade's price impact but is still not a guaranteed fill or an independent market price.
+
+Use an independent price source and freshness policy when a mid or execution price controls a transaction limit,
+liquidation, valuation, or other value-sensitive decision.
 
 Imagine we're interested in trading 1 WETH for DAI:
 
@@ -90,4 +96,6 @@ const trade = new Trade(route, CurrencyAmount.fromRawAmount(WETH9[DAI.chainId], 
 console.log(trade.executionPrice.toSignificant(6)) // 1894.91
 ```
 
-Notice that we're constructing a trade of 1 WETH for as much DAI as possible, _given the current reserves of the direct pair_. The execution price represents the average DAI/WETH price for this trade. Of course, the reserves of any pair can change every block, which would affect the execution price.
+This constructs an exact-input model for 1 WETH using the sampled direct-pair reserves. The execution price is the
+modeled average DAI per WETH. Re-read pair identity and reserves, enforce the transaction limit, and simulate the final
+calldata before submission because the pool can change every block.

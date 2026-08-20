@@ -1,55 +1,35 @@
 ---
 id: overview
 sidebar_position: 1
-title: Overview
+title: AI and LLM Resources
 ---
 
-# LLMs and AI Integration
+# AI and LLM Resources
 
-Large Language Models (LLMs) and AI tools can help developers better understand and work with the Ring Protocol. This section provides resources and guidance for leveraging AI assistance when building on Ring.
+Ring publishes two context files for coding assistants:
 
-## AI-Powered Documentation
+- [`llms.txt`](/llms.txt) is a short, curated product map with the main integration rules and links.
+- [`llms-full.txt`](https://docs.ring.exchange/llms-full.txt) contains a larger curated set of reviewed integration
+  pages.
 
-The Ring documentation is designed to work seamlessly with modern AI tools to provide enhanced developer support and assistance.
+Use `llms.txt` for normal questions. Use `llms-full.txt` only when the model needs the included guide text. The full file
+does not contain every page and does not replace source review, onchain verification, or transaction simulation.
 
-### Getting AI Help
+## Important context to preserve
 
-Use the built-in AI integration features throughout the documentation:
+When prompting an AI tool, state which surface you are using:
 
-- **Copy to AI**: Use the dropdown button on any documentation page to quickly get AI assistance
-- **Context-Aware**: AI tools receive relevant documentation context for better responses
-- **Multiple Platforms**: Integrate with popular AI assistants like Claude and ChatGPT
+- Ring Swap for native pairs, swaps, and liquidity
+- Few Protocol for FewToken wrapping and validation
+- Uniswap v4 Integration for FewToken or Few hooks used with Uniswap v4
 
-## LLMs.txt
+Always verify generated code against current [deployments](/contracts/v2/deployments) and
+[network pool information](/contracts/v2/pools). Test contract integrations before using real funds.
 
-This documentation includes a curated [LLMs.txt file](/llms.txt) and a generated `llms-full.txt` export for AI systems. Together they help AI assistants provide accurate and up-to-date information about:
+Treat model output as untrusted. Check package versions, chain ID, bytecode, FewFactory mappings, pairs, approval
+spenders, recipients, raw integer amounts, native value, price limits, deadlines, Permit2 data, and decoded calldata.
+Never provide a model with private keys, seed phrases, API keys, signed transactions, or production secrets.
 
-- Protocol architecture and concepts
-- Smart contract interfaces and functionality
-- SDK usage and integration patterns for `@ring-protocol/sdk-core`, `@ring-protocol/v2-sdk`, and lower-level v2-compatible primitives
-- Development best practices
+See [Security and Risk](/security-and-risk) before signing or submitting a generated transaction.
 
-## Best Practices for AI-Assisted Development
-
-When using AI tools for Ring development:
-
-1. **Provide Context**: Always name the relevant Ring surface, such as Ring Swap (v2), FewToken wrapping, or Uniswap v4 integration
-2. **Verify Code**: Always test and verify AI-generated code before deployment
-3. **Reference Documentation**: Cross-check AI responses against official documentation
-4. **Security First**: Have AI-generated smart contracts audited before production use
-
-## Supported AI Platforms
-
-The documentation provides optimized integration with:
-
-- **Claude**: Advanced reasoning for complex DeFi concepts
-- **ChatGPT**: Code generation and debugging assistance
-- **Other LLMs**: Compatible with any AI tool that supports context injection
-
-## Contributing AI Resources
-
-Help improve AI assistance for the Ring community by:
-
-- Reporting AI-generated errors or inaccuracies
-- Suggesting improvements to the LLMs.txt context file
-- Contributing examples of effective AI prompts for Ring development
+For editor setup examples, see [Use Ring docs in a coding assistant](/ai-coding/overview).

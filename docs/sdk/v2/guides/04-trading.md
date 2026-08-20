@@ -5,37 +5,41 @@ title: Trading
 
 > Looking for a [quickstart](quick-start)?
 
-The SDK _cannot execute trades or send transactions on your behalf_. Rather, it offers utility classes and functions which make it easy to calculate the data required to safely interact with Ring Swap. Nearly everything you need to safely transact with Ring is provided by the [Trade](../reference/trade) entity. However, it is your responsibility to use this data to send transactions in whatever context makes sense for your application.
+The SDK calculates routes, amounts, and transaction parameters. It does not send transactions, verify every deployment,
+or establish an independent market price. Your integration must validate the result before signing or submission.
 
-This guide will focus exclusively on sending a transaction to the [latest Ring V2 router](../../../contracts/v2/reference/smart-contracts/router-02)
+This guide constructs parameters for the [Ring Swap Router](../../../contracts/v2/reference/smart-contracts/router-02)
+selected from the deployment table.
 
 # Sending a Transaction to the Router
 
-Let's say we want to trade 1 WETH for as much DAI as possible. The pair liquidity lives in `FewToken` form, but the route and trade APIs can still be expressed in terms of the original assets:
+The example trades 1 ETH for DAI. Pair liquidity lives in FewToken form, while the route and trade APIs can still be
+expressed in terms of the original assets:
 
 ```typescript
-import { ChainId, Token, WETH9, CurrencyAmount, TradeType } from '@ring-protocol/sdk-core'
+import { ChainId, CurrencyAmount, Ether, Token, TradeType, WETH9 } from '@ring-protocol/sdk-core'
 import { Trade, Route, getFewTokenFromOriginalToken } from '@ring-protocol/v2-sdk'
 
 const DAI = new Token(ChainId.MAINNET, '0x6B175474E89094C44Da98b954EedeAC495271d0F', 18)
 const fewDAI = getFewTokenFromOriginalToken(DAI, ChainId.MAINNET)
 const fewWETH = getFewTokenFromOriginalToken(WETH9[DAI.chainId], DAI.chainId)
+const ETH = Ether.onChain(ChainId.MAINNET)
 
 // See the Fetching Data guide to learn how to get Pair data
 const pair = await createPair(fewDAI, fewWETH)
 
-const route = new Route([pair], WETH9[DAI.chainId], DAI)
+const route = new Route([pair], ETH, DAI)
 
-const amountIn = '1000000000000000000' // 1 WETH
+const amountIn = '1000000000000000000' // 1 ETH in wei
 
-const trade = new Trade(route, CurrencyAmount.fromRawAmount(WETH9[DAI.chainId], amountIn), TradeType.EXACT_INPUT)
+const trade = new Trade(route, CurrencyAmount.fromRawAmount(ETH, amountIn), TradeType.EXACT_INPUT)
 ```
 
-So, we've constructed a trade entity, but how do we use it to actually send a transaction? There are still a few pieces we need to put in place.
+The SDK represents native ETH through its wrapped currency internally. Ring Swap's native-asset route starts with the
+FewToken mapped from the router's configured WETH, and the router handles the ETH, WETH, and FewToken conversions.
 
-Before going on, we should explore how ETH works in the context of trading. Internally, the SDK uses WETH, as all Ring V2 pairs use WETH under the hood. However, it's perfectly possible for you as an end user to use ETH, and rely on the router to handle converting to/from WETH. So, let's use ETH.
-
-The first step is selecting the appropriate router function. The names of router functions are intended to be self-explanatory; in this case we want [swapExactETHForTokens](../../../contracts/v2/reference/smart-contracts/router-02#swapexactethfortokens), because we're swapping an exact amount of ETH for tokens.
+For an exact native ETH input, use
+[swapExactETHForTokens](../../../contracts/v2/reference/smart-contracts/router-02#swapexactethfortokens).
 
 That Solidity interface for this function is:
 
@@ -46,26 +50,41 @@ function swapExactETHForTokens(uint amountOutMin, address[] calldata path, addre
   returns (uint[] memory amounts);
 ```
 
-Jumping back to our trading code, we can construct all the necessary parameters:
+Construct the router parameters:
 
 ```typescript
 import { Percent } from '@ring-protocol/sdk-core'
+import { utils } from 'ethers'
 
 const slippageTolerance = new Percent('50', '10000') // 50 bips, or 0.50%
 
-const amountOutMin = trade.minimumAmountOut(slippageTolerance).toExact() // needs to be converted to e.g. decimal string
-const path = [WETH9[DAI.chainId].address, DAI.address]
-const to = '' // should be a checksummed recipient address
+// Router integers use raw units, not human-readable decimal strings.
+const amountOutMin = trade.minimumAmountOut(slippageTolerance).quotient.toString()
+
+// Ring Swap pools and router paths use the FewToken addresses.
+const path = [fewWETH.address, fewDAI.address]
+
+// userRecipient must come from the user's confirmed transaction intent.
+const to = utils.getAddress(userRecipient)
 const deadline = Math.floor(Date.now() / 1000) + 60 * 20 // 20 minutes from the current Unix time
-const value = trade.inputAmount.toExact() // // needs to be converted to e.g. decimal string
+const value = trade.inputAmount.quotient.toString()
 ```
 
-The slippage tolerance encodes _how large of a price movement we're willing to tolerate before our trade will fail to execute_. Since Ethereum transactions are broadcast and confirmed in an adversarial environment, this tolerance is the best we can do to protect ourselves against price movements. We use this slippage tolerance to calculate the _minumum_ amount of DAI we must receive before our trade reverts, thanks to [minimumAmountOut](../reference/trade#minimumamountout-since-204). Note that this code calculates this worst-case outcome _assuming that the current price, i.e the route's mid price,_ is fair (usually a good assumption because of arbitrage).
+The slippage tolerance calculates the minimum DAI output through
+[minimumAmountOut](../reference/trade#minimumamountout-since-204). It limits execution relative to the sampled reserves,
+but it does not prove that those reserves represent a fair external price. Apply a separate independent price check.
 
-The path is simply the ordered list of token addresses we're trading through, in our case WETH and DAI (note that we use the WETH address, even though we're using ETH).
+The path is the ordered list of FewToken addresses used by the Ring Swap pairs. For native ETH input, its first element
+must be the router's configured `fwWETH`, not the original WETH address.
 
-The to address is the address that will receive the DAI.
+The `to` address receives the DAI and must match the user's confirmed recipient.
 
-The deadline is the Unix timestamp after which the transaction will fail, to protect us in the case that our transaction takes a long time to confirm and we wish to rescind our trade.
+The deadline is the Unix timestamp after which the transaction reverts. Rebuild rather than submit an expired or stale
+trade.
 
-The value is the amount of ETH that must be included as the `msg.value` in our transaction.
+The `value` is the raw ETH amount supplied as `msg.value`.
+
+Before submitting, verify the chain ID and the router's `factory()`, `fewFactory()`, `WETH()`, and `fwWETH()` values
+against the selected deployment. Confirm every FewToken through FewFactory and every pair through the Ring Swap Factory.
+Decode the final calldata, then simulate the exact transaction at the latest block. Rebuild the trade if the quote or
+deadline is stale.

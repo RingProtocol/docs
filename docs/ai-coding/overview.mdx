@@ -1,51 +1,41 @@
-title: Using LLMs.txt or LLMs-full.txt
-description: Ring docs are LLM-ready and help developers use Ring, FewToken, Ring Swap v2, and related integrations more efficiently.
+---
+title: Use Ring Docs in a Coding Assistant
+description: Add Ring's curated LLM context to a coding assistant.
 ---
 
-## Understanding Context Windows
+# Use Ring Docs in a Coding Assistant
 
-AI models have a context window, which is the amount of text they can process at once. This is typically the number of tokens that can be processed in a single request (more like it's memory capacity).
-Once the context window fills up, parts of your conversational history may be lost.
+Use [`llms.txt`](/llms.txt) for a compact product map.
+[`llms-full.txt`](https://docs.ring.exchange/llms-full.txt) contains a larger curated set of
+reviewed integration pages, not every page on the site.
 
-It is exactly for this reason, providing relevant context upfront is critical.
+## Cursor
 
-## llms.txt and llms-full.txt
+1. Open Cursor Settings.
+2. Go to **Features > Docs**.
+3. Select **Add new doc**.
+4. Add `https://docs.ring.exchange/llms.txt`.
+5. Reference the new Ring docs source in your chat.
 
-Depending on the model's context window, you can either use llms.txt or llms-full.txt. Most of the modern models have a [context window of about 100k tokens](https://codingscape.com/blog/llms-with-largest-context-windows).
+## Other coding assistants
 
-For most cases we are good to go with llms.txt as it is more compact and provides the LLM with necessary information about links from the documentation and what it does.
+If the tool accepts a documentation URL, add `https://docs.ring.exchange/llms.txt`. If it accepts pasted
+context only, copy the relevant page instead of loading the entire expanded file.
 
-If you are using a model with a larger context window, you can use llms-full.txt. It is a more verbose version of llms.txt and provides the LLM with more information about the documentation.
+In every prompt, name the product surface and network. For example:
 
-## Using llms.txt or llms-full.txt file
-
-You can provide your code editor with a llms.txt or llms-full.txt file to use Ring docs as context for your code.
-
-Here's how to do it for some common code editors:
-
-#### Cursor
-1. Navigate to Cursor Settings > Features > Docs
-2. Select “Add new doc” and paste the following URL:
-```
-https://docs.ring.exchange/v4-llms.txt
-```
-or
-
-```
-https://docs.ring.exchange/v4-llms-full.txt
-```
-3. Use @docs -> Ring to reference Ring docs in your chat.
-
-#### Windsurf
-
-Windsurf doesn't have a permanent settings menu for adding documentation context, so you need to reference it in each conversation where you want to use it.
-1. You can directly add it to the Cascade window (CMD+L) using:
-```
-@docs:https://docs.ring.exchange/v4-llms.txt
-```
-or
-
-```
-@docs:https://docs.ring.exchange/v4-llms-full.txt
+```text
+Integrate Ring Swap on BNB Smart Chain.
+Resolve FewToken addresses through the published FewFactory and verify them onchain.
+Use the deployment snapshot for the selected chain, then verify contract code and immutable references.
 ```
 
+Treat AI output as untrusted. Review generated imports, package versions, chain IDs, addresses, FewToken mappings,
+pairs, approval spenders, recipients, raw integer amounts, native value, price limits, deadlines, Permit2 data, and
+calldata. Verify them onchain and simulate the exact transaction before using funds.
+
+The published `@ring-protocol/v2-sdk@1.0.0` does not support MegaETH FewToken or pair-address helpers. Do not ask an
+assistant to fill that gap by guessing constants. See the [SDK support table](/sdk/v2/overview#published-network-support).
+
+Never paste a private key, seed phrase, API key, signed transaction, or production secret into an AI tool. See
+[Security and Risk](/security-and-risk) for the full checklist.

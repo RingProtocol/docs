@@ -7,7 +7,7 @@ title: Pair Addresses
 
 The most obvious way to get the address for a pair is to call [getPair](../../../contracts/v2/reference/smart-contracts/factory#getpair) on the factory. If the pair exists, this function will return its address, else `address(0)` (`0x0000000000000000000000000000000000000000`).
 
-- The "canonical" way to determine whether or not a pair exists.
+- The authoritative onchain check for whether that factory has recorded a pair.
 - Requires an on-chain lookup.
 
 ## CREATE2
@@ -28,11 +28,15 @@ network and the corresponding entry in `INIT_CODE_HASH_MAP`.
 * Requires the ability to perform `keccak256`.
 * In Ring Swap, `token0` and `token1` should be the actual pair tokens, which are often `FewToken` addresses rather than the original ERC-20 addresses shown to users.
 
+A CREATE2 result is only a predicted address. It does not prove that the pair is deployed, belongs to the intended
+factory, or contains reviewed assets. Confirm `factory.getPair(token0, token1)`, bytecode, `token0()`, and `token1()`
+before use.
+
 ## Examples
 
-### Preferred SDK Method
+### SDK prediction
 
-For most applications, prefer the SDK helper rather than manual CREATE2:
+The SDK helper computes the expected CREATE2 address:
 
 ```typescript
 import { ChainId, Token, WETH9 } from '@ring-protocol/sdk-core'
@@ -45,9 +49,14 @@ const fewWETH = getFewTokenFromOriginalToken(WETH9[ChainId.MAINNET], ChainId.MAI
 const pairAddress = Pair.getAddress(fewDAI, fewWETH)
 ```
 
+`Pair.getAddress()` relies on the factory and init-code constants in the installed package. The published v1.0.0
+package must not be used for MegaETH. On every chain, treat the result as a candidate and require
+`factory.getPair(fewDAI.address, fewWETH.address)` to return the same address before reading reserves or moving funds.
+
 ### Manual TypeScript Example
 
-This example makes use of the [Ring V2 SDK](../reference/getting-started). In practice, `Pair.getAddress()` is usually the safer option because it keeps your app aligned with the FEW-aware SDK behavior.
+This example makes use of the [Ring V2 SDK](../reference/getting-started). Manual derivation has the same trust
+boundary as `Pair.getAddress()`: factory state and deployed pair code remain authoritative.
 
 ```typescript
 import { ChainId, Token, WETH9 } from '@ring-protocol/sdk-core'

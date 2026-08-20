@@ -4,39 +4,49 @@ title: Ring Swap Overview
 sidebar_position: 1
 ---
 
-# Ring Swap Overview
+# Ring Swap
 
-`Ring Swap (v2)` is Ring's native AMM and routing system. It is a top-level Ring product line, not merely
-a legacy version bucket.
+Ring Swap is Ring's native constant-product AMM. Its pools trade FewToken assets, and its routers provide
+the normal entry points for swaps and liquidity.
 
-Ring Swap (v2) is compatible with familiar v2-style AMM integration patterns, but it is native to
-Ring because pools and routes are built around `FewToken`, the wrapped assets created by `Few Protocol`.
+The `(v2)` label identifies the compatible contract design. It does not make Ring Swap a legacy product.
 
-If you are new to Ring, start with:
+## When to use Ring Swap
 
-- `Concepts > Ring Overview`
-- `Concepts > The Ring Protocol`
-- `Contracts > Ring Swap (v2) > FewToken Wrapping`
+Use this section when you need to:
 
-## What this section covers
+- find Ring contract or pair addresses
+- integrate swaps or liquidity in a smart contract
+- read pair reserves or LP state
+- build quotes and trades with the Ring Swap SDK
+- resolve the FewToken assets used in a route
 
-This section documents the native Ring Swap (v2) contracts and concepts, including:
+If you are building directly against Uniswap v4 PoolManager, PositionManager, or hook contracts, use the
+[Uniswap v4 Integration](/contracts/v4/overview) section instead.
 
-- factory and pair contracts
-- router-based swap flows
-- FewToken wrapping and FewFactory address lookup
-- AMM concepts used by Ring Swap (v2)
-- integration notes for applications building on Ring Swap (v2)
+## Architecture
 
-## Developer links
+| Layer | Main components | Purpose |
+| --- | --- | --- |
+| Asset | `FewFactory`, `FewToken` | Resolve and wrap the assets used by Ring |
+| Core AMM | Ring Swap Factory, Pair | Create pools, hold reserves, mint LP tokens, and execute swaps |
+| Routing | Ring Swap Router, Universal Router, Permit2 | Coordinate user-facing swaps, liquidity, and approvals |
+| Developer access | Ring Swap SDK, Routing API | Build routes, quotes, and transactions |
 
-The exact code repositories and deployment details may evolve over time, but this section should be treated as the
-reference point for Ring's native swap system.
+## Start by task
 
-## Important note
+| Task | Guide |
+| --- | --- |
+| Select a network and contract | [Contract Deployments](./deployments) |
+| Find a BSC or HyperEVM pool | [Networks and Pools](./pools) |
+| Resolve or validate a FewToken | [FewToken Integration](./fewtoken/integrating) |
+| Execute a swap from a contract | [Smart Contract Quick Start](./guides/smart-contract-integration/quick-start) |
+| Provide liquidity | [Providing Liquidity](./guides/smart-contract-integration/providing-liquidity) |
+| Build in TypeScript | [Ring Swap SDK](/sdk/v2/overview) |
+| Understand the AMM | [Ring Swap Model](./concepts/how-ring-swap-works/ring-swap-model) |
 
-The `(v2)` label describes the constant-product AMM contract family used by Ring Swap. It should not be read as
-evidence that Ring also has additional native AMM product lines.
+## Source repositories
 
-If you see v4-related material elsewhere in these docs, read it as `FewToken` integration with `Uniswap v4`, not as a
-separate native v4 protocol.
+- [Ring Swap core](https://github.com/RingProtocol/few-v2-core)
+- [Ring Swap periphery](https://github.com/RingProtocol/few-periphery)
+- [Ring SDKs](https://github.com/RingProtocol/sdks)

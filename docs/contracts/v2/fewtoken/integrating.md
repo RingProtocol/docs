@@ -29,15 +29,16 @@ When integrating:
 
 ## FewToken Address Resolution
 
-:::info FewFactory is the source of truth
-Supported FewToken identity must come from the official `FewFactory`.
+:::info Verify FewFactory onchain
+Supported FewToken identity must resolve through the published `FewFactory` for the selected chain.
 
 For Ring integrations, a FewToken is supported only when `FewFactory.getWrappedToken(underlying)` returns that wrapper address. Token `name`, `symbol`, a `token()` method, or the existence of a pool do not define whether an address is a supported FewToken.
 :::
 
 ### Integration rule
 
-For each chain, read the official `FewFactory` address from the [Deployments](../deployments) page.
+For each chain, read the published `FewFactory` address from the [Deployments](../deployments) page, then verify its
+bytecode, `core()` reference, and chain ID onchain.
 
 When your code starts from an original ERC-20, resolve the FewToken yourself:
 
@@ -68,14 +69,29 @@ Supported FewToken addresses are resolved through `FewFactory`. The following fi
 
 ERC-20 approvals grant transfer permission to the spender. Select the spender from the integration path you are using, not from arbitrary route or pool metadata.
 
-Supported patterns:
+| Flow | Token being approved | Spender |
+| --- | --- | --- |
+| Ring Swap Router swap or add liquidity | Original ERC-20 input | The selected Ring Swap Router |
+| Manual wrap | Original ERC-20 input | The FewToken returned by `FewFactory.getWrappedToken(underlying)` |
+| Universal Router with Permit2 | Original ERC-20 input | Permit2 for the ERC-20 allowance, then the selected Universal Router in the bounded Permit2 authorization |
+| Remove liquidity | Pair LP token | The selected Ring Swap Router, or the same router in the LP permit |
 
-- If you use the official Ring Router or Universal Router, approve only the official router or Permit2 address for the chain.
-- If you manually wrap, approve only the canonical FewToken returned by `FewFactory.getWrappedToken(underlying)`.
-- Prefer exact-amount approvals and clear temporary allowances after use when your flow supports it.
-- Use a wrapper address from a pool, quote, route, token list, or subgraph only after the `FewFactory` check above.
+Prefer exact amounts and short expiries. Clear temporary allowances when the token and flow support it. Validate every
+spender against the selected deployment and flow. A Pair, Factory, FewFactory, hook, quote target, or token-list entry
+is not an approval spender by default.
 
-If you use the official Ring SDK helpers and official deployment addresses, your integration should derive the expected FewToken addresses from Ring configuration. External FewToken-looking addresses should be treated as unsupported unless they pass the `FewFactory` check.
+SDK derivation is a convenience, not an authorization check. Compare its result with the deployed FewFactory. External
+FewToken-looking addresses are unsupported unless they pass the same onchain check.
+
+## Supply and backing boundary
+
+The reviewed FewToken source includes both escrow-backed `wrap` and role-controlled `mint`. Privileged minting does not
+itself transfer the original token into the wrapper. The current Core role holders, pause state, underlying balance,
+supply, and issuance history must be checked onchain before an integration assumes redemption capacity.
+
+FewToken `burn()` destroys the caller's FewToken without transferring the original asset. Use `unwrap()` or
+`unwrapTo()` for redemption. See [Few Protocol and FewToken](/concepts/few-protocol) for role, pause, raw-unit, and
+nonstandard-token details.
 
 ## Important note
 

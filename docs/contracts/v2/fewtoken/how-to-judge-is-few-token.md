@@ -3,7 +3,8 @@ title: How to Identify a FewToken
 sidebar_position: 3
 ---
 
-A supported FewToken is the wrapper address returned by the official `FewFactory` for an underlying ERC-20.
+A supported FewToken is the wrapper returned by the published and independently verified `FewFactory` for an underlying
+ERC-20 on the selected chain.
 
 The canonical check is:
 
@@ -27,7 +28,7 @@ interface IFewWrappedToken {
 
 ## If You Start from an Original ERC20
 
-Resolve the FewToken directly from the official `FewFactory`:
+Resolve the FewToken directly from the verified `FewFactory`:
 
 ```solidity
 address fewToken = IFewFactory(fewFactory).getWrappedToken(originalToken);
@@ -100,9 +101,9 @@ async function isSupportedFewToken({
 
 ## Approval Spender Selection
 
-After identifying the FewToken, choose the approval spender from the integration path:
+After identifying the FewToken, choose the approval spender from the integration path. Original tokens approve the
+selected Ring Swap Router for normal swaps, the FewToken for manual wrap, or Permit2 for a reviewed Universal Router
+flow. LP tokens approve the selected Ring Swap Router for removal. Do not approve a Pair, Factory, FewFactory, hook, or
+quote target unless a separately reviewed flow requires it.
 
-- Official router flow: approve the official Ring Router, Universal Router, or Permit2 address for the chain.
-- Manual wrap flow: approve the supported FewToken returned by `FewFactory`.
-
-Display metadata and external route metadata should not be used as the approval spender source.
+See [Security and Risk](/security-and-risk#approval-spenders) for the spender table and Permit2 checks.

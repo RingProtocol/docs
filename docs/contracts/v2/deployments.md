@@ -1,15 +1,42 @@
 ---
-title: Ring Swap Deployments
+title: Contract Deployments
 sidebar_position: 2
+description: Ring Swap (FewV2) contract addresses for Ethereum, MegaETH, BNB Smart Chain, and HyperEVM.
 ---
 
-The latest Ring Swap (v2), FewFactory, router, wrapper, and hook contracts are deployed at the addresses listed below.
-The `UniversalRouter` rows are the Ring Universal Router addresses used by the current Ring Interface for classic
-Ring Swap flows.
+# Ring Swap Contract Deployments
+
+This is the maintained address directory for Ring Swap, FewFactory, routers, wrappers, and related contracts. Some
+partner integrations and older tooling call this deployment family `FewV2`. The product name in these docs is Ring
+Swap (v2).
+
+This page was revised on `2026-08-20`. It is a versioned documentation snapshot, not a live registry or a substitute
+for onchain verification. Addresses are chain-specific. Select the network before copying an address, check that it has
+bytecode, and validate the contract's immutable factory, FewFactory, WETH, or wrapper references where applicable.
+Pool addresses are documented separately in [Networks and Pools](./pools).
+
+`UniversalRouter` rows are published Ring routing endpoints. Do not infer that every Interface, API, or route uses that
+address. Select the execution flow first and allow only the router approved for that flow.
+
+The Ethereum section also lists published Ring hooks used in external Uniswap v4 integrations. Those hooks are not
+Ring Swap core contracts.
+
+:::warning Addresses are not deposit destinations
+Do not transfer assets directly to a Factory, Pair, Router, FewFactory, FewToken, wrapper, hook, or Permit2 contract.
+Call the documented function through a reviewed integration. A listed address does not by itself establish an approval
+spender, token endorsement, audit result, current liquidity level, or redemption guarantee.
+:::
+
+Before a transaction, use the [Security and Risk](/security-and-risk) checklist. Verify the chain ID, code, recipient,
+raw amount, token path, spender, deadline, price limit, and simulation result.
 
 ## Mainnet Deployments
 
 ### ETH Mainnet
+
+- **Chain ID:** `1`
+- **Explorer:** [Etherscan](https://etherscan.io/)
+- **Pools:** [Browse live pools in the Ring Pool Explorer](https://app.ring.exchange/explorer#/explore/pools)
 
 | Contract | ETH Mainnet Address |
 | --- | --- |
@@ -19,6 +46,11 @@ Ring Swap flows.
 | UniversalRouter | `0x24e743CcE93235641f2be8Ce7ffC6330903ab96f` |
 | Permit2 | `0x000000000022D473030F116dDEE9F6B43aC78BA3` |
 | FewETHWrapper | `0xAda6059b4F6244Acd8934095Ed0162C5Df6B5ebB` |
+
+#### Uniswap v4 integration hooks
+
+| Contract | ETH Mainnet Address |
+| --- | --- |
 | FewETHHook | `0x044301939dEB7ca53C4733dd4D9B3bc5Ea0c6888` |
 | FewUNIHook | `0x4b3E2a8cF36c7EB0fBa2A5b39B20c896C6f22888` |
 | FewWBTCHook | `0x0FE942AFdb2F51e25cbf892aAd175C6A574F2888` |
@@ -35,6 +67,9 @@ Ring Swap flows.
 | Few Wrapped Token Init Code | `0x2bdba5734ddf754fb149ef1faa937956c52cfd1f24d68163a95f42d08ec06d38` |
 
 ### MegaETH Mainnet
+
+- **Chain ID:** `4326`
+- **Pools:** [MegaETH pool discovery notes](./pools#megaeth-mainnet)
 
 | Contract | MegaETH Mainnet Address |
 | --- | --- |
@@ -58,6 +93,10 @@ Ring Swap flows.
 
 ### BSC Mainnet
 
+- **Chain ID:** `56`
+- **Explorer:** [BscScan](https://bscscan.com/)
+- **Pools:** [BSC reference pool and token mappings](./pools#bnb-smart-chain)
+
 | Contract | BSC Mainnet Address |
 | --- | --- |
 | Ring Swap Factory | `0x4De602A30Ad7fEf8223dcf67A9fB704324C4dd9B` |
@@ -73,6 +112,10 @@ Ring Swap flows.
 | Few Wrapped Token Init Code | `0x2bdba5734ddf754fb149ef1faa937956c52cfd1f24d68163a95f42d08ec06d38` |
 
 ### Hyper Mainnet
+
+- **Chain ID:** `999`
+- **Explorer:** [HyperEVMScan](https://hyperevmscan.io/)
+- **Pools:** [HyperEVM factory pools and token mappings](./pools#hyperevm)
 
 | Contract | Hyper Mainnet Address |
 | --- | --- |
