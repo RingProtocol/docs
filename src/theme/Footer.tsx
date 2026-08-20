@@ -14,7 +14,7 @@ const footerData = {
           href: '/concepts/overview',
         },
         {
-          label: 'Networks and Pools',
+          label: 'Pools by Network',
           href: '/contracts/v2/pools',
         },
         {

@@ -27,7 +27,7 @@ const sidebars = {
       link: { type: 'doc', id: 'contracts/v2/overview' },
       items: [
         { type: 'doc', id: 'contracts/v2/deployments', label: 'Contract Deployments' },
-        { type: 'doc', id: 'contracts/v2/pools', label: 'Networks and Pools' },
+        { type: 'doc', id: 'contracts/v2/pools', label: 'Pools by Network' },
         {
           type: 'category',
           label: 'FewToken Wrapping',
@@ -89,7 +89,7 @@ const sidebars = {
       collapsed: true,
       link: { type: 'doc', id: 'contracts/v4/overview' },
       items: [
-        'contracts/v4/deployments',
+        { type: 'doc', id: 'contracts/v4/deployments', label: 'Upstream Uniswap Deployments' },
         {
           type: 'category',
           label: 'Ring Integration Guides',
