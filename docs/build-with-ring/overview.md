@@ -19,7 +19,7 @@ Choose an integration method based on who should discover the route, build the t
 ## Before you build
 
 All three methods use chain-specific addresses. Start with the maintained
-[contract deployments](/contracts/v2/deployments), then use [Networks and Pools](/contracts/v2/pools) for
+[contract deployments](/contracts/v2/deployments), then use [Pools by Network](/contracts/v2/pools) for
 pool discovery. Verify addresses and contract relationships onchain before use.
 
 Ring Swap routes use FewToken addresses. Resolve and validate wrappers through the published, independently verified

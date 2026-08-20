@@ -1,7 +1,7 @@
 ---
 title: Contract Deployments
 sidebar_position: 2
-description: Ring Swap (FewV2) contract addresses for Ethereum, MegaETH, BNB Smart Chain, and HyperEVM.
+description: Ring Swap (FewV2) contract addresses for Ethereum, BNB Smart Chain, HyperEVM, and MegaETH.
 ---
 
 # Ring Swap Contract Deployments
@@ -13,13 +13,14 @@ Swap (v2).
 This page was revised on `2026-08-20`. It is a versioned documentation snapshot, not a live registry or a substitute
 for onchain verification. Addresses are chain-specific. Select the network before copying an address, check that it has
 bytecode, and validate the contract's immutable factory, FewFactory, WETH, or wrapper references where applicable.
-Pool addresses are documented separately in [Networks and Pools](./pools).
+Both reference pages cover Ethereum (`1`), BNB Smart Chain (`56`), HyperEVM (`999`), and MegaETH (`4326`). Pool
+addresses and discovery notes are documented separately in [Pools by Network](./pools).
 
 `UniversalRouter` rows are published Ring routing endpoints. Do not infer that every Interface, API, or route uses that
 address. Select the execution flow first and allow only the router approved for that flow.
 
-The Ethereum section also lists published Ring hooks used in external Uniswap v4 integrations. Those hooks are not
-Ring Swap core contracts.
+Ring-published hook addresses used with external Uniswap v4 infrastructure are documented separately under
+[Few Hook Contracts](/contracts/v4/guides/hooks/few-hook-contracts).
 
 :::warning Addresses are not deposit destinations
 Do not transfer assets directly to a Factory, Pair, Router, FewFactory, FewToken, wrapper, hook, or Permit2 contract.
@@ -32,13 +33,13 @@ raw amount, token path, spender, deadline, price limit, and simulation result.
 
 ## Mainnet Deployments
 
-### ETH Mainnet
+### Ethereum Mainnet {#eth-mainnet}
 
 - **Chain ID:** `1`
 - **Explorer:** [Etherscan](https://etherscan.io/)
 - **Pools:** [Browse live pools in the Ring Pool Explorer](https://app.ring.exchange/explorer#/explore/pools)
 
-| Contract | ETH Mainnet Address |
+| Contract | Ethereum Mainnet Address |
 | --- | --- |
 | Ring Swap Factory | `0xeb2A625B704d73e82946D8d026E1F588Eed06416` |
 | Few Factory | `0x7D86394139bf1122E82FDF45Bb4e3b038A4464DD` |
@@ -47,21 +48,47 @@ raw amount, token path, spender, deadline, price limit, and simulation result.
 | Permit2 | `0x000000000022D473030F116dDEE9F6B43aC78BA3` |
 | FewETHWrapper | `0xAda6059b4F6244Acd8934095Ed0162C5Df6B5ebB` |
 
-#### Uniswap v4 integration hooks
-
-| Contract | ETH Mainnet Address |
+| Value | Ethereum Mainnet |
 | --- | --- |
-| FewETHHook | `0x044301939dEB7ca53C4733dd4D9B3bc5Ea0c6888` |
-| FewUNIHook | `0x4b3E2a8cF36c7EB0fBa2A5b39B20c896C6f22888` |
-| FewWBTCHook | `0x0FE942AFdb2F51e25cbf892aAd175C6A574F2888` |
-| FewUSDCHook | `0x4b2EB653D13E6C9ac5A0A01fDe22F2C8d6592888` |
-| FewDAIHook | `0x85B648a64Aed6307D5d5Ce26e6Ae086C17Bde888` |
-| FewUSDTHook | `0xBAdF77d50478b4432eF1F243B9C0bC7869486888` |
-| FewCBBTCHook | `0x8347b7A3807C681513D2B51b8223e59aA16a2888` |
-| FewweETHHook | `0x877323adBf747f85eb8D182D42f01f34A5492888` |
-| FewwstETHHook | `0x75ae0292E8AD3ab60B9A1A7B3046d3F4Abdfa888` |
+| Ring Swap Pair Init Code | `0xa7ae6a5ec37f0c21bbdac560794258c4089b8ae3ffa6e3909b53c6091764a676` |
+| Few Wrapped Token Init Code | `0x2bdba5734ddf754fb149ef1faa937956c52cfd1f24d68163a95f42d08ec06d38` |
 
-| Value | ETH Mainnet |
+### BNB Smart Chain {#bsc-mainnet}
+
+- **Chain ID:** `56`
+- **Explorer:** [BscScan](https://bscscan.com/)
+- **Pools:** [BSC reference pool and token mappings](./pools#bnb-smart-chain)
+
+| Contract | BNB Smart Chain Address |
+| --- | --- |
+| Ring Swap Factory | `0x4De602A30Ad7fEf8223dcf67A9fB704324C4dd9B` |
+| Few Factory | `0xEeE400Eabfba8F60f4e6B351D8577394BeB972CD` |
+| Ring Swap Router | `0x20504f37A95eF80e3FC7476c4801fb39AaE6bAd0` |
+| UniversalRouter | `0x1Fb6ef969D925f0B81245cE28F2cAD95b638CfCC` |
+| Permit2 | `0x000000000022D473030F116dDEE9F6B43aC78BA3` |
+| FewETHWrapper | `0xf9d7ff2f6A0c3631A807199276a493Af8097916F` |
+
+| Value | BNB Smart Chain |
+| --- | --- |
+| Ring Swap Pair Init Code | `0xa7ae6a5ec37f0c21bbdac560794258c4089b8ae3ffa6e3909b53c6091764a676` |
+| Few Wrapped Token Init Code | `0x2bdba5734ddf754fb149ef1faa937956c52cfd1f24d68163a95f42d08ec06d38` |
+
+### HyperEVM {#hyper-mainnet}
+
+- **Chain ID:** `999`
+- **Explorer:** [HyperEVMScan](https://hyperevmscan.io/)
+- **Pools:** [HyperEVM factory pools and token mappings](./pools#hyperevm)
+
+| Contract | HyperEVM Address |
+| --- | --- |
+| Ring Swap Factory | `0x4AfC2e4cA0844ad153B090dc32e207c1DD74a8E4` |
+| Few Factory | `0x6B65ed7315274eB9EF06A48132EB04D808700b86` |
+| Ring Swap Router | `0x701D1d675415efA2d2429fB122ccC6dD4FCcA959` |
+| UniversalRouter | `0xE65081EFa5ad4A196B1Df768716c337e6AB140E9` |
+| Permit2 | `0x000000000022D473030F116dDEE9F6B43aC78BA3` |
+| FewETHWrapper | `0x068B60ECbC934b0a0dde20FdFf0dE925b97B971F` |
+
+| Value | HyperEVM |
 | --- | --- |
 | Ring Swap Pair Init Code | `0xa7ae6a5ec37f0c21bbdac560794258c4089b8ae3ffa6e3909b53c6091764a676` |
 | Few Wrapped Token Init Code | `0x2bdba5734ddf754fb149ef1faa937956c52cfd1f24d68163a95f42d08ec06d38` |
@@ -87,46 +114,6 @@ raw amount, token path, spender, deadline, price limit, and simulation result.
 | Multicall3 | `0xcA11bde05977b3631167028862bE2a173976CA11` |
 
 | Value | MegaETH Mainnet |
-| --- | --- |
-| Ring Swap Pair Init Code | `0xa7ae6a5ec37f0c21bbdac560794258c4089b8ae3ffa6e3909b53c6091764a676` |
-| Few Wrapped Token Init Code | `0x2bdba5734ddf754fb149ef1faa937956c52cfd1f24d68163a95f42d08ec06d38` |
-
-### BSC Mainnet
-
-- **Chain ID:** `56`
-- **Explorer:** [BscScan](https://bscscan.com/)
-- **Pools:** [BSC reference pool and token mappings](./pools#bnb-smart-chain)
-
-| Contract | BSC Mainnet Address |
-| --- | --- |
-| Ring Swap Factory | `0x4De602A30Ad7fEf8223dcf67A9fB704324C4dd9B` |
-| Few Factory | `0xEeE400Eabfba8F60f4e6B351D8577394BeB972CD` |
-| Ring Swap Router | `0x20504f37A95eF80e3FC7476c4801fb39AaE6bAd0` |
-| UniversalRouter | `0x1Fb6ef969D925f0B81245cE28F2cAD95b638CfCC` |
-| Permit2 | `0x000000000022D473030F116dDEE9F6B43aC78BA3` |
-| FewETHWrapper | `0xf9d7ff2f6A0c3631A807199276a493Af8097916F` |
-
-| Value | BSC Mainnet |
-| --- | --- |
-| Ring Swap Pair Init Code | `0xa7ae6a5ec37f0c21bbdac560794258c4089b8ae3ffa6e3909b53c6091764a676` |
-| Few Wrapped Token Init Code | `0x2bdba5734ddf754fb149ef1faa937956c52cfd1f24d68163a95f42d08ec06d38` |
-
-### Hyper Mainnet
-
-- **Chain ID:** `999`
-- **Explorer:** [HyperEVMScan](https://hyperevmscan.io/)
-- **Pools:** [HyperEVM factory pools and token mappings](./pools#hyperevm)
-
-| Contract | Hyper Mainnet Address |
-| --- | --- |
-| Ring Swap Factory | `0x4AfC2e4cA0844ad153B090dc32e207c1DD74a8E4` |
-| Few Factory | `0x6B65ed7315274eB9EF06A48132EB04D808700b86` |
-| Ring Swap Router | `0x701D1d675415efA2d2429fB122ccC6dD4FCcA959` |
-| UniversalRouter | `0xE65081EFa5ad4A196B1Df768716c337e6AB140E9` |
-| Permit2 | `0x000000000022D473030F116dDEE9F6B43aC78BA3` |
-| FewETHWrapper | `0x068B60ECbC934b0a0dde20FdFf0dE925b97B971F` |
-
-| Value | Hyper Mainnet |
 | --- | --- |
 | Ring Swap Pair Init Code | `0xa7ae6a5ec37f0c21bbdac560794258c4089b8ae3ffa6e3909b53c6091764a676` |
 | Few Wrapped Token Init Code | `0x2bdba5734ddf754fb149ef1faa937956c52cfd1f24d68163a95f42d08ec06d38` |

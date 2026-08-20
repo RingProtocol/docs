@@ -21,7 +21,7 @@ Start with Ring Swap unless your integration explicitly targets Uniswap v4.
 | Permit2 | Provides shared allowance and signature-transfer flows | Router approvals |
 
 Use [Contract Deployments](/contracts/v2/deployments) for network-specific addresses and
-[Networks and Pools](/contracts/v2/pools) for published pair addresses.
+[Pools by Network](/contracts/v2/pools) for published pair addresses.
 
 ## External integration contracts
 

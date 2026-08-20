@@ -1,7 +1,7 @@
 ---
-title: Networks and Pools
+title: Pools by Network
 sidebar_position: 3
-description: Ring Swap (FewV2) contract and pool addresses for Ethereum, BNB Smart Chain, HyperEVM, and MegaETH.
+description: Ring Swap (FewV2) pool discovery references for Ethereum, BNB Smart Chain, HyperEVM, and MegaETH.
 keywords:
   - FewV2
   - BSC
@@ -10,10 +10,22 @@ keywords:
   - Ring Swap pool address
 ---
 
-# Ring Swap Networks and Pools
+# Ring Swap Pools by Network
 
-Pair addresses are chain-specific. Select the network first, then use that network's Ring Swap Factory and
-FewToken mappings.
+This page lists pool discovery references by network. It does not repeat the full deployment tables; Factory addresses
+appear only where they help integrators discover pools. Routers, wrappers, Permit2, and the complete contract directory
+are maintained in [Contract Deployments](./deployments). Both pages cover Ethereum (`1`), BNB Smart Chain (`56`),
+HyperEVM (`999`), and MegaETH (`4326`) in the same order.
+
+| Network | Chain ID | Pool reference |
+| --- | ---: | --- |
+| Ethereum | `1` | Live Ring Pool Explorer |
+| BNB Smart Chain | `56` | Curated reference pool and factory snapshot |
+| HyperEVM | `999` | Complete factory snapshot at the listed block |
+| MegaETH | `4326` | Query the Ring Swap Factory; no curated table yet |
+
+Pair addresses are chain-specific. Select the network first, then use that network's Ring Swap Factory and FewToken
+mappings.
 
 Some partner APIs call Ring Swap liquidity `FewV2`. This is the network-specific pool reference for that
 integration name.
@@ -43,7 +55,7 @@ Ethereum pools are discovered through the live explorer instead of a static tabl
 - **Chain ID:** `56`
 - **Network aliases:** `BNB Smart Chain`, `BSC`
 - **Ring Swap Factory:** [`0x4De602A30Ad7fEf8223dcf67A9fB704324C4dd9B`](https://bscscan.com/address/0x4De602A30Ad7fEf8223dcf67A9fB704324C4dd9B)
-- **Contracts:** [BSC deployments](./deployments#bsc-mainnet)
+- **Contracts:** [BNB Smart Chain deployments](./deployments#bsc-mainnet)
 
 ### Curated reference pool
 

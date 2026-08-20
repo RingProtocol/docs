@@ -38,7 +38,7 @@ If you are building directly against Uniswap v4 PoolManager, PositionManager, or
 | Task | Guide |
 | --- | --- |
 | Select a network and contract | [Contract Deployments](./deployments) |
-| Find a BSC or HyperEVM pool | [Networks and Pools](./pools) |
+| Find a BSC or HyperEVM pool | [Pools by Network](./pools) |
 | Resolve or validate a FewToken | [FewToken Integration](./fewtoken/integrating) |
 | Execute a swap from a contract | [Smart Contract Quick Start](./guides/smart-contract-integration/quick-start) |
 | Provide liquidity | [Providing Liquidity](./guides/smart-contract-integration/providing-liquidity) |
