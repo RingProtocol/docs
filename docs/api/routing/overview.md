@@ -6,33 +6,41 @@ title: Routing API
 
 # Ring Routing API
 
-A partner-facing quote endpoint that returns the best executable swap quote from Ring Protocol Pools.
+The Routing API is a partner endpoint that requests a swap quote from the liquidity sources enabled for that partner.
+A successful response is a point-in-time quote, not a guarantee of execution or the best price available in every
+market. The caller must validate and simulate the returned transaction before submitting it.
 
 ## Endpoint
 
-```
+```text
 POST https://gateway.ring.exchange/v1/partner/quote
 ```
 
-A staging environment is available at `https://gateway.testring.org/v1/partner/quote` — coordinate with the Ring team before targeting it.
+A staging environment is available at `https://gateway.testring.org/v1/partner/quote`. Coordinate with the Ring team
+before targeting it.
 
 ## Authentication
 
 Every request requires three headers:
 
 | Header | Required | Description |
-|---|---|---|
-| `x-api-key` | Yes | Your partner API key. Issued by Ring — email [contact@ring.exchange](mailto:contact@ring.exchange) to request one (see [Getting access](#getting-access)). Treat as a secret; proxy through your backend, do not ship to end-user devices. |
-| `x-partner-id` | Yes | Your partner slug (lower-case), assigned during onboarding (e.g. `orbs`). The slug and key are cross-checked: a key issued to partner A cannot impersonate partner B. |
+| --- | --- | --- |
+| `x-api-key` | Yes | Partner API key issued by Ring. Keep it on your backend and out of end-user devices, logs, URLs, and source control. |
+| `x-partner-id` | Yes | Lowercase partner slug assigned during onboarding. The gateway checks that it belongs to the API key. |
 | `Content-Type` | Yes | `application/json` |
 
-A missing or invalid `x-api-key` returns `403` (rejected by the gateway). A missing or mismatched `x-partner-id` returns `400` with `errorCode: VALIDATION_ERROR`.
+A missing or invalid API key returns `403`. A missing or mismatched partner ID returns `400` with
+`errorCode: VALIDATION_ERROR`.
 
 ## Supported chains
 
-Currently **only Ethereum Mainnet (`chainId: 1`)** is supported. Additional chains will be enabled as they are reviewed and rolled out. Coordinate with the Ring team before targeting other chains.
+The partner endpoint currently accepts Ethereum Mainnet (`chainId: 1`). Do not send another chain ID unless Ring has
+enabled it for your partner account and confirmed the deployment in writing.
 
 ## Quick start
+
+The example requests an exact-input quote for 100 USDT. USDT has 6 decimals, so the raw amount is `100000000`.
+Replace the `swapper` placeholder with the checksummed address of your filler contract. The address receives the output.
 
 ```bash
 curl -X POST "https://gateway.ring.exchange/v1/partner/quote" \
@@ -40,54 +48,55 @@ curl -X POST "https://gateway.ring.exchange/v1/partner/quote" \
   -H "x-api-key: YOUR_API_KEY" \
   -H "x-partner-id: YOUR_PARTNER_SLUG" \
   -d '{
-    "tokenIn":  "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+    "tokenIn": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
     "tokenOut": "0x0000000000000000000000000000000000000000",
-    "amount":   "1000000000101000000",
-    "tokenInChainId":  1,
+    "amount": "100000000",
+    "tokenInChainId": 1,
     "tokenOutChainId": 1,
-    "swapper": "0xYourFillerContractAddress",
-    "type": "EXACT_INPUT"
+    "swapper": "0xYOUR_CHECKSUMMED_FILLER_ADDRESS",
+    "type": "EXACT_INPUT",
+    "slippageTolerance": 0.5
   }'
 ```
+
+The placeholder is intentionally not a valid address. Do not replace it with a burn address, router, pool, or shared
+treasury unless that address is the intended output recipient.
 
 ### Required fields
 
 | Field | Description |
-|---|---|
-| `tokenIn` / `tokenOut` | Token addresses. Use `0x0000000000000000000000000000000000000000` for the chain's native asset (ETH). |
-| `amount` | Raw amount in the token's smallest unit (wei for ETH, 6-decimal units for USDT, etc.). For `EXACT_INPUT` this is the input amount; for `EXACT_OUTPUT` it's the desired output amount. |
-| `tokenInChainId` / `tokenOutChainId` | Chain ID. Both must equal `1` (Ethereum mainnet). |
-| `swapper` | **Your filler contract address.** Used to generate the calldata, and set as the recipient of the swap output. If wrong, the calldata won't match and output tokens will be sent to the wrong address. |
+| --- | --- |
+| `tokenIn` / `tokenOut` | Token addresses. Use `0x0000000000000000000000000000000000000000` for native ETH. Verify ERC-20 addresses independently. |
+| `amount` | Integer string in the token's smallest unit. For `EXACT_INPUT`, it is the input amount. For `EXACT_OUTPUT`, it is the requested output amount. |
+| `tokenInChainId` / `tokenOutChainId` | Both must be the chain enabled for the partner request. They are currently `1`. |
+| `swapper` | Filler contract that submits the transaction and receives the output. The generated calldata is bound to this address. |
 | `type` | `EXACT_INPUT` or `EXACT_OUTPUT`. |
 
 ### Optional fields
 
 | Field | Default | Description |
-|---|---|---|
-| `protocols` | `["FewV2"]` | Liquidity sources to consider for the route. Currently only `FewV2` is supported. |
-| `slippageTolerance` | — | Fixed maximum slippage tolerance as a percentage value. For example, `0.5` means 0.5%, and `1` means 1%. |
-| `autoSlippage` | — | Set to `DEFAULT` for automatic slippage selection. |
+| --- | --- | --- |
+| `protocols` | `['FewV2']` | Classic sources to consider. Accepted values are `V2`, `V3`, `V4`, `FewV2`, `mixed`, and `limit`. The partner endpoint defaults to Ring Swap only; the public quote endpoint has a separate default. Availability still depends on chain and partner configuration. |
+| `slippageTolerance` | None | Maximum slippage percentage. For example, `0.5` means 0.5%. The service accepts values from 0 through 20, but the caller must choose a limit suitable for the order. |
+| `autoSlippage` | None | Set to `DEFAULT` only when your integration has been reviewed for automatic slippage. |
 
-Use `slippageTolerance` when you want to set a fixed maximum slippage. Use `autoSlippage: "DEFAULT"` when you want the API to select slippage automatically.
+Do not send both `slippageTolerance` and `autoSlippage`. If your risk policy requires a fixed maximum, send
+`slippageTolerance` and enforce the same bound when validating the response.
 
-Example with fixed slippage:
+To make the Ring Swap restriction explicit, send:
 
 ```json
 {
-  "tokenIn": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
-  "tokenOut": "0x0000000000000000000000000000000000000000",
-  "amount": "1000000000101000000",
-  "tokenInChainId": 1,
-  "tokenOutChainId": 1,
-  "swapper": "0xYourFillerContractAddress",
-  "type": "EXACT_INPUT",
-  "slippageTolerance": 0.5
+  "protocols": ["FewV2"]
 }
 ```
 
+The presence of a protocol name in the request does not prove that it produced the returned route. Inspect the response
+and your service logs before reporting source usage.
+
 ## Response
 
-A successful request returns HTTP `200`:
+A successful request returns HTTP `200`. Values below are illustrative and are not a live market quote:
 
 ```json
 {
@@ -96,74 +105,94 @@ A successful request returns HTTP `200`:
   "quote": {
     "chainId": 1,
     "tradeType": "EXACT_INPUT",
-    "swapper": "0xYourFillerContractAddress",
+    "swapper": "0xYOUR_CHECKSUMMED_FILLER_ADDRESS",
     "input": {
-      "amount": "1000000000101000000",
+      "amount": "100000000",
       "token": "0xdAC17F958D2ee523a2206206994597C13D831ec7"
     },
     "output": {
-      "amount": "405123456789",
+      "amount": "40000000000000000",
       "token": "0x0000000000000000000000000000000000000000",
-      "recipient": "0xYourFillerContractAddress"
+      "recipient": "0xYOUR_CHECKSUMMED_FILLER_ADDRESS"
     },
     "methodParameters": {
-      "to":       "0x24e743CcE93235641f2be8Ce7ffC6330903ab96f",
+      "to": "0x24e743CcE93235641f2be8Ce7ffC6330903ab96f",
       "calldata": "0x...",
-      "value":    "0"
+      "value": "0"
     },
-    "route": [ /* ordered list of pool hops */ ],
+    "route": [],
     "slippage": 0.5,
-    "gasFee":    "662490501387712",
+    "gasFee": "662490501387712",
     "gasFeeUSD": "1.59",
     "gasUseEstimate": "63592",
     "quoteId": "d21e3281-5f14-4a4c-8369-d1a7250fca9f"
-  },
-  "permitData": { /* Permit2 typed data, when input token requires approval */ }
+  }
 }
 ```
 
-### What to grab from the response
+`permitData` may also be present when the integration requires a Permit2 signature.
 
-To execute the swap on-chain, take these three fields and submit a transaction:
+### Validate before execution
 
-| Field | Use |
-|---|---|
-| `quote.methodParameters.to` | Router contract address — destination of your transaction |
-| `quote.methodParameters.calldata` | Encoded swap calldata — the `data` field of your transaction |
-| `quote.methodParameters.value` | Native token value to attach (in wei) — the `value` field of your transaction |
+Treat every response as untrusted transaction input. Before signing or submitting it:
 
-If `permitData` is present, sign the Permit2 typed data first and submit the signature alongside the swap.
+1. Match `requestId` and `quoteId` to the request you just made. Reject stale or replayed application state.
+2. Require `quote.chainId`, `tradeType`, `swapper`, input token, output token, input amount, and recipient to match the
+   user's confirmed intent.
+3. Check the raw output or input limit against your own slippage and independent price policy.
+4. Require `methodParameters.to` to be in the router allowlist approved for that chain and for the sources enabled in
+   your partner configuration. Do not learn this allowlist from the response itself.
+5. Decode the calldata and verify its selector, recipient, tokens, path, amount limits, deadline, Permit2 spender, and
+   native value. Reject unknown commands or callbacks.
+6. Ensure `methodParameters.value` is zero for an ERC-20 input and equals the intended native input when ETH is used.
+7. Requote near submission time, then simulate the exact `{ from, to, data, value }` at the latest block. Reject a
+   revert, unexpected transfer, unknown approval, or changed recipient.
 
-The endpoint does **not** validate sender balances or token approvals — it only returns calldata. If you call it from a filler contract, make sure the contract has the input tokens (and required approvals) before submitting the transaction.
+The endpoint does not check the filler's balances, allowances, signing policy, or final transaction state.
 
-### Other useful fields
+### Permit2 responses
+
+Do not sign `permitData` until the integration has decoded whether it uses Permit2 `AllowanceTransfer`,
+`SignatureTransfer`, or a witness transfer, and checked the complete EIP-712 domain and message. At minimum, verify:
+
+- chain ID and Permit2 verifying contract
+- owner and allowed spender
+- token and raw amount
+- nonce, expiration, and signature deadline
+- requested transfer amount and final recipient in the submitted calldata
+
+An allowance permit does not by itself authorize a particular recipient or prove an intent to execute a particular
+quote. Claim recipient or quote binding only when the decoded witness type actually signs those fields. Otherwise,
+enforce them independently when validating the final calldata.
+
+Follow the signed-permit requote or submission flow supplied during partner onboarding. Do not append a signature to
+calldata or reuse a permit across quotes unless the documented flow explicitly requires it.
+
+### Other response fields
 
 | Field | Description |
-|---|---|
-| `routing` | Routing mode used to produce the quote. Currently `CLASSIC`. |
-| `quote.input.amount`, `quote.output.amount` | Final input and output amounts (wei). |
-| `quote.slippage` | Effective slippage applied (percent). |
-| `quote.gasFee`, `quote.gasFeeUSD` | Estimated gas fee in wei and USD. |
-| `quote.route` | Ordered list of pool hops used for the quote. |
-| `quote.quoteId`, `requestId` | UUIDs — useful for support tickets and log correlation. |
+| --- | --- |
+| `routing` | Routing mode used for this response. |
+| `quote.input.amount`, `quote.output.amount` | Raw integer amounts in each token's smallest unit. They are not always wei. |
+| `quote.slippage` | Slippage percentage applied by the quote. Confirm it matches the request and your policy. |
+| `quote.gasFee`, `quote.gasFeeUSD` | Estimates only. Actual gas cost can differ. |
+| `quote.route` | Ordered route metadata. Validate each source and pool rather than trusting display labels. |
+| `quote.quoteId`, `requestId` | Correlation IDs for logs and support. They are not execution authorization. |
 
 ## Errors
 
 | Status | `errorCode` | Cause |
-|---|---|---|
-| `400` | `VALIDATION_ERROR` | Missing or malformed field, missing `x-partner-id`, partner-id / API-key mismatch, unsupported chain. |
-| `403` | — | Missing or invalid `x-api-key`. Rejected at the gateway, never reaches the service. |
-| `404` | `NO_QUOTES_AVAILABLE` | No quoter returned a usable price for the requested pair. |
-| `429` | `TOO_MANY_REQUESTS` | Per-partner rate limit (default 10 rps / burst 20) or monthly quota (default 5M / month) exceeded. Honor `Retry-After`. |
-| `500` | varies | Upstream quoter failure. Retry with exponential backoff. |
-
-## Integration notes
-
-- **Token addresses**: use the checksummed ERC-20 contract address. For native ETH, use `0x0000000000000000000000000000000000000000`.
-- **Amounts** are strings in the token's smallest unit.
-- **Permit2**: when `permitData` is present in the response, sign the typed data with the swapper key and include the signature in your transaction. Without it, the swap will revert.
-- **`FewV2` routing**: quotes are sourced from Ring Protocol Pools and route through FewToken-wrapped liquidity, which can offer better pricing for certain pairs.
+| --- | --- | --- |
+| `400` | `VALIDATION_ERROR` | Missing or malformed field, partner mismatch, or unsupported chain. |
+| `403` | Not applicable | Missing or invalid API key. The gateway rejects the request. |
+| `404` | `NO_QUOTES_AVAILABLE` | No configured source returned a usable quote. This does not prove that no market exists elsewhere. |
+| `429` | `TOO_MANY_REQUESTS` | Rate limit or quota exceeded. Honor `Retry-After`. |
+| `500` | Varies | Service or upstream failure. Retry only when the request is idempotent, with bounded exponential backoff. |
 
 ## Getting access
 
-To request a partner API key, email **[contact@ring.exchange](mailto:contact@ring.exchange)** with your project name, website / app URL, intended use, and estimated traffic. The Ring team will review and reply with your API key and assigned `x-partner-id` slug.
+Request access through an established Ring integration contact whose identity you have independently verified. Provide
+the project name, website or app URL, intended use, estimated traffic, and filler or executor contract address. Ring
+will provide the API key, partner ID, enabled sources, approved router allowlist, and any partner-specific execution
+steps through that verified onboarding channel. Do not send credentials, signatures, or other secrets through public
+issues, chat rooms, or an unverified email address.

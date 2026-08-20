@@ -1,43 +1,50 @@
 ---
 id: overview
-title: Uniswap v4 Integration Overview
+title: Uniswap v4 Integration
 sidebar_position: 1
 ---
 
 # Uniswap v4 Integration
 
-This section documents how Ring and `FewToken` integrate with `Uniswap v4`.
+This section covers FewToken and Few hooks used with Uniswap v4 contracts.
 
-## What this section is
+## When to use this section
 
-This section is for developers who want to understand:
+Use it when your workflow directly involves:
 
-- how `FewToken` can be used in Uniswap v4 liquidity environments
-- which Uniswap v4 contracts and interfaces are relevant to Ring integrations
-- how Ring integrations can seed or manage liquidity in Uniswap v4 pools
+- Uniswap v4 PoolManager or PositionManager
+- a Few hook
+- Uniswap v4 pool creation, swaps, or liquidity management
+- reading Uniswap v4 pool state
 
-## What this section is not
+For Ring Swap pairs, the Ring Swap Router, or normal FewToken routes, start with
+[Ring Swap](/contracts/v2/overview).
 
-This section does **not** describe a separate native v4 AMM.
+## Product boundary
 
-Important distinction:
+| Surface | Owner of the AMM design | Role in Ring |
+| --- | --- | --- |
+| Ring Swap | Ring | Native FewToken AMM and routing system |
+| Uniswap v4 | Uniswap | External pool and hook infrastructure used by supported Ring integrations |
+| Few hooks and periphery | Ring integration code | Connect FewToken workflows to Uniswap v4 |
 
-- Ring currently operates `Ring Swap (v2)` as its native swap protocol
-- Ring does **not** currently operate a separate native v4 AMM
-- the material in this section should generally be read as `FewToken + Uniswap v4` integration documentation
+The pages in this section retain Uniswap v4 terminology because they document that external contract
+environment. They should not be read as a separate native Ring v4 protocol.
 
-Some low-level reference pages in this section still follow v4 ecosystem naming conventions. When that happens, read them as technical integration references rather than as proof that Ring operates a separate native v4 AMM.
+## Start by task
 
-## How to read this section
+| Task | Page |
+| --- | --- |
+| Find v4 contract addresses | [Deployments](./deployments) |
+| Create a pool | [Create a Pool](./quickstart/create-pool) |
+| Execute a swap | [Swap](./quickstart/swap) |
+| Add or manage liquidity | [Manage Liquidity](./quickstart/manage-liquidity/setup-liquidity) |
+| Build a hook | [Your First Hook](./guides/hooks/your-first-hook) |
+| Understand Few hook contracts | [Few Hook Contracts](./guides/hooks/few-hook-contracts) |
+| Prepare pool data for an aggregator | [FewToken Liquidity and Aggregator Integration](./guides/fewtoken-liquidity-aggregation) |
 
-If you are new to Ring, read these sections first:
+Source: [Ring v4 integration periphery](https://github.com/RingProtocol/v4-periphery).
 
-1. `Concepts > Ring Overview`
-2. `Concepts > The Ring Protocol`
-3. `Contracts > Ring Swap (v2) > FewToken Wrapping`
-4. `Contracts > Ring Swap (v2)`
-
-Then use this section as a technical integration reference for Uniswap v4-related workflows.
-
-For aggregator onboarding, pool data, and route verification requirements, see
-[FewToken Liquidity and Aggregator Integration](/contracts/v4/guides/fewtoken-liquidity-aggregation).
+For generic PoolManager, PositionManager, and hook mechanics, use the
+[official Uniswap v4 documentation](https://docs.uniswap.org/contracts/v4/overview). Ring keeps its main
+navigation focused on FewToken and Few hook integration pages.

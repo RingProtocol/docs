@@ -37,13 +37,11 @@ export default function NavbarContent(): ReactNode {
   const mobileSidebar = useNavbarMobileSidebar()
 
   const navLinks = [
-    { label: 'Concepts', to: '/concepts/overview' },
-    { label: 'Contracts', to: '/contracts/overview' },
-    { label: 'SDKs', to: '/sdk/v2/overview' },
-    // { label: 'APIs', to: '/api/subgraph/overview' },
+    { label: 'Start Here', to: '/concepts/overview' },
+    { label: 'Ring Swap', to: '/contracts/v2/overview' },
+    { label: 'v4 Integration', to: '/contracts/v4/overview' },
+    { label: 'Build', to: '/build/overview' },
     { label: 'Wallet', to: '/wallet/overview' },
-    // { label: 'Support', to: '/builder-support/get-funded' },
-    // { label: 'LLMs', to: '/llms/overview' },
   ]
 
   return (
@@ -101,7 +99,7 @@ export default function NavbarContent(): ReactNode {
             target="_blank"
             rel="noreferrer"
           >
-            Share feedback
+            Feedback
           </Link>
         </div>
       </div>

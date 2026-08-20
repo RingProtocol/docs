@@ -1,59 +1,65 @@
 ---
 id: ring-protocol
-title: The Ring Protocol
+title: How Ring Works
 sidebar_position: 2
 ---
 
-## Introduction
+# How Ring Works
 
-Ring Protocol is built around `FEW`, short for `Financial Elastic Wrapping`.
+Ring separates the asset layer from the trading venue.
 
-At a high level, Ring wraps original ERC-20 assets into `FewToken`, then uses those wrapped assets across trading and protocol integrations.
+```text
+Original ERC-20
+      |
+      | a verified FewFactory resolves the supported wrapper
+      v
+FewToken
+      |
+      +--> Ring Swap pools and routes
+      |
+      +--> supported external integrations, including Uniswap v4
+```
 
-Today, the most important parts of Ring are:
+## 1. Few Protocol provides the asset layer
 
-- `Ring Swap (v2)`: Ring's native AMM product line built around `FewToken`
-- `Few Protocol`: the core wrapping layer that turns original ERC-20 assets into `FewToken`
-- `Uniswap v4 integration`: `FewToken` can also be used in Uniswap v4 liquidity environments
-- Ring Wallet and selected integrations that build on the same FEW model
+Few Protocol maps an original ERC-20 to a `FewToken`. The published `FewFactory` deployment on each network records
+that mapping. Verify the factory address, code, Core reference, and reverse wrapper relationship onchain before use.
 
-## How does Ring compare to a typical market?
+A token name, symbol, token list entry, or existing pool is not enough to establish that a wrapper is
+supported. Integrations should confirm the mapping through `FewFactory`.
 
-To understand how Ring differs from a traditional exchange, it is helpful to look at two subjects first:
+## 2. Ring Swap provides the native trading layer
 
-- how AMMs differ from order-book markets
-- how permissionless systems differ from permissioned systems
+Ring Swap uses FewToken assets in constant-product pairs. Its core contracts are a factory and the pairs
+created by that factory. Routers provide the normal entry points for swaps and liquidity operations.
 
-### What is Ring Protocol
+For a logical route such as:
 
-Ring Protocol is a liquidity and capital-efficiency protocol designed to increase asset utilization onchain.
+```text
+tokenA -> USDC -> tokenB
+```
 
-The core idea is simple:
+the Ring Swap path uses the corresponding wrappers:
 
-1. wrap original assets into `FewToken`
-2. use `FewToken` across trading and routing systems
-3. improve usable liquidity and quote competitiveness
-4. capture more order flow and fees from stronger execution
+```text
+fwTokenA -> fwUSDC -> fwTokenB
+```
 
-### What Ring is not
+## 3. Other environments are integrations
 
-Ring should not be understood as a version-by-version AMM family.
+FewToken can also be used outside Ring Swap. The Uniswap v4 section documents one such integration path.
+Those pages describe FewToken and Few hooks in Uniswap v4 infrastructure. They do not describe a separate
+native Ring v4 AMM.
 
-In particular:
+## Integration boundary
 
-- `Ring Swap (v2)` is a top-level Ring product line.
-- Ring docs should not imply additional native AMM product lines.
-- When Ring documentation refers to v4 in the current product stack, it should be understood as `FewToken`
-  integration with `Uniswap v4`.
+| Need | Verification source |
+| --- | --- |
+| Confirm a FewToken | The independently verified, published `FewFactory` for the selected chain |
+| Find a Ring Swap pair | The network's Ring Swap Factory or the published pool reference |
+| Select an approval spender | The exact spender required by the reviewed flow. See [Security and Risk](/security-and-risk#approval-spenders) |
+| Find current deployments | [Contract deployments](/contracts/v2/deployments) |
+| Browse Ethereum pools | [Ring Pool Explorer](https://app.ring.exchange/explorer#/explore/pools) |
 
-### Mission
-
-Ring's mission is to build a universal liquidity protocol for maximizing asset utilization. Large amounts of assets remain idle onchain, while many crypto assets and markets still lack efficient liquidity. Ring aims to improve this through FEW and the products built on top of it.
-
-### Permissionless Systems
-
-The Ring protocol follows the permissionless design tradition of Ethereum. That means users and integrators should be able to interact with deployed contracts without needing centralized approval.
-
-Permissionless design means the protocol's services are open for public use within the constraints of the deployed contracts. This differs from traditional financial systems, which typically restrict access based on geography, wealth, or institutional permission.
-
-Ring is also designed around transparent onchain components. That makes the system easier to inspect and reason about, but it also means the protocol boundaries need to be documented clearly so users understand which parts are native Ring systems and which parts are integrations with external infrastructure.
+This boundary matters because addresses that look like Ring assets or pools can be created by anyone. Start with the
+published deployment, then verify it onchain before routing funds or granting approvals.

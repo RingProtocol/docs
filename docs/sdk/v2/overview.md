@@ -4,34 +4,60 @@ sidebar_position: 1
 title: Ring Swap SDK
 ---
 
-Welcome to the Ring Swap SDK docs. To begin, we recommend looking at the
-[**Guides**](./guides/01-quick-start.md). The current source of truth for the SDK lives in the
-[`sdks`](https://github.com/RingProtocol/sdks) monorepo.
+# Ring Swap SDK
 
-## Ring Swap SDK
+Use `@ring-protocol/v2-sdk` for TypeScript and JavaScript integrations with Ring Swap.
 
-Use `@ring-protocol/v2-sdk` for normal Ring Swap integrations. The package name reflects the
-v2-style constant-product contract family that Ring Swap is compatible with; it should not be read
-as a separate Ring product generation.
+```bash
+yarn add @ring-protocol/v2-sdk @ring-protocol/sdk-core
+```
 
-- [**Ring SDK Monorepo**](https://github.com/RingProtocol/sdks)
-- [**Ring Swap SDK**](https://www.npmjs.com/package/@ring-protocol/v2-sdk)
-- [**Ring Protocol SDK Core**](https://www.npmjs.com/package/@ring-protocol/sdk-core)
-- [**V2-style base SDK**](https://www.npmjs.com/package/@ring-protocol/uniswap-v2-sdk)
+## Package map
 
-[![npm version](https://img.shields.io/npm/v/@ring-protocol/v2-sdk/latest.svg)](https://www.npmjs.com/package/@ring-protocol/v2-sdk/v/latest)
-[![npm bundle size (scoped version)](https://img.shields.io/bundlephobia/minzip/@ring-protocol/v2-sdk/latest.svg)](https://bundlephobia.com/result?p=@ring-protocol/v2-sdk@latest)
+| Package | Role | Use directly? |
+| --- | --- | --- |
+| `@ring-protocol/v2-sdk` | FewToken-aware pairs, routes, trades, and address helpers | Yes. This is the default Ring Swap SDK |
+| `@ring-protocol/sdk-core` | Shared token, amount, price, and percentage types | Yes, when constructing SDK inputs |
+| `@ring-protocol/uniswap-v2-sdk` | Lower-level v2-compatible primitives | Only when you specifically need the base compatibility layer |
 
-`@ring-protocol/v2-sdk` is the FEW-aware Ring Swap SDK layer. It includes helper APIs for deriving and
-recognizing `FewToken` addresses.
+All three packages are maintained in the [Ring SDK monorepo](https://github.com/RingProtocol/sdks).
 
-Use `@ring-protocol/uniswap-v2-sdk` only when you explicitly want the lower-level v2-compatible primitives rather than the higher-level Ring integration layer.
+## Published network support
 
-## FewToken Address Resolution
+This table describes `@ring-protocol/v2-sdk@1.0.0`, the package checked on `2026-08-20`. A chain appearing in
+`@ring-protocol/sdk-core` does not mean the FewToken-aware v2 package supports that chain.
 
-For Ring Swap integrations, derive FewToken addresses from the original ERC-20 with the official SDK or resolve them from the official `FewFactory`. A FewToken address is supported when `FewFactory.getWrappedToken(underlying)` returns that address; `symbol` and `name` are display metadata.
+| Network | Chain ID | Published v2 SDK status |
+| --- | --- | --- |
+| Ethereum Mainnet | `1` | Configured. Verify FewFactory, factory, and init code against the deployment page and onchain before use |
+| BNB Smart Chain | `56` | Configured. Verify the derived FewToken and pair onchain before use |
+| HyperEVM | `999` | Configured. Verify the derived FewToken and pair onchain before use |
+| MegaETH Mainnet | `4326` | **Unsupported in the published package.** Do not use v1.0.0 FewToken or pair-address helpers for MegaETH |
 
-Approval spender selection depends on the integration path:
+MegaETH support becomes available only after a package with the reviewed Ring Swap Factory, FewFactory, and init-code
+configuration is published and this table names that version. Until then, read addresses from the deployment page and
+resolve them directly onchain.
 
-- Official router flow: approve only the official Ring Router, Universal Router, or Permit2 address for the chain.
-- Manual wrap flow: approve only the canonical FewToken returned by `FewFactory`.
+## Start by task
+
+| Task | Guide |
+| --- | --- |
+| Install the SDK and create tokens | [Quick Start](./guides/quick-start) |
+| Read pair data | [Fetching Data](./guides/fetching-data) |
+| Calculate prices | [Pricing](./guides/pricing) |
+| Construct a trade | [Trading](./guides/trading) |
+| Derive a pair address | [Getting Pair Addresses](./guides/getting-pair-addresses) |
+
+## FewToken rule
+
+Ring Swap pools and paths use FewToken addresses. Derive wrappers through SDK configuration only on a supported network,
+then compare the result with the published and independently verified `FewFactory` onchain. Do not identify a wrapper
+only from its symbol, name, token-list entry, or the existence of a pool.
+
+The v1.0.0 `isFewToken()` helper checks display metadata and must not be used as an authorization or asset-identity
+check. Confirm `FewFactory.getWrappedToken(underlying) === candidate` onchain. For pair identity, confirm
+`Ring Swap Factory.getPair(tokenA, tokenB)` rather than accepting a locally derived address alone.
+
+Use [Contract Deployments](/contracts/v2/deployments) as the maintained factory and router directory, then verify the
+selected deployment onchain. If you need a hosted quote service, use the [Routing API](/api/routing/overview) and apply
+its response-validation checklist.

@@ -3,57 +3,57 @@ id: trading-from-a-smart-contract
 title: Implement a Swap
 ---
 
-When trading from a smart contract, the most important thing to keep in mind is that access to an external price source is _required_. Without this, trades can be frontrun for considerable loss.
+Contract integrations need an independent price limit, a fixed or allowlisted execution path, and a caller-approved
+deadline. A Ring Swap reserve ratio is transaction state, not a manipulation-resistant price source.
 
-_Read [safety considerations](#safety-considerations) for more._
+Start with the [fixed-pair adapter](./quick-start). It validates the router, factory, FewFactory, wrappers, and pair in
+the constructor and keeps those addresses out of user-controlled calldata.
 
-## Using the Router
+## Router address semantics
 
-The easiest way to safely swap tokens is to use the [router](../../reference/smart-contracts/router-02), which provides a variety of methods to safely swap to and from different assets. You'll notice that there is a function for each permutation of swapping to/from an exact amount of ETH/tokens.
+The Ring Swap Router uses two address domains in one swap:
 
-First you must use an external price source to calculate the safety parameters for the function you'd like to call. This is either a minimum amount received when selling an exact input or the maximum amount you are willing to pay when buying an exact output amount.
+- The caller holds and approves the original input ERC-20.
+- The router's `path` contains the FewToken addresses held by the Ring Swap pairs.
+- The router wraps the original input and unwraps the final FewToken output internally.
 
-It is also important to ensure that your contract controls enough ETH/tokens to make the swap, and has granted approval to the router to withdraw this many tokens.
-
-_For SDK-based pricing helpers, see the [Ring Swap SDK pricing guide](/sdk/v2/guides/pricing)._
-
-## Example
-
-Imagine you want to swap 50 DAI for as much ETH as possible from your smart contract.
-
-### transferFrom
-
-Before swapping, our smart contracts needs to be in control of 50 DAI. The easiest way to accomplish this is by calling `transferFrom` on DAI with the owner set to `msg.sender`:
+For a DAI to ETH route, the safety checks and call shape are:
 
 ```solidity
-uint amountIn = 50 * 10 ** DAI.decimals();
-require(DAI.transferFrom(msg.sender, address(this), amountIn), 'transferFrom failed.');
-```
+require(fewFactory.getWrappedToken(address(DAI)) == fwDAI, "DAI wrapper mismatch");
+require(fewFactory.getWrappedToken(router.WETH()) == router.fwWETH(), "WETH wrapper mismatch");
+require(factory.getPair(fwDAI, router.fwWETH()) == allowedPair, "pair mismatch");
+require(deadline > block.timestamp, "expired");
+require(amountOutMin > 0, "missing price limit");
 
-### approve
+DAI.forceApprove(address(router), amountIn);
 
-Now that our contract owns 50 DAI, we need to approve to the [router](../../reference/smart-contracts/router-02) to withdraw this DAI:
-
-```solidity
-require(DAI.approve(address(router), amountIn), 'approve failed.');
-```
-
-### swapExactTokensForETH
-
-Now we're ready to swap:
-
-```solidity
-// amountOutMin must be retrieved from an oracle of some kind
 address[] memory path = new address[](2);
-path[0] = address(DAI);
-path[1] = router.WETH();
-router.swapExactTokensForETH(amountIn, amountOutMin, path, msg.sender, block.timestamp);
+path[0] = fwDAI;
+path[1] = router.fwWETH();
+
+router.swapExactTokensForETH(amountIn, amountOutMin, path, recipient, deadline);
+DAI.forceApprove(address(router), 0);
 ```
 
-## Safety Considerations
+The snippet assumes `DAI` uses OpenZeppelin `SafeERC20`, and that `router`, `factory`, `fewFactory`, `fwDAI`, and
+`allowedPair` were fixed or approved before the call. Do not copy it into a contract that accepts those values from an
+untrusted caller.
 
-Because Ethereum transactions occur in an adversarial environment, smart contracts that do not perform safety checks _can be exploited for profit_. If a smart contract assumes that the current price on Ring is a "fair" price without performing safety checks, _it is vulnerable to manipulation_. A bad actor could e.g. easily insert transactions before and after the swap (a "sandwich" attack) causing the smart contract to trade at a much worse price, profit from this at the trader's expense, and then return the contracts to their original state. (One important caveat is that these types of attacks are mitigated by trading in extremely liquid pools, and/or at low values.)
+## Price and transaction limits
 
-The best way to protect against these attacks is to use an external price feed or "price oracle". The best "oracle" is simply _traders' off-chain observation of the current price_, which can be passed into the trade as a safety check. This strategy is best for situations _where users initiate trades on their own behalf_.
+For an exact-input swap, derive `amountOutMin` from a fresh offchain quote or an independent oracle with a documented
+staleness bound. For an exact-output swap, set `amountInMax` the same way. The check must remain meaningful if an
+attacker moves the Ring Swap pool before your transaction.
 
-However, when an off-chain price can't be used, an on-chain oracle should be used instead. Determining the best oracle for a given situation is not a part of this guide, but for more details on the Ring V2 approach to oracles, see [Oracles](../../concepts/core-concepts/oracles).
+Also validate:
+
+- chain ID, input and output tokens, raw token units, and native value
+- recipient and any refund recipient
+- each FewToken and pair in a multi-hop route
+- deadline and quote age
+- actual allowance spender
+- simulation result at the latest block
+
+Requote or revert when any of these values has changed. See [Security and Risk](/security-and-risk) for Permit2 and
+Routing API checks.

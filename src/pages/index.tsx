@@ -3,126 +3,88 @@ import React, { FC } from 'react'
 import Link from '@docusaurus/Link'
 import Layout from '@theme/Layout'
 
-import { Emblem1, ThickX, Hexagon, BookOpen, ArrowRight, Github, Npm } from '../components/Icons'
+import { ArrowRight, Emblem1, Github } from '../components/Icons'
 
-export const actions = [
+const tasks = [
   {
-    title: 'Integrate Ring Swap (v2)',
-    icon: 'book-open',
+    title: 'Use Ring',
+    description: 'Swap, manage liquidity, or browse pools in the Ring Interface.',
+    to: 'https://app.ring.exchange/',
+  },
+  {
+    title: 'Integrate Ring Swap',
+    description: 'Start with the native AMM, network deployments, and contract guides.',
     to: '/contracts/v2/overview',
-    text: "Build against Ring's native FewToken AMM and router product line.",
-    color: 'orange',
   },
   {
-    title: 'Use FewToken wrapping',
-    icon: 'x',
-    to: '/contracts/v2/fewtoken/integrating',
-    text: 'Resolve FewToken addresses and understand the wrapping layer behind Ring Swap.',
-    color: 'brown',
+    title: 'Build with the SDK',
+    description: 'Create FewToken-aware pairs, routes, quotes, and trades in TypeScript.',
+    to: '/sdk/v2/overview',
   },
   {
-    title: 'Use v4 integrations',
-    icon: 'hexagon',
+    title: 'Use the Routing API',
+    description: 'Request partner quotes with execution-ready router calldata.',
+    to: '/api/routing/overview',
+  },
+]
+
+const products = [
+  {
+    eyebrow: 'Asset layer',
+    title: 'Few Protocol',
+    description: 'Resolves and wraps original ERC-20 assets into canonical FewToken addresses.',
+    to: '/concepts/few-protocol',
+  },
+  {
+    eyebrow: 'Native AMM',
+    title: 'Ring Swap (v2)',
+    description: 'Provides FewToken pools, swaps, liquidity, and routing on supported networks.',
+    to: '/contracts/v2/overview',
+  },
+  {
+    eyebrow: 'External environment',
+    title: 'Uniswap v4 Integration',
+    description: 'Covers FewToken and Few hooks used with Uniswap v4 contracts.',
     to: '/contracts/v4/overview',
-    text: 'Use FewToken and Few hooks in Uniswap v4 environments when the integration needs v4.',
-    color: 'green',
   },
 ]
 
-const heroLinks = [
-  { label: 'Ring Swap (v2)', to: '/contracts/v2/overview' },
-  { label: 'FewToken Wrapping', to: '/contracts/v2/fewtoken/integrating' },
-  { label: 'Deployments', to: '/contracts/v2/deployments' },
-  { label: 'Uniswap v4 Integration', to: '/contracts/v4/overview' },
-]
-
-const heroHighlights = [
-  { label: 'Native swap product', value: 'Ring Swap' },
-  { label: 'Asset layer', value: 'FEW' },
-  { label: 'External integration', value: 'v4 hooks' },
-]
-
-const sectionDescriptions = {
-  sdk: 'Use the Ring Swap SDK for FEW-aware pricing, routing, pair discovery, and trade construction.',
-  contracts:
-    'Start with Ring Swap (v2) and its FewToken wrapping flow, then move into Uniswap v4 integration only when the workflow needs v4 hooks or pools.',
-  resources: 'Reach repositories, deployment references, community channels, and protocol resources quickly.',
-}
-
-export const developerLinks = [
+const references = [
   {
-    title: 'Ring SDKs',
-    href: 'https://github.com/RingProtocol/sdks',
-    icon: 'github',
-  },
-  {
-    title: 'Ring Protocol contracts',
-    href: '/contracts/v2/deployments',
-    icon: 'github',
-  },
-  {
-    title: 'v4 integration periphery',
-    href: 'https://github.com/RingProtocol/v4-periphery',
-    icon: 'github',
-  },
-]
-
-export const dAppGuides = [
-  {
-    title: 'Price FewToken routes',
-    text: 'Understand reserve-based quotes for Ring Swap (v2)',
-    to: '/sdk/v2/guides/pricing',
-  },
-  {
-    title: 'Create a Ring Swap trade',
-    text: 'Construct FEW-aware trades with the Ring Swap SDK',
-    to: '/sdk/v2/guides/trading',
-  },
-  {
-    title: 'Fetch pair data',
-    text: 'Read Ring Swap pair reserves and metadata for routing logic',
-    to: '/sdk/v2/guides/fetching-data',
-  },
-  {
-    title: 'Find pair addresses',
-    text: 'Derive pair addresses and prepare integrations around Ring Swap (v2)',
-    to: '/sdk/v2/guides/getting-pair-addresses',
-  },
-]
-export const smartContractGuides = [
-  {
-    title: 'View deployment addresses',
-    text: 'Start with the published Ring Swap, FewFactory, router, hook, and init-code addresses',
+    title: 'Contract deployments',
+    description: 'Factory, router, wrapper, Permit2, and related addresses by network.',
     to: '/contracts/v2/deployments',
   },
   {
-    title: 'Integrate Ring Swap (v2)',
-    text: "Use Ring Swap's native FewToken contract flow for Solidity integrations",
-    to: '/contracts/v2/guides/smart-contract-integration/quick-start',
+    title: 'Networks and pools',
+    description: 'Ethereum pool discovery plus published BSC and HyperEVM pair addresses.',
+    to: '/contracts/v2/pools',
   },
   {
-    title: 'Resolve FewToken addresses',
-    text: 'Map original ERC-20 assets to the FewToken addresses used by Ring Swap',
-    to: '/contracts/v2/fewtoken/get-fewtoken-address-via-fewfactory',
+    title: 'FewToken integration',
+    description: 'Resolve canonical wrappers and select the correct approval spender.',
+    to: '/contracts/v2/fewtoken/integrating',
   },
   {
-    title: 'Recover underlying tokens',
-    text: 'Map FewToken addresses back to their original ERC-20 assets',
-    to: '/contracts/v2/fewtoken/get-erc20-token-address-via-fewfactory',
+    title: 'Contract map',
+    description: 'Choose the correct contract for wrapping, pair discovery, swaps, or v4 integration.',
+    to: '/contracts/overview',
   },
-  {
-    title: 'Build a v4 integration hook',
-    text: 'Use the Uniswap v4 integration path only when you explicitly need v4 hooks',
-    to: '/contracts/v4/guides/hooks/your-first-hook',
-  },
+]
+
+const repositories = [
+  { title: 'Ring Swap core', to: 'https://github.com/RingProtocol/few-v2-core' },
+  { title: 'Ring Swap periphery', to: 'https://github.com/RingProtocol/few-periphery' },
+  { title: 'Ring SDKs', to: 'https://github.com/RingProtocol/sdks' },
+  { title: 'Documentation', to: 'https://github.com/RingProtocol/docs' },
 ]
 
 const Home = () => {
   return (
-    <Layout title="Ring Protocol Docs" description="Guides and technical references for building on Ring Protocol">
-      <div className="content-page-padding w-full flex flex-col">
+    <Layout title="Ring Protocol Docs" description="Build with FewToken, Ring Swap, and Ring integrations">
+      <main className="content-page-padding w-full">
         <div className="default-grid py-padding-x-large">
-          <section className="col-span-full sm:col-span-5 rounded-large border border-light-surface-3 bg-light-surface-2 p-6 dark:border-dark-surface-3 dark:bg-dark-surface-2 sm:p-8">
+          <section className="col-span-full rounded-large border border-light-surface-3 bg-light-surface-2 p-6 dark:border-dark-surface-3 dark:bg-dark-surface-2 sm:col-span-5 sm:p-8">
             <div className="inline-flex items-center rounded-full bg-light-surface-1 px-4 py-2 dark:bg-dark-surface-1">
               <Emblem1 className="mr-2" />
               <span className="button-label-4 text-light-accent-1 dark:text-dark-accent-1">
@@ -130,209 +92,141 @@ const Home = () => {
               </span>
             </div>
             <h1 className="mt-6 serif-heading-0 text-light-neutral-1 dark:text-dark-neutral-1">
-              Build on Ring Swap, FewToken, and v4 hooks without guessing the product boundary.
+              Build with Ring without sorting through product versions first.
             </h1>
             <p className="mt-4 max-w-2xl subheading-2 text-light-neutral-2 dark:text-dark-neutral-2">
-              Ring docs are organized around the current public stack: Ring Swap (v2) as the native AMM product, Few
-              Protocol as the wrapping layer, and Uniswap v4 integration where FewToken hooks are needed.
+              Ring has a wrapped asset layer, one native AMM, and selected external integrations. Choose the task you
+              need to complete, then use the matching contracts, SDK, or API.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              {heroLinks.map((link) => (
-                <Link
-                  key={link.label}
-                  to={link.to}
-                  className="rounded-small border border-light-surface-3 bg-light-surface-1 px-4 py-2 button-label-3 text-light-neutral-1 transition hover:border-light-accent-1 hover:text-light-accent-1 dark:border-dark-surface-3 dark:bg-dark-surface-1 dark:text-dark-neutral-1 dark:hover:border-dark-accent-1 dark:hover:text-dark-accent-1"
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-            <div className="mt-10 grid grid-cols-1 gap-4 border-t border-light-surface-3 pt-6 dark:border-dark-surface-3 sm:grid-cols-3">
-              {heroHighlights.map((item) => (
-                <div key={item.label}>
-                  <p className="heading-3 text-light-neutral-1 dark:text-dark-neutral-1">{item.value}</p>
-                  <p className="body-3 text-light-neutral-2 dark:text-dark-neutral-2">{item.label}</p>
-                </div>
-              ))}
+              <Link
+                to="/concepts/overview"
+                className="rounded-small bg-light-accent-1 px-4 py-2 button-label-3 text-white transition hover:opacity-90 dark:bg-dark-accent-1"
+              >
+                Start here
+              </Link>
+              <Link
+                to="/contracts/v2/pools"
+                className="rounded-small border border-light-surface-3 bg-light-surface-1 px-4 py-2 button-label-3 text-light-neutral-1 transition hover:border-light-accent-1 hover:text-light-accent-1 dark:border-dark-surface-3 dark:bg-dark-surface-1 dark:text-dark-neutral-1 dark:hover:border-dark-accent-1 dark:hover:text-dark-accent-1"
+              >
+                Find a pool
+              </Link>
             </div>
           </section>
 
-          <aside className="col-span-full sm:col-span-3 flex flex-col gap-gap-large">
+          <aside className="col-span-full mt-6 sm:col-span-3 sm:mt-0">
             <div className="rounded-large border border-light-surface-3 bg-light-surface-1 p-6 dark:border-dark-surface-3 dark:bg-dark-surface-1">
               <p className="button-label-4 uppercase tracking-[0.08em] text-light-accent-1 dark:text-dark-accent-1">
-                Start here
-              </p>
-              <div className="mt-4 space-y-4">
-                {actions.map((action) => (
-                  <Link
-                    key={action.title}
-                    to={action.to}
-                    className="block rounded-medium border border-light-surface-3 bg-light-surface-2 p-4 transition hover:border-light-accent-1 hover:bg-light-accent-2 dark:border-dark-surface-3 dark:bg-dark-surface-2 dark:hover:border-dark-accent-1 dark:hover:bg-dark-accent-2"
-                  >
-                    <p className="subheading-2 text-light-neutral-1 dark:text-dark-neutral-1">{action.title}</p>
-                    <p className="mt-1 body-3 text-light-neutral-2 dark:text-dark-neutral-2">{action.text}</p>
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            <div className="rounded-large border border-light-surface-3 bg-light-surface-1 p-6 dark:border-dark-surface-3 dark:bg-dark-surface-1">
-              <p className="button-label-4 uppercase tracking-[0.08em] text-light-accent-1 dark:text-dark-accent-1">
-                Popular paths
+                Choose a task
               </p>
               <div className="mt-4 space-y-3">
-                {dAppGuides.slice(0, 2).map((card) => (
-                  <ArticleLinkRow key={card.title} title={card.title} url={card.to} />
-                ))}
-                {smartContractGuides.slice(0, 2).map((card) => (
-                  <ArticleLinkRow key={card.title} title={card.title} url={card.to} />
+                {tasks.map((task) => (
+                  <LinkRow key={task.title} {...task} />
                 ))}
               </div>
             </div>
           </aside>
         </div>
 
-        <div className="default-grid">
-          <Link
-            className="col-span-full sm:col-span-4 rounded-large bg-light-orange-fade p-6 dark:bg-dark-orange-fade"
-            to={actions[0].to}
-          >
-            <div className="mb-10 flex">
-              <div className="flex flex-row items-center rounded-small bg-light-surface-1 px-3 py-2 dark:bg-dark-surface-1">
-                <BookOpen />
-                <span className="ml-1 button-label-4 text-light-accent-1 dark:text-dark-accent-1">
-                  Protocol overview
+        <div className="divider" />
+
+        <section className="py-padding-x-large">
+          <div className="max-w-3xl">
+            <p className="button-label-4 uppercase tracking-[0.08em] text-light-accent-1 dark:text-dark-accent-1">
+              Product map
+            </p>
+            <h2 className="mt-3 heading-2 text-light-neutral-1 dark:text-dark-neutral-1">
+              Three surfaces, three different jobs
+            </h2>
+            <p className="mt-3 body-2 text-light-neutral-2 dark:text-dark-neutral-2">
+              Few Protocol is the asset layer. Ring Swap is the native trading system. Uniswap v4 is an external
+              environment used by specific Ring integrations.
+            </p>
+          </div>
+          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
+            {products.map((product) => (
+              <LinkCard key={product.title} {...product} />
+            ))}
+          </div>
+        </section>
+
+        <div className="divider" />
+
+        <section className="py-padding-x-large">
+          <div className="max-w-3xl">
+            <p className="button-label-4 uppercase tracking-[0.08em] text-light-accent-1 dark:text-dark-accent-1">
+              Reference
+            </p>
+            <h2 className="mt-3 heading-2 text-light-neutral-1 dark:text-dark-neutral-1">
+              Select the network and workflow before copying an address
+            </h2>
+          </div>
+          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+            {references.map((reference) => (
+              <LinkCard key={reference.title} eyebrow="Developer path" {...reference} />
+            ))}
+          </div>
+        </section>
+
+        <div className="divider" />
+
+        <section className="default-grid py-padding-x-large">
+          <div className="col-span-full sm:col-span-2">
+            <p className="button-label-4 uppercase tracking-[0.08em] text-light-accent-1 dark:text-dark-accent-1">
+              Source code
+            </p>
+            <h2 className="mt-3 heading-2 text-light-neutral-1 dark:text-dark-neutral-1">Repositories</h2>
+          </div>
+          <div className="col-span-full mt-6 flex flex-wrap gap-3 sm:col-span-6 sm:mt-0">
+            {repositories.map((repository) => (
+              <Link
+                key={repository.title}
+                to={repository.to}
+                className="group flex items-center rounded-medium bg-light-surface-2 px-padding-medium py-padding-small transition hover:bg-light-accent-2 dark:bg-dark-surface-2 dark:hover:bg-dark-accent-2"
+              >
+                <Github className="h-5 w-5" />
+                <span className="ml-3 subheading-2 text-light-neutral-1 transition group-hover:text-light-accent-1 dark:text-dark-neutral-1 dark:group-hover:text-dark-accent-1">
+                  {repository.title}
                 </span>
-              </div>
-            </div>
-            <h3 className="subheading-1 text-light-orange-vibrant dark:text-dark-orange-vibrant">{actions[0].title}</h3>
-            <p className="mt-2 body-2 text-light-neutral-2 dark:text-dark-neutral-2">{actions[0].text}</p>
-          </Link>
-          <div className="col-span-full sm:col-span-4 flex flex-col gap-gap-large">
-            <Link className="rounded-large bg-light-brown-fade p-6 dark:bg-dark-brown-fade" to={actions[1].to}>
-              <div className="mb-10 flex">
-                <ThickX />
-              </div>
-              <h3 className="subheading-1 text-light-brown-vibrant dark:text-dark-brown-vibrant">{actions[1].title}</h3>
-              <p className="mt-2 body-2 text-light-neutral-2 dark:text-dark-neutral-2">{actions[1].text}</p>
-            </Link>
-            <Link className="rounded-large bg-light-green p-6 dark:bg-dark-green" to={actions[2].to}>
-              <div className="mb-10 flex">
-                <Hexagon />
-              </div>
-              <h3 className="subheading-1 text-green-base dark:text-green-vibrant">{actions[2].title}</h3>
-              <p className="mt-2 body-2 text-light-neutral-2 dark:text-dark-neutral-2">{actions[2].text}</p>
-            </Link>
-          </div>
-        </div>
-
-        <div className="divider"></div>
-
-        <div className="default-grid py-padding-x-large">
-          <div className="col-span-full sm:col-span-2">
-            <p className="button-label-4 uppercase tracking-[0.08em] text-light-accent-1 dark:text-dark-accent-1">
-              SDK workflows
-            </p>
-            <h3 className="mt-3 text-light-neutral-1 dark:text-dark-neutral-1 heading-2">Build with Ring Swap SDK</h3>
-            <p className="mt-3 body-2 text-light-neutral-2 dark:text-dark-neutral-2">{sectionDescriptions.sdk}</p>
-          </div>
-          <div className="col-span-full sm:col-span-6 default-grid mt-6 sm:mt-0">
-            {dAppGuides.map((card) => (
-              <ArticleLinkCard key={card.title} title={card.title} description={card.text} url={card.to} />
+              </Link>
             ))}
           </div>
-        </div>
-
-        <div className="divider" />
-
-        <div className="default-grid py-padding-x-large">
-          <div className="col-span-full sm:col-span-2">
-            <p className="button-label-4 uppercase tracking-[0.08em] text-light-accent-1 dark:text-dark-accent-1">
-              Contract workflows
-            </p>
-            <h3 className="mt-3 text-light-neutral-1 dark:text-dark-neutral-1 heading-2">Build with Ring contracts</h3>
-            <p className="mt-3 body-2 text-light-neutral-2 dark:text-dark-neutral-2">{sectionDescriptions.contracts}</p>
-          </div>
-          <div className="col-span-full sm:col-span-6 default-grid mt-6 sm:mt-0">
-            {smartContractGuides.map((card) => (
-              <ArticleLinkCard key={card.title} title={card.title} description={card.text} url={card.to} />
-            ))}
-          </div>
-        </div>
-
-        <div className="divider" />
-
-        <div className="default-grid py-padding-x-large">
-          <div className="col-span-full sm:col-span-2">
-            <p className="button-label-4 uppercase tracking-[0.08em] text-light-accent-1 dark:text-dark-accent-1">
-              Resources
-            </p>
-            <h3 className="mt-3 text-light-neutral-1 dark:text-dark-neutral-1 heading-2">Quick Links</h3>
-            <p className="mt-3 body-2 text-light-neutral-2 dark:text-dark-neutral-2">{sectionDescriptions.resources}</p>
-          </div>
-          <div className="col-span-full sm:col-span-6 flex flex-wrap sm:mt-0">
-            {developerLinks.map((devLink) => {
-              return (
-                <Link
-                  key={devLink.title}
-                  to={devLink.href}
-                  className="mt-6 mr-4 group flex flex-row items-center transition rounded-medium py-padding-small px-padding-medium bg-light-surface-2 dark:bg-dark-surface-2 hover:bg-light-accent-2 hover:dark:bg-dark-accent-2"
-                >
-                  <>
-                    {devLink.icon === 'github' ? <Github className="w-6 h-6" /> : null}
-                    {devLink.icon === 'npm' ? <Npm className="w-5 h-5" /> : null}
-                    <p className="transition group-hover:text-light-accent-1 group-hover:dark:text-dark-accent-1 ml-3 subheading-2 text-light-neutral-1 dark:text-dark-neutral-1">
-                      {devLink.title}
-                    </p>
-                  </>
-                </Link>
-              )
-            })}
-          </div>
-        </div>
-      </div>
+        </section>
+      </main>
     </Layout>
   )
 }
 
 export default Home
 
-const ArticleLinkCard: FC<{
-  title: string
-  description: string
-  url: string
-}> = ({ title, description, url }) => {
-  return (
-    <Link
-      href={url}
-      className="col-span-full sm:col-span-4 md:col-span-2 group flex flex-row transition rounded-medium py-padding-small px-padding-medium bg-light-surface-2 dark:bg-dark-surface-2 hover:bg-light-accent-2 hover:dark:bg-dark-accent-2"
-      target="_self"
-    >
-      <div className="flex flex-col w-full space-y-1">
-        <h4 className="transition subheading-2 text-light-neutral-1 dark:text-dark-neutral-1 group-hover:text-light-accent-1 dark:group-hover:text-dark-accent-1">
-          {title}
-        </h4>
-        <p className="body-3 text-light-neutral-2 dark:text-dark-neutral-2">{description}</p>
-      </div>
-      <div className="transition opacity-0 group-hover:opacity-100">
-        <ArrowRight className="my-1 w-5 h-5" />
-      </div>
-    </Link>
-  )
-}
+const LinkRow: FC<{ title: string; description: string; to: string }> = ({ title, description, to }) => (
+  <Link
+    to={to}
+    className="flex items-start justify-between rounded-small border border-light-surface-3 px-4 py-3 transition hover:border-light-accent-1 hover:bg-light-accent-2 dark:border-dark-surface-3 dark:hover:border-dark-accent-1 dark:hover:bg-dark-accent-2"
+  >
+    <span>
+      <span className="block subheading-2 text-light-neutral-1 dark:text-dark-neutral-1">{title}</span>
+      <span className="mt-1 block body-3 text-light-neutral-2 dark:text-dark-neutral-2">{description}</span>
+    </span>
+    <ArrowRight className="ml-3 mt-1 h-4 w-4 shrink-0" />
+  </Link>
+)
 
-const ArticleLinkRow: FC<{
-  title: string
-  url: string
-}> = ({ title, url }) => {
-  return (
-    <Link
-      href={url}
-      className="flex items-center justify-between rounded-small border border-light-surface-3 px-4 py-3 transition hover:border-light-accent-1 hover:bg-light-accent-2 dark:border-dark-surface-3 dark:hover:border-dark-accent-1 dark:hover:bg-dark-accent-2"
-      target="_self"
-    >
-      <span className="body-3 text-light-neutral-1 dark:text-dark-neutral-1">{title}</span>
-      <ArrowRight className="h-4 w-4" />
-    </Link>
-  )
-}
+const LinkCard: FC<{ eyebrow: string; title: string; description: string; to: string }> = ({
+  eyebrow,
+  title,
+  description,
+  to,
+}) => (
+  <Link
+    to={to}
+    className="group rounded-large border border-light-surface-3 bg-light-surface-2 p-6 transition hover:border-light-accent-1 hover:bg-light-accent-2 dark:border-dark-surface-3 dark:bg-dark-surface-2 dark:hover:border-dark-accent-1 dark:hover:bg-dark-accent-2"
+  >
+    <p className="button-label-4 uppercase tracking-[0.08em] text-light-accent-1 dark:text-dark-accent-1">{eyebrow}</p>
+    <div className="mt-3 flex items-center justify-between">
+      <h3 className="subheading-1 text-light-neutral-1 dark:text-dark-neutral-1">{title}</h3>
+      <ArrowRight className="h-5 w-5 opacity-0 transition group-hover:opacity-100" />
+    </div>
+    <p className="mt-2 body-2 text-light-neutral-2 dark:text-dark-neutral-2">{description}</p>
+  </Link>
+)

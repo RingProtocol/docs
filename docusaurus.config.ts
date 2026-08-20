@@ -20,7 +20,7 @@ const config: Config = {
   onBrokenLinks: 'throw',
   markdown: {
     hooks: {
-      onBrokenMarkdownLinks: 'warn',
+      onBrokenMarkdownLinks: 'throw',
     },
   },
   favicon: 'img/ring-logo.svg',
@@ -55,22 +55,22 @@ const config: Config = {
         {
           type: 'doc',
           docId: 'concepts/overview',
-          label: 'Concepts',
+          label: 'Start Here',
         },
         {
           type: 'doc',
-          docId: 'contracts/overview',
-          label: 'Contracts',
+          docId: 'contracts/v2/overview',
+          label: 'Ring Swap',
         },
         {
           type: 'doc',
-          docId: 'sdk/v2/overview',
-          label: 'SDKs',
+          docId: 'contracts/v4/overview',
+          label: 'v4 Integration',
         },
         {
           type: 'doc',
-          docId: 'api/overview',
-          label: 'APIs',
+          docId: 'build-with-ring/overview',
+          label: 'Build',
         },
         {
           type: 'doc',
@@ -83,12 +83,7 @@ const config: Config = {
         //   label: 'Support',
         // },
         {
-          type: 'doc',
-          docId: 'llms/overview',
-          label: 'LLMs',
-        },
-        {
-          label: 'Share Feedback',
+          label: 'Feedback',
           to: 'https://discord.com/invite/TefBNDZBQP',
           target: '_blank',
           rel: 'noreferrer',
@@ -217,17 +212,16 @@ const config: Config = {
             from: '/contracts/fewv2/get-erc20-token-address-via-fewfactory',
           },
           {
+            to: '/contracts/v2/overview',
+            from: ['/protocol/V2', '/v2/', '/contracts/v2', '/contracts/v2/overview.md', '/protocol/v2/introduction'],
+          },
+          {
             to: '/contracts/v2/concepts/how-ring-swap-works/ring-swap-model',
             from: [
-              '/protocol/V2',
               '/protocol/V2/concepts/protocol-',
-              '/v2/',
-              '/contracts/v2',
-              '/contracts/v2/overview.md',
               '/contracts/v2/concepts/protocol-overview',
               '/contracts/v2/concepts/protocol-overview/how-',
               '/contracts/v2/concepts/protocol-overview/ring-swap-model',
-              '/protocol/v2/introduction',
             ],
           },
           {
@@ -339,26 +333,14 @@ const config: Config = {
         generateLLMsTxt: false,
         generateLLMsFullTxt: true,
         docsDir: 'docs',
-        ignoreFiles: [
-          'examples/*',
-          'plugins/*',
-          'scripts/*',
-          'src/*',
-          'static/*',
-          'submodules/*',
-          'CONTRIBUTING.md',
-          '02-overview.mdx',
-          'docs/archived',
-          'docs/concepts',
-          'docs/contracts/permit2',
-          'docs/contracts/smart-wallet',
-          'docs/contracts/universal-router',
-          'docs/contracts/v1',
-          'docs/contracts/v2',
-          'docs/sdk/swap-widget',
-        ],
+        ignoreFiles: [],
         title: 'LLMs.txt for Ring Protocol Documentation',
-        description: 'Expanded reference documentation for Ring Protocol integrations, contracts, and SDKs',
+        description: 'Curated reference documentation for reviewed Ring Protocol integration paths',
+        fullRootContent: `# Ring Protocol curated integration context
+
+This export is a documentation snapshot, not an audit or a transaction authorization source. Verify the chain ID,
+contract code, FewFactory mapping, pair, router, spender, recipient, raw amounts, price limits, deadline, and simulation
+result before signing or submitting a transaction. Do not send assets directly to a listed contract address.`,
         llmsFullTxtFilename: 'llms-full.txt',
         includeBlog: false,
         // Content cleaning options
@@ -366,11 +348,28 @@ const config: Config = {
         removeDuplicateHeadings: true,
         // Control documentation order
         includeOrder: [
-          // 'docs/contracts/v4/*',
-          // 'docs/sdk/v4/*',
-          // 'docs/api/*',
+          'docs/security-and-risk.md',
+          'docs/concepts/overview.md',
+          'docs/concepts/ring-protocol.md',
+          'docs/concepts/few-protocol.md',
+          'docs/contracts/overview.md',
+          'docs/contracts/v2/overview.md',
+          'docs/contracts/v2/deployments.md',
+          'docs/contracts/v2/pools.md',
+          'docs/contracts/v2/fewtoken/integrating.md',
+          'docs/contracts/v2/guides/smart-contract-integration/01-quick-start.md',
+          'docs/contracts/v2/guides/smart-contract-integration/02-trading-from-a-smart-contract.md',
+          'docs/contracts/v2/guides/smart-contract-integration/03-providing-liquidity.md',
+          'docs/sdk/v2/overview.md',
+          'docs/sdk/v2/guides/01-quick-start.md',
+          'docs/sdk/v2/guides/02-fetching-data.md',
+          'docs/sdk/v2/guides/03-pricing.md',
+          'docs/sdk/v2/guides/04-trading.md',
+          'docs/sdk/v2/guides/05-getting-pair-addresses.md',
+          'docs/api/routing/overview.md',
+          'docs/contracts/v4/overview.md',
         ],
-        includeUnmatchedLast: true,
+        includeUnmatchedLast: false,
         // Path transformation options
         pathTransformation: {
           // Paths to ignore when constructing URLs (will be removed if found)

@@ -10,55 +10,55 @@ const footerData = {
       title: 'Developers',
       links: [
         {
-          label: 'Dev Chat',
-          href: 'https://discord.com/invite/TefBNDZBQP',
+          label: 'Start Here',
+          href: '/concepts/overview',
         },
         {
-          label: 'Feedback',
-          href: 'https://discord.com/invite/TefBNDZBQP',
+          label: 'Networks and Pools',
+          href: '/contracts/v2/pools',
+        },
+        {
+          label: 'Routing API',
+          href: '/api/routing/overview',
         },
       ],
     },
     {
-      title: 'GitHub',
+      title: 'Source Code',
       links: [
         {
-          label: 'ring contracts',
-          href: '/contracts/v2/deployments',
+          label: 'Ring Swap Core',
+          href: 'https://github.com/RingProtocol/few-v2-core',
+        },
+        {
+          label: 'Ring Swap Periphery',
+          href: 'https://github.com/RingProtocol/few-periphery',
         },
         {
           label: 'Ring SDKs',
           href: 'https://github.com/RingProtocol/sdks',
         },
-        {
-          label: 'v4 integration periphery',
-          href: 'https://github.com/RingProtocol/v4-periphery',
-        },
       ],
     },
     {
-      title: 'Ecosystem',
+      title: 'Use Ring',
       links: [
         {
           label: 'App',
           href: 'https://app.ring.exchange/',
         },
         {
-          label: 'Analytics',
-          href: 'https://app.ring.exchange/#/explore',
+          label: 'Pool Explorer',
+          href: 'https://app.ring.exchange/explorer#/explore/pools',
         },
       ],
     },
     {
-      title: 'Community',
+      title: 'Safety',
       links: [
         {
-          label: 'Governance',
-          href: 'https://www.tally.xyz/gov/ring',
-        },
-        {
-          label: 'Ring Twitter',
-          href: 'https://x.com/ProtocolRing',
+          label: 'Security and Risk',
+          href: '/security-and-risk',
         },
       ],
     },
@@ -84,7 +84,7 @@ const Footer: FC = () => {
             <p className="body-1 ml-2 text-light-neutral-1 dark:text-dark-neutral-1">Ring Protocol Docs</p>
           </LinkBase>
           <p className="mt-4 body-2 text-light-neutral-2 dark:text-dark-neutral-2">
-            A builder-first documentation hub for protocol concepts, integrations, contracts, and wallet flows.
+            Developer documentation for Few Protocol, Ring Swap, and supported Ring integrations.
           </p>
         </div>
         <div className="col-span-4 sm:col-span-8 sm:flex sm:grid-cols-8 md:col-span-5">

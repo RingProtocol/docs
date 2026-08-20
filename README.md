@@ -2,31 +2,48 @@
 
 This web application contains all documentation for Ring Protocol products. It is built using [Docusaurus 3](https://docusaurus.io/), a modern static website generator.
 
-# Project Layout
+# Information Architecture
 
-### Ring documentation is broken down into four sections:
-- Concepts - General Ring information and protocol concepts, including FEW, swaps, liquidity, and governance
-- Contracts - Ring and integration-facing smart contracts, including Few Protocol, Ring Swap, v4 integrations, and related modules
-- SDKs - Ring SDKs for `@ring-protocol/sdk-core`, `@ring-protocol/v2-sdk`, and `@ring-protocol/uniswap-v2-sdk`
-- APIs - Ring data access surfaces such as the subgraph
+The main navigation follows the reader's task instead of mirroring the source directory:
 
-### Each item in a section should include the following:
-- *Overview*
-- *Guides*
-- *Technical Reference*
+- **Start Here** defines Few Protocol, Ring Swap, and the boundary between native Ring products and external integrations.
+- **Ring Swap (v2)** contains the native AMM, contract deployments, pools, FewToken wrapping, guides, and reference material.
+- **Uniswap v4 Integration** contains Ring-specific FewToken and hook integration material. Generic v4 reference pages remain available by URL but do not dominate the sidebar.
+- **Build** contains the Ring Swap SDK, SDK Core, and Routing API.
+- **Ring Wallet** contains wallet use and dApp integration.
+- **Reference** contains shared contracts and AI context resources.
+
+Keep existing document URLs stable when reorganizing navigation. Prefer sidebar changes and redirects over moving
+large groups of files in one change.
+
+Each product should provide:
+
+- an overview that says what the product is and when to use it
+- task-based guides with a testable end state
+- network-specific deployments and pool discovery where applicable
+- technical reference material that is collapsed or removed from the main path
+
+Before publishing an integration page:
+
+- verify every chain-specific address and link
+- use raw integer token units in executable examples
+- document the exact approval spender for each flow
+- require recipient, price-limit, deadline, and simulation checks
+- keep unreviewed pages out of `llms-full.txt`
 
 ## Adding Documentation
 
 > **After deploying your change, please make sure you [update the search indices](#how-to-update-search-indices-with-algolia) if a new file was added as part of the change**
 ### Overview
-A product overview should address points such as:
+A product overview should answer:
 
-- What are the high level components of the product?
-- What what is the high level functionality the product offers?
-- Where does the source code of the product live?
-- Where does the code artifact live (eg *npm*) and how does someone integrate with it?
+- What is this product?
+- When should a reader use it instead of another Ring surface?
+- What are its high-level components?
+- Which task should the reader start with?
+- Where do the source, deployment, SDK, API, and security references live?
 
-A good example is the [v4 Smart Contracts](./docs/contracts/v4/overview).
+A good example is the [Ring Swap overview](./docs/contracts/v2/overview.md).
 
 ### Guides
 > Guides should follow the **Principles of a Good Guide**:
@@ -82,7 +99,7 @@ Let's walk through an example by considering the *Permit2* smart contract:
 - Did I include an Overview of the product under */contracts/permit2/overview* ?
     - Yes, I did add them [here](./docs/contracts/permit2/overview.md)
 - Did I include Guides of the product under *contracts/permit2/guides* ?
-    - No, they should be added [here](./docs/contracts/permit2/guides)
+    - No. Add that directory only when Permit2-specific guide content is ready.
 - Did I include Technical Reference of the product under *contracts/permit2/reference* ?
     - Yes I added them [here](./docs/contracts/permit2/reference)
 - Did I open a PR using the [Contributing](./CONTRIBUTING.md) guidelines?
