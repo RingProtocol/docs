@@ -55,7 +55,7 @@ native Ring v4 AMM.
 
 | Need | Verification source |
 | --- | --- |
-| Confirm a FewToken | The independently verified, published `FewFactory` for the selected chain |
+| Confirm a FewToken | The published `FewFactory` for the selected chain, after verifying it onchain |
 | Find a Ring Swap pair | The network's Ring Swap Factory or the published pool reference |
 | Select an approval spender | The exact spender required by the reviewed flow. See [Security and Risk](/security-and-risk#approval-spenders) |
 | Find current deployments | [Contract deployments](/contracts/v2/deployments) |

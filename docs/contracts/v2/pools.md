@@ -20,9 +20,9 @@ HyperEVM (`999`), and MegaETH (`4326`) in the same order.
 | Network | Chain ID | Pool reference |
 | --- | ---: | --- |
 | Ethereum | `1` | Live Ring Pool Explorer |
-| BNB Smart Chain | `56` | Curated reference pool and factory snapshot |
-| HyperEVM | `999` | Complete factory snapshot at the listed block |
-| MegaETH | `4326` | Complete factory snapshot at the listed block |
+| BNB Smart Chain | `56` | Curated reference pool |
+| HyperEVM | `999` | Published factory pool references |
+| MegaETH | `4326` | Published factory pool references |
 
 Pair addresses are chain-specific. Select the network first, then use that network's Ring Swap Factory and FewToken
 mappings.
@@ -51,9 +51,8 @@ contract integration with a minimum output or maximum input, future deadline, ve
 - **Contracts:** [Ethereum deployments](./deployments#eth-mainnet)
 - **Pools:** [Browse Ethereum pools in the Ring Pool Explorer](https://app.ring.exchange/explorer#/explore/pools)
 
-Ethereum pools are discovered through the live explorer instead of a static table. At block `25,852,592`, the Ring
-Swap Factory returned `467` pairs and FewFactory returned `83` FewTokens. These counts are discovery checkpoints, not
-an endorsed-token list.
+Discover Ethereum pools through the live explorer or enumerate the Ring Swap Factory onchain. Verify each pair and
+its FewToken mappings before including it in a route.
 
 ## BNB Smart Chain
 
@@ -75,9 +74,9 @@ an endorsed-token list.
 | `fwWBNB`: [`0x7f0172b75d3823D8aF04feE3A3f6a14aBD68EFE1`](https://bscscan.com/address/0x7f0172b75d3823D8aF04feE3A3f6a14aBD68EFE1) | `18` | `WBNB`: [`0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c`](https://bscscan.com/address/0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c) |
 | `fwETH`: [`0x86fa03945646a99A03543e7e0036361Ffadc73E6`](https://bscscan.com/address/0x86fa03945646a99A03543e7e0036361Ffadc73E6) | `18` | `ETH`: [`0x2170Ed0880ac9A755fd29B2688956BD959F933F8`](https://bscscan.com/address/0x2170Ed0880ac9A755fd29B2688956BD959F933F8) |
 
-The BSC factory returned `52` pairs and FewFactory returned `54` FewTokens at block `118,545,001`. The table above is deliberately curated. It is not a complete
-factory index, a recommendation, or a guarantee of current liquidity. Integrators that enumerate the permissionless
-factory must still apply their own token and pair allowlist and validate both FewToken addresses through FewFactory.
+The table above is curated. It is not a complete factory index, a recommendation, or a guarantee of current liquidity.
+Integrators that enumerate the permissionless factory must still apply their own token and pair allowlist and validate
+both FewToken addresses through FewFactory.
 
 ## HyperEVM
 
@@ -85,7 +84,7 @@ factory must still apply their own token and pair allowlist and validate both Fe
 - **Ring Swap Factory:** [`0x4AfC2e4cA0844ad153B090dc32e207c1DD74a8E4`](https://hyperevmscan.io/address/0x4AfC2e4cA0844ad153B090dc32e207c1DD74a8E4)
 - **Contracts:** [HyperEVM deployments](./deployments#hyper-mainnet)
 
-### Factory pools at the snapshot block
+### Reference pools {#factory-pools-at-the-snapshot-block}
 
 | Pool | Pair address |
 | --- | --- |
@@ -105,17 +104,13 @@ factory must still apply their own token and pair allowlist and validate both Fe
 | `fwUSDC`: [`0xd2646b9B02859416D8cBc759F85f0676f6E19974`](https://hyperevmscan.io/address/0xd2646b9B02859416D8cBc759F85f0676f6E19974) | `6` | `USDC`: [`0xb88339CB7199b77E23DB6E890353E22632Ba630f`](https://hyperevmscan.io/address/0xb88339CB7199b77E23DB6E890353E22632Ba630f) |
 | `fwUSDH`: [`0x09D21E89EF332347eb3E1E496f1265a600e364C1`](https://hyperevmscan.io/address/0x09D21E89EF332347eb3E1E496f1265a600e364C1) | `6` | `USDH`: [`0x111111a1a0667d36bD57c0A9f569b98057111111`](https://hyperevmscan.io/address/0x111111a1a0667d36bD57c0A9f569b98057111111) |
 
-At block `44,377,743`, the HyperEVM factory returned five pairs and FewFactory returned five FewTokens. All five pair addresses, pair tokens, and
-FewToken-to-original-token mappings above were read onchain. This records factory state, not token review, price quality,
-liquidity, or suitability for user funds.
-
 ## MegaETH Mainnet
 
 - **Chain ID:** `4326`
 - **Ring Swap Factory:** [`0x47C436602d2598d0ef4b50888F29a528B6Bccc95`](https://megaeth.blockscout.com/address/0x47C436602d2598d0ef4b50888F29a528B6Bccc95)
 - **Contracts:** [MegaETH deployments](./deployments#megaeth-mainnet)
 
-### Factory pools at the snapshot block
+### Reference pools {#factory-pools-at-the-snapshot-block-1}
 
 | Pool | Pair address |
 | --- | --- |
@@ -128,17 +123,16 @@ liquidity, or suitability for user funds.
 | `fwWETH`: [`0x65c46c31E340D6C546309733CF50Ef4d150094C4`](https://megaeth.blockscout.com/address/0x65c46c31E340D6C546309733CF50Ef4d150094C4) | `18` | `WETH`: [`0x4200000000000000000000000000000000000006`](https://megaeth.blockscout.com/address/0x4200000000000000000000000000000000000006) |
 | `fwUSDm`: [`0xE9Cd1B2C75e648449256325d5D06b3D63DC66Aa5`](https://megaeth.blockscout.com/address/0xE9Cd1B2C75e648449256325d5D06b3D63DC66Aa5) | `6` | `USDm`: [`0xFAfDdbb3FC7688494971a79cc65DCa3EF82079E7`](https://megaeth.blockscout.com/address/0xFAfDdbb3FC7688494971a79cc65DCa3EF82079E7) |
 
-At block `25,102,142`, the MegaETH factory returned one pair and FewFactory returned two FewTokens. The pair tokens and FewToken-to-original-token mappings
-above were read onchain. The pair held nonzero reserves at that block, but this snapshot does not establish current
-depth, price quality, trading volume, asset review, or suitability for user funds.
-
 The published `@ring-protocol/v2-sdk@1.0.0` does not support MegaETH FewToken and pair derivation. Do not use its
 MegaETH address helpers until the [SDK support table](/sdk/v2/overview#published-network-support) names a fixed published
 version.
 
-## Verification snapshot
+## Pool state {#verification-snapshot}
 
-The Ethereum, BSC, HyperEVM, and MegaETH tables were checked on `2026-08-28`. A snapshot records the
-addresses and mappings returned at the listed blocks. It does not prove current code, reserves, trading volume, asset
-quality, approval safety, or suitability for a particular order size. Recheck the factory and wrapper mappings at the
-block used for your transaction.
+These tables provide deployment references, not live liquidity data. Verify factory and FewToken mappings onchain,
+read current reserves, and simulate the intended trade before execution.
+
+Historical factory counts, mapping checks, and reserve checks are in the
+[status snapshot](/data/ring-swap-v2-status.json), with a verification block for each network. Those results apply
+only to the recorded blocks and do not establish current liquidity, asset quality, approval safety, or suitability
+for a particular order size.

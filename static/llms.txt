@@ -2,7 +2,7 @@
 
 > Developer documentation for Few Protocol, Ring Swap, and supported Ring integrations.
 
-This file is a documentation snapshot updated on 2026-08-20. It is not an audit, price source, transaction
+This file is a documentation index. It is not an audit, price source, transaction
 authorization, or guarantee that a token, pool, route, or linked service is safe.
 
 ## Start Here

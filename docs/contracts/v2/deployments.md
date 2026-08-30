@@ -10,9 +10,9 @@ This is the maintained address directory for Ring Swap, FewFactory, routers, wra
 partner integrations and older tooling call this deployment family `FewV2`. The product name in these docs is Ring
 Swap (v2).
 
-This page was revised on `2026-08-28`. It is a versioned documentation snapshot, not a live registry or a substitute
-for onchain verification. Addresses are chain-specific. Select the network before copying an address, check that it has
-bytecode, and validate the contract's immutable factory, FewFactory, WETH, or wrapper references where applicable.
+Addresses are chain-specific. Select the network before copying an address, check that it has bytecode, and validate
+the contract's immutable factory, FewFactory, WETH, or wrapper references where applicable. This directory does not
+replace onchain verification.
 Both reference pages cover Ethereum (`1`), BNB Smart Chain (`56`), HyperEVM (`999`), and MegaETH (`4326`). Pool
 addresses and discovery notes are documented separately in [Pools by Network](./pools).
 

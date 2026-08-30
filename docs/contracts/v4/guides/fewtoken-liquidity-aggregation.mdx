@@ -62,10 +62,10 @@ mix incompatible pool identities or execution paths.
 The manifest keeps the router address and source version as separate fields. Integrators using a different router or
 adapter can still use the same PoolKeys, but must generate calldata for their own execution stack.
 
-The FewToken addresses and decimals in this package are read from the deployed contracts. At block `25,854,897`, all
-13 FewTokens returned the documented underlying, FewFactory, symbol, and decimals; FewFactory returned the same wrapper
-for every underlying; and CREATE2 derivation with the published init code hash reproduced all 13 addresses. Local or
-historical FewWrappedToken source files are not an address or metadata authority for this integration package.
+The FewToken addresses and decimals in this package come from the deployed contracts. Verify each wrapper through
+FewFactory and read `token()`, `factory()`, `symbol()`, and `decimals()` onchain. The
+[status file](/data/fewtoken-v4-pools-ethereum-status.json) records metadata and CREATE2 address checks at a fixed block.
+Local or historical FewWrappedToken source files are not an address or metadata authority for this integration package.
 
 ### Pool identity
 
@@ -212,86 +212,25 @@ Verified source and ABI are necessary for custom-Hook review, but they do not pr
 other aggregator supports both execution directions. Confirm support with reproducible quote and calldata vectors for
 the exact wrapper PoolKey.
 
-## Reproducible quote and execution evidence
+## Pool state and execution checks
 
-The [status snapshot](/data/fewtoken-v4-pools-ethereum-status.json) records V4Quoter calldata for both directions of
-one standard pool and one wrapper pool at Ethereum block `25,851,888`:
+Read current pool state through `StateView` and simulate the requested trade size before execution. If an integration
+depends on Ring's LP positions, also read their ownership and liquidity through PositionManager. A pool listing or
+historical nonzero liquidity does not establish current depth or price quality.
 
-| Vector | Exact input | Output at block `25,851,888` |
-| --- | ---: | ---: |
-| `fwUSDC -> fwDAI` | `1 fwUSDC` | `0.999320102450204966 fwDAI` |
-| `fwDAI -> fwUSDC` | `1 fwDAI` | `0.999429 fwUSDC` |
-| `fwUSDC -> USDC` | `1 fwUSDC` | `1 USDC` |
-| `USDC -> fwUSDC` | `1 USDC` | `1 fwUSDC` |
-
-The same file records `sqrtPriceX96`, tick, raw protocol-fee field, LP fee, and active liquidity for every one of the 25
-Pool IDs. All 25 were initialized and had nonzero active in-range liquidity at the snapshot block. This is a state
-check, not a TVL, depth, price-quality, or order-size guarantee.
-
-### Current liquidity and Ring-controlled positions
-
-At Ethereum block `25,854,897` (`2026-08-28T16:21:11Z`), an independent read of `StateView` and the Uniswap v4
-PositionManager confirmed:
-
-- all 25 published Pool IDs were initialized and had nonzero active in-range liquidity
-- all 25 Pool IDs had at least one nonzero PositionManager NFT controlled by Ring's confirmed LP address
-- 27 Ring-controlled target positions were checked; all 27 still had the expected owner and nonzero position liquidity
-
-The reproducible summary is stored separately in the
-[status file](/data/fewtoken-v4-pools-ethereum-status.json). Position ownership establishes that Ring controls LP
-positions in every listed pool at that block. It does not turn `activeLiquidity` into TVL or guaranteed executable
-depth, and it does not guarantee that the positions remain unchanged after the verification block. Aggregators must
-still read current pool state and simulate the requested trade size.
-
-### Executable Universal Router vectors
-
-The status file also contains complete `execute(bytes,bytes[],uint256)` calldata for the same four directions. Each
-vector targets Universal Router `2.0.0`, uses command `V4_SWAP (0x10)`, and executes these v4 actions:
-
-```text
-SWAP_EXACT_IN_SINGLE (0x06)
-SETTLE_ALL (0x0c)
-TAKE_ALL (0x0f)
-```
-
-The examples use a 50-basis-point minimum-output buffer, `hookData=0x`, `value=0`, and explicit ERC-20-to-Permit2 and
-Permit2-to-router allowance requirements. The Permit2 approval is intentionally separate from the swap calldata; no
-permit signature is embedded in the example.
-
-All four calldata vectors were replayed successfully on a fork of block `25,851,888`, independently from the same
-starting state:
-
-| Vector | Input spent | Output received | Fork gas used |
-| --- | ---: | ---: | ---: |
-| `fwUSDC -> fwDAI` | `1 fwUSDC` | `0.999320102450204966 fwDAI` | `129,809` |
-| `fwDAI -> fwUSDC` | `1 fwDAI` | `0.999429 fwUSDC` | `128,946` |
-| `fwUSDC -> USDC` | `1 fwUSDC` | `1 USDC` | `172,667` |
-| `USDC -> fwUSDC` | `1 USDC` | `1 fwUSDC` | `180,025` |
-
-These are local-fork results, not mainnet transactions. Aggregators should replace the sample deadline and allowance
-flow with their production policy.
-
-Mainnet execution references:
-
-- Standard pool `fwUSDR/fwDAI`: [successful transaction](https://etherscan.io/tx/0x71c264f4189bf2be45a88070cb0f14db8e679b16db3f17ec75896dd1d446b1da)
-- Wrapper pool `fwUSDC/USDC`: [successful transaction](https://etherscan.io/tx/0xc41a4a28ced215b5af692287571bbdfdab30efb532b83cac63ca26992d3cb576)
-
-Both receipts contain a successful PoolManager `Swap` event for the named Pool ID. They prove that the pools can
-execute; they do not identify an aggregator source or prove complete production support by any aggregator.
+The [snapshot appendix](#reproducible-quote-and-execution-evidence) contains quote and execution examples for both
+directions of one trading pool and one wrapper pool, plus historical pool-state and LP-position checks. The
+[status file](/data/fewtoken-v4-pools-ethereum-status.json) includes their block numbers, timestamps, and calldata.
 
 ## Aggregator integration status
 
-Aggregator support changes independently from the static addresses. Use the dated
-[aggregator status file](/data/fewtoken-v4-aggregator-status.json) instead of adding support claims to the manifest.
+Aggregator support changes independently from the static addresses. Confirm coverage for each target PoolKey and
+swap direction through fresh quotes and executable calldata. Treat partial-path results separately from all-pool
+coverage and production support.
 
-- **0x:** `fwUSDR -> fwDAI` and `USDC -> fwUSDC` returned `Uniswap_V4` quotes and executable calldata. No transaction
-  was broadcast and all-pool coverage remains unverified.
-- **KyberSwap:** quote status remains unverified because its API was unavailable during the check. The official source
-  catalog distinguishes generic `uniswap-v4` from Hook-specific sources.
-- **1inch:** source and quote status remain unverified because its API was unavailable during the check. Confirmation
-  requires both a listed liquidity source and executable swap calldata containing the expected pool/source evidence.
-
-An API failure means unavailable during that check; it does not mean unsupported.
+Historical 0x, KyberSwap, and 1inch observations are in the
+[aggregator status file](/data/fewtoken-v4-aggregator-status.json), with a check time for each entry. An API failure
+means unavailable during that check; it does not mean unsupported.
 
 ## Source, ABI, and control assumptions
 
@@ -341,3 +280,72 @@ FewToken routes.
 
 For ingestion questions, wrapper test vectors, or coverage confirmation, contact
 [contact@ring.exchange](mailto:contact@ring.exchange).
+
+## Appendix: quote and execution snapshots {#reproducible-quote-and-execution-evidence}
+
+These results apply to the recorded blocks. They are not live quotes or a guarantee of current liquidity. Re-query
+pool state and simulate the intended trade before execution.
+
+### Quote vectors
+
+The [status snapshot](/data/fewtoken-v4-pools-ethereum-status.json) records V4Quoter calldata for both directions of
+one standard pool and one wrapper pool at Ethereum block `25,851,888`:
+
+| Vector | Exact input | Output at block `25,851,888` |
+| --- | ---: | ---: |
+| `fwUSDC -> fwDAI` | `1 fwUSDC` | `0.999320102450204966 fwDAI` |
+| `fwDAI -> fwUSDC` | `1 fwDAI` | `0.999429 fwUSDC` |
+| `fwUSDC -> USDC` | `1 fwUSDC` | `1 USDC` |
+| `USDC -> fwUSDC` | `1 USDC` | `1 fwUSDC` |
+
+The same file records `sqrtPriceX96`, tick, raw protocol-fee field, LP fee, and active liquidity for every one of the 25
+Pool IDs. All 25 were initialized and had nonzero active in-range liquidity at the snapshot block. This is a state
+check, not a TVL, depth, price-quality, or order-size guarantee.
+
+### Liquidity and Ring LP position snapshot {#current-liquidity-and-ring-controlled-positions}
+
+At Ethereum block `25,854,897`, onchain reads of `StateView` and the Uniswap v4 PositionManager returned:
+
+- initialized state and nonzero active in-range liquidity for all 25 published Pool IDs
+- at least one nonzero PositionManager NFT owned by Ring's confirmed LP address in each of the 25 pools
+- the expected owner and nonzero position liquidity for all 27 Ring-controlled target positions
+
+The [status file](/data/fewtoken-v4-pools-ethereum-status.json) records the block timestamp and these results.
+Position ownership establishes that Ring controlled LP positions in every listed pool at that block. It does not turn
+`activeLiquidity` into TVL or guaranteed executable depth, or establish that ownership and liquidity remain unchanged.
+
+### Executable Universal Router vectors
+
+The status file also contains complete `execute(bytes,bytes[],uint256)` calldata for the same four directions. Each
+vector targets Universal Router `2.0.0`, uses command `V4_SWAP (0x10)`, and executes these v4 actions:
+
+```text
+SWAP_EXACT_IN_SINGLE (0x06)
+SETTLE_ALL (0x0c)
+TAKE_ALL (0x0f)
+```
+
+The examples use a 50-basis-point minimum-output buffer, `hookData=0x`, `value=0`, and explicit ERC-20-to-Permit2 and
+Permit2-to-router allowance requirements. The Permit2 approval is intentionally separate from the swap calldata; no
+permit signature is embedded in the example.
+
+Each calldata vector was replayed separately from the same starting state on a fork of block `25,851,888`:
+
+| Vector | Input spent | Output received | Fork gas used |
+| --- | ---: | ---: | ---: |
+| `fwUSDC -> fwDAI` | `1 fwUSDC` | `0.999320102450204966 fwDAI` | `129,809` |
+| `fwDAI -> fwUSDC` | `1 fwDAI` | `0.999429 fwUSDC` | `128,946` |
+| `fwUSDC -> USDC` | `1 fwUSDC` | `1 USDC` | `172,667` |
+| `USDC -> fwUSDC` | `1 USDC` | `1 fwUSDC` | `180,025` |
+
+These are local-fork results, not mainnet transactions. Aggregators should replace the sample deadline and allowance
+flow with their production policy.
+
+### Mainnet execution references
+
+- Standard pool `fwUSDR/fwDAI`: [successful transaction](https://etherscan.io/tx/0x71c264f4189bf2be45a88070cb0f14db8e679b16db3f17ec75896dd1d446b1da)
+- Wrapper pool `fwUSDC/USDC`: [successful transaction](https://etherscan.io/tx/0xc41a4a28ced215b5af692287571bbdfdab30efb532b83cac63ca26992d3cb576)
+
+Both receipts contain a successful PoolManager `Swap` event for the named Pool ID. They record execution at their
+respective transaction blocks; they do not identify an aggregator source or prove complete production support by
+any aggregator.

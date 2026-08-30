@@ -22,8 +22,8 @@ All three methods use chain-specific addresses. Start with the maintained
 [contract deployments](/contracts/v2/deployments), then use [Pools by Network](/contracts/v2/pools) for
 pool discovery. Verify addresses and contract relationships onchain before use.
 
-Ring Swap routes use FewToken addresses. Resolve and validate wrappers through the published, independently verified
-`FewFactory` for the selected chain. Do not rely on a symbol, token list, or third-party pool alone.
+Ring Swap routes use FewToken addresses. Verify the published `FewFactory` onchain, then use it to resolve and validate
+wrappers for the selected chain. Do not rely on a symbol, token list, or third-party pool alone.
 
 Read [Security and Risk](/security-and-risk) before building a flow that can move user funds.
 

@@ -8,8 +8,8 @@ Ring Swap uses wrapped tokens (FewTokens) in pools and swap paths.
 When you quote prices or build routes, use FewToken addresses instead of original ERC20 token addresses.
 
 :::warning Verify the FewFactory first
-Treat an address as a supported FewToken only when it is returned by the published and independently verified
-`FewFactory` for the selected chain. Token `symbol`, `name`, `token()`, and pool existence do not define FewToken
+Verify the published `FewFactory` onchain for the selected chain. Treat an address as a supported FewToken only when
+that factory returns it. Token `symbol`, `name`, `token()`, and pool existence do not define FewToken
 identity. See [FewToken Integration: FewToken Address Resolution](./integrating#fewtoken-address-resolution).
 :::
 
