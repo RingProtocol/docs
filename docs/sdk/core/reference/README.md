@@ -36,7 +36,7 @@ This reference documentation covers:
 import { Token, CurrencyAmount, TradeType } from '@ring-protocol/sdk-core'
 
 // Create a token
-const USDC = new Token(1, '0xA0b86a33E6417c29C8F6e3b6E4E12A82aA4Ca8e9', 6, 'USDC', 'USD Coin')
+const USDC = new Token(1, '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48', 6, 'USDC', 'USD Coin')
 
 // Create an amount
 const amount = CurrencyAmount.fromRawAmount(USDC, '1000000') // 1 USDC

@@ -9,8 +9,66 @@ sidebar_position: 3
 Few Protocol wraps supported assets into ERC-20 FewTokens. These FewTokens can trade against other FewTokens or
 connect back to their underlying assets through Uniswap v4 wrapper hooks.
 
-All pools on this page use the Ethereum mainnet `PoolManager`:
-[`0x000000000004444c5dc75cB358380D2e3dE08A90`](https://etherscan.io/address/0x000000000004444c5dc75cB358380D2e3dE08A90).
+## Ethereum integration at a glance
+
+### Network and deployment
+
+| Network | Chain ID | FewFactory | PoolManager |
+| --- | ---: | --- | --- |
+| Ethereum Mainnet | `1` | [`0x7D86394139bf1122E82FDF45Bb4e3b038A4464DD`](https://etherscan.io/address/0x7D86394139bf1122E82FDF45Bb4e3b038A4464DD) | [`0x000000000004444c5dc75cB358380D2e3dE08A90`](https://etherscan.io/address/0x000000000004444c5dc75cB358380D2e3dE08A90) |
+
+### Pool coverage
+
+| Pool type | Pools | Hook | Recommended integration path |
+| --- | ---: | --- | --- |
+| [Standard FewToken trading pools](#fewtoken-trading-pools) | `16` | None | Index first through the existing `uniswap-v4` source |
+| [FewToken wrapper pools](#wrapper-pools) | `9` | Token-specific Few Hook | Review as custom v4 Hooks; start with the included `fwUSDC/USDC` vectors |
+
+:::tip Recommended first release
+Integrate the 16 standard pools first. They use the standard Uniswap v4 execution path and do not require
+hook-specific handling. Ring can provide test vectors for the remaining wrapper deployments. Contact
+[contact@ring.exchange](mailto:contact@ring.exchange).
+:::
+
+**Machine-readable integration files:** [manifest](/data/fewtoken-v4-pools-ethereum.json) ·
+[JSON Schema](/data/schema/fewtoken-v4-pools-ethereum.schema.json) ·
+[pool state and execution vectors](/data/fewtoken-v4-pools-ethereum-status.json) ·
+[aggregator status](/data/fewtoken-v4-aggregator-status.json) ·
+[SHA-256 checksums](/data/fewtoken-v4-SHA256SUMS.txt)
+
+**Hook artifacts:** [FewTokenHook ABI](/data/abi/FewTokenHook.json) ·
+[FewUSDTHook ABI](/data/abi/FewUSDTHook.json) · [FewETHHook ABI](/data/abi/FewETHHook.json)
+
+The static manifest is the ingestion source. The status file is a reproducible snapshot, not a live-liquidity API.
+
+This package is specific to FewToken liquidity on Ethereum Uniswap v4. Ring Swap is a different AMM and has separate
+multi-network [deployment](/contracts/v2/deployments) and [pool](/contracts/v2/pools) references for Ethereum, BNB
+Smart Chain, HyperEVM, and MegaETH. Keep those Factory/pair records out of this v4 manifest so an integration cannot
+mix incompatible pool identities or execution paths.
+
+## Core contracts
+
+| Component | Address |
+| --- | --- |
+| Chain ID | `1` |
+| PoolManager | [`0x000000000004444c5dc75cB358380D2e3dE08A90`](https://etherscan.io/address/0x000000000004444c5dc75cB358380D2e3dE08A90) |
+| StateView | [`0x7fFE42C4a5DEeA5b0feC41C94C136Cf115597227`](https://etherscan.io/address/0x7fFE42C4a5DEeA5b0feC41C94C136Cf115597227) |
+| V4Quoter | [`0x52F0E24D1c21C8A0cB1e5a5dD6198556BD9E1203`](https://etherscan.io/address/0x52F0E24D1c21C8A0cB1e5a5dD6198556BD9E1203) |
+| Permit2 | [`0x000000000022D473030F116dDEE9F6B43aC78BA3`](https://etherscan.io/address/0x000000000022D473030F116dDEE9F6B43aC78BA3) |
+| Universal Router (`2.0.0`) | [`0x66a9893cC07D91D95644AEDD05D03f95e1dBA8Af`](https://etherscan.io/address/0x66a9893cC07D91D95644AEDD05D03f95e1dBA8Af) |
+| FewFactory | [`0x7D86394139bf1122E82FDF45Bb4e3b038A4464DD`](https://etherscan.io/address/0x7D86394139bf1122E82FDF45Bb4e3b038A4464DD) |
+| Few Wrapped Token init code hash | `0x2bdba5734ddf754fb149ef1faa937956c52cfd1f24d68163a95f42d08ec06d38` |
+
+The manifest keeps the router address and source version as separate fields. Integrators using a different router or
+adapter can still use the same PoolKeys, but must generate calldata for their own execution stack.
+
+The FewToken addresses and decimals in this package are read from the deployed contracts. At block `25,854,897`, all
+13 FewTokens returned the documented underlying, FewFactory, symbol, and decimals; FewFactory returned the same wrapper
+for every underlying; and CREATE2 derivation with the published init code hash reproduced all 13 addresses. Local or
+historical FewWrappedToken source files are not an address or metadata authority for this integration package.
+
+### Pool identity
+
 A pool is identified by its complete `PoolKey`:
 
 ```text
@@ -36,8 +94,8 @@ wrapper pools are optional route edges: each uses a token-specific Few hook to c
 and its FewToken, which lets a route start or end in the underlying asset. Wrapper-hook support is not required to
 quote or swap through the FewToken trading pools.
 
-The [machine-readable integration manifest](/data/fewtoken-v4-pools-ethereum.json) contains the same 25 pools with
-their complete `PoolKey`, initialization block, initialization transaction, initial `sqrtPriceX96`, and initial tick.
+The manifest contains the same 25 pools, token symbols and decimals, FewToken underlying mappings, hook metadata,
+complete `PoolKey`, initialization block, initialization transaction, initial `sqrtPriceX96`, and initial tick.
 
 ### FewToken trading pools
 
@@ -46,9 +104,9 @@ These pools trade one FewToken against another through standard Uniswap v4 conce
 | Pair | Type | currency0 | currency1 | Fee | Tick spacing | Hook | Pool ID | Links |
 | --- | --- | --- | --- | ---: | ---: | --- | --- | --- |
 | `fwDAI / fwUSDT` | FewToken Trading | [`fwDAI`](https://etherscan.io/address/0x8a6fe57c08c84e0f4ee97aae68a62e820a37d259)<br/>[`0x8a6fe57c08c84e0f4ee97aae68a62e820a37d259`](https://etherscan.io/address/0x8a6fe57c08c84e0f4ee97aae68a62e820a37d259) | [`fwUSDT`](https://etherscan.io/address/0xef87f4608e601e8564800265aee1c1ffadf73283)<br/>[`0xef87f4608e601e8564800265aee1c1ffadf73283`](https://etherscan.io/address/0xef87f4608e601e8564800265aee1c1ffadf73283) | `500` (0.05%) | `10` | None | `0x279b3de65ea3f86261c507a6f0ef6471908e6f41ef1a82e166d8387032f2836d` | [Uniswap Explorer](https://app.uniswap.org/explore/pools/ethereum/0x279b3de65ea3f86261c507a6f0ef6471908e6f41ef1a82e166d8387032f2836d)<br/>[Init tx](https://etherscan.io/tx/0x75fb165b036ab9781486096751ebcbd845687c827afc0f7d753e0e0fb3845b54) |
-| `fwEUROC / fwUSDT` | FewToken Trading | [`fwEUROC`](https://etherscan.io/address/0x88cb762635408db93e0970a8d41b7c4692cc6ab3)<br/>[`0x88cb762635408db93e0970a8d41b7c4692cc6ab3`](https://etherscan.io/address/0x88cb762635408db93e0970a8d41b7c4692cc6ab3) | [`fwUSDT`](https://etherscan.io/address/0xef87f4608e601e8564800265aee1c1ffadf73283)<br/>[`0xef87f4608e601e8564800265aee1c1ffadf73283`](https://etherscan.io/address/0xef87f4608e601e8564800265aee1c1ffadf73283) | `500` (0.05%) | `10` | None | `0x278f11274052a2e85cf010cc2c895b769e71cd25e490f3881d876f6dc5c1ba98` | [Uniswap Explorer](https://app.uniswap.org/explore/pools/ethereum/0x278f11274052a2e85cf010cc2c895b769e71cd25e490f3881d876f6dc5c1ba98)<br/>[Init tx](https://etherscan.io/tx/0x44a7c4f522c1a5915011232f671208dc34fec7ebbebe0b232ae96f9598b2d4cb) |
+| `fwEURC / fwUSDT` | FewToken Trading | [`fwEURC`](https://etherscan.io/address/0x88cb762635408db93e0970a8d41b7c4692cc6ab3)<br/>[`0x88cb762635408db93e0970a8d41b7c4692cc6ab3`](https://etherscan.io/address/0x88cb762635408db93e0970a8d41b7c4692cc6ab3) | [`fwUSDT`](https://etherscan.io/address/0xef87f4608e601e8564800265aee1c1ffadf73283)<br/>[`0xef87f4608e601e8564800265aee1c1ffadf73283`](https://etherscan.io/address/0xef87f4608e601e8564800265aee1c1ffadf73283) | `500` (0.05%) | `10` | None | `0x278f11274052a2e85cf010cc2c895b769e71cd25e490f3881d876f6dc5c1ba98` | [Uniswap Explorer](https://app.uniswap.org/explore/pools/ethereum/0x278f11274052a2e85cf010cc2c895b769e71cd25e490f3881d876f6dc5c1ba98)<br/>[Init tx](https://etherscan.io/tx/0x44a7c4f522c1a5915011232f671208dc34fec7ebbebe0b232ae96f9598b2d4cb) |
 | `fwUSDC / fwDAI` | FewToken Trading | [`fwUSDC`](https://etherscan.io/address/0x0492560fa7cfd6a85e50d8be3f77318994f8f429)<br/>[`0x0492560fa7cfd6a85e50d8be3f77318994f8f429`](https://etherscan.io/address/0x0492560fa7cfd6a85e50d8be3f77318994f8f429) | [`fwDAI`](https://etherscan.io/address/0x8a6fe57c08c84e0f4ee97aae68a62e820a37d259)<br/>[`0x8a6fe57c08c84e0f4ee97aae68a62e820a37d259`](https://etherscan.io/address/0x8a6fe57c08c84e0f4ee97aae68a62e820a37d259) | `500` (0.05%) | `10` | None | `0xb3026b10bb2ef58c7f7f572ec750656f13ddf3449433c2cf81d3943accd8fbfe` | [Uniswap Explorer](https://app.uniswap.org/explore/pools/ethereum/0xb3026b10bb2ef58c7f7f572ec750656f13ddf3449433c2cf81d3943accd8fbfe)<br/>[Init tx](https://etherscan.io/tx/0x65adb20f0eef403e59edaf163ce107d2013c7f7b43942d5507b4b6b2e59e6b06) |
-| `fwUSDC / fwEUROC` | FewToken Trading | [`fwUSDC`](https://etherscan.io/address/0x0492560fa7cfd6a85e50d8be3f77318994f8f429)<br/>[`0x0492560fa7cfd6a85e50d8be3f77318994f8f429`](https://etherscan.io/address/0x0492560fa7cfd6a85e50d8be3f77318994f8f429) | [`fwEUROC`](https://etherscan.io/address/0x88cb762635408db93e0970a8d41b7c4692cc6ab3)<br/>[`0x88cb762635408db93e0970a8d41b7c4692cc6ab3`](https://etherscan.io/address/0x88cb762635408db93e0970a8d41b7c4692cc6ab3) | `500` (0.05%) | `10` | None | `0x4a4ed1af49b5ed3a5c3e4a01931979a4bf6192e8de0a9b4f7f19895669cafef9` | [Uniswap Explorer](https://app.uniswap.org/explore/pools/ethereum/0x4a4ed1af49b5ed3a5c3e4a01931979a4bf6192e8de0a9b4f7f19895669cafef9)<br/>[Init tx](https://etherscan.io/tx/0x1bcf0d45e5e2a0af5338820656249abb836332d10e747c9ee5e2c25964592ab4) |
+| `fwUSDC / fwEURC` | FewToken Trading | [`fwUSDC`](https://etherscan.io/address/0x0492560fa7cfd6a85e50d8be3f77318994f8f429)<br/>[`0x0492560fa7cfd6a85e50d8be3f77318994f8f429`](https://etherscan.io/address/0x0492560fa7cfd6a85e50d8be3f77318994f8f429) | [`fwEURC`](https://etherscan.io/address/0x88cb762635408db93e0970a8d41b7c4692cc6ab3)<br/>[`0x88cb762635408db93e0970a8d41b7c4692cc6ab3`](https://etherscan.io/address/0x88cb762635408db93e0970a8d41b7c4692cc6ab3) | `500` (0.05%) | `10` | None | `0x4a4ed1af49b5ed3a5c3e4a01931979a4bf6192e8de0a9b4f7f19895669cafef9` | [Uniswap Explorer](https://app.uniswap.org/explore/pools/ethereum/0x4a4ed1af49b5ed3a5c3e4a01931979a4bf6192e8de0a9b4f7f19895669cafef9)<br/>[Init tx](https://etherscan.io/tx/0x1bcf0d45e5e2a0af5338820656249abb836332d10e747c9ee5e2c25964592ab4) |
 | `fwUSDC / fwUSDe` | FewToken Trading | [`fwUSDC`](https://etherscan.io/address/0x0492560fa7cfd6a85e50d8be3f77318994f8f429)<br/>[`0x0492560fa7cfd6a85e50d8be3f77318994f8f429`](https://etherscan.io/address/0x0492560fa7cfd6a85e50d8be3f77318994f8f429) | [`fwUSDe`](https://etherscan.io/address/0x459f878908b5d6e8a0f2eb089b0cd29d9766afe5)<br/>[`0x459f878908b5d6e8a0f2eb089b0cd29d9766afe5`](https://etherscan.io/address/0x459f878908b5d6e8a0f2eb089b0cd29d9766afe5) | `500` (0.05%) | `10` | None | `0xdb73646599452fc04ef24c85701b1f9da9653d1ae918b188308aace3d0796de5` | [Uniswap Explorer](https://app.uniswap.org/explore/pools/ethereum/0xdb73646599452fc04ef24c85701b1f9da9653d1ae918b188308aace3d0796de5)<br/>[Init tx](https://etherscan.io/tx/0xf15b38ec54e44891f5f6123a0c542819ea66c82a65c0cba68306195c86b2cfcf) |
 | `fwUSDC / fwUSDR` | FewToken Trading | [`fwUSDC`](https://etherscan.io/address/0x0492560fa7cfd6a85e50d8be3f77318994f8f429)<br/>[`0x0492560fa7cfd6a85e50d8be3f77318994f8f429`](https://etherscan.io/address/0x0492560fa7cfd6a85e50d8be3f77318994f8f429) | [`fwUSDR`](https://etherscan.io/address/0x29a294f8fe285dfb259705213e375ecb7fcf9d9b)<br/>[`0x29a294f8fe285dfb259705213e375ecb7fcf9d9b`](https://etherscan.io/address/0x29a294f8fe285dfb259705213e375ecb7fcf9d9b) | `500` (0.05%) | `10` | None | `0x2c24e189a517bb2cb9920157af067b4aa0f894696628f387d52dd46a0fe44904` | [Uniswap Explorer](https://app.uniswap.org/explore/pools/ethereum/0x2c24e189a517bb2cb9920157af067b4aa0f894696628f387d52dd46a0fe44904)<br/>[Init tx](https://etherscan.io/tx/0xd24c49bba46f1646dfcb8936535c79d32b605fbaa9de1bac2e61f9506e289e05) |
 | `fwUSDC / fwUSDS` | FewToken Trading | [`fwUSDC`](https://etherscan.io/address/0x0492560fa7cfd6a85e50d8be3f77318994f8f429)<br/>[`0x0492560fa7cfd6a85e50d8be3f77318994f8f429`](https://etherscan.io/address/0x0492560fa7cfd6a85e50d8be3f77318994f8f429) | [`fwUSDS`](https://etherscan.io/address/0xd777151c92c05fea839b2c21b345a78e1f1163fe)<br/>[`0xd777151c92c05fea839b2c21b345a78e1f1163fe`](https://etherscan.io/address/0xd777151c92c05fea839b2c21b345a78e1f1163fe) | `500` (0.05%) | `10` | None | `0xfce820cbcba5623dabb0e4c269847abb9a6587f4c4f45538058739a224fdb74e` | [Uniswap Explorer](https://app.uniswap.org/explore/pools/ethereum/0xfce820cbcba5623dabb0e4c269847abb9a6587f4c4f45538058739a224fdb74e)<br/>[Init tx](https://etherscan.io/tx/0x03a2f7eba46a75c49e2b7eff5913d44b31fe8de2d38bec7cadc06519453a9603) |
@@ -68,65 +126,26 @@ These pools connect an underlying asset with its FewToken representation through
 
 | Pair | Type | currency0 | currency1 | Fee | Tick spacing | Hook | Pool ID | Links |
 | --- | --- | --- | --- | ---: | ---: | --- | --- | --- |
-| `cbBTC / fwcbBTC` | Wrapper | [`cbBTC`](https://etherscan.io/address/0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf)<br/>[`0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf`](https://etherscan.io/address/0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf) | [`fwcbBTC`](https://etherscan.io/address/0xdbf1703e5d29afefbf1bd958ce7a6023c67f3e5d)<br/>[`0xdbf1703e5d29afefbf1bd958ce7a6023c67f3e5d`](https://etherscan.io/address/0xdbf1703e5d29afefbf1bd958ce7a6023c67f3e5d) | `0` (0%) | `1` | [`FewCBBTCHook`](https://etherscan.io/address/0x8347b7a3807c681513d2b51b8223e59aa16a2888)<br/>[`0x8347b7a3807c681513d2b51b8223e59aa16a2888`](https://etherscan.io/address/0x8347b7a3807c681513d2b51b8223e59aa16a2888) | `0x8f8b0b21fb429ffb5210f2bf0f8b7cb267b944a0c61beaae35f20f6839c0f33b` | [Uniswap Explorer](https://app.uniswap.org/explore/pools/ethereum/0x8f8b0b21fb429ffb5210f2bf0f8b7cb267b944a0c61beaae35f20f6839c0f33b)<br/>[Init tx](https://etherscan.io/tx/0x9e7345abaf3948fed13a4380568eca2a83477217a274b2cdc6b6cda15dbad5d8) |
-| `DAI / fwDAI` | Wrapper | [`DAI`](https://etherscan.io/address/0x6b175474e89094c44da98b954eedeac495271d0f)<br/>[`0x6b175474e89094c44da98b954eedeac495271d0f`](https://etherscan.io/address/0x6b175474e89094c44da98b954eedeac495271d0f) | [`fwDAI`](https://etherscan.io/address/0x8a6fe57c08c84e0f4ee97aae68a62e820a37d259)<br/>[`0x8a6fe57c08c84e0f4ee97aae68a62e820a37d259`](https://etherscan.io/address/0x8a6fe57c08c84e0f4ee97aae68a62e820a37d259) | `0` (0%) | `1` | [`FewDAIHook`](https://etherscan.io/address/0x85b648a64aed6307d5d5ce26e6ae086c17bde888)<br/>[`0x85b648a64aed6307d5d5ce26e6ae086c17bde888`](https://etherscan.io/address/0x85b648a64aed6307d5d5ce26e6ae086c17bde888) | `0xf906beb74154ca4d057b7079c90eb1044efaf40ef468e62ec983930cf80a1e2b` | [Uniswap Explorer](https://app.uniswap.org/explore/pools/ethereum/0xf906beb74154ca4d057b7079c90eb1044efaf40ef468e62ec983930cf80a1e2b)<br/>[Init tx](https://etherscan.io/tx/0x8f2db3e502d6ab66e89c08d04a5f79451eb790972289f6b7bd00b78f6d2d9d40) |
+| `cbBTC / fwcbBTC` | Wrapper | [`cbBTC`](https://etherscan.io/address/0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf)<br/>[`0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf`](https://etherscan.io/address/0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf) | [`fwcbBTC`](https://etherscan.io/address/0xdbf1703e5d29afefbf1bd958ce7a6023c67f3e5d)<br/>[`0xdbf1703e5d29afefbf1bd958ce7a6023c67f3e5d`](https://etherscan.io/address/0xdbf1703e5d29afefbf1bd958ce7a6023c67f3e5d) | `0` (0%) | `1` | [`FewTokenHook (cbBTC deployment)`](https://etherscan.io/address/0x8347b7a3807c681513d2b51b8223e59aa16a2888)<br/>[`0x8347b7a3807c681513d2b51b8223e59aa16a2888`](https://etherscan.io/address/0x8347b7a3807c681513d2b51b8223e59aa16a2888) | `0x8f8b0b21fb429ffb5210f2bf0f8b7cb267b944a0c61beaae35f20f6839c0f33b` | [Uniswap Explorer](https://app.uniswap.org/explore/pools/ethereum/0x8f8b0b21fb429ffb5210f2bf0f8b7cb267b944a0c61beaae35f20f6839c0f33b)<br/>[Init tx](https://etherscan.io/tx/0x9e7345abaf3948fed13a4380568eca2a83477217a274b2cdc6b6cda15dbad5d8) |
+| `DAI / fwDAI` | Wrapper | [`DAI`](https://etherscan.io/address/0x6b175474e89094c44da98b954eedeac495271d0f)<br/>[`0x6b175474e89094c44da98b954eedeac495271d0f`](https://etherscan.io/address/0x6b175474e89094c44da98b954eedeac495271d0f) | [`fwDAI`](https://etherscan.io/address/0x8a6fe57c08c84e0f4ee97aae68a62e820a37d259)<br/>[`0x8a6fe57c08c84e0f4ee97aae68a62e820a37d259`](https://etherscan.io/address/0x8a6fe57c08c84e0f4ee97aae68a62e820a37d259) | `0` (0%) | `1` | [`FewTokenHook (DAI deployment)`](https://etherscan.io/address/0x85b648a64aed6307d5d5ce26e6ae086c17bde888)<br/>[`0x85b648a64aed6307d5d5ce26e6ae086c17bde888`](https://etherscan.io/address/0x85b648a64aed6307d5d5ce26e6ae086c17bde888) | `0xf906beb74154ca4d057b7079c90eb1044efaf40ef468e62ec983930cf80a1e2b` | [Uniswap Explorer](https://app.uniswap.org/explore/pools/ethereum/0xf906beb74154ca4d057b7079c90eb1044efaf40ef468e62ec983930cf80a1e2b)<br/>[Init tx](https://etherscan.io/tx/0x8f2db3e502d6ab66e89c08d04a5f79451eb790972289f6b7bd00b78f6d2d9d40) |
 | `ETH / fwWETH` | Wrapper | [`ETH`](https://etherscan.io/address/0x0000000000000000000000000000000000000000)<br/>[`0x0000000000000000000000000000000000000000`](https://etherscan.io/address/0x0000000000000000000000000000000000000000) | [`fwWETH`](https://etherscan.io/address/0xa250cc729bb3323e7933022a67b52200fe354767)<br/>[`0xa250cc729bb3323e7933022a67b52200fe354767`](https://etherscan.io/address/0xa250cc729bb3323e7933022a67b52200fe354767) | `0` (0%) | `1` | [`FewETHHook`](https://etherscan.io/address/0x044301939deb7ca53c4733dd4d9b3bc5ea0c6888)<br/>[`0x044301939deb7ca53c4733dd4d9b3bc5ea0c6888`](https://etherscan.io/address/0x044301939deb7ca53c4733dd4d9b3bc5ea0c6888) | `0x7a5a8f5a36a6a2e9961caf6bb047a5a7580d0fe16a532aad93efc596028dfa54` | [Uniswap Explorer](https://app.uniswap.org/explore/pools/ethereum/0x7a5a8f5a36a6a2e9961caf6bb047a5a7580d0fe16a532aad93efc596028dfa54)<br/>[Init tx](https://etherscan.io/tx/0x016a9a09263284b9acf6ed2fcfd6eff65c18aac1115dea291330c481bb557d24) |
-| `fwUSDC / USDC` | Wrapper | [`fwUSDC`](https://etherscan.io/address/0x0492560fa7cfd6a85e50d8be3f77318994f8f429)<br/>[`0x0492560fa7cfd6a85e50d8be3f77318994f8f429`](https://etherscan.io/address/0x0492560fa7cfd6a85e50d8be3f77318994f8f429) | [`USDC`](https://etherscan.io/address/0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48)<br/>[`0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48`](https://etherscan.io/address/0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48) | `0` (0%) | `1` | [`FewUSDCHook`](https://etherscan.io/address/0x4b2eb653d13e6c9ac5a0a01fde22f2c8d6592888)<br/>[`0x4b2eb653d13e6c9ac5a0a01fde22f2c8d6592888`](https://etherscan.io/address/0x4b2eb653d13e6c9ac5a0a01fde22f2c8d6592888) | `0x5837e6b4fd4b8193f2f7a8b4490c0f154344bb9a52b36a885578ff6d3193fc47` | [Uniswap Explorer](https://app.uniswap.org/explore/pools/ethereum/0x5837e6b4fd4b8193f2f7a8b4490c0f154344bb9a52b36a885578ff6d3193fc47)<br/>[Init tx](https://etherscan.io/tx/0x69f5fdd503763c543e7a9eef8c9f2b43098bcaad2427b8481bc69a7e1d814d10) |
-| `fwWBTC / WBTC` | Wrapper | [`fwWBTC`](https://etherscan.io/address/0x2078f336fdd260f708bec4a20c82b063274e1b23)<br/>[`0x2078f336fdd260f708bec4a20c82b063274e1b23`](https://etherscan.io/address/0x2078f336fdd260f708bec4a20c82b063274e1b23) | [`WBTC`](https://etherscan.io/address/0x2260fac5e5542a773aa44fbcfedf7c193bc2c599)<br/>[`0x2260fac5e5542a773aa44fbcfedf7c193bc2c599`](https://etherscan.io/address/0x2260fac5e5542a773aa44fbcfedf7c193bc2c599) | `0` (0%) | `1` | [`FewWBTCHook`](https://etherscan.io/address/0x0fe942afdb2f51e25cbf892aad175c6a574f2888)<br/>[`0x0fe942afdb2f51e25cbf892aad175c6a574f2888`](https://etherscan.io/address/0x0fe942afdb2f51e25cbf892aad175c6a574f2888) | `0x18605c7a76101aeccc414cc300dd5e5ae44b30d6c247ba164ccd88952c259735` | [Uniswap Explorer](https://app.uniswap.org/explore/pools/ethereum/0x18605c7a76101aeccc414cc300dd5e5ae44b30d6c247ba164ccd88952c259735)<br/>[Init tx](https://etherscan.io/tx/0x71893a0b54de67e5ddb13f91346c0ade275376f04b2075b57195f9a786cdc397) |
-| `fwweETH / weETH` | Wrapper | [`fwweETH`](https://etherscan.io/address/0x9553d5f1f564ede30f5a9f0274cd0af7a00546e7)<br/>[`0x9553d5f1f564ede30f5a9f0274cd0af7a00546e7`](https://etherscan.io/address/0x9553d5f1f564ede30f5a9f0274cd0af7a00546e7) | [`weETH`](https://etherscan.io/address/0xcd5fe23c85820f7b72d0926fc9b05b43e359b7ee)<br/>[`0xcd5fe23c85820f7b72d0926fc9b05b43e359b7ee`](https://etherscan.io/address/0xcd5fe23c85820f7b72d0926fc9b05b43e359b7ee) | `0` (0%) | `1` | [`FewweETHHook`](https://etherscan.io/address/0x877323adbf747f85eb8d182d42f01f34a5492888)<br/>[`0x877323adbf747f85eb8d182d42f01f34a5492888`](https://etherscan.io/address/0x877323adbf747f85eb8d182d42f01f34a5492888) | `0x6933dfbf7441cc4ee4439843fdd464e215a6c90f07c5a769198e2a047f1f3f3e` | [Uniswap Explorer](https://app.uniswap.org/explore/pools/ethereum/0x6933dfbf7441cc4ee4439843fdd464e215a6c90f07c5a769198e2a047f1f3f3e)<br/>[Init tx](https://etherscan.io/tx/0x21cc6e90ff449e0b8d4b10b99427c8a7bf3bec887933d087174a8f9d7116006b) |
-| `UNI / fwUNI` | Wrapper | [`UNI`](https://etherscan.io/address/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984)<br/>[`0x1f9840a85d5af5bf1d1762f925bdaddc4201f984`](https://etherscan.io/address/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984) | [`fwUNI`](https://etherscan.io/address/0xe8e1f50392bd61d0f8f48e8e7af51d3b8a52090a)<br/>[`0xe8e1f50392bd61d0f8f48e8e7af51d3b8a52090a`](https://etherscan.io/address/0xe8e1f50392bd61d0f8f48e8e7af51d3b8a52090a) | `0` (0%) | `1` | [`FewUNIHook`](https://etherscan.io/address/0x4b3e2a8cf36c7eb0fba2a5b39b20c896c6f22888)<br/>[`0x4b3e2a8cf36c7eb0fba2a5b39b20c896c6f22888`](https://etherscan.io/address/0x4b3e2a8cf36c7eb0fba2a5b39b20c896c6f22888) | `0x301d41ff23b73b209ab2b1112f4effd0d8ff978ec29d743c1431463f84cbec24` | [Uniswap Explorer](https://app.uniswap.org/explore/pools/ethereum/0x301d41ff23b73b209ab2b1112f4effd0d8ff978ec29d743c1431463f84cbec24)<br/>[Init tx](https://etherscan.io/tx/0x582c5ac37814f6148613bf25fbf9690107911b2e4c3785126c316da5ac56f1fc) |
+| `fwUSDC / USDC` | Wrapper | [`fwUSDC`](https://etherscan.io/address/0x0492560fa7cfd6a85e50d8be3f77318994f8f429)<br/>[`0x0492560fa7cfd6a85e50d8be3f77318994f8f429`](https://etherscan.io/address/0x0492560fa7cfd6a85e50d8be3f77318994f8f429) | [`USDC`](https://etherscan.io/address/0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48)<br/>[`0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48`](https://etherscan.io/address/0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48) | `0` (0%) | `1` | [`FewTokenHook (USDC deployment)`](https://etherscan.io/address/0x4b2eb653d13e6c9ac5a0a01fde22f2c8d6592888)<br/>[`0x4b2eb653d13e6c9ac5a0a01fde22f2c8d6592888`](https://etherscan.io/address/0x4b2eb653d13e6c9ac5a0a01fde22f2c8d6592888) | `0x5837e6b4fd4b8193f2f7a8b4490c0f154344bb9a52b36a885578ff6d3193fc47` | [Uniswap Explorer](https://app.uniswap.org/explore/pools/ethereum/0x5837e6b4fd4b8193f2f7a8b4490c0f154344bb9a52b36a885578ff6d3193fc47)<br/>[Init tx](https://etherscan.io/tx/0x69f5fdd503763c543e7a9eef8c9f2b43098bcaad2427b8481bc69a7e1d814d10) |
+| `fwWBTC / WBTC` | Wrapper | [`fwWBTC`](https://etherscan.io/address/0x2078f336fdd260f708bec4a20c82b063274e1b23)<br/>[`0x2078f336fdd260f708bec4a20c82b063274e1b23`](https://etherscan.io/address/0x2078f336fdd260f708bec4a20c82b063274e1b23) | [`WBTC`](https://etherscan.io/address/0x2260fac5e5542a773aa44fbcfedf7c193bc2c599)<br/>[`0x2260fac5e5542a773aa44fbcfedf7c193bc2c599`](https://etherscan.io/address/0x2260fac5e5542a773aa44fbcfedf7c193bc2c599) | `0` (0%) | `1` | [`FewTokenHook (WBTC deployment)`](https://etherscan.io/address/0x0fe942afdb2f51e25cbf892aad175c6a574f2888)<br/>[`0x0fe942afdb2f51e25cbf892aad175c6a574f2888`](https://etherscan.io/address/0x0fe942afdb2f51e25cbf892aad175c6a574f2888) | `0x18605c7a76101aeccc414cc300dd5e5ae44b30d6c247ba164ccd88952c259735` | [Uniswap Explorer](https://app.uniswap.org/explore/pools/ethereum/0x18605c7a76101aeccc414cc300dd5e5ae44b30d6c247ba164ccd88952c259735)<br/>[Init tx](https://etherscan.io/tx/0x71893a0b54de67e5ddb13f91346c0ade275376f04b2075b57195f9a786cdc397) |
+| `fwweETH / weETH` | Wrapper | [`fwweETH`](https://etherscan.io/address/0x9553d5f1f564ede30f5a9f0274cd0af7a00546e7)<br/>[`0x9553d5f1f564ede30f5a9f0274cd0af7a00546e7`](https://etherscan.io/address/0x9553d5f1f564ede30f5a9f0274cd0af7a00546e7) | [`weETH`](https://etherscan.io/address/0xcd5fe23c85820f7b72d0926fc9b05b43e359b7ee)<br/>[`0xcd5fe23c85820f7b72d0926fc9b05b43e359b7ee`](https://etherscan.io/address/0xcd5fe23c85820f7b72d0926fc9b05b43e359b7ee) | `0` (0%) | `1` | [`FewTokenHook (weETH deployment)`](https://etherscan.io/address/0x877323adbf747f85eb8d182d42f01f34a5492888)<br/>[`0x877323adbf747f85eb8d182d42f01f34a5492888`](https://etherscan.io/address/0x877323adbf747f85eb8d182d42f01f34a5492888) | `0x6933dfbf7441cc4ee4439843fdd464e215a6c90f07c5a769198e2a047f1f3f3e` | [Uniswap Explorer](https://app.uniswap.org/explore/pools/ethereum/0x6933dfbf7441cc4ee4439843fdd464e215a6c90f07c5a769198e2a047f1f3f3e)<br/>[Init tx](https://etherscan.io/tx/0x21cc6e90ff449e0b8d4b10b99427c8a7bf3bec887933d087174a8f9d7116006b) |
+| `UNI / fwUNI` | Wrapper | [`UNI`](https://etherscan.io/address/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984)<br/>[`0x1f9840a85d5af5bf1d1762f925bdaddc4201f984`](https://etherscan.io/address/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984) | [`fwUNI`](https://etherscan.io/address/0xe8e1f50392bd61d0f8f48e8e7af51d3b8a52090a)<br/>[`0xe8e1f50392bd61d0f8f48e8e7af51d3b8a52090a`](https://etherscan.io/address/0xe8e1f50392bd61d0f8f48e8e7af51d3b8a52090a) | `0` (0%) | `1` | [`FewTokenHook (UNI deployment)`](https://etherscan.io/address/0x4b3e2a8cf36c7eb0fba2a5b39b20c896c6f22888)<br/>[`0x4b3e2a8cf36c7eb0fba2a5b39b20c896c6f22888`](https://etherscan.io/address/0x4b3e2a8cf36c7eb0fba2a5b39b20c896c6f22888) | `0x301d41ff23b73b209ab2b1112f4effd0d8ff978ec29d743c1431463f84cbec24` | [Uniswap Explorer](https://app.uniswap.org/explore/pools/ethereum/0x301d41ff23b73b209ab2b1112f4effd0d8ff978ec29d743c1431463f84cbec24)<br/>[Init tx](https://etherscan.io/tx/0x582c5ac37814f6148613bf25fbf9690107911b2e4c3785126c316da5ac56f1fc) |
 | `USDT / fwUSDT` | Wrapper | [`USDT`](https://etherscan.io/address/0xdac17f958d2ee523a2206206994597c13d831ec7)<br/>[`0xdac17f958d2ee523a2206206994597c13d831ec7`](https://etherscan.io/address/0xdac17f958d2ee523a2206206994597c13d831ec7) | [`fwUSDT`](https://etherscan.io/address/0xef87f4608e601e8564800265aee1c1ffadf73283)<br/>[`0xef87f4608e601e8564800265aee1c1ffadf73283`](https://etherscan.io/address/0xef87f4608e601e8564800265aee1c1ffadf73283) | `0` (0%) | `1` | [`FewUSDTHook`](https://etherscan.io/address/0xbadf77d50478b4432ef1f243b9c0bc7869486888)<br/>[`0xbadf77d50478b4432ef1f243b9c0bc7869486888`](https://etherscan.io/address/0xbadf77d50478b4432ef1f243b9c0bc7869486888) | `0x7db868544c8f7f6ddb107c7749c94f03c9e0155f2138aef3f8a020e4a469d95a` | [Uniswap Explorer](https://app.uniswap.org/explore/pools/ethereum/0x7db868544c8f7f6ddb107c7749c94f03c9e0155f2138aef3f8a020e4a469d95a)<br/>[Init tx](https://etherscan.io/tx/0x00db108fd76068ba9a93784dd0da0592c080e65cd94c4d11798227b741765348) |
-| `wstETH / fwwstETH` | Wrapper | [`wstETH`](https://etherscan.io/address/0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0)<br/>[`0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0`](https://etherscan.io/address/0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0) | [`fwwstETH`](https://etherscan.io/address/0xb90e63487bc6a4fa3d58f707510dab3c28a63137)<br/>[`0xb90e63487bc6a4fa3d58f707510dab3c28a63137`](https://etherscan.io/address/0xb90e63487bc6a4fa3d58f707510dab3c28a63137) | `0` (0%) | `1` | [`FewwstETHHook`](https://etherscan.io/address/0x75ae0292e8ad3ab60b9a1a7b3046d3f4abdfa888)<br/>[`0x75ae0292e8ad3ab60b9a1a7b3046d3f4abdfa888`](https://etherscan.io/address/0x75ae0292e8ad3ab60b9a1a7b3046d3f4abdfa888) | `0xe7c2f30fd89238331b0e3e6ac6351578d5e3091b7839eff321c29cf88e17274e` | [Uniswap Explorer](https://app.uniswap.org/explore/pools/ethereum/0xe7c2f30fd89238331b0e3e6ac6351578d5e3091b7839eff321c29cf88e17274e)<br/>[Init tx](https://etherscan.io/tx/0xfb61a71fefd1ab63e0d3c6096af844f199b15cd0782475cd8554b06b20d2a2c5) |
+| `wstETH / fwwstETH` | Wrapper | [`wstETH`](https://etherscan.io/address/0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0)<br/>[`0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0`](https://etherscan.io/address/0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0) | [`fwwstETH`](https://etherscan.io/address/0xb90e63487bc6a4fa3d58f707510dab3c28a63137)<br/>[`0xb90e63487bc6a4fa3d58f707510dab3c28a63137`](https://etherscan.io/address/0xb90e63487bc6a4fa3d58f707510dab3c28a63137) | `0` (0%) | `1` | [`FewTokenHook (wstETH deployment)`](https://etherscan.io/address/0x75ae0292e8ad3ab60b9a1a7b3046d3f4abdfa888)<br/>[`0x75ae0292e8ad3ab60b9a1a7b3046d3f4abdfa888`](https://etherscan.io/address/0x75ae0292e8ad3ab60b9a1a7b3046d3f4abdfa888) | `0xe7c2f30fd89238331b0e3e6ac6351578d5e3091b7839eff321c29cf88e17274e` | [Uniswap Explorer](https://app.uniswap.org/explore/pools/ethereum/0xe7c2f30fd89238331b0e3e6ac6351578d5e3091b7839eff321c29cf88e17274e)<br/>[Init tx](https://etherscan.io/tx/0xfb61a71fefd1ab63e0d3c6096af844f199b15cd0782475cd8554b06b20d2a2c5) |
 
 ## Machine-readable integration manifest
 
-The [Ethereum integration manifest](/data/fewtoken-v4-pools-ethereum.json) lists the 25 pools covered by this guide
-and provides the `PoolKey` and initialization data needed for ingestion and testing. It is not a live liquidity or
-quote API. Integrators should read current pool state from Ethereum `PoolManager` before quoting or routing.
+The [static manifest](/data/fewtoken-v4-pools-ethereum.json) contains the complete integration package. Its top-level
+`tokens` array records every PoolKey currency's symbol, decimals, and FewToken underlying. `hookContracts` records the
+deployed contract type, address, source and ABI status. `pools` contains the exact PoolKeys and initialization events.
 
-The top-level `schemaVersion` changes when the JSON structure changes. `manifestVersion` increments when the listed
-pool set or one of its published parameters changes. `updatedAt` records when the manifest was last updated. Each
-entry has this structure:
-
-```json
-{
-  "pair": "fwUSDC/fwUSDT",
-  "type": "FewToken Trading",
-  "currency0": {
-    "name": "fwUSDC",
-    "address": "0x0492560fa7cfd6a85e50d8be3f77318994f8f429",
-    "etherscan": "https://etherscan.io/address/0x0492560fa7cfd6a85e50d8be3f77318994f8f429"
-  },
-  "currency1": {
-    "name": "fwUSDT",
-    "address": "0xef87f4608e601e8564800265aee1c1ffadf73283",
-    "etherscan": "https://etherscan.io/address/0xef87f4608e601e8564800265aee1c1ffadf73283"
-  },
-  "fee": {
-    "raw": 500,
-    "percent": "0.05%"
-  },
-  "tickSpacing": 10,
-  "hook": null,
-  "poolId": "0x6199c1a871328a693bbc9cd80a7e4874a4a7e2ebc862b51fa04bb6b587dbac47",
-  "poolKey": {
-    "currency0": "0x0492560fa7cfd6a85e50d8be3f77318994f8f429",
-    "currency1": "0xef87f4608e601e8564800265aee1c1ffadf73283",
-    "fee": 500,
-    "tickSpacing": 10,
-    "hooks": "0x0000000000000000000000000000000000000000"
-  },
-  "initialization": {
-    "block": 22041949,
-    "transactionHash": "0x3e613b39a343e8e71cf720ce2d933bc284d72b21a0ed035bcd29fd2ae615e52a",
-    "sqrtPriceX96": "79228162514264337593543950336",
-    "tick": 0
-  }
-}
-```
-
-The `currency0` and `currency1` fields use the order required by the `PoolKey`. The pair label follows that order,
-not a preferred base or quote convention.
+`schemaVersion` changes when the JSON structure changes. `manifestVersion` changes when a published integration
+parameter changes. Validate the file against its linked JSON Schema and use the checksum file when caching it. Each
+pool also has an `integrationPath` field that distinguishes generic v4 ingestion from custom-Hook review. The
+`currency0` and `currency1` order is part of the PoolKey; it is not a base/quote preference.
 
 ## Quoting FewToken trading pools
 
@@ -142,10 +161,23 @@ The trading pools use standard Uniswap v4 fee units:
 Use the v4 Quoter or an equivalent state-simulation path. A recognized token or pool ID is not sufficient if the quote
 engine cannot read the pool, simulate the swap, and return an executable result.
 
-## Quoting and executing wrapper pools
+## Few wrapper hooks
 
-A wrapper pool converts between an underlying asset and its FewToken representation. Its token-specific hook wraps or
-unwraps during `beforeSwap` and returns the swap delta to `PoolManager`.
+Seven deployments use the generic `FewTokenHook`, the USDT deployment uses `FewUSDTHook`, and the native-ETH
+deployment uses `FewETHHook`. Names such as `FewUSDCHook` or `FewDAIHook` are deployment labels, not Solidity contract
+types.
+
+All nine deployed addresses report the same permissions:
+
+| Enabled callback or return-delta flag | Behavior |
+| --- | --- |
+| `beforeInitialize` | Requires the exact underlying/FewToken pair and fee `0` |
+| `beforeAddLiquidity` | Allows the operation; it does not wrap liquidity deposits |
+| `beforeSwap` | Wraps or unwraps the swap-side token |
+| `beforeSwapReturnDelta` | Returns the conversion-aware delta to PoolManager |
+
+All other hook flags are disabled, including both remove-liquidity callbacks. Wrapper conversion occurs during swaps,
+not when liquidity is added or removed.
 
 The listed wrapper pools use:
 
@@ -168,6 +200,119 @@ Wrapper pools can be used as route edges. An aggregator can wrap an input asset,
 pools, and unwrap the output in the same route. Calldata must include the exact `PoolKey`, direction, amount,
 slippage protection, and `hookData` required by the execution path.
 
+### Integration scope by pool type
+
+| Scope | Pools | Recommended treatment |
+| --- | ---: | --- |
+| Standard FewToken trading pools | 16 | Ingest through the aggregator's generic `uniswap-v4` source |
+| ERC-20 wrapper pools | 8 | Review as custom v4 Hooks; start with the included `fwUSDC/USDC` vector |
+| Native ETH wrapper pool | 1 | Review as a custom v4 Hook; verified source and ABI are published, and Ring can provide an ETH-specific execution vector |
+
+Verified source and ABI are necessary for custom-Hook review, but they do not prove that 0x, KyberSwap, 1inch, or any
+other aggregator supports both execution directions. Confirm support with reproducible quote and calldata vectors for
+the exact wrapper PoolKey.
+
+## Reproducible quote and execution evidence
+
+The [status snapshot](/data/fewtoken-v4-pools-ethereum-status.json) records V4Quoter calldata for both directions of
+one standard pool and one wrapper pool at Ethereum block `25,851,888`:
+
+| Vector | Exact input | Output at block `25,851,888` |
+| --- | ---: | ---: |
+| `fwUSDC -> fwDAI` | `1 fwUSDC` | `0.999320102450204966 fwDAI` |
+| `fwDAI -> fwUSDC` | `1 fwDAI` | `0.999429 fwUSDC` |
+| `fwUSDC -> USDC` | `1 fwUSDC` | `1 USDC` |
+| `USDC -> fwUSDC` | `1 USDC` | `1 fwUSDC` |
+
+The same file records `sqrtPriceX96`, tick, raw protocol-fee field, LP fee, and active liquidity for every one of the 25
+Pool IDs. All 25 were initialized and had nonzero active in-range liquidity at the snapshot block. This is a state
+check, not a TVL, depth, price-quality, or order-size guarantee.
+
+### Current liquidity and Ring-controlled positions
+
+At Ethereum block `25,854,897` (`2026-08-28T16:21:11Z`), an independent read of `StateView` and the Uniswap v4
+PositionManager confirmed:
+
+- all 25 published Pool IDs were initialized and had nonzero active in-range liquidity
+- all 25 Pool IDs had at least one nonzero PositionManager NFT controlled by Ring's confirmed LP address
+- 27 Ring-controlled target positions were checked; all 27 still had the expected owner and nonzero position liquidity
+
+The reproducible summary is stored separately in the
+[status file](/data/fewtoken-v4-pools-ethereum-status.json). Position ownership establishes that Ring controls LP
+positions in every listed pool at that block. It does not turn `activeLiquidity` into TVL or guaranteed executable
+depth, and it does not guarantee that the positions remain unchanged after the verification block. Aggregators must
+still read current pool state and simulate the requested trade size.
+
+### Executable Universal Router vectors
+
+The status file also contains complete `execute(bytes,bytes[],uint256)` calldata for the same four directions. Each
+vector targets Universal Router `2.0.0`, uses command `V4_SWAP (0x10)`, and executes these v4 actions:
+
+```text
+SWAP_EXACT_IN_SINGLE (0x06)
+SETTLE_ALL (0x0c)
+TAKE_ALL (0x0f)
+```
+
+The examples use a 50-basis-point minimum-output buffer, `hookData=0x`, `value=0`, and explicit ERC-20-to-Permit2 and
+Permit2-to-router allowance requirements. The Permit2 approval is intentionally separate from the swap calldata; no
+permit signature is embedded in the example.
+
+All four calldata vectors were replayed successfully on a fork of block `25,851,888`, independently from the same
+starting state:
+
+| Vector | Input spent | Output received | Fork gas used |
+| --- | ---: | ---: | ---: |
+| `fwUSDC -> fwDAI` | `1 fwUSDC` | `0.999320102450204966 fwDAI` | `129,809` |
+| `fwDAI -> fwUSDC` | `1 fwDAI` | `0.999429 fwUSDC` | `128,946` |
+| `fwUSDC -> USDC` | `1 fwUSDC` | `1 USDC` | `172,667` |
+| `USDC -> fwUSDC` | `1 USDC` | `1 fwUSDC` | `180,025` |
+
+These are local-fork results, not mainnet transactions. Aggregators should replace the sample deadline and allowance
+flow with their production policy.
+
+Mainnet execution references:
+
+- Standard pool `fwUSDR/fwDAI`: [successful transaction](https://etherscan.io/tx/0x71c264f4189bf2be45a88070cb0f14db8e679b16db3f17ec75896dd1d446b1da)
+- Wrapper pool `fwUSDC/USDC`: [successful transaction](https://etherscan.io/tx/0xc41a4a28ced215b5af692287571bbdfdab30efb532b83cac63ca26992d3cb576)
+
+Both receipts contain a successful PoolManager `Swap` event for the named Pool ID. They prove that the pools can
+execute; they do not identify an aggregator source or prove complete production support by any aggregator.
+
+## Aggregator integration status
+
+Aggregator support changes independently from the static addresses. Use the dated
+[aggregator status file](/data/fewtoken-v4-aggregator-status.json) instead of adding support claims to the manifest.
+
+- **0x:** `fwUSDR -> fwDAI` and `USDC -> fwUSDC` returned `Uniswap_V4` quotes and executable calldata. No transaction
+  was broadcast and all-pool coverage remains unverified.
+- **KyberSwap:** quote status remains unverified because its API was unavailable during the check. The official source
+  catalog distinguishes generic `uniswap-v4` from Hook-specific sources.
+- **1inch:** source and quote status remain unverified because its API was unavailable during the check. Confirmation
+  requires both a listed liquidity source and executable swap calldata containing the expected pool/source evidence.
+
+An API failure means unavailable during that check; it does not mean unsupported.
+
+## Source, ABI, and control assumptions
+
+At block `25,851,888`, the seven `FewTokenHook` deployments and the `FewUSDTHook` deployment matched
+[`v4-periphery` commit `31db16f7ebabe40827ab6dd1098d66840b7f80ad`](https://github.com/RingProtocol/v4-periphery/tree/31db16f7ebabe40827ab6dd1098d66840b7f80ad)
+after masking immutable constructor values. Their ABIs are linked at the top of this page.
+
+The deployed `FewETHHook` was separately reproduced from
+[`v4-periphery` commit `0bc60b31c56d9115605b80720ceb8deb9c68b7ac`](https://github.com/RingProtocol/v4-periphery/blob/0bc60b31c56d9115605b80720ceb8deb9c68b7ac/src/hooks/FewETHHook.sol)
+with Solidity `0.8.26`, optimizer runs `44,444,444`, and EVM target `cancun`. The compiled and deployed runtimes are
+both 6,729 bytes and match after masking immutable constructor values. The exact deployed address also has
+[verified explorer source and ABI](https://etherscan.io/address/0x044301939deb7ca53c4733dd4d9b3bc5ea0c6888#code).
+
+The matched hook source uses immutable PoolManager/token dependencies and exposes no owner, upgrade, fee, pause, or
+withdrawal administration. The underlying FewToken contracts, PoolManager, tokens, and router remain separate trust
+and integration dependencies.
+
+No public professional audit report in the Ring `v4-periphery` repository names these Few hook deployments and an
+exact source commit as its scope. The repository's existing ABDK report covers upstream v4 periphery and Universal
+Router code, so it must not be cited as a Few-hook audit.
+
 ## Integration completion criteria
 
 FewToken liquidity support is complete when:
@@ -177,6 +322,7 @@ FewToken liquidity support is complete when:
 - a pool can enter the route when it improves the quote
 - the router can produce executable calldata with the correct currencies, fee, tick spacing, hook, direction, amount,
   slippage protection, and hook data
+- the integration can replay the published standard and wrapper vectors from the pinned block
 - at least one mainnet transaction succeeds through a FewToken trading pool and at least one succeeds through a
   wrapper-hook pool
 - the quote response or transaction trace identifies the FewToken pool or the aggregator's FewToken liquidity source
@@ -185,12 +331,13 @@ Support can ship in stages. Trading-pool support is a valid first release on its
 hook handling. Wrapper-pool support completes the integration by adding underlying-asset entry and exit points to
 FewToken routes.
 
-## Technical references
+## Protocol and contract references
 
-- [Few hook contracts](/contracts/v4/guides/hooks/few-hook-contracts)
 - [Uniswap v4 deployment addresses](/contracts/v4/deployments)
-- [Ring v4-periphery hook source](https://github.com/RingProtocol/v4-periphery/tree/main/src/hooks)
-- [ABDK hook audit](https://github.com/RingProtocol/v4-periphery/blob/main/audits/ABDK_RingProtocol_Hook_v_1_0.pdf)
+- [FewTokenHook and FewUSDTHook source at the verified reference commit](https://github.com/RingProtocol/v4-periphery/tree/31db16f7ebabe40827ab6dd1098d66840b7f80ad/src/hooks)
+- [FewETHHook source at the bytecode-matched commit](https://github.com/RingProtocol/v4-periphery/blob/0bc60b31c56d9115605b80720ceb8deb9c68b7ac/src/hooks/FewETHHook.sol)
 - [Uniswap v4 `PoolKey`](https://github.com/Uniswap/v4-core/blob/main/src/types/PoolKey.sol)
 - [Uniswap v4 Quoter](https://github.com/Uniswap/v4-periphery/blob/main/src/lens/V4Quoter.sol)
-- [Uniswap Universal Router](https://github.com/Uniswap/universal-router)
+
+For ingestion questions, wrapper test vectors, or coverage confirmation, contact
+[contact@ring.exchange](mailto:contact@ring.exchange).

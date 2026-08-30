@@ -40,8 +40,7 @@ environment. They should not be read as a separate native Ring v4 protocol.
 | Execute a swap | [Swap](./quickstart/swap) |
 | Add or manage liquidity | [Manage Liquidity](./quickstart/manage-liquidity/setup-liquidity) |
 | Build a hook | [Your First Hook](./guides/hooks/your-first-hook) |
-| Understand Few hook contracts | [Few Hook Contracts](./guides/hooks/few-hook-contracts) |
-| Prepare pool data for an aggregator | [FewToken Liquidity and Aggregator Integration](./guides/fewtoken-liquidity-aggregation) |
+| Integrate FewToken pools and wrapper hooks | [FewToken Liquidity and Aggregator Integration](./guides/fewtoken-liquidity-aggregation) |
 
 Source: [Ring v4 integration periphery](https://github.com/RingProtocol/v4-periphery).
 

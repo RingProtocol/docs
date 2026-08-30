@@ -40,9 +40,9 @@ wrapper on that network.
 The standard wrapper functions move the original token into the FewToken contract and mint the same **raw integer
 amount**. Unwrap burns the caller's FewToken and transfers the same raw amount of the original token from the wrapper.
 
-FewToken contracts in the reviewed source declare 18 decimals. An original token may use a different decimal count.
-Do not describe this as one displayed token for one displayed token without checking both contracts. Build amounts from
-raw units and test the selected deployment.
+The deployed FewToken implementation reads the original token's decimals in its constructor. The 22 documented
+FewTokens checked on `2026-08-28` had the same decimal count as their original tokens. Do not assume every FewToken has
+18 decimals. Read `decimals()` from both contracts and build amounts from raw units.
 
 The standard implementation does not measure how many original tokens a fee-on-transfer token actually delivered
 before minting. Rebasing, fee-on-transfer, callback, blacklist, and other nonstandard tokens require a separate review.
