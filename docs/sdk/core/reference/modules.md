@@ -108,7 +108,7 @@ const ETH = Ether.onChain(1)
 // ERC-20 Token
 const USDC = new Token(
   1, // chainId
-  '0xA0b86a33E6417c29C8F6e3b6E4E12A82aA4Ca8e9', // address
+  '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48', // address
   6, // decimals
   'USDC', // symbol
   'USD Coin' // name

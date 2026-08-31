@@ -1,0 +1,203 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://docs.ring.exchange/data/schema/fewtoken-v4-pools-ethereum.schema.json",
+  "title": "Ring FewToken Uniswap v4 Ethereum integration manifest",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "manifestVersion",
+    "network",
+    "chainId",
+    "contracts",
+    "defaults",
+    "counts",
+    "tokens",
+    "hookContracts",
+    "pools"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schemaVersion": { "const": 7 },
+    "manifestVersion": { "type": "integer", "minimum": 1 },
+    "updatedAt": { "type": "string", "format": "date-time" },
+    "canonicalUrl": { "type": "string", "format": "uri" },
+    "integrity": { "type": "string" },
+    "network": { "const": "ethereum" },
+    "chainId": { "const": 1 },
+    "scope": { "type": "string" },
+    "poolManager": { "$ref": "#/$defs/address" },
+    "contracts": {
+      "type": "object",
+      "required": [
+        "poolManager",
+        "stateView",
+        "v4Quoter",
+        "permit2",
+        "universalRouter",
+        "universalRouterVersion",
+        "fewFactory",
+        "fewWrappedTokenInitCodeHash"
+      ],
+      "properties": {
+        "poolManager": { "$ref": "#/$defs/address" },
+        "stateView": { "$ref": "#/$defs/address" },
+        "v4Quoter": { "$ref": "#/$defs/address" },
+        "permit2": { "$ref": "#/$defs/address" },
+        "universalRouter": { "$ref": "#/$defs/address" },
+        "universalRouterVersion": { "type": "string" },
+        "universalRouterSource": { "type": "string", "format": "uri" },
+        "fewFactory": { "$ref": "#/$defs/address" },
+        "fewWrappedTokenInitCodeHash": { "$ref": "#/$defs/bytes32" }
+      },
+      "additionalProperties": false
+    },
+    "defaults": {
+      "type": "object",
+      "required": ["hookData"],
+      "properties": { "hookData": { "const": "0x" } },
+      "additionalProperties": false
+    },
+    "counts": {
+      "type": "object",
+      "required": ["pools", "fewTokenTradingPools", "wrapperPools"],
+      "properties": {
+        "pools": { "const": 25 },
+        "fewTokenTradingPools": { "const": 16 },
+        "wrapperPools": { "const": 9 }
+      },
+      "additionalProperties": false
+    },
+    "tokens": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/token" }
+    },
+    "hookContracts": {
+      "type": "array",
+      "minItems": 9,
+      "items": { "$ref": "#/$defs/hookContract" }
+    },
+    "hookPermissions": { "type": "object" },
+    "hookSourceVerification": { "type": "object" },
+    "pools": {
+      "type": "array",
+      "minItems": 25,
+      "maxItems": 25,
+      "items": { "$ref": "#/$defs/pool" }
+    }
+  },
+  "$defs": {
+    "address": {
+      "type": "string",
+      "pattern": "^0x[0-9a-f]{40}$"
+    },
+    "bytes32": {
+      "type": "string",
+      "pattern": "^0x[0-9a-f]{64}$"
+    },
+    "token": {
+      "type": "object",
+      "required": ["symbol", "address", "decimals", "type", "underlying"],
+      "properties": {
+        "symbol": { "type": "string", "minLength": 1 },
+        "address": { "$ref": "#/$defs/address" },
+        "decimals": { "type": "integer", "minimum": 0, "maximum": 255 },
+        "type": { "enum": ["native", "erc20", "fewToken"] },
+        "underlying": {
+          "oneOf": [
+            { "type": "null" },
+            {
+              "type": "object",
+              "required": ["symbol", "address", "decimals"],
+              "properties": {
+                "symbol": { "type": "string" },
+                "address": { "$ref": "#/$defs/address" },
+                "decimals": { "type": "integer", "minimum": 0, "maximum": 255 }
+              },
+              "additionalProperties": false
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "hookContract": {
+      "type": "object",
+      "required": ["deployment", "contractType", "address", "source", "abi"],
+      "properties": {
+        "deployment": { "type": "string" },
+        "contractType": { "enum": ["FewTokenHook", "FewUSDTHook", "FewETHHook"] },
+        "address": { "$ref": "#/$defs/address" },
+        "source": { "type": ["string", "null"] },
+        "verifiedSource": { "type": "string", "format": "uri" },
+        "referenceSource": { "type": "string" },
+        "abi": { "type": ["string", "null"] },
+        "provenanceStatus": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "currency": {
+      "type": "object",
+      "required": ["symbol", "address", "etherscan"],
+      "properties": {
+        "symbol": { "type": "string" },
+        "address": { "$ref": "#/$defs/address" },
+        "etherscan": { "type": "string", "format": "uri" }
+      },
+      "additionalProperties": false
+    },
+    "poolKey": {
+      "type": "object",
+      "required": ["currency0", "currency1", "fee", "tickSpacing", "hooks"],
+      "properties": {
+        "currency0": { "$ref": "#/$defs/address" },
+        "currency1": { "$ref": "#/$defs/address" },
+        "fee": { "type": "integer", "minimum": 0, "maximum": 16777215 },
+        "tickSpacing": { "type": "integer" },
+        "hooks": { "$ref": "#/$defs/address" }
+      },
+      "additionalProperties": false
+    },
+    "pool": {
+      "type": "object",
+      "required": [
+        "pair",
+        "type",
+        "currency0",
+        "currency1",
+        "fee",
+        "tickSpacing",
+        "hook",
+        "poolId",
+        "poolKey",
+        "initialization",
+        "integrationPath",
+        "links"
+      ],
+      "properties": {
+        "pair": { "type": "string" },
+        "type": { "enum": ["FewToken Trading", "Wrapper"] },
+        "currency0": { "$ref": "#/$defs/currency" },
+        "currency1": { "$ref": "#/$defs/currency" },
+        "fee": {
+          "type": "object",
+          "required": ["raw", "percent"],
+          "properties": {
+            "raw": { "type": "integer" },
+            "percent": { "type": "string" }
+          },
+          "additionalProperties": false
+        },
+        "tickSpacing": { "type": "integer" },
+        "hook": { "type": ["object", "null"] },
+        "poolId": { "$ref": "#/$defs/bytes32" },
+        "poolKey": { "$ref": "#/$defs/poolKey" },
+        "initialization": { "type": "object" },
+        "integrationPath": {
+          "enum": ["generic-uniswap-v4", "custom-hook-review"]
+        },
+        "links": { "type": "object" }
+      }
+    }
+  }
+}

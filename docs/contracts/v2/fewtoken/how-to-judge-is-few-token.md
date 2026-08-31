@@ -3,8 +3,8 @@ title: How to Identify a FewToken
 sidebar_position: 3
 ---
 
-A supported FewToken is the wrapper returned by the published and independently verified `FewFactory` for an underlying
-ERC-20 on the selected chain.
+A supported FewToken is the wrapper returned by the published `FewFactory` for an underlying ERC-20 on the selected
+chain. Verify that factory onchain before using its mapping.
 
 The canonical check is:
 

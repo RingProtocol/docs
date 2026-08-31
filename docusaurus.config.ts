@@ -150,6 +150,10 @@ const config: Config = {
       {
         redirects: [
           {
+            to: '/contracts/v4/guides/fewtoken-liquidity-aggregation',
+            from: ['/contracts/v4/guides/hooks/few-hook-contracts'],
+          },
+          {
             to: '/wallet/integrate-dapp/dapp-integration',
             from: ['/wallet/guides/dapp-integration.md', '/wallet/guides/dapp-integration.mdx'],
           },

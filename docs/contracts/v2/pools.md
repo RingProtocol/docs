@@ -20,12 +20,15 @@ HyperEVM (`999`), and MegaETH (`4326`) in the same order.
 | Network | Chain ID | Pool reference |
 | --- | ---: | --- |
 | Ethereum | `1` | Live Ring Pool Explorer |
-| BNB Smart Chain | `56` | Curated reference pool and factory snapshot |
-| HyperEVM | `999` | Complete factory snapshot at the listed block |
-| MegaETH | `4326` | Query the Ring Swap Factory; no curated table yet |
+| BNB Smart Chain | `56` | Curated reference pool |
+| HyperEVM | `999` | Published factory pool references |
+| MegaETH | `4326` | Published factory pool references |
 
 Pair addresses are chain-specific. Select the network first, then use that network's Ring Swap Factory and FewToken
 mappings.
+
+For automated ingestion, use the [Ring Swap deployment manifest](/data/ring-swap-v2.json). The manifest records the
+same contract, FewToken, and Pair relationships without requiring table scraping.
 
 Some partner APIs call Ring Swap liquidity `FewV2`. This is the network-specific pool reference for that
 integration name.
@@ -48,7 +51,8 @@ contract integration with a minimum output or maximum input, future deadline, ve
 - **Contracts:** [Ethereum deployments](./deployments#eth-mainnet)
 - **Pools:** [Browse Ethereum pools in the Ring Pool Explorer](https://app.ring.exchange/explorer#/explore/pools)
 
-Ethereum pools are discovered through the live explorer instead of a static table.
+Discover Ethereum pools through the live explorer or enumerate the Ring Swap Factory onchain. Verify each pair and
+its FewToken mappings before including it in a route.
 
 ## BNB Smart Chain
 
@@ -65,14 +69,14 @@ Ethereum pools are discovered through the live explorer instead of a static tabl
 
 ### Token mapping
 
-| FewToken | Original token |
-| --- | --- |
-| `fwWBNB`: [`0x7f0172b75d3823D8aF04feE3A3f6a14aBD68EFE1`](https://bscscan.com/address/0x7f0172b75d3823D8aF04feE3A3f6a14aBD68EFE1) | `WBNB`: [`0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c`](https://bscscan.com/address/0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c) |
-| `fwETH`: [`0x86fa03945646a99A03543e7e0036361Ffadc73E6`](https://bscscan.com/address/0x86fa03945646a99A03543e7e0036361Ffadc73E6) | `ETH`: [`0x2170Ed0880ac9A755fd29B2688956BD959F933F8`](https://bscscan.com/address/0x2170Ed0880ac9A755fd29B2688956BD959F933F8) |
+| FewToken | Decimals | Original token |
+| --- | ---: | --- |
+| `fwWBNB`: [`0x7f0172b75d3823D8aF04feE3A3f6a14aBD68EFE1`](https://bscscan.com/address/0x7f0172b75d3823D8aF04feE3A3f6a14aBD68EFE1) | `18` | `WBNB`: [`0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c`](https://bscscan.com/address/0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c) |
+| `fwETH`: [`0x86fa03945646a99A03543e7e0036361Ffadc73E6`](https://bscscan.com/address/0x86fa03945646a99A03543e7e0036361Ffadc73E6) | `18` | `ETH`: [`0x2170Ed0880ac9A755fd29B2688956BD959F933F8`](https://bscscan.com/address/0x2170Ed0880ac9A755fd29B2688956BD959F933F8) |
 
-The BSC factory returned 52 pairs at block `116,980,675`. The table above is deliberately curated. It is not a complete
-factory index, a recommendation, or a guarantee of current liquidity. Integrators that enumerate the permissionless
-factory must still apply their own token and pair allowlist and validate both FewToken addresses through FewFactory.
+The table above is curated. It is not a complete factory index, a recommendation, or a guarantee of current liquidity.
+Integrators that enumerate the permissionless factory must still apply their own token and pair allowlist and validate
+both FewToken addresses through FewFactory.
 
 ## HyperEVM
 
@@ -80,7 +84,7 @@ factory must still apply their own token and pair allowlist and validate both Fe
 - **Ring Swap Factory:** [`0x4AfC2e4cA0844ad153B090dc32e207c1DD74a8E4`](https://hyperevmscan.io/address/0x4AfC2e4cA0844ad153B090dc32e207c1DD74a8E4)
 - **Contracts:** [HyperEVM deployments](./deployments#hyper-mainnet)
 
-### Factory pools at the snapshot block
+### Reference pools {#factory-pools-at-the-snapshot-block}
 
 | Pool | Pair address |
 | --- | --- |
@@ -92,32 +96,43 @@ factory must still apply their own token and pair allowlist and validate both Fe
 
 ### Token mapping
 
-| FewToken | Original token |
-| --- | --- |
-| `fwWHYPE`: [`0x9e1148bC3665a9f7C35F313d89c0432c34928AEf`](https://hyperevmscan.io/address/0x9e1148bC3665a9f7C35F313d89c0432c34928AEf) | `WHYPE`: [`0x5555555555555555555555555555555555555555`](https://hyperevmscan.io/address/0x5555555555555555555555555555555555555555) |
-| `fwUSD₮0`: [`0x7576dd9a2775bFd789616d9eA7A2af21d06782D0`](https://hyperevmscan.io/address/0x7576dd9a2775bFd789616d9eA7A2af21d06782D0) | `USD₮0`: [`0xB8CE59FC3717ada4C02eaDF9682A9e934F625ebb`](https://hyperevmscan.io/address/0xB8CE59FC3717ada4C02eaDF9682A9e934F625ebb) |
-| `fwUETH`: [`0x0C47cbbEDE5d8c6f9614cF770C26c3315205C397`](https://hyperevmscan.io/address/0x0C47cbbEDE5d8c6f9614cF770C26c3315205C397) | `UETH`: [`0xBe6727B535545C67d5cAa73dEa54865B92CF7907`](https://hyperevmscan.io/address/0xBe6727B535545C67d5cAa73dEa54865B92CF7907) |
-| `fwUSDC`: [`0xd2646b9B02859416D8cBc759F85f0676f6E19974`](https://hyperevmscan.io/address/0xd2646b9B02859416D8cBc759F85f0676f6E19974) | `USDC`: [`0xb88339CB7199b77e23DB6E890353E22632Ba630f`](https://hyperevmscan.io/address/0xb88339CB7199b77e23DB6E890353E22632Ba630f) |
-| `fwUSDH`: [`0x09D21E89EF332347eb3E1E496f1265a600e364C1`](https://hyperevmscan.io/address/0x09D21E89EF332347eb3E1E496f1265a600e364C1) | `USDH`: [`0x111111a1a0667d36bD57c0A9f569b98057111111`](https://hyperevmscan.io/address/0x111111a1a0667d36bD57c0A9f569b98057111111) |
-
-At block `43,670,147`, the HyperEVM factory returned five pairs. All five pair addresses, pair tokens, and
-FewToken-to-original-token mappings above were read onchain. This records factory state, not token review, price quality,
-liquidity, or suitability for user funds.
+| FewToken | Decimals | Original token |
+| --- | ---: | --- |
+| `fwWHYPE`: [`0x9e1148bC3665a9f7C35F313d89c0432c34928AEf`](https://hyperevmscan.io/address/0x9e1148bC3665a9f7C35F313d89c0432c34928AEf) | `18` | `WHYPE`: [`0x5555555555555555555555555555555555555555`](https://hyperevmscan.io/address/0x5555555555555555555555555555555555555555) |
+| `fwUSD₮0`: [`0x7576dd9a2775bFd789616d9eA7A2af21d06782D0`](https://hyperevmscan.io/address/0x7576dd9a2775bFd789616d9eA7A2af21d06782D0) | `6` | `USD₮0`: [`0xB8CE59FC3717ada4C02eaDF9682A9e934F625ebb`](https://hyperevmscan.io/address/0xB8CE59FC3717ada4C02eaDF9682A9e934F625ebb) |
+| `fwUETH`: [`0x0C47cbbEDE5d8c6f9614cF770C26c3315205C397`](https://hyperevmscan.io/address/0x0C47cbbEDE5d8c6f9614cF770C26c3315205C397) | `18` | `UETH`: [`0xBe6727B535545C67d5cAa73dEa54865B92CF7907`](https://hyperevmscan.io/address/0xBe6727B535545C67d5cAa73dEa54865B92CF7907) |
+| `fwUSDC`: [`0xd2646b9B02859416D8cBc759F85f0676f6E19974`](https://hyperevmscan.io/address/0xd2646b9B02859416D8cBc759F85f0676f6E19974) | `6` | `USDC`: [`0xb88339CB7199b77E23DB6E890353E22632Ba630f`](https://hyperevmscan.io/address/0xb88339CB7199b77E23DB6E890353E22632Ba630f) |
+| `fwUSDH`: [`0x09D21E89EF332347eb3E1E496f1265a600e364C1`](https://hyperevmscan.io/address/0x09D21E89EF332347eb3E1E496f1265a600e364C1) | `6` | `USDH`: [`0x111111a1a0667d36bD57c0A9f569b98057111111`](https://hyperevmscan.io/address/0x111111a1a0667d36bD57c0A9f569b98057111111) |
 
 ## MegaETH Mainnet
 
 - **Chain ID:** `4326`
+- **Ring Swap Factory:** [`0x47C436602d2598d0ef4b50888F29a528B6Bccc95`](https://megaeth.blockscout.com/address/0x47C436602d2598d0ef4b50888F29a528B6Bccc95)
 - **Contracts:** [MegaETH deployments](./deployments#megaeth-mainnet)
 
-A curated MegaETH pool table is not maintained on this page yet. Integrators should query the published Ring Swap
-Factory, validate returned FewToken addresses through FewFactory, and apply a separate asset and pair allowlist.
+### Reference pools {#factory-pools-at-the-snapshot-block-1}
+
+| Pool | Pair address |
+| --- | --- |
+| `fwWETH / fwUSDm` | [`0xB33FE892Dd65dD0739F3de89e69C8E98d4733556`](https://megaeth.blockscout.com/address/0xB33FE892Dd65dD0739F3de89e69C8E98d4733556) |
+
+### Token mapping
+
+| FewToken | Decimals | Original token |
+| --- | ---: | --- |
+| `fwWETH`: [`0x65c46c31E340D6C546309733CF50Ef4d150094C4`](https://megaeth.blockscout.com/address/0x65c46c31E340D6C546309733CF50Ef4d150094C4) | `18` | `WETH`: [`0x4200000000000000000000000000000000000006`](https://megaeth.blockscout.com/address/0x4200000000000000000000000000000000000006) |
+| `fwUSDm`: [`0xE9Cd1B2C75e648449256325d5D06b3D63DC66Aa5`](https://megaeth.blockscout.com/address/0xE9Cd1B2C75e648449256325d5D06b3D63DC66Aa5) | `6` | `USDm`: [`0xFAfDdbb3FC7688494971a79cc65DCa3EF82079E7`](https://megaeth.blockscout.com/address/0xFAfDdbb3FC7688494971a79cc65DCa3EF82079E7) |
 
 The published `@ring-protocol/v2-sdk@1.0.0` does not support MegaETH FewToken and pair derivation. Do not use its
 MegaETH address helpers until the [SDK support table](/sdk/v2/overview#published-network-support) names a fixed published
 version.
 
-## Verification snapshot
+## Pool state {#verification-snapshot}
 
-The BSC and HyperEVM tables were checked on `2026-08-20`. A snapshot records the addresses and mappings returned at the
-listed blocks. It does not prove current code, reserves, trading volume, asset quality, approval safety, or suitability
-for a particular order size. Recheck the factory and wrapper mappings at the block used for your transaction.
+These tables provide deployment references, not live liquidity data. Verify factory and FewToken mappings onchain,
+read current reserves, and simulate the intended trade before execution.
+
+Historical factory counts, mapping checks, and reserve checks are in the
+[status snapshot](/data/ring-swap-v2-status.json), with a verification block for each network. Those results apply
+only to the recorded blocks and do not establish current liquidity, asset quality, approval safety, or suitability
+for a particular order size.

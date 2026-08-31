@@ -24,8 +24,8 @@ All three packages are maintained in the [Ring SDK monorepo](https://github.com/
 
 ## Published network support
 
-This table describes `@ring-protocol/v2-sdk@1.0.0`, the package checked on `2026-08-20`. A chain appearing in
-`@ring-protocol/sdk-core` does not mean the FewToken-aware v2 package supports that chain.
+This table describes `@ring-protocol/v2-sdk@1.0.0`. A chain appearing in `@ring-protocol/sdk-core` does not mean the
+FewToken-aware v2 package supports that chain.
 
 | Network | Chain ID | Published v2 SDK status |
 | --- | --- | --- |
@@ -51,8 +51,8 @@ resolve them directly onchain.
 ## FewToken rule
 
 Ring Swap pools and paths use FewToken addresses. Derive wrappers through SDK configuration only on a supported network,
-then compare the result with the published and independently verified `FewFactory` onchain. Do not identify a wrapper
-only from its symbol, name, token-list entry, or the existence of a pool.
+then verify the result onchain against the published `FewFactory`. Do not identify a wrapper only from its symbol,
+name, token-list entry, or the existence of a pool.
 
 The v1.0.0 `isFewToken()` helper checks display metadata and must not be used as an authorization or asset-identity
 check. Confirm `FewFactory.getWrappedToken(underlying) === candidate` onchain. For pair identity, confirm

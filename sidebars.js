@@ -96,7 +96,6 @@ const sidebars = {
           collapsed: true,
           items: [
             'contracts/v4/guides/fewtoken-liquidity-aggregation',
-            'contracts/v4/guides/hooks/few-hook-contracts',
             'contracts/v4/guides/hooks/your-first-hook',
             'contracts/v4/guides/hooks/hook-deployment',
             'contracts/v4/guides/read-pool-state',

@@ -3,7 +3,10 @@
 - [Overview](https://docs.ring.exchange/contracts/v4/overview): Overview of Ring's current `FewToken + Uniswap v4` integration surface and how it differs from Ring Swap (v2).
 - [Hooks](https://docs.ring.exchange/contracts/v4/concepts/hooks): Hook concepts relevant to the current `FewToken + Uniswap v4` integration stack.
 - [Deployments](https://docs.ring.exchange/contracts/v4/deployments): Published Uniswap v4 integration contract addresses referenced by this section.
-- [Few Hook Contracts](https://docs.ring.exchange/contracts/v4/guides/hooks/few-hook-contracts): Few Protocol hook contracts and published Ethereum mainnet hook addresses.
+- [FewToken Liquidity and Aggregator Integration](https://docs.ring.exchange/contracts/v4/guides/fewtoken-liquidity-aggregation): Machine-readable Ethereum PoolKeys, Ring contract and token metadata, per-pool state, Hook ABIs, and fork-replayed quote and execution vectors for aggregator integrations.
+- [FewToken v4 Static Manifest](https://docs.ring.exchange/data/fewtoken-v4-pools-ethereum.json): Versioned contracts, tokens, Hook deployments, exact PoolKeys, initialization data, and integration paths for 25 Ethereum pools.
+- [FewToken v4 Status Snapshot](https://docs.ring.exchange/data/fewtoken-v4-pools-ethereum-status.json): Block-pinned state for all 25 pools plus bidirectional Quoter and Universal Router calldata for a standard and wrapper pool.
+- [FewToken Aggregator Status](https://docs.ring.exchange/data/fewtoken-v4-aggregator-status.json): Dated 0x, KyberSwap, and 1inch verification status kept separate from the static deployment manifest.
 - [Hook Deployment](https://docs.ring.exchange/contracts/v4/guides/hooks/hook-deployment): Hook permission flags, address encoding, and CREATE2 mining workflow.
 - [Building Your First Hook](https://docs.ring.exchange/contracts/v4/guides/hooks/your-first-hook): Introductory guide to building a custom hook in the current v4 integration environment.
 - [Create Pool](https://docs.ring.exchange/contracts/v4/quickstart/create-pool): Create and initialize a pool in the current Uniswap v4 integration environment.

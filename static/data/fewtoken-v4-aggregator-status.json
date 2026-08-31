@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-08-28T09:54:34Z",
+  "network": "ethereum",
+  "chainId": 1,
+  "scope": {
+    "manifest": "/data/fewtoken-v4-pools-ethereum.json",
+    "poolCount": 25,
+    "standardPools": 16,
+    "wrapperPools": 9
+  },
+  "interpretation": "This is a dated integration-status record, not a static deployment manifest. Partial path evidence does not prove all-pool coverage, official production support, or completed mainnet transactions through an aggregator.",
+  "aggregators": [
+    {
+      "name": "0x",
+      "status": "partial-paths-verified",
+      "lastCheckedAt": "2026-08-28T09:54:34Z",
+      "sourceIdObserved": "Uniswap_V4",
+      "pathsObserved": ["fwUSDR -> fwDAI", "USDC -> fwUSDC"],
+      "executableCalldataReturned": true,
+      "transactionBroadcast": false,
+      "allPoolCoverage": "unverified",
+      "officialProductionSupport": "unverified",
+      "recommendedNextCheck": "Ask 0x to confirm all 16 standard pools, then submit the nine wrapper pools through its custom Uniswap v4 Hook review path.",
+      "officialReference": "https://docs.0x.org/liquidity-integration/liquidity-integrations"
+    },
+    {
+      "name": "KyberSwap",
+      "status": "unverified",
+      "lastCheckedAt": "2026-08-28T09:54:34Z",
+      "apiReachability": "unavailable-during-check",
+      "genericSourceCandidate": "uniswap-v4",
+      "wrapperSourceCandidate": "uniswap-v4-few or another Hook-specific source",
+      "transactionBroadcast": false,
+      "allPoolCoverage": "unverified",
+      "officialProductionSupport": "unverified",
+      "recommendedNextCheck": "Request generic uniswap-v4 ingestion for the 16 standard pools and a separate adapter review for the nine wrapper pools.",
+      "officialReference": "https://docs.kyberswap.com/kyberswap-solutions/kyberswap-aggregator/dex-ids"
+    },
+    {
+      "name": "1inch",
+      "status": "unverified",
+      "lastCheckedAt": "2026-08-28T09:54:34Z",
+      "apiReachability": "unavailable-during-check",
+      "sourceIdObserved": null,
+      "transactionBroadcast": false,
+      "allPoolCoverage": "unverified",
+      "officialProductionSupport": "unverified",
+      "recommendedNextCheck": "Confirm that the liquidity-source API exposes the target pools and that the swap API returns executable calldata containing the expected PoolKey or source identifier.",
+      "officialReferences": [
+        "https://business.1inch.com/portal/documentation/apis/swap/classic-swap/methods/v6.1/1/liquidity-sources/method/get",
+        "https://business.1inch.com/portal/documentation/apis/swap/classic-swap/methods/v6.1/1/swap/method/get"
+      ]
+    }
+  ]
+}
