@@ -1,0 +1,258 @@
+{
+  "schemaVersion": 1,
+  "chainId": 4663,
+  "verifiedAt": "2026-09-17T16:45:19.880Z",
+  "verificationBlock": 65520097,
+  "verificationBlockHash": "0x334378531f98499deb2fd0d802d2adb2af7d270e629b2b20fce8b2e537780e2d",
+  "scope": "Deployment addresses, bytecode, Ring Router/Quoter runtime and creation bytecode, Ring router factory/WETH/FewFactory and fwWETH mapping. No pool inventory or reserve verification.",
+  "contracts": [
+    {
+      "label": "Core",
+      "address": "0x019bac14F283cAb4554eF768b36E8768Bd0C02CC",
+      "protocol": "fewv2",
+      "sourceUrl": "https://robinhoodchain.blockscout.com/address/0x019bac14f283cab4554ef768b36e8768bd0c02cc",
+      "runtimeCodeHash": "0x735f07c773ed9b92ebc5c973f4523ad5779da6906e1726aad362215632913c9b"
+    },
+    {
+      "label": "Few Factory",
+      "address": "0x0b255357B5681BB59eD67502206a9ec5D03A4b11",
+      "protocol": "fewv2",
+      "sourceUrl": "https://robinhoodchain.blockscout.com/address/0x0b255357b5681bb59ed67502206a9ec5d03a4b11",
+      "runtimeCodeHash": "0x5126b02f7eec0470df7780456cdcee61bc47bf7bf574f213674c66393fd50ae9"
+    },
+    {
+      "label": "fwWETH",
+      "address": "0xDD4eaAccA3b077c01e8eF45207fc48Fd1B54C735",
+      "protocol": "fewv2",
+      "sourceUrl": "https://robinhoodchain.blockscout.com/address/0xDD4eaAccA3b077c01e8eF45207fc48Fd1B54C735",
+      "runtimeCodeHash": "0xbe63f68c8de6e3f7cf411d9b117b931128468c36e0753fc5878fd5359f16acf5"
+    },
+    {
+      "label": "FewETHWrapper",
+      "address": "0x0BCc27D609bFEAeB6f9Af7593041e35Ee7085b56",
+      "protocol": "fewv2",
+      "sourceUrl": "https://robinhoodchain.blockscout.com/address/0x0bcc27d609bfeaeb6f9af7593041e35ee7085b56",
+      "runtimeCodeHash": "0xf5b08fad796ce0e4cdb3f6b4cddb60b1a9bc0bb45fd4cc267b83aa5b09e15464"
+    },
+    {
+      "label": "Ring Swap Factory",
+      "address": "0x29e47F8E17341D3ab23839BC7d56d286b4a35a19",
+      "protocol": "fewv2",
+      "sourceUrl": "https://robinhoodchain.blockscout.com/address/0x29e47f8e17341d3ab23839bc7d56d286b4a35a19",
+      "runtimeCodeHash": "0x2bfae682982cf201373b32a726e8239847140c5b9484278582a6f99bb7982aa8"
+    },
+    {
+      "label": "V2-Compatible Router using Ring Factory",
+      "address": "0xfF48D78C60e5F8Cf5193e1c7AbDE84c5567D0564",
+      "protocol": "fewv2",
+      "sourceUrl": "https://robinhoodchain.blockscout.com/address/0xff48d78c60e5f8cf5193e1c7abde84c5567d0564",
+      "runtimeCodeHash": "0x4661b19a3ce2d69b1d1b102a8bc05f076f9a2701d39e9e879408144a52e80ade"
+    },
+    {
+      "label": "Ring Swap Router",
+      "address": "0x1C215f82d4943799b495662734837978f0F0f558",
+      "protocol": "fewv2",
+      "sourceUrl": "https://robinhoodchain.blockscout.com/address/0x1c215f82d4943799b495662734837978f0f0f558",
+      "runtimeCodeHash": "0x359cddb80b7a2ab25b6e08cb757a61aabaea365236737775c1717f123cc8e9df"
+    },
+    {
+      "label": "Ring UniversalRouter",
+      "address": "0x269F10Ab1a7CE6c163B176D951eBd145A944A39D",
+      "protocol": "shared",
+      "sourceUrl": "https://robinhoodchain.blockscout.com/address/0x269F10Ab1a7CE6c163B176D951eBd145A944A39D",
+      "runtimeCodeHash": "0x679bf4174b1fb291bcd441611dab90ebbb809c0de3dac40cca743ed3c9718fd5"
+    },
+    {
+      "label": "Ring MixedQuoterV2",
+      "address": "0xc01f02abBBd53D72f0A00dc66D8AA9eF0183BF91",
+      "protocol": "shared",
+      "sourceUrl": "https://robinhoodchain.blockscout.com/address/0xc01f02abBBd53D72f0A00dc66D8AA9eF0183BF91",
+      "runtimeCodeHash": "0xa59cd4ec147c51dc0adc5636815abf7a9711da5da8da59ba4c628fdb44dd95be"
+    },
+    {
+      "label": "Timelock",
+      "address": "0xd0A08130435A430bb530D2ECBb5d08af0b156134",
+      "protocol": "fewv2",
+      "sourceUrl": "https://robinhoodchain.blockscout.com/address/0xd0a08130435a430bb530d2ecbb5d08af0b156134",
+      "runtimeCodeHash": "0x0350ba342a0b1a9ef954aabd9525d34dff95bd150cff8fb178e7636093977395"
+    },
+    {
+      "label": "WETH",
+      "address": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+      "protocol": "shared",
+      "sourceUrl": "https://robinhoodchain.blockscout.com/address/0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+      "runtimeCodeHash": "0x5706be52f64875fee65a2cec0d80e47a23d8793cbe85d214b48445e2d05f5353"
+    },
+    {
+      "label": "Permit2",
+      "address": "0x000000000022D473030F116dDEE9F6B43aC78BA3",
+      "protocol": "shared",
+      "sourceUrl": "https://robinhoodchain.blockscout.com/address/0x000000000022D473030F116dDEE9F6B43aC78BA3",
+      "runtimeCodeHash": "0x5208783f52488f7d3493e5e38311ab707c1d75457fe472a19b0b4d57d66a7fca"
+    },
+    {
+      "label": "Multicall3",
+      "address": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "protocol": "shared",
+      "sourceUrl": "https://robinhoodchain.blockscout.com/address/0xcA11bde05977b3631167028862bE2a173976CA11",
+      "runtimeCodeHash": "0xd5c15df687b16f2ff992fc8d767b4216323184a2bbc6ee2f9c398c318e770891"
+    },
+    {
+      "label": "UniswapV2Factory",
+      "address": "0x8bcEaA40B9AcdfAedF85AdF4FF01F5Ad6517937f",
+      "protocol": "v2",
+      "sourceUrl": "https://github.com/Uniswap/contracts/blob/37936185dee7decf681360ec799c124e0e034672/deployments/json/4663.json",
+      "runtimeCodeHash": "0xbab145d02e7005f0d84c6c1639d39b799b0ea16df99ebbdaf5a14d9da820b4e0"
+    },
+    {
+      "label": "UniswapV2Router02",
+      "address": "0x89e5DB8B5aA49aA85AC63f691524311AEB649eba",
+      "protocol": "v2",
+      "sourceUrl": "https://github.com/Uniswap/contracts/blob/37936185dee7decf681360ec799c124e0e034672/deployments/json/4663.json",
+      "runtimeCodeHash": "0xbd55ea26b2f8d42a8ff151511cef92a326a9817686899fe96a8a8f81ee7fc55e"
+    },
+    {
+      "label": "UniswapV3Factory",
+      "address": "0x1f7d7550B1b028f7571E69A784071F0205FD2EfA",
+      "protocol": "v3",
+      "sourceUrl": "https://github.com/Uniswap/contracts/blob/37936185dee7decf681360ec799c124e0e034672/deployments/json/4663.json",
+      "runtimeCodeHash": "0xec72b1abd1f2faee020cfea9c646bd8994f9fb389054f6e574f103a895091739"
+    },
+    {
+      "label": "QuoterV2",
+      "address": "0x33e885eD0Ec9bF04EcfB19341582aADCb4c8A9E7",
+      "protocol": "v3",
+      "sourceUrl": "https://github.com/Uniswap/contracts/blob/37936185dee7decf681360ec799c124e0e034672/deployments/json/4663.json",
+      "runtimeCodeHash": "0x3db0868d945e9304c9bc6a8b2181948109ea617647142f3c4083e14393496a28"
+    },
+    {
+      "label": "SwapRouter02",
+      "address": "0xCaf681a66D020601342297493863E78C959E5cb2",
+      "protocol": "v3",
+      "sourceUrl": "https://github.com/Uniswap/contracts/blob/37936185dee7decf681360ec799c124e0e034672/deployments/json/4663.json",
+      "runtimeCodeHash": "0x6f36c378e272c6324c48f045182bcb54bd8ad654cf9ebd42e8893d52c4cb25dc"
+    },
+    {
+      "label": "NonfungiblePositionManager",
+      "address": "0x73991a25C818Bf1f1128dEAaB1492D45638DE0D3",
+      "protocol": "v3",
+      "sourceUrl": "https://github.com/Uniswap/contracts/blob/37936185dee7decf681360ec799c124e0e034672/deployments/json/4663.json",
+      "runtimeCodeHash": "0x0a493d1af3d0f25fed8efa205244ebee14114267a08647fc38c515c7cd6ead4f"
+    },
+    {
+      "label": "TickLens",
+      "address": "0x7DfD4F31be6814D2906BDE155c3e1B146EAc1468",
+      "protocol": "v3",
+      "sourceUrl": "https://github.com/Uniswap/contracts/blob/37936185dee7decf681360ec799c124e0e034672/deployments/json/4663.json",
+      "runtimeCodeHash": "0xbf1bb07babb013f146395ed6e1127f8f48d598f1765bc660a91d7b164cf93ff8"
+    },
+    {
+      "label": "PoolManager",
+      "address": "0x8366a39CC670B4001A1121B8F6A443A643e40951",
+      "protocol": "v4",
+      "sourceUrl": "https://github.com/Uniswap/contracts/blob/37936185dee7decf681360ec799c124e0e034672/deployments/json/4663.json",
+      "runtimeCodeHash": "0xbd3881180b547f5fe817545743cfb4343e96b1bc6640dcd70c106b0066e95626"
+    },
+    {
+      "label": "PositionManager",
+      "address": "0x58daec3116aae6D93017bAAea7749052E8a04fA7",
+      "protocol": "v4",
+      "sourceUrl": "https://github.com/Uniswap/contracts/blob/37936185dee7decf681360ec799c124e0e034672/deployments/json/4663.json",
+      "runtimeCodeHash": "0xc873e135dc9aaec88489cfbad146b4cb49d6a32e0d80326377784b7ba17670b2"
+    },
+    {
+      "label": "V4Quoter",
+      "address": "0x8Dc178eFB8111BB0973Dd9d722ebeFF267c98F94",
+      "protocol": "v4",
+      "sourceUrl": "https://github.com/Uniswap/contracts/blob/37936185dee7decf681360ec799c124e0e034672/deployments/json/4663.json",
+      "runtimeCodeHash": "0xd707b1da8cb165e5ea35a3b4450d971eb562ec171e23492aa117036b78a868f6"
+    },
+    {
+      "label": "StateView",
+      "address": "0xF3334192D15450CdD385c8B70e03f9A6bD9E673b",
+      "protocol": "v4",
+      "sourceUrl": "https://github.com/Uniswap/contracts/blob/37936185dee7decf681360ec799c124e0e034672/deployments/json/4663.json",
+      "runtimeCodeHash": "0x7d9c591e0956fd89d98feb4ffcfe8bf1f7a62bd485edd979fa21d104b49878a6"
+    },
+    {
+      "label": "UniswapInterfaceMulticall",
+      "address": "0x282A3C4D320Cc7f0d5eaf56B8029e4B88338f0a3",
+      "protocol": "shared",
+      "sourceUrl": "https://github.com/Uniswap/contracts/blob/37936185dee7decf681360ec799c124e0e034672/deployments/json/4663.json",
+      "runtimeCodeHash": "0xaa2f42ac8eed7b6fce9828f68d29f3734387c3508e9a71fa83068cdff475cee8"
+    }
+  ],
+  "ringRouterAndQuoter": [
+    {
+      "name": "UniversalRouter",
+      "address": "0x269F10Ab1a7CE6c163B176D951eBd145A944A39D",
+      "transactionHash": "0xc98dba630db8e12b08c370de0d9369cc5b240176caf6f54e87c0307103184c88",
+      "deploymentBlock": 58676625,
+      "receiptSuccess": true,
+      "creationMatches": true,
+      "fullRuntimeMatches": true,
+      "runtimeHash": "0x679bf4174b1fb291bcd441611dab90ebbb809c0de3dac40cca743ed3c9718fd5",
+      "constructorParameters": {
+        "permit2": "0x000000000022D473030F116dDEE9F6B43aC78BA3",
+        "weth9": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "fewFactory": "0x0b255357B5681BB59eD67502206a9ec5D03A4b11",
+        "uniswapV2Factory": "0x8bcEaA40B9AcdfAedF85AdF4FF01F5Ad6517937f",
+        "ringSwapV2Factory": "0x29e47F8E17341D3ab23839BC7d56d286b4a35a19",
+        "uniswapV3Factory": "0x1f7d7550B1b028f7571E69A784071F0205FD2EfA",
+        "uniswapV2PairInitCodeHash": "0x96e8ac4277198ff8b6f785478aa9a39f403cb768dd02cbee326c3e7da348845f",
+        "ringSwapV2PairInitCodeHash": "0xb7963b5cfdf9e42bd2e41aaa19203f3bf84b51b6b7b24b64f7ab2313101bd54c",
+        "uniswapV3PoolInitCodeHash": "0xe34f199b19b2b4f47f68442619d555527d244f78a3297ea89325f843f87b8b54",
+        "fwrng": "0x6E4baa2Bba830988feF42DA3CD09CBa5cf36CA84",
+        "v4PoolManager": "0x8366a39CC670B4001A1121B8F6A443A643e40951",
+        "v3NFTPositionManager": "0x73991a25C818Bf1f1128dEAaB1492D45638DE0D3",
+        "v4PositionManager": "0x58daec3116aae6D93017bAAea7749052E8a04fA7"
+      }
+    },
+    {
+      "name": "MixedQuoter",
+      "address": "0xc01f02abBBd53D72f0A00dc66D8AA9eF0183BF91",
+      "transactionHash": "0x8f835d633694d3835bc017ddc7930bcbf137d2f69678d47f8636fc8886b1562d",
+      "deploymentBlock": 58680342,
+      "receiptSuccess": true,
+      "creationMatches": true,
+      "fullRuntimeMatches": true,
+      "runtimeHash": "0xa59cd4ec147c51dc0adc5636815abf7a9711da5da8da59ba4c628fdb44dd95be",
+      "constructorParameters": {
+        "_uniswapV4PoolManager": "0x8366a39CC670B4001A1121B8F6A443A643e40951",
+        "_uniswapV3Poolfactory": "0x1f7d7550B1b028f7571E69A784071F0205FD2EfA",
+        "_uniswapV2Poolfactory": "0x8bcEaA40B9AcdfAedF85AdF4FF01F5Ad6517937f",
+        "_ringSwapV2Factory": "0x29e47F8E17341D3ab23839BC7d56d286b4a35a19",
+        "_ringSwapV2PairInitCodeHash": "0xb7963b5cfdf9e42bd2e41aaa19203f3bf84b51b6b7b24b64f7ab2313101bd54c",
+        "_fewFactory": "0x0b255357B5681BB59eD67502206a9ec5D03A4b11",
+        "_WETH9": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73"
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "name": "documentV2Router",
+      "address": "0xff48d78c60e5f8cf5193e1c7abde84c5567d0564",
+      "factory": "0x29e47F8E17341D3ab23839BC7d56d286b4a35a19",
+      "weth": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+      "usesRingFactory": true
+    },
+    {
+      "name": "ringRouter",
+      "address": "0x1c215f82d4943799b495662734837978f0f0f558",
+      "factory": "0x29e47F8E17341D3ab23839BC7d56d286b4a35a19",
+      "weth": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+      "usesRingFactory": true
+    },
+    {
+      "name": "FewFactoryAndWETH",
+      "fewFactory": "0x0b255357B5681BB59eD67502206a9ec5D03A4b11",
+      "weth": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+      "fwWeth": "0xDD4eaAccA3b077c01e8eF45207fc48Fd1B54C735",
+      "matchesDocument": true
+    }
+  ],
+  "pairInitCodeHashes": {
+    "ringFewV2": "0xb7963b5cfdf9e42bd2e41aaa19203f3bf84b51b6b7b24b64f7ab2313101bd54c",
+    "uniswapV2": "0x96e8ac4277198ff8b6f785478aa9a39f403cb768dd02cbee326c3e7da348845f"
+  }
+}
