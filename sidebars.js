@@ -3,6 +3,12 @@ const sidebars = {
   main: [
     {
       type: 'category',
+      label: 'Updates',
+      collapsed: false,
+      items: ['changelog/sunset-of-blast-support'],
+    },
+    {
+      type: 'category',
       label: 'Start Here',
       collapsed: false,
       link: { type: 'doc', id: 'concepts/overview' },
