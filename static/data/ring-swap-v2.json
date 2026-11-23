@@ -1,12 +1,13 @@
 {
   "schemaVersion": 1,
   "name": "Ring Swap v2 deployment manifest",
-  "updatedAt": "2026-08-28",
+  "updatedAt": "2026-11-23",
   "documentation": "https://docs.ring.exchange/contracts/v2/deployments",
   "status": "/data/ring-swap-v2-status.json",
   "notes": [
-    "This manifest covers the four maintained mainnet sets in the public Ring Swap documentation, not every historical or testnet SDK constant.",
+    "This manifest covers the four maintained mainnet sets in the public Ring Swap documentation plus the Sepolia testnet set used for integration testing, not every historical or testnet SDK constant.",
     "Ring-owned contracts are separated from external dependencies.",
+    "UniswapV2Router02 entries mirror the UniswapV2Router field of the Ring tooling chain config; they are not the Ring Swap router. Verify router.factory() onchain before granting an allowance.",
     "FewToken identity must be verified with FewFactory.getWrappedToken(underlying).",
     "Pair identity must be verified with SwapV2Factory.getPair(token0, token1).",
     "An empty or curated pair list is not a complete factory index."
@@ -28,6 +29,7 @@
         "fewETHWrapper": "0xAda6059b4F6244Acd8934095Ed0162C5Df6B5ebB",
         "swapV2Factory": "0xeb2A625B704d73e82946D8d026E1F588Eed06416",
         "ringSwapRouter": "0x39d1d8fcC5E6EEAf567Bce4e29B94fec956D3519",
+        "UniswapV2Router02": "0x6A7c92Bddb8D695cfDFf5D47487A456Cc46e0ee5",
         "universalRouter": "0x24e743CcE93235641f2be8Ce7ffC6330903ab96f"
       },
       "dependencies": {
@@ -140,6 +142,7 @@
         "fewETHWrapper": "0xf9d7ff2f6A0c3631A807199276a493Af8097916F",
         "swapV2Factory": "0x4De602A30Ad7fEf8223dcf67A9fB704324C4dd9B",
         "ringSwapRouter": "0x20504f37A95eF80e3FC7476c4801fb39AaE6bAd0",
+        "UniswapV2Router02": "0x0E442504ce6a378492c461c44adBCE787903706E",
         "universalRouter": "0x1Fb6ef969D925f0B81245cE28F2cAD95b638CfCC"
       },
       "dependencies": {
@@ -182,6 +185,7 @@
         "fewETHWrapper": "0x068B60ECbC934b0a0dde20FdFf0dE925b97B971F",
         "swapV2Factory": "0x4AfC2e4cA0844ad153B090dc32e207c1DD74a8E4",
         "ringSwapRouter": "0x701D1d675415efA2d2429fB122ccC6dD4FCcA959",
+        "UniswapV2Router02": "0xcdCC42Ec0ECB7B5F9e4A5FE1Df99EeB1BDf46a00",
         "universalRouter": "0xE65081EFa5ad4A196B1Df768716c337e6AB140E9"
       },
       "dependencies": {
@@ -268,8 +272,8 @@
         "fewWrappedNative": "0x65c46c31E340D6C546309733CF50Ef4d150094C4",
         "fewETHWrapper": "0xb0Bd0CD58551b71079F36B198276832242D02C0F",
         "swapV2Factory": "0x47C436602d2598d0ef4b50888F29a528B6Bccc95",
-        "v2CompatibleRouter": "0xE73442C4b87283D75768F3668B411fc2348B429b",
         "ringSwapRouter": "0x88a9A29FA981721C04fdC367ab7e3C83A4C65db9",
+        "UniswapV2Router02": "0xE73442C4b87283D75768F3668B411fc2348B429b",
         "universalRouter": "0x9256667638ED96ba4eCb30bD23efD2A182e1bC98",
         "timelock": "0xb0BEa0daA0E57c43d92711f9dF2d0D54CebEEA72"
       },
@@ -303,6 +307,34 @@
           "token1": "0xE9Cd1B2C75e648449256325d5D06b3D63DC66Aa5"
         }
       ]
+    },
+    {
+      "chainId": 11155111,
+      "name": "Sepolia Testnet",
+      "testnet": true,
+      "ringContracts": {
+        "fewFactory": "0x226e65279E177A779522864Ce1dE40c85E2C08A5",
+        "fewETHWrapper": "0xC8D2bBBfDf6CED270d82aEa5961fE28608490F9f",
+        "swapV2Factory": "0x3d7101fde92d0961cac4b39ee5a638d7b6a88090",
+        "ringSwapRouter": "0x0F9f35B8b9015917a7A28821E596865532836567"
+      },
+      "dependencies": {
+        "wrappedNative": "0xfFf9976782d46CC05630D1f6eBAb18b2324d6B14"
+      },
+      "externalDex": {
+        "name": "Uniswap",
+        "v2Factory": "0x509166db8Fb9571F8C34EfcD7347809B34dE4e04",
+        "v2Router": null,
+        "bridgeTokens": [
+          "0xfFf9976782d46CC05630D1f6eBAb18b2324d6B14",
+          "0xA7a151d60Bbd522d3611C2dB3F1F972Ee9904B3e",
+          "0x7db5fA1170D15e8D02deFB483b833EB1f3bAAC38",
+          "0x5fbad067f69eBbc276410D78fF52823be133eD48"
+        ]
+      },
+      "pairListPolicy": "testnet; no verified pair list, enumerate SwapV2Factory before use",
+      "fewTokens": [],
+      "pairs": []
     }
   ]
 }
