@@ -44,73 +44,39 @@ jobs:
     if: github.ref != 'refs/heads/main' && github.ref != 'refs/heads/prod'
     permissions:
       contents: read
-      deployments: read
       pull-requests: write
     defaults:
       run:
         working-directory: ./
     steps:
-      - name: Wait for this commit's Vercel preview
-        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
-        id: vercel_preview_url
-        with:
-          retries: 3
-          script: |
-            const deadline = Date.now() + 420_000;
-            while (Date.now() < deadline) {
-              const { data: deployments } = await github.rest.repos.listDeployments({
-                ...context.repo,
-                sha: context.sha,
-                environment: 'Preview',
-                per_page: 100,
-              });
-              const deployment = deployments.find(deployment =>
-                deployment.sha === context.sha && deployment.creator?.login === 'vercel[bot]'
-              );
-              if (deployment) {
-                const { data: statuses } = await github.rest.repos.listDeploymentStatuses({
-                  ...context.repo,
-                  deployment_id: deployment.id,
-                  per_page: 1,
-                });
-                const status = statuses[0];
-                if (status?.state === 'success') {
-                  const url = new URL(status.environment_url);
-                  if (url.protocol !== 'https:' || !url.hostname.endsWith('.vercel.app') || url.username || url.password) {
-                    throw new Error('The Vercel deployment did not provide a valid HTTPS preview URL.');
-                  }
-                  core.setOutput('preview_url', url.href);
-                  core.info(`Auditing ${context.sha} at ${url.href}`);
-                  return;
-                }
-                if (['failure', 'error', 'inactive'].includes(status?.state)) {
-                  throw new Error(`Vercel deployment ${deployment.id} is ${status.state}.`);
-                }
-              }
-              core.info(`Waiting for a successful Vercel Preview deployment of ${context.sha}...`);
-              await new Promise(resolve => setTimeout(resolve, 15_000));
-            }
-            throw new Error(`Timed out waiting for the Vercel Preview deployment of ${context.sha}.`);
-
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
         with:
           persist-credentials: false
-      - name: Audit preview URL with Lighthouse (mobile)
+
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '20'
+          cache: 'yarn'
+          cache-dependency-path: yarn.lock
+
+      - name: Build this commit for Lighthouse
+        run: |
+          yarn install --frozen-lockfile
+          yarn build
+
+      - name: Audit production build with Lighthouse (mobile)
         id: lighthouse_audit_mobile
         uses: treosh/lighthouse-ci-action@3e7e23fb74242897f95c0ba9cabad3d0227b9b18 # v12
         with:
-          urls: |
-            ${{ steps.vercel_preview_url.outputs.preview_url }}
           uploadArtifacts: true
           artifactName: lighthouse-mobile
           temporaryPublicStorage: true
+          configPath: .github/lighthouse/lighthouse-mobile-config.json
 
-      - name: Audit preview URL with Lighthouse (desktop)
+      - name: Audit production build with Lighthouse (desktop)
         id: lighthouse_audit
         uses: treosh/lighthouse-ci-action@3e7e23fb74242897f95c0ba9cabad3d0227b9b18 # v12
         with:
-          urls: |
-            ${{ steps.vercel_preview_url.outputs.preview_url }}
           uploadArtifacts: true
           artifactName: lighthouse-desktop
           temporaryPublicStorage: true
@@ -124,7 +90,6 @@ jobs:
           MOBILE_MANIFEST: ${{ steps.lighthouse_audit_mobile.outputs.manifest }}
           DESKTOP_LINKS: ${{ steps.lighthouse_audit.outputs.links }}
           DESKTOP_MANIFEST: ${{ steps.lighthouse_audit.outputs.manifest }}
-          PREVIEW_URL: ${{ steps.vercel_preview_url.outputs.preview_url }}
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
@@ -132,7 +97,12 @@ jobs:
             const mobileResult = JSON.parse(process.env.MOBILE_MANIFEST)[0].summary;
             const desktopLinks = JSON.parse(process.env.DESKTOP_LINKS);
             const desktopResult = JSON.parse(process.env.DESKTOP_MANIFEST)[0].summary;
-            const previewUrl = process.env.PREVIEW_URL;
+            for (const links of [mobileLinks, desktopLinks]) {
+              const urls = Object.keys(links);
+              if (urls.length !== 1 || new URL(urls[0]).hostname !== 'localhost' || new URL(urls[0]).pathname !== '/') {
+                throw new Error('Lighthouse did not audit the locally built documentation homepage.');
+              }
+            }
             const formatResult = (res) => Math.round((res * 100));
             const score = res => res >= 90 ? '🟢' : res >= 50 ? '🟠' : '🔴';
             Object.keys(mobileResult).forEach(key => mobileResult[key] = formatResult(mobileResult[key]));
@@ -155,7 +125,7 @@ jobs:
               `| ${score(desktopResult['best-practices'])} Best practices | ${desktopResult['best-practices']} |`,
               `| ${score(desktopResult.seo)} SEO | ${desktopResult.seo} |`,
               ` `,
-              `*Lighthouse ran on [${previewUrl}](${previewUrl})*`
+              `*Lighthouse audited the production build of commit ${context.sha}, served locally in GitHub Actions. This does not measure Vercel hosting or CDN performance.*`
             ].join('\n');
             core.setOutput("comment", comment);
       - name: Add comment to PR
