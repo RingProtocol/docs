@@ -30,8 +30,10 @@ four maintained mainnet sets. The record has no Sepolia entry.
 `UniversalRouter` rows are published Ring routing endpoints. Do not infer that every Interface, API, or route uses that
 address. Select the execution flow first and allow only the router approved for that flow.
 
-`UniswapV2Router02` rows mirror the `UniswapV2Router` field of the Ring tooling chain config. They are not the Ring
-Swap router: verify the router's `factory()` and the resulting pair before granting an allowance.
+`UniswapV2Router02 (Ring deployment)` rows identify Ring-deployed V2-compatible routers connected to the Ring Swap
+Factory. They mirror the `UniswapV2Router` field of the Ring tooling chain config and the `UniswapV2Router02` manifest
+key. These are separate from the Ring Swap Router entries and are not Uniswap Labs deployments. Verify the router's
+`factory()` and the resulting pair before granting an allowance.
 
 Ring-published hook addresses used with external Uniswap v4 infrastructure are documented separately under
 [FewToken Liquidity and Aggregator Integration](/contracts/v4/guides/fewtoken-liquidity-aggregation).
@@ -61,7 +63,7 @@ raw amount, token path, spender, deadline, price limit, and simulation result.
 | Few Factory | `0x7D86394139bf1122E82FDF45Bb4e3b038A4464DD` |
 | fwWETH | `0xa250CC729Bb3323e7933022a67B52200fE354767` |
 | Ring Swap Router | `0x39d1d8fcC5E6EEAf567Bce4e29B94fec956D3519` |
-| UniswapV2Router02 | `0x6A7c92Bddb8D695cfDFf5D47487A456Cc46e0ee5` |
+| UniswapV2Router02 (Ring deployment) | `0x6A7c92Bddb8D695cfDFf5D47487A456Cc46e0ee5` |
 | UniversalRouter | `0x24e743CcE93235641f2be8Ce7ffC6330903ab96f` |
 | Permit2 | `0x000000000022D473030F116dDEE9F6B43aC78BA3` |
 | FewETHWrapper | `0xAda6059b4F6244Acd8934095Ed0162C5Df6B5ebB` |
@@ -85,7 +87,7 @@ raw amount, token path, spender, deadline, price limit, and simulation result.
 | Few Factory | `0xEeE400Eabfba8F60f4e6B351D8577394BeB972CD` |
 | fwWBNB | `0x7f0172b75d3823D8aF04feE3A3f6a14aBD68EFE1` |
 | Ring Swap Router | `0x20504f37A95eF80e3FC7476c4801fb39AaE6bAd0` |
-| UniswapV2Router02 | `0x0E442504ce6a378492c461c44adBCE787903706E` |
+| UniswapV2Router02 (Ring deployment) | `0x0E442504ce6a378492c461c44adBCE787903706E` |
 | UniversalRouter | `0x1Fb6ef969D925f0B81245cE28F2cAD95b638CfCC` |
 | Permit2 | `0x000000000022D473030F116dDEE9F6B43aC78BA3` |
 | FewETHWrapper | `0xf9d7ff2f6A0c3631A807199276a493Af8097916F` |
@@ -109,7 +111,7 @@ raw amount, token path, spender, deadline, price limit, and simulation result.
 | Few Factory | `0x6B65ed7315274eB9EF06A48132EB04D808700b86` |
 | fwWHYPE | `0x9e1148bC3665a9f7C35F313d89c0432c34928AEf` |
 | Ring Swap Router | `0x701D1d675415efA2d2429fB122ccC6dD4FCcA959` |
-| UniswapV2Router02 | `0xcdCC42Ec0ECB7B5F9e4A5FE1Df99EeB1BDf46a00` |
+| UniswapV2Router02 (Ring deployment) | `0xcdCC42Ec0ECB7B5F9e4A5FE1Df99EeB1BDf46a00` |
 | UniversalRouter | `0xE65081EFa5ad4A196B1Df768716c337e6AB140E9` |
 | Permit2 | `0x000000000022D473030F116dDEE9F6B43aC78BA3` |
 | FewETHWrapper | `0x068B60ECbC934b0a0dde20FdFf0dE925b97B971F` |
@@ -133,13 +135,11 @@ raw amount, token path, spender, deadline, price limit, and simulation result.
 | FewETHWrapper | `0xb0Bd0CD58551b71079F36B198276832242D02C0F` |
 | Ring Swap Factory | `0x47C436602d2598d0ef4b50888F29a528B6Bccc95` |
 | Ring Swap Router | `0x88a9A29FA981721C04fdC367ab7e3C83A4C65db9` |
-| Uniswap V2 Router | `0xE73442C4b87283D75768F3668B411fc2348B429b` |
+| UniswapV2Router02 (Ring deployment) | `0xE73442C4b87283D75768F3668B411fc2348B429b` |
 | UniversalRouter | `0x9256667638ED96ba4eCb30bD23efD2A182e1bC98` |
 | Timelock | `0xb0BEa0daA0E57c43d92711f9dF2d0D54CebEEA72` |
 | Permit2 | `0x000000000022D473030F116dDEE9F6B43aC78BA3` |
 | Multicall3 | `0xcA11bde05977b3631167028862bE2a173976CA11` |
-
-On MegaETH `UniswapV2Router02` is the Ring-published V2-compatible router, not a Uniswap Labs deployment.
 
 | Value | MegaETH Mainnet |
 | --- | --- |
@@ -169,7 +169,7 @@ contracts at the block you use.
 | --- | --- |
 | DEX | Uniswap |
 | Uniswap V2 Factory | `0x509166db8Fb9571F8C34EfcD7347809B34dE4e04` |
-| UniswapV2Router02 | Not configured in the deployment config |
+| Uniswap V2 Router (external dependency) | Not configured in the deployment config |
 | Uniswap bridge tokens | `0xfFf9976782d46CC05630D1f6eBAb18b2324d6B14`, `0xA7a151d60Bbd522d3611C2dB3F1F972Ee9904B3e`, `0x7db5fA1170D15e8D02deFB483b833EB1f3bAAC38`, `0x5fbad067f69eBbc276410D78fF52823be133eD48` |
 
 The Sepolia core contract, timelock, `fwWETH` wrapper address, FewToken list, and Pair list are not published here.

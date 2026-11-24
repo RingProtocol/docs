@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
   "name": "Ring Swap v2 deployment manifest",
-  "updatedAt": "2026-11-23",
+  "updatedAt": "2026-11-24",
   "documentation": "https://docs.ring.exchange/contracts/v2/deployments",
   "status": "/data/ring-swap-v2-status.json",
   "notes": [
     "This manifest covers the four maintained mainnet sets in the public Ring Swap documentation plus the Sepolia testnet set used for integration testing, not every historical or testnet SDK constant.",
     "Ring-owned contracts are separated from external dependencies.",
-    "UniswapV2Router02 entries mirror the UniswapV2Router field of the Ring tooling chain config; they are not the Ring Swap router. Verify router.factory() onchain before granting an allowance.",
+    "UniswapV2Router02 entries are displayed as UniswapV2Router02 (Ring deployment): Ring-deployed V2-compatible routers connected to the Ring Swap Factory. They mirror the UniswapV2Router field of the Ring tooling chain config and are separate from the Ring Swap Router entries and Uniswap Labs deployments. Verify router.factory() onchain before granting an allowance.",
     "FewToken identity must be verified with FewFactory.getWrappedToken(underlying).",
     "Pair identity must be verified with SwapV2Factory.getPair(token0, token1).",
     "An empty or curated pair list is not a complete factory index."

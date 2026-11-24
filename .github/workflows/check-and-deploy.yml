@@ -1,7 +1,4 @@
 name: Check Benchmarks & Deploy
-env:
-  VERCEL_TEAM_ID: ${{ secrets.VERCEL_ORG_ID }}
-  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 on:
   push:
 
@@ -13,9 +10,9 @@ jobs:
       run:
         working-directory: ./
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
         with:
           node-version: '20'
           cache: 'yarn'
@@ -43,65 +40,99 @@ jobs:
   audit_with_lighthouse:
     name: Audit with Lighthouse
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     if: github.ref != 'refs/heads/main' && github.ref != 'refs/heads/prod'
     permissions:
-      contents: write
+      contents: read
+      deployments: read
       pull-requests: write
     defaults:
       run:
         working-directory: ./
     steps:
-      # Step 1: Retrieve the Vercel Preview URL
-      - name: vercel-preview-url
-        uses: zentered/vercel-preview-url@v1.1.9
+      - name: Wait for this commit's Vercel preview
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
         id: vercel_preview_url
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
         with:
-          vercel_project_id: ${{ secrets.VERCEL_PROJECT_ID }}
-          vercel_team_id: ${{ secrets.VERCEL_ORG_ID }}
+          retries: 3
+          script: |
+            const deadline = Date.now() + 420_000;
+            while (Date.now() < deadline) {
+              const { data: deployments } = await github.rest.repos.listDeployments({
+                ...context.repo,
+                sha: context.sha,
+                environment: 'Preview',
+                per_page: 100,
+              });
+              const deployment = deployments.find(deployment =>
+                deployment.sha === context.sha && deployment.creator?.login === 'vercel[bot]'
+              );
+              if (deployment) {
+                const { data: statuses } = await github.rest.repos.listDeploymentStatuses({
+                  ...context.repo,
+                  deployment_id: deployment.id,
+                  per_page: 1,
+                });
+                const status = statuses[0];
+                if (status?.state === 'success') {
+                  const url = new URL(status.environment_url);
+                  if (url.protocol !== 'https:' || !url.hostname.endsWith('.vercel.app') || url.username || url.password) {
+                    throw new Error('The Vercel deployment did not provide a valid HTTPS preview URL.');
+                  }
+                  core.setOutput('preview_url', url.href);
+                  core.info(`Auditing ${context.sha} at ${url.href}`);
+                  return;
+                }
+                if (['failure', 'error', 'inactive'].includes(status?.state)) {
+                  throw new Error(`Vercel deployment ${deployment.id} is ${status.state}.`);
+                }
+              }
+              core.info(`Waiting for a successful Vercel Preview deployment of ${context.sha}...`);
+              await new Promise(resolve => setTimeout(resolve, 15_000));
+            }
+            throw new Error(`Timed out waiting for the Vercel Preview deployment of ${context.sha}.`);
 
-      # Step 2: Wait for the Vercel deployment to be ready
-      - uses: UnlyEd/github-action-await-vercel@v1
-        id: await-vercel
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
         with:
-          deployment-url: ${{ steps.vercel_preview_url.outputs.preview_url }}
-          timeout: 420
-          poll-interval: 15
-
-      - uses: actions/checkout@v3
+          persist-credentials: false
       - name: Audit preview URL with Lighthouse (mobile)
         id: lighthouse_audit_mobile
-        uses: treosh/lighthouse-ci-action@v9
+        uses: treosh/lighthouse-ci-action@3e7e23fb74242897f95c0ba9cabad3d0227b9b18 # v12
         with:
           urls: |
-            https://${{ steps.vercel_preview_url.outputs.preview_url }}
+            ${{ steps.vercel_preview_url.outputs.preview_url }}
           uploadArtifacts: true
+          artifactName: lighthouse-mobile
           temporaryPublicStorage: true
 
       - name: Audit preview URL with Lighthouse (desktop)
         id: lighthouse_audit
-        uses: treosh/lighthouse-ci-action@v9
+        uses: treosh/lighthouse-ci-action@3e7e23fb74242897f95c0ba9cabad3d0227b9b18 # v12
         with:
           urls: |
-            https://${{ steps.vercel_preview_url.outputs.preview_url }}
+            ${{ steps.vercel_preview_url.outputs.preview_url }}
           uploadArtifacts: true
+          artifactName: lighthouse-desktop
           temporaryPublicStorage: true
           configPath: .github/lighthouse/lighthouse-config.json
 
       - name: Format Lighthouse score
         id: format_lighthouse_score
-        uses: actions/github-script@v3
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
+        env:
+          MOBILE_LINKS: ${{ steps.lighthouse_audit_mobile.outputs.links }}
+          MOBILE_MANIFEST: ${{ steps.lighthouse_audit_mobile.outputs.manifest }}
+          DESKTOP_LINKS: ${{ steps.lighthouse_audit.outputs.links }}
+          DESKTOP_MANIFEST: ${{ steps.lighthouse_audit.outputs.manifest }}
+          PREVIEW_URL: ${{ steps.vercel_preview_url.outputs.preview_url }}
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            const mobileLinks = ${{ steps.lighthouse_audit_mobile.outputs.links }};
-            const mobileResult = ${{ steps.lighthouse_audit_mobile.outputs.manifest }}[0].summary;
-            const desktopLinks = ${{ steps.lighthouse_audit.outputs.links }};
-            const desktopResult = ${{ steps.lighthouse_audit.outputs.manifest }}[0].summary;
-            const previewUrl = "https://${{ steps.vercel_preview_url.outputs.preview_url }}";
+            const mobileLinks = JSON.parse(process.env.MOBILE_LINKS);
+            const mobileResult = JSON.parse(process.env.MOBILE_MANIFEST)[0].summary;
+            const desktopLinks = JSON.parse(process.env.DESKTOP_LINKS);
+            const desktopResult = JSON.parse(process.env.DESKTOP_MANIFEST)[0].summary;
+            const previewUrl = process.env.PREVIEW_URL;
             const formatResult = (res) => Math.round((res * 100));
             const score = res => res >= 90 ? '🟢' : res >= 50 ? '🟠' : '🔴';
             Object.keys(mobileResult).forEach(key => mobileResult[key] = formatResult(mobileResult[key]));
